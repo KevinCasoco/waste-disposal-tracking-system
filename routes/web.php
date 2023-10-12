@@ -33,3 +33,7 @@ Route::middleware(['2fa'])->group(function () {
 });
 
 Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
