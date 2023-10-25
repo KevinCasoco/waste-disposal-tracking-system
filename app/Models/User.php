@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'google2fa_secret'
+        'role'
     ];
 
     /**
@@ -46,11 +46,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    protected function google2faSecret(): Attribute
-    {
-        return new Attribute(
-            get: fn ($value) =>  decrypt($value),
-            set: fn ($value) =>  encrypt($value),
-        );
-    }
 }

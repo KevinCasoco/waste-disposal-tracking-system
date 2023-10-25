@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,20 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+// landing page
+// Route::get('/', function () {
+//     return redirect()->route('login');
+// });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['2fa'])->group(function () {
-
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::post('/2fa', function () {
-        return redirect(route('home'));
-    })->name('2fa');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+require __DIR__.'/auth.php';
