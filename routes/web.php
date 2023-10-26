@@ -29,15 +29,17 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('403', function () {
-    $user = Auth::user();
+Route::redirect('/', destination: 'login');
 
-    if ($user->status == 1) {
-        return redirect()->route('login');
-    }
+// Route::get('403', function () {
+//     $user = Auth::user();
 
-    return view('forbidden.status');
-})->middleware('auth');
+//     if ($user->status == 1) {
+//         return redirect()->route('login');
+//     }
+
+//     return view('forbidden.status');
+// })->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
