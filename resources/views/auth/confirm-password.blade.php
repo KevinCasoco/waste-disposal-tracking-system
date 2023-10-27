@@ -13,7 +13,8 @@
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required autocomplete="current-password"
+                            placeholder="Enter Your Password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
