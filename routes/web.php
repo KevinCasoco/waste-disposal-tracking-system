@@ -122,4 +122,8 @@ Route::get('/schedule', function () {
     return view('schedule');
 })->name('schedule');
 
+Route::get('/augmented', function () {
+    return view('augmented');
+})->name('augmented');
+
 require __DIR__.'/auth.php';
