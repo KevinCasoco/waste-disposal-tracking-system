@@ -2,16 +2,10 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    {{-- <div>
-        <a href="/">
-            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-        </a>
-    </div> --}}
-
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <img src="/images/image.png" class="mb-2 rounded-md w-20 h-18 block ml-auto mr-auto"/>
+        <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
 
         <!-- Email Address -->
         <div>

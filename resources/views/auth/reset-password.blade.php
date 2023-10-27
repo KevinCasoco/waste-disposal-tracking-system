@@ -2,7 +2,7 @@
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
-        <img src="/images/image.png" class="mb-2 rounded-md w-20 h-18 block ml-auto mr-auto"/>
+        <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
 
         <!-- Password Reset Token -->
         <input type="hidden" name="token" value="{{ $request->route('token') }}">

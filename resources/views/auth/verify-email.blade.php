@@ -1,5 +1,6 @@
 <x-guest-layout>
-    <img src="/images/image.png" class="mb-2 rounded-md w-20 h-18 block ml-auto mr-auto"/>
+
+    <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
 
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
