@@ -104,7 +104,7 @@ Route::middleware('auth', 'status')->group(function () {
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
 
-// Dashboard Sidebar
+//Admin Dashboard Sidebar
 
 Route::get('/admin', function () {
     return view('admin');
@@ -121,5 +121,23 @@ Route::get('/residents', function () {
 Route::get('/schedule', function () {
     return view('schedule');
 })->name('schedule');
+
+// User-Residents Dashboard
+
+Route::get('/user-residents', function () {
+    return view('user-residents');
+})->name('user-residents');
+
+Route::get('/user-sched', function () {
+    return view('user-sched');
+})->name('user-sched');
+
+Route::get('/editor-residents', function () {
+    return view('editor-residents');
+})->name('editor-residents');
+
+Route::get('/editor-sched', function () {
+    return view('editor-sched');
+})->name('editor-sched');
 
 require __DIR__.'/auth.php';
