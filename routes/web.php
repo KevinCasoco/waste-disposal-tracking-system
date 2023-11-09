@@ -13,6 +13,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CollectorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -106,13 +109,17 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 //Admin Dashboard Sidebar
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->name('admin');
 
-Route::get('/collector', function () {
-    return view('collector');
-})->name('collector');
+Route::get('/admin', [UserController::class, 'index'])->name('admin');
+
+// Route::get('/collector', function () {
+//     return view('collector');
+// })->name('collector');
+
+Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
 
 Route::get('/residents', function () {
     return view('residents');
