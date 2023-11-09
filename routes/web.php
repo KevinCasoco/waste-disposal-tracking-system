@@ -140,4 +140,8 @@ Route::get('/editor-sched', function () {
     return view('editor-sched');
 })->name('editor-sched');
 
+Route::get('/augmented', function () {
+    return view('augmented');
+})->name('augmented');
+
 require __DIR__.'/auth.php';
