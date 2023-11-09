@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            SampleAccounts::class,
+            UserAccounts::class,
         ]);
     }
 }

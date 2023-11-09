@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
     ];
 
     /**
@@ -46,18 +46,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /**
-     * Boot the model.
-     */
-    protected static function boot()
-    {
-        parent::boot();
+    // /**
+    //  * Boot the model.
+    //  */
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        // Automatically set the "role" attribute when creating a new user.
-        static::creating(function ($user) {
-            // You can set the default role here.
-            $user->role = 'user'; // Change 'user' to the desired default role.
-        });
-    }
+    //     // Automatically set the "role" attribute when creating a new user.
+    //     static::creating(function ($user) {
+    //         // You can set the default role here.
+    //         $user->role = 'user'; // Change 'user' to the desired default role.
+    //     });
+    // }
 
 }
