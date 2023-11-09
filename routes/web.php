@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectorController;
 
@@ -113,7 +114,7 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 //     return view('admin');
 // })->name('admin');
 
-Route::get('/admin', [UserController::class, 'index'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 // Route::get('/collector', function () {
 //     return view('collector');
@@ -121,9 +122,11 @@ Route::get('/admin', [UserController::class, 'index'])->name('admin');
 
 Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
 
-Route::get('/residents', function () {
-    return view('residents');
-})->name('residents');
+// Route::get('/residents', function () {
+//     return view('residents');
+// })->name('residents');
+
+Route::get('/residents', [UserController::class, 'index'])->name('residents');
 
 Route::get('/schedule', function () {
     return view('schedule');
