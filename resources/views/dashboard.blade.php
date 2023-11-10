@@ -1,30 +1,5 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot> --}}
-
-    {{-- <div class="py-6 mt-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     @if (Auth::user()->role == 'admin')
-        {{-- <div class="py-6 pt-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        {{ __("You're Admin!") }}
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
     <!-- START SIDEBAR -->
     <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
@@ -92,7 +67,10 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Admin</li>
-                                <li class="font-extrabold text-slate-800 text-xl">45</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
+                                {{-- <p>Admins: {{ $countAdmins }}</p>
+                                <p>Collector: {{ $countCollector }}</p>
+                                <p>Residents: {{ $countResidents }}</p> --}}
                                 <i class="ri-admin-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -102,7 +80,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Collector</li>
-                                <li class="font-extrabold text-slate-800 text-xl">50</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countCollector }}</li>
                                 <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -112,7 +90,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Residents</li>
-                                <li class="font-extrabold text-slate-800 text-xl">2000</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countResidents }}</li>
                                 <i class="ri-user-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
