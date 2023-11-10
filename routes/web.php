@@ -149,9 +149,11 @@ Route::get('/user-sched', function () {
     return view('user-sched');
 })->name('user-sched');
 
-Route::get('/editor-residents', function () {
-    return view('editor-residents');
-})->name('editor-residents');
+// Route::get('/editor-residents', function () {
+//     return view('editor-residents');
+// })->name('editor-residents');
+
+Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
 
 Route::get('/editor-sched', function () {
     return view('editor-sched');
