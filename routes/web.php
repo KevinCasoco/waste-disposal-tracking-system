@@ -139,17 +139,21 @@ Route::get('/schedule', function () {
 
 // User-Residents Dashboard
 
-Route::get('/user-residents', function () {
-    return view('user-residents');
-})->name('user-residents');
+// Route::get('/user-residents', function () {
+//     return view('user-residents');
+// })->name('user-residents');
+
+Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
 
 Route::get('/user-sched', function () {
     return view('user-sched');
 })->name('user-sched');
 
-Route::get('/editor-residents', function () {
-    return view('editor-residents');
-})->name('editor-residents');
+// Route::get('/editor-residents', function () {
+//     return view('editor-residents');
+// })->name('editor-residents');
+
+Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
 
 Route::get('/editor-sched', function () {
     return view('editor-sched');

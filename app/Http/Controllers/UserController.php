@@ -14,4 +14,18 @@ class UserController extends Controller
         return view('residents', compact('data'));
     }
 
+    public function residents()
+    {
+        $data = User::all(); // Replace YourModel with your actual model name
+
+        return view('user-residents', compact('data'));
+    }
+
+    public function collector()
+    {
+        $data = User::all(); // Replace YourModel with your actual model name
+
+        return view('editor-residents', compact('data'));
+    }
+
 }

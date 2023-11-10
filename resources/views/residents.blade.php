@@ -57,48 +57,43 @@
    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
    <!-- END SIDEBAR -->
 
-<!--Container-->
-<div class=" md:w-[calc(100%-256px)] md:ml-64 xl:w-[79%] mx-auto px-2 p-5 bg-gray-100">
+    <!--Container-->
+    <div class=" md:w-[calc(100%-256px)] md:ml-64 xl:w-[79%] mx-auto px-2 p-5 bg-gray-100">
 
-    <!--Card-->
-    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+        <!--Card-->
+        <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
-        <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-            <thead>
-                <tr>
-                    <th data-priority="1">Email Address</th>
-                    <th data-priority="2">Full Name</th>
-                    {{-- <th data-priority="3">Contact Number</th> --}}
-                    <th data-priority="3">Role</th>
-                    <th data-priority="4">Edit</th>
-                    <th data-priority="5">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $item)
-                <tr>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->role }}</td>
-                    <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500 text-center">Delete</td>
-                </tr>
-                @endforeach
-            </tbody>
+            <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead>
+                    <tr>
+                        <th data-priority="1">Email Address</th>
+                        <th data-priority="2">Full Name</th>
+                        {{-- <th data-priority="3">Contact Number</th> --}}
+                        <th data-priority="3">Role</th>
+                        <th data-priority="4">Edit</th>
+                        <th data-priority="5">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $item)
+                    <tr>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->role }}</td>
+                        <td class="text-sky-500 text-center">Edit</td>
+                        <td class="text-red-500 text-center">Delete</td>
+                    </tr>
+                    @endforeach
+                </tbody>
 
-        </table>
+            </table>
 
-		</div>
-		<!--/Card-->
+        </div>
+        <!--/Card-->
 
-	</div>
-	<!--/container-->
-	<!-- jQuery -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </div>
+    <!--/container-->
 
-	<!--Datatables -->
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 	<script>
 		$(document).ready(function() {
 
