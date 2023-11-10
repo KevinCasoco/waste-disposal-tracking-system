@@ -13,6 +13,11 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CollectorController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +46,13 @@ Route::redirect('/', destination: 'login');
 //     return view('forbidden.status');
 // })->middleware('auth');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -106,17 +115,23 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 //Admin Dashboard Sidebar
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->name('admin');
 
-Route::get('/collector', function () {
-    return view('collector');
-})->name('collector');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-Route::get('/residents', function () {
-    return view('residents');
-})->name('residents');
+// Route::get('/collector', function () {
+//     return view('collector');
+// })->name('collector');
+
+Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+
+// Route::get('/residents', function () {
+//     return view('residents');
+// })->name('residents');
+
+Route::get('/residents', [UserController::class, 'index'])->name('residents');
 
 Route::get('/schedule', function () {
     return view('schedule');

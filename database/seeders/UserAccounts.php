@@ -49,6 +49,22 @@ class UserAccounts extends Seeder
             'role' => 'residents',
         ]);
 
+        // seeding residents
+        $residents = User::create([
+            'name' => 'Shauna Loresca',
+            'email' => 'shaunaloresca@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'residents',
+        ]);
+
+        // seeding residents
+        $residents = User::create([
+            'name' => 'Kevs 404',
+            'email' => 'kevs404official@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'residents',
+        ]);
+
 
     }
 }
