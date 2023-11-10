@@ -81,7 +81,7 @@
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->role }}</td>
                         <td class="text-sky-500 text-center">Edit</td>
-                        <td class="text-red-500">Delete</td>
+                        <td class="text-red-500 text-center">Delete</td>
                     </tr>
                     @endforeach
                 </tbody>
