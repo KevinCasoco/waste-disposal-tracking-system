@@ -67,7 +67,7 @@
             <thead>
                 <tr>
                     <th data-priority="1">Email Address</th>
-                    <th data-priority="2">Contact number</th>
+                    <th data-priority="2">Full Name</th>
                     {{-- <th data-priority="3">Contact Number</th> --}}
                     <th data-priority="3">Role</th>
                     <th data-priority="4">Edit</th>
