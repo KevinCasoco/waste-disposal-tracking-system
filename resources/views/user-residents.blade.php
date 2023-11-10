@@ -73,71 +73,30 @@
         <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead>
                 <tr>
-                    <th data-priority="1">Fullname</th>
-                    <th data-priority="2">Email</th>
-                    <th data-priority="3">Contact number</th>
-                    <th data-priority="4">Barangay</th>
-                    <th data-priority="5">Action</th>
-                    <th data-priority="6">Action</th>
+                    <th data-priority="1">Email Address</th>
+                    <th data-priority="2">Full Name</th>
+                    {{-- <th data-priority="3">Contact Number</th> --}}
+                    {{-- <th data-priority="3">Barangay</th> --}}
+                    <th data-priority="3">Role</th>
+                    <th data-priority="4">Edit</th>
+                    <th data-priority="5">Delete</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($data as $item)
                 <tr>
-                    <td>Jay-ar Grifaldea</td>
-                    <td>grifaldea@gmail.com</td>
-                    <td>09122680523</td>
-                    <td class="text-center">178</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->role }}</td>
                     <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500">Delete</td>
+                    <td class="text-red-500 text-center">Delete</td>
                 </tr>
-
-                <tr>
-                    <td>Carlo Delos</td>
-                    <td>carlo@gmail.com</td>
-                    <td>0913965654</td>
-                    <td class="text-center">179</td>
-                    <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500">Delete</td>
-                </tr>
-                <tr>
-                    <td>Karl Doctolero</td>
-                    <td>karl@gmail.com</td>
-                    <td>09123646978</td>
-                    <td class="text-center">180</td>
-                    <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500">Delete</td>
-                </tr>
-                <tr>
-                    <td>Kurt Nanalis</td>
-                    <td>nanalis@gmail.com</td>
-                    <td>09102059607</td>
-                    <td class="text-center">178</td>
-                    <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500">Delete</td>
-                </tr>
-                <tr>
-                    <td>Andrei Casoco</td>
-                    <td>casoco@gmail.com</td>
-                    <td>09125628490</td>
-                    <td class="text-center">188</td>
-                    <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500">Delete</td>
-                </tr>
-                <tr>
-                    <td>Emmanuel Mojares</td>
-                    <td>Emman@gmail.com</td>
-                    <td>09125628490</td>
-                    <td class="text-center">188</td>
-                    <td class="text-sky-500 text-center">Edit</td>
-                    <td class="text-red-500">Delete</td>
-                </tr>
+                @endforeach
             </tbody>
-
         </table>
 
 		</div>
 		<!--/Card-->
-
 
 	</div>
 	<!--/container-->
@@ -157,7 +116,6 @@
 				.responsive.recalc();
 		});
 	</script>
-
 
 @endif
 

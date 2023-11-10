@@ -139,9 +139,11 @@ Route::get('/schedule', function () {
 
 // User-Residents Dashboard
 
-Route::get('/user-residents', function () {
-    return view('user-residents');
-})->name('user-residents');
+// Route::get('/user-residents', function () {
+//     return view('user-residents');
+// })->name('user-residents');
+
+Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
 
 Route::get('/user-sched', function () {
     return view('user-sched');

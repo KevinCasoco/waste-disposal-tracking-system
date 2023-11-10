@@ -68,9 +68,6 @@
                             <ul>
                                 <li class="font-bold text-gray-400">Admin</li>
                                 <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
-                                {{-- <p>Admins: {{ $countAdmins }}</p>
-                                <p>Collector: {{ $countCollector }}</p>
-                                <p>Residents: {{ $countResidents }}</p> --}}
                                 <i class="ri-admin-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -236,17 +233,8 @@
     @endif
 
     @if (Auth::user()->role == 'collector')
-        {{-- <div class="py-6 pt-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        {{ __("You're Editor!") }}
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
-         <!-- START SIDEBAR -->
+    <!-- START SIDEBAR -->
     <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
         <a class="flex item-center pb-4 border-b border-b-gray-700">
             <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="w-16 h-16 rounded object-cover">
@@ -318,7 +306,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Admin</li>
-                                <li class="font-extrabold text-slate-800 text-xl">45</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
                                 <i class="ri-admin-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -328,7 +316,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Collector</li>
-                                <li class="font-extrabold text-slate-800 text-xl">50</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countCollector }}</li>
                                 <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -338,7 +326,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Residents</li>
-                                <li class="font-extrabold text-slate-800 text-xl">2000</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countResidents }}</li>
                                 <i class="ri-user-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -484,17 +472,8 @@
     @endif
 
     @if (Auth::user()->role == 'residents')
-        {{-- <div class="py-6 pt-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        {{ __("You're User!") }}
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
-         <!-- START SIDEBAR -->
+    <!-- START SIDEBAR -->
     <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
         <a class="flex item-center pb-4 border-b border-b-gray-700">
             <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="w-16 h-16 rounded object-cover">
@@ -566,7 +545,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Admin</li>
-                                <li class="font-extrabold text-slate-800 text-xl">45</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
                                 <i class="ri-admin-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -576,7 +555,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Collector</li>
-                                <li class="font-extrabold text-slate-800 text-xl">50</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countCollector }}</li>
                                 <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
@@ -586,7 +565,7 @@
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Residents</li>
-                                <li class="font-extrabold text-slate-800 text-xl">2000</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{ $countResidents }}</li>
                                 <i class="ri-user-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
