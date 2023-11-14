@@ -127,15 +127,17 @@ Route::get('/schedule', function () {
 
 // User-Residents Dashboard Sidebar
 
-Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
+Route::get('/user-residents', [UserController::class, 'residents'])
+    ->middleware(['auth', 'verified'])
+    ->name('user-residents');
 
 Route::get('/user-sched', function () {
     return view('user-sched');
-})->name('user-sched');
+})->middleware(['auth', 'verified'])->name('user-sched');
 
 Route::get('/augmented', function () {
     return view('augmented');
-})->name('augmented');
+})->middleware(['auth', 'verified'])->name('augmented');
 
 // Collector Dashboard Sidebar
 
