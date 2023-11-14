@@ -133,14 +133,16 @@ Route::get('/user-sched', function () {
     return view('user-sched');
 })->name('user-sched');
 
+Route::get('/augmented', function () {
+    return view('augmented');
+})->name('augmented');
+
+// Collector Dashboard Sidebar
+
 Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
 
 Route::get('/editor-sched', function () {
     return view('editor-sched');
 })->name('editor-sched');
-
-Route::get('/augmented', function () {
-    return view('augmented');
-})->name('augmented');
 
 require __DIR__.'/auth.php';
