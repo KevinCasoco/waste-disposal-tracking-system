@@ -20,7 +20,8 @@
     const imagePlane = document.getElementById("imagePlane");
     const marker = document.getElementById("marker");
 
-    const imageUrl = "kevs.jpg";
+    // const imageUrl = "kevs.jpg";
+    const imageUrl = "{{ asset('images/biodegradable-sample.jpg') }}";
     let isAnimationRunning = false; // To prevent multiple animations
 
     marker.addEventListener("markerFound", () => {
