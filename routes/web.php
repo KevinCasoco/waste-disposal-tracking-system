@@ -113,7 +113,7 @@ Route::middleware('auth', 'status')->group(function () {
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
 
-//Admin Dashboard Sidebar
+// Admin Dashboard Sidebar
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
@@ -125,21 +125,13 @@ Route::get('/schedule', function () {
     return view('schedule');
 })->name('schedule');
 
-// User-Residents Dashboard
-
-// Route::get('/user-residents', function () {
-//     return view('user-residents');
-// })->name('user-residents');
+// User-Residents Dashboard Sidebar
 
 Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
 
 Route::get('/user-sched', function () {
     return view('user-sched');
 })->name('user-sched');
-
-// Route::get('/editor-residents', function () {
-//     return view('editor-residents');
-// })->name('editor-residents');
 
 Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
 
