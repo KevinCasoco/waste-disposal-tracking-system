@@ -115,15 +115,19 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 // Admin Dashboard Sidebar
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::middleware('auth', 'status')->group(function () {
 
-Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-Route::get('/residents', [UserController::class, 'index'])->name('residents');
+    Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
 
-Route::get('/schedule', function () {
-    return view('schedule');
-})->name('schedule');
+    Route::get('/residents', [UserController::class, 'index'])->name('residents');
+
+    Route::get('/schedule', function () {
+        return view('schedule');
+    })->name('schedule');
+
+}); // end of middleware group
 
 // User-Residents Dashboard Sidebar
 
