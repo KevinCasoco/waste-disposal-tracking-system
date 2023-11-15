@@ -131,17 +131,20 @@ Route::middleware('auth', 'status')->group(function () {
 
 // User-Residents Dashboard Sidebar
 
-Route::get('/user-residents', [UserController::class, 'residents'])
-    ->middleware(['auth', 'verified'])
-    ->name('user-residents');
+Route::middleware('auth', 'status')->group(function () {
 
-Route::get('/user-sched', function () {
-    return view('user-sched');
-})->middleware(['auth', 'verified'])->name('user-sched');
+    Route::get('/user-residents', [UserController::class, 'residents'])
+        ->name('user-residents');
 
-Route::get('/augmented', function () {
-    return view('augmented');
-})->middleware(['auth', 'verified'])->name('augmented');
+    Route::get('/user-sched', function () {
+        return view('user-sched');
+    })->name('user-sched');
+
+    Route::get('/augmented', function () {
+        return view('augmented');
+    })->name('augmented');
+
+}); // end of middleware group
 
 // Collector Dashboard Sidebar
 
