@@ -113,23 +113,11 @@ Route::middleware('auth', 'status')->group(function () {
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
 
-//Admin Dashboard Sidebar
-
-// Route::get('/admin', function () {
-//     return view('admin');
-// })->name('admin');
+// Admin Dashboard Sidebar
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
-// Route::get('/collector', function () {
-//     return view('collector');
-// })->name('collector');
-
 Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
-
-// Route::get('/residents', function () {
-//     return view('residents');
-// })->name('residents');
 
 Route::get('/residents', [UserController::class, 'index'])->name('residents');
 
@@ -137,11 +125,7 @@ Route::get('/schedule', function () {
     return view('schedule');
 })->name('schedule');
 
-// User-Residents Dashboard
-
-// Route::get('/user-residents', function () {
-//     return view('user-residents');
-// })->name('user-residents');
+// User-Residents Dashboard Sidebar
 
 Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
 
@@ -149,18 +133,16 @@ Route::get('/user-sched', function () {
     return view('user-sched');
 })->name('user-sched');
 
-// Route::get('/editor-residents', function () {
-//     return view('editor-residents');
-// })->name('editor-residents');
+Route::get('/augmented', function () {
+    return view('augmented');
+})->name('augmented');
+
+// Collector Dashboard Sidebar
 
 Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
 
 Route::get('/editor-sched', function () {
     return view('editor-sched');
 })->name('editor-sched');
-
-Route::get('/augmented', function () {
-    return view('augmented');
-})->name('augmented');
 
 require __DIR__.'/auth.php';
