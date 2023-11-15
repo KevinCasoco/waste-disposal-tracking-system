@@ -116,6 +116,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
+    // Route::get('/dashboard-collector', [DashboardController::class, 'collector'])->name('dashboard-collector');
     Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
     Route::get('/editor-sched', function () {
         return view('editor-sched');

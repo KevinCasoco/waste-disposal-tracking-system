@@ -15,7 +15,7 @@ class UserAccounts extends Seeder
      */
     public function run(): void
     {
-        // $faker = Faker::create(); // Create a Faker instance
+        $faker = Faker::create(); // Create a Faker instance
 
         // // seeding admin
         // $admin = User::create([
@@ -33,12 +33,47 @@ class UserAccounts extends Seeder
             'role' => 'admin',
         ]);
 
+        $admin = User::create([
+            'name' => $faker->name(),
+            'email' => 'admin@sample.com',
+            'password' => Hash::make('12345'),
+            'role' => 'admin',
+        ]);
+
+        $admin = User::create([
+            'name' => $faker->name(),
+            'email' => 'wastedisposal@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'admin',
+        ]);
+
+        $admin = User::create([
+            'name' => $faker->name(),
+            'email' => 'wastemanagement@sample.com',
+            'password' => Hash::make('12345'),
+            'role' => 'admin',
+        ]);
+
+        $admin = User::create([
+            'name' => $faker->name(),
+            'email' => 'wdtsofficial@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'admin',
+        ]);
+
         // seeding collector
         $collector = User::create([
             'name' => 'Jayar Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'collector',
+        ]);
+
+        $admin = User::create([
+            'name' => $faker->name(),
+            'email' => 'collector@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'admin',
         ]);
 
         // seeding residents
