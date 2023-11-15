@@ -101,7 +101,7 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 // Admin Dashboard Sidebar
 
-Route::middleware('auth', 'status')->group(function () {
+Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
@@ -114,7 +114,7 @@ Route::middleware('auth', 'status')->group(function () {
 
 // Collector Dashboard Sidebar
 
-Route::middleware('auth', 'status')->group(function () {
+Route::middleware('auth')->group(function () {
 
     Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
     Route::get('/editor-sched', function () {
@@ -125,7 +125,7 @@ Route::middleware('auth', 'status')->group(function () {
 
 // User-Residents Dashboard Sidebar
 
-Route::middleware('auth', 'status')->group(function () {
+Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
     Route::get('/user-sched', function () {
