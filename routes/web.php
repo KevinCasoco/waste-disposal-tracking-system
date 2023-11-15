@@ -145,10 +145,14 @@ Route::get('/augmented', function () {
 
 // Collector Dashboard Sidebar
 
-Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
+Route::middleware('auth', 'status')->group(function () {
 
-Route::get('/editor-sched', function () {
-    return view('editor-sched');
-})->name('editor-sched');
+    Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
+
+    Route::get('/editor-sched', function () {
+        return view('editor-sched');
+    })->name('editor-sched');
+
+}); // end of middleware group
 
 require __DIR__.'/auth.php';
