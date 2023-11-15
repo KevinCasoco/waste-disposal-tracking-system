@@ -36,20 +36,6 @@ use App\Http\Controllers\DashboardController;
 
 Route::redirect('/', destination: 'login');
 
-// Route::get('403', function () {
-//     $user = Auth::user();
-
-//     if ($user->status == 1) {
-//         return redirect()->route('login');
-//     }
-
-//     return view('forbidden.status');
-// })->middleware('auth');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -115,34 +101,40 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 // Admin Dashboard Sidebar
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::middleware('auth')->group(function () {
 
-Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+    Route::get('/residents', [UserController::class, 'index'])->name('residents');
+    Route::get('/schedule', function () {
+        return view('schedule');
+    })->name('schedule');
 
-Route::get('/residents', [UserController::class, 'index'])->name('residents');
-
-Route::get('/schedule', function () {
-    return view('schedule');
-})->name('schedule');
-
-// User-Residents Dashboard Sidebar
-
-Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
-
-Route::get('/user-sched', function () {
-    return view('user-sched');
-})->name('user-sched');
-
-Route::get('/augmented', function () {
-    return view('augmented');
-})->name('augmented');
+}); // end of middleware group
 
 // Collector Dashboard Sidebar
 
-Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
+Route::middleware('auth')->group(function () {
 
-Route::get('/editor-sched', function () {
-    return view('editor-sched');
-})->name('editor-sched');
+    Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
+    Route::get('/editor-sched', function () {
+        return view('editor-sched');
+    })->name('editor-sched');
+
+}); // end of middleware group
+
+// User-Residents Dashboard Sidebar
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
+    Route::get('/user-sched', function () {
+        return view('user-sched');
+    })->name('user-sched');
+    Route::get('/augmented', function () {
+        return view('augmented');
+    })->name('augmented');
+
+}); // end of middleware group
 
 require __DIR__.'/auth.php';
