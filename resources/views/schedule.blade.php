@@ -147,11 +147,10 @@
                                             <div
                                                 class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
                                                 :class="{
-                                                    'border-blue-200 text-blue-800 bg-blue-100': event.event_theme === 'blue',
-                                                    'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',
-                                                    'border-yellow-200 text-yellow-800 bg-yellow-100': event.event_theme === 'yellow',
+                                                    'border-white text-white bg-white': event.event_theme === 'white',
                                                     'border-green-200 text-green-800 bg-green-100': event.event_theme === 'green',
-                                                    'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'
+                                                    'border-yellow-200 text-yellow-800 bg-yellow-100': event.event_theme === 'yellow',
+                                                    'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',
                                                 }"
                                             >
                                                 <p x-text="event.event_title" class="text-sm truncate leading-tight"></p>
@@ -235,46 +234,43 @@
                         {
                             event_date: new Date(2020, 3, 1),
                             event_title: "April Fool's Day",
-                            event_theme: 'blue'
+                            event_theme: 'Green'
                         },
 
                         {
                             event_date: new Date(2020, 3, 10),
                             event_title: "Birthday",
-                            event_theme: 'red'
+                            event_theme: 'Yellow'
                         },
 
                         {
                             event_date: new Date(2020, 3, 16),
                             event_title: "Upcoming Event",
-                            event_theme: 'green'
+                            event_theme: 'Red'
                         }
                     ],
                     event_title: '',
                     event_date: '',
-                    event_theme: 'blue',
+                    event_theme: 'Green',
 
                     themes: [
                         {
-                            value: "blue",
-                            label: "Blue"
-                        },
-                        {
-                            value: "red",
-                            label: "Red"
-                        },
-                        {
-                            value: "yellow",
-                            label: "Yellow"
+                            value: "Select Color",
+                            label: "Select Color"
                         },
                         {
                             value: "green",
                             label: "Green"
                         },
                         {
-                            value: "purple",
-                            label: "Purple"
-                        }
+                            value: "yellow",
+                            label: "Yellow"
+                        },
+                        {
+                            value: "red",
+                            label: "Red"
+                        },
+
                     ],
 
                     openEventModal: false,

@@ -110,77 +110,77 @@
 		<span class="text-sm font-semibold text-gray-500">OCTOBER 2023</span>
 		<div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3">
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block"></span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">300</span>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-16 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">178</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$45,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">350</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">179</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">360</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">180</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$50,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">370</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">181</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">365</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">182</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$55,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">380</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">183</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$60,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">410</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-16 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">184</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$57,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">390</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">185</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$67,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">480</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-32 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">186</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$65,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">470</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full bg-indigo-400 h-28"></div>
 				<span class="absolute bottom-0 text-xs font-bold">187</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$70,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">500</span>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-40 bg-indigo-400"></div>
@@ -349,77 +349,77 @@
 		<span class="text-sm font-semibold text-gray-500">OCTOBER 2023</span>
 		<div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3">
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block"></span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">300</span>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-16 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">178</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$45,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">350</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">179</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">360</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">180</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$50,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">370</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">181</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">365</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">182</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$55,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">380</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">183</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$60,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">410</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-16 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">184</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$57,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">390</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">185</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$67,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">480</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-32 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">186</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$65,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">470</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full bg-indigo-400 h-28"></div>
 				<span class="absolute bottom-0 text-xs font-bold">187</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$70,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">500</span>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-40 bg-indigo-400"></div>
@@ -588,77 +588,77 @@
 		<span class="text-sm font-semibold text-gray-500">OCTOBER 2023</span>
 		<div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3">
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block"></span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">300</span>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-16 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">178</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$45,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">350</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">179</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">360</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">180</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$50,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">370</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">181</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">365</span>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">182</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$55,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">380</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">183</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$60,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">410</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-16 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">184</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$57,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">390</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">185</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$67,500</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">480</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-32 bg-indigo-400"></div>
 				<span class="absolute bottom-0 text-xs font-bold">186</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$65,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">470</span>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-12 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full bg-indigo-400 h-28"></div>
 				<span class="absolute bottom-0 text-xs font-bold">187</span>
 			</div>
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$70,000</span>
+				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">500</span>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
 				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
 				<div class="relative flex justify-center w-full h-40 bg-indigo-400"></div>
