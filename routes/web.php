@@ -113,6 +113,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/{id}', [EditProfile::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
 
+    Route::delete('/admin/{admin}', [AdminController::class, 'destroy_admin'])->name('admin.destroy');
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar

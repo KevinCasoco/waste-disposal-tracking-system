@@ -193,7 +193,15 @@
                     <td>{{ $item->role }}</td>
                     {{-- <td><a href="{{ route('admin.edit', $user->id) }}" class="edit-link" data-target="#admin">Edit</a></td> --}}
                     <td><a href="" class="edit-link" data-target="#admin">Edit</a></td>
-                    <td class="text-red-500 text-center">Delete</td>
+                    {{-- <td class="text-red-500 text-center">Delete</td> --}}
+                    <td>
+                        <!-- Delete button -->
+                        <form method="post" action="{{ route('admin.destroy', $item->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
