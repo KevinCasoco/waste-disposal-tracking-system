@@ -43,4 +43,10 @@ class UserController extends Controller
         return redirect()->route('collector')->with('success', 'Collector deleted successfully');
     }
 
+    public function destroy_residents(User $residents)
+    {
+        $residents->delete();
+        return redirect()->route('residents')->with('success', 'Collector deleted successfully');
+    }
+
 }
