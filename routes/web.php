@@ -125,6 +125,8 @@ Route::middleware('auth')->group(function () {
         return view('editor-sched');
     })->name('editor-sched');
 
+    Route::delete('/collector/{collector}', [UserController::class, 'destroy'])->name('collector.destroy');
+
 }); // end of middleware group
 
 // User-Residents Dashboard Sidebar

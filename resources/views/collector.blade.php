@@ -81,7 +81,15 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->role }}</td>
                             <td class="text-sky-500 text-center">Edit</td>
-                            <td class="text-red-500 text-center">Delete</td>
+                            {{-- <td class="text-red-500 text-center">Delete</td> --}}
+                            <td>
+                                <!-- Delete button -->
+                                <form method="post" action="{{ route('collector.destroy', $item->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
