@@ -69,6 +69,34 @@ class UserAccounts extends Seeder
             'role' => 'collector',
         ]);
 
+        $collector = User::create([
+            'name' => $faker->name(),
+            'email' => 'collectors@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'collector',
+        ]);
+
+        $collector = User::create([
+            'name' => $faker->name(),
+            'email' => 'sample@hotmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'collector',
+        ]);
+
+        $collector = User::create([
+            'name' => $faker->name(),
+            'email' => 'garbage@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'collector',
+        ]);
+
+        $collector = User::create([
+            'name' => $faker->name(),
+            'email' => 'francis@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'collector',
+        ]);
+
         $admin = User::create([
             'name' => $faker->name(),
             'email' => 'collector@gmail.com',
