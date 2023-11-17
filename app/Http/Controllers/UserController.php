@@ -37,11 +37,11 @@ class UserController extends Controller
         return view('editor-residents', compact('data'));
     }
 
-    public function destroy(User $collector)
-    {
-        $collector->delete();
-        return redirect()->route('collector')->with('success', 'Collector deleted successfully');
-    }
+    // public function destroy_collector(User $collector)
+    // {
+    //     $collector->delete();
+    //     return redirect()->route('collector')->with('success', 'Collector deleted successfully');
+    // }
 
     public function destroy_residents(User $residents)
     {
