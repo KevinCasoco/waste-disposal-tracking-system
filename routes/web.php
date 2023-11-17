@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\EditProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +109,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedule', function () {
         return view('schedule');
     })->name('schedule');
+
+    Route::get('/admin/{id}', [EditProfile::class, 'edit'])->name('admin.edit');
+    Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
 
 }); // end of middleware group
 
