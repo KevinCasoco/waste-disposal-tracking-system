@@ -137,6 +137,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
+    Route::delete('/user-residents/{user_residents}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
     Route::get('/user-sched', function () {
         return view('user-sched');
     })->name('user-sched');
