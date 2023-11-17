@@ -16,4 +16,10 @@ class CollectorController extends Controller
 
         return view('collector', compact('data'));
     }
+
+    public function destroy_collector(User $collector)
+    {
+        $collector->delete();
+        return redirect()->route('collector')->with('success', 'Collector deleted successfully');
+    }
 }

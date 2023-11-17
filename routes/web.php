@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\EditProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +110,11 @@ Route::middleware('auth')->group(function () {
         return view('schedule');
     })->name('schedule');
 
+    Route::get('/admin/{id}', [EditProfile::class, 'edit'])->name('admin.edit');
+    Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
+
+    Route::delete('/admin/{admin}', [AdminController::class, 'destroy_admin'])->name('admin.destroy');
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
@@ -122,6 +127,9 @@ Route::middleware('auth')->group(function () {
         return view('editor-sched');
     })->name('editor-sched');
 
+    Route::delete('/collector/{collector}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
+    Route::delete('/residents/{residents}', [UserController::class, 'destroy_residents'])->name('residents.destroy');
+
 }); // end of middleware group
 
 // User-Residents Dashboard Sidebar
@@ -129,6 +137,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
+    Route::delete('/user-residents/{user_residents}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
     Route::get('/user-sched', function () {
         return view('user-sched');
     })->name('user-sched');
