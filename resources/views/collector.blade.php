@@ -80,7 +80,9 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->role }}</td>
-                            <td class="text-sky-500 text-center">Edit</td>
+                            <td class="text-sky-500 text-center">
+                                <button id="" class="modal-open hover:border-indigo-900 text-blue-500 hover:text-indigo-900 font-bold py-2 px-4 rounded-full">Edit</button>
+                            </td>
                             {{-- <td class="text-red-500 text-center">Delete</td> --}}
                             <td>
                                 <!-- Delete button -->
