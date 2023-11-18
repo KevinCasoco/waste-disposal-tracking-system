@@ -47,6 +47,12 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="role" :value="__('Role')" />
+            <x-text-input id="role" name="role" type="text" class="mt-1 block w-full" :value="old('role', $user->role)" readonly required autofocus autocomplete="role"/>
+            <x-input-error class="mt-2" :messages="$errors->get('role')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button class="w-24 justify-center">{{ __('Save') }}</x-primary-button>
 
