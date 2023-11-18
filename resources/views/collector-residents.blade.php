@@ -28,13 +28,13 @@
             </a>
         </li> --}}
         <li class="mb-1 group active">
-            <a href="{{ asset('editor-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+            <a href="{{ asset('collector-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                    <i class="ri-user-fill mr-3 text-lg"></i>
                 <span class="text-sm">Collector</span>
             </a>
         </li>
         <li class="mb-1 group">
-            <a href="{{ asset('editor-sched')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+            <a href="{{ asset('collector-sched')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                 <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                 <span class="text-sm">Schedule</span>
             </a>
@@ -89,7 +89,15 @@
                             <td class="text-sky-500 text-center">
                                 <button class="modal-open hover:border-indigo-900 text-blue-500 hover:text-indigo-900 font-bold py-2 px-4 rounded-full">Edit</button>
                             </td>
-                            <td class="text-red-500 text-center">Delete</td>
+                            {{-- <td class="text-red-500 text-center">Delete</td> --}}
+                            <td>
+                                <!-- Delete button -->
+                                <form method="post" action="{{ route('collector-residents.destroy_collector_residents', $item->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

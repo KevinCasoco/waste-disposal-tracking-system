@@ -100,7 +100,6 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
 
 // Admin Dashboard Sidebar
-
 Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
@@ -118,22 +117,22 @@ Route::middleware('auth')->group(function () {
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
-
 Route::middleware('auth')->group(function () {
 
     // Route::get('/dashboard-collector', [DashboardController::class, 'collector'])->name('dashboard-collector');
-    Route::get('/editor-residents', [UserController::class, 'collector'])->name('editor-residents');
-    Route::get('/editor-sched', function () {
-        return view('editor-sched');
-    })->name('editor-sched');
+    // Route::get('/editor-residents', [CollectorController::class, 'index'])->name('editor-residents');
+    Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
+    Route::get('/collector-sched', function () {
+        return view('collector-sched');
+    })->name('collector-sched');
 
     Route::delete('/collector/{collector}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
     Route::delete('/residents/{residents}', [UserController::class, 'destroy_residents'])->name('residents.destroy');
+    Route::delete('/collector-residents/{collector_residents}', [UserController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
 
 }); // end of middleware group
 
 // User-Residents Dashboard Sidebar
-
 Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
