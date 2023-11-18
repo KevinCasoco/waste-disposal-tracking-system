@@ -96,9 +96,9 @@
                     <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Truck</li>
-                                <li class="font-extrabold text-slate-800 text-xl">5</li>
-                                <i class="ri-truck-fill"></i>
+                                <li class="font-bold text-gray-400">Total Users</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{$totalUser}}</li>
+                                <i class="ri-admin-fill"></i>
                             </ul>
                         </div>
                     </div>
@@ -335,9 +335,9 @@
                     <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Truck</li>
-                                <li class="font-extrabold text-slate-800 text-xl">5</li>
-                                <i class="ri-truck-fill"></i>
+                                <li class="font-bold text-gray-400">Total Users</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{$totalUser}}</li>
+                                <i class="ri-admin-fill"></i>
                             </ul>
                         </div>
                     </div>
@@ -574,9 +574,9 @@
                     <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Truck</li>
-                                <li class="font-extrabold text-slate-800 text-xl">5</li>
-                                <i class="ri-truck-fill"></i>
+                                <li class="font-bold text-gray-400">Total Users</li>
+                                <li class="font-extrabold text-slate-800 text-xl">{{$totalUser}}</li>
+                                <i class="ri-admin-fill"></i>
                             </ul>
                         </div>
                     </div>

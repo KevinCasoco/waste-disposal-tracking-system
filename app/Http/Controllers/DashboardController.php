@@ -11,12 +11,13 @@ class DashboardController extends Controller
         $countAdmins = User::where('role', 'admin')->count();
         $countCollector = User::where('role', 'collector')->count();
         $countResidents = User::where('role', 'residents')->count();
-
+        $totalUser = User::count();
 
         return view('dashboard',
             ['countAdmins' => $countAdmins,
             'countCollector' => $countCollector,
             'countResidents' => $countResidents,
+            'totalUser' => $totalUser,
         ]);
     }
 }
