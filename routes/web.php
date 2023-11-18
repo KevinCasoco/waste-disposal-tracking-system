@@ -122,9 +122,9 @@ Route::middleware('auth')->group(function () {
     // Route::get('/dashboard-collector', [DashboardController::class, 'collector'])->name('dashboard-collector');
     // Route::get('/editor-residents', [CollectorController::class, 'index'])->name('editor-residents');
     Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
-    Route::get('/collector-sched', function () {
-        return view('collector-sched');
-    })->name('collector-sched');
+    Route::get('/collector-schedule', function () {
+        return view('collector-schedule');
+    })->name('collector-schedule');
 
     Route::delete('/collector/{collector}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
     Route::delete('/residents/{residents}', [UserController::class, 'destroy_residents'])->name('residents.destroy');
@@ -137,9 +137,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
     Route::delete('/user-residents/{user_residents}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
-    Route::get('/user-sched', function () {
-        return view('user-sched');
-    })->name('user-sched');
+    Route::get('/user-schedule', function () {
+        return view('user-schedule');
+    })->name('user-schedule');
     Route::get('/augmented', function () {
         return view('augmented');
     })->name('augmented');
