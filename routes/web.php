@@ -109,7 +109,7 @@ Route::middleware('auth')->group(function () {
         return view('schedule');
     })->name('schedule');
 
-    Route::get('/admin/{id}', [EditProfile::class, 'edit'])->name('admin.edit');
+    Route::get('/admin/{id}/edit', [EditProfile::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
 
     Route::delete('/admin/{admin}', [AdminController::class, 'destroy_admin'])->name('admin.destroy');
