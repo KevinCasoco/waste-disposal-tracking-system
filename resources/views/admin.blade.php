@@ -87,12 +87,6 @@
                             Edit
                         </td>
                         <td>
-                            {{-- <!-- Delete button --> --}}
-                            {{-- <form method="post" action="{{ route('admin.destroy', $item->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                            </form> --}}
                             <button @click="showDeleteModal = true; itemToDelete = {{ $item->id }}">Delete</button>
                         </td>
                     </tr>
@@ -116,7 +110,7 @@
          x-transition:leave-end="opacity-0 transform scale-95"
          class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
             <!-- ... (modal content) ... -->
-            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
                 <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                 </svg>
@@ -125,15 +119,16 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                         Delete
                     </button>
                 </form>
                 <button @click="showDeleteModal = false"
-                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm">
+                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                     Cancel
                 </button>
             </div>
+
         </div>
 
         {{-- <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -157,7 +152,7 @@
                     </div>
                 </div>
             </div>
-        </div --}}
+        </div> --}}
 
         </div>
         <!--End Table-->
@@ -174,6 +169,8 @@
             .columns.adjust()
             .responsive.recalc();
     });
+
+    // export to pdf, excel, word and txt WIP
 
     // $(document).ready(function() {
     // $('#example').DataTable( {
