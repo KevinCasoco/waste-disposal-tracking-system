@@ -112,7 +112,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/{id}/edit', [EditProfile::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
 
-    Route::delete('/admin/{admin}', [AdminController::class, 'destroy_admin'])->name('admin.destroy');
+    // Route::delete('/admin/{admin}', [AdminController::class, 'destroy_admin'])->name('admin.destroy');
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
 
 }); // end of middleware group
 

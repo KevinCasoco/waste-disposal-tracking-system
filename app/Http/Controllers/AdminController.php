@@ -17,9 +17,12 @@ class AdminController extends Controller
         return view('admin', compact('data'));
     }
 
-    public function destroy_admin(User $admin)
+    public function destroy($id)
     {
+        $admin = User::findOrFail($id);
         $admin->delete();
-        return redirect()->route('admin')->with('success', 'Collector deleted successfully');
+
+        return redirect()->route('admin')->with('success', 'User deleted successfully');
     }
+
 }
