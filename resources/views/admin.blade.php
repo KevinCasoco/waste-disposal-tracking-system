@@ -64,7 +64,6 @@
         <!-- Start Table -->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
-            {{-- <div x-data="{ adminDelete: false }"> --}}
             <div x-data="{ adminDelete: false, adminEdit: false, itemToDelete: null}">
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
@@ -177,36 +176,36 @@
     </div>
     <!--/container-->
 
-<script>
-    function deleteItem() {
-        // Set the itemToDelete value based on the clicked item's ID
-        this.itemToDelete = {{ $item->id }};
-    }
-</script>
+    <script>
+        function deleteItem() {
+            // Set the itemToDelete value based on the clicked item's ID
+            this.itemToDelete = {{ $item->id }};
+        }
+    </script>
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-        var table = $('#example').DataTable({
-                responsive: true
-            })
-            .columns.adjust()
-            .responsive.recalc();
-    });
+            var table = $('#example').DataTable({
+                    responsive: true
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
 
-    // export to pdf, excel, word and txt WIP
+        // export to pdf, excel, word and txt WIP
 
-    // $(document).ready(function() {
-    // $('#example').DataTable( {
-    //         dom: 'Bfrtip',
-    //         buttons: [
-    //             'copy', 'csv', 'excel', 'pdf', 'print'
-    //         ]
-    //     } );
-    // } );
+        // $(document).ready(function() {
+        // $('#example').DataTable( {
+        //         dom: 'Bfrtip',
+        //         buttons: [
+        //             'copy', 'csv', 'excel', 'pdf', 'print'
+        //         ]
+        //     } );
+        // } );
 
-</script>
+    </script>
 
-@endif
+    @endif
 
 </x-app-layout>

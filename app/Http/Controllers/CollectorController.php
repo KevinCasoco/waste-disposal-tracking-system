@@ -17,9 +17,11 @@ class CollectorController extends Controller
         return view('collector', compact('data'));
     }
 
-    public function destroy_collector(User $collector)
+    public function destroy_collector($id)
     {
-        $collector->delete();
-        return redirect()->route('collector')->with('success', 'Collector deleted successfully');
+        $admin = User::findOrFail($id);
+        $admin->delete();
+
+        return redirect()->route('collector')->with('success', 'User deleted successfully');
     }
 }

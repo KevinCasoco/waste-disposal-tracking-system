@@ -62,22 +62,24 @@
 
         <!--Card-->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-                <div x-data="{ deleteCollector: false }">
+                <div x-data="{ deleteCollector: false, itemToDelete: null}">
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th data-priority="1">Email Address</th>
-                            <th data-priority="2">Full Name</th>
+                            <th data-priority="1">ID</th>
+                            <th data-priority="2">Email Address</th>
                             {{-- <th data-priority="3">Contact Number</th> --}}
-                            <th data-priority="3">Role</th>
-                            <th data-priority="4">Edit</th>
-                            <th data-priority="5">Delete</th>
+                            <th data-priority="3">Full Name</th>
+                            <th data-priority="4">Role</th>
+                            <th data-priority="5">Edit</th>
+                            <th data-priority="6">Delete</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->role }}</td>
@@ -85,7 +87,9 @@
                                 <button id="" class="modal-open hover:border-indigo-900 text-blue-500 hover:text-indigo-900 font-bold py-2 px-4 rounded-full">Edit</button>
                             </td>
                             <td>
-                                <button @click="deleteCollector = true; itemToDelete = {{ $item->id }}">Delete</button>
+                                <button @click="deleteCollector = true; itemToDelete = $event.target.getAttribute('data-item-id')"
+                                data-item-id="{{ $item->id }}">Delete
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -112,7 +116,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this user?</h3>
-                            <form x-data="{ itemToDelete: @json($item->id ?? '') }" method="post" :action="`{{ route('collector.destroy', '') }}/${itemToDelete}`">
+                            <form method="post" :action="`{{ route('collector.destroy', '') }}/${itemToDelete}`">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
@@ -126,12 +130,19 @@
                             </button>
                         </div>
                 </div>
-
+            </div>
         </div>
         <!--/Card-->
 
     </div>
     <!--/container-->
+
+    <script>
+        function deleteItem() {
+            // Set the itemToDelete value based on the clicked item's ID
+            this.itemToDelete = {{ $item->id }};
+        }
+    </script>
 
 	<script>
 		$(document).ready(function() {

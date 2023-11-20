@@ -112,8 +112,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/{id}/edit', [EditProfile::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
 
-    // Route::delete('/admin/{admin}', [AdminController::class, 'destroy_admin'])->name('admin.destroy');
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
 
 
 }); // end of middleware group
@@ -128,7 +128,6 @@ Route::middleware('auth')->group(function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
-    Route::delete('/collector/{collector}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
     Route::delete('/residents/{residents}', [UserController::class, 'destroy_residents'])->name('residents.destroy');
     Route::delete('/collector-residents/{collector_residents}', [UserController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
 
