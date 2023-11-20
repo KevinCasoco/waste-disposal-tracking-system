@@ -29,36 +29,36 @@ class UserController extends Controller
 
     public function collector()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
-
         // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'collector')->get();
 
         return view('collector-residents', compact('data'));
     }
 
-    // public function destroy_collector(User $collector)
+    public function destroy_residents($id)
+    {
+        $admin = User::findOrFail($id);
+        $admin->delete();
+
+        return redirect()->route('residents')->with('success', 'User deleted successfully');
+    }
+
+    // public function destroy_residents(User $residents)
     // {
-    //     $collector->delete();
-    //     return redirect()->route('collector')->with('success', 'Collector deleted successfully');
+    //     $residents->delete();
+    //     return redirect()->route('residents')->with('success', 'Collector deleted successfully');
     // }
 
-    public function destroy_residents(User $residents)
-    {
-        $residents->delete();
-        return redirect()->route('residents')->with('success', 'Collector deleted successfully');
-    }
+    // public function destroy_user_residents(User $user_residents)
+    // {
+    //     $user_residents->delete();
+    //     return redirect()->route('user-residents')->with('success', 'Collector deleted successfully');
+    // }
 
-    public function destroy_user_residents(User $user_residents)
-    {
-        $user_residents->delete();
-        return redirect()->route('user-residents')->with('success', 'Collector deleted successfully');
-    }
-
-    public function destroy_collector_residents(User $collector_residents)
-    {
-        $collector_residents->delete();
-        return redirect()->route('collector-residents')->with('success', 'Collector deleted successfully');
-    }
+    // public function destroy_collector_residents(User $collector_residents)
+    // {
+    //     $collector_residents->delete();
+    //     return redirect()->route('collector-residents')->with('success', 'Collector deleted successfully');
+    // }
 
 }
