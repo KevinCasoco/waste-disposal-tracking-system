@@ -90,13 +90,9 @@
                             <button @click="adminEdit = true; itemToEdit = {{ $item->id }}">Edit</button>
                         </td>
                         <td>
-                            {{-- <button @click="adminDelete = true; itemToDelete = {{ $item->id }}">Delete</button> --}}
-                            {{-- <button @click="adminDelete = true">Delete</button> --}}
-                            {{-- <button @click="adminDelete = true; itemToDelete = {{ $item->id }}">Delete</button> --}}
                             <button @click="adminDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
-                            data-item-id="{{ $item->id }}">
-                        Delete
-                    </button>
+                            data-item-id="{{ $item->id }}">Delete
+                            </button>
                         </td>
                     </tr>
                     @endforeach
