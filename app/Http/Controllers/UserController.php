@@ -35,14 +35,6 @@ class UserController extends Controller
         return view('collector-residents', compact('data'));
     }
 
-    public function destroy_residents($id)
-    {
-        $admin = User::findOrFail($id);
-        $admin->delete();
-
-        return redirect()->route('residents')->with('success', 'User deleted successfully');
-    }
-
     public function destroy_user_residents($id)
     {
         $admin = User::findOrFail($id);
