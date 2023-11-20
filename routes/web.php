@@ -116,7 +116,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
     Route::delete('/residents/{id}', [UserController::class, 'destroy_residents'])->name('residents.destroy');
 
-
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
@@ -135,7 +134,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
-    Route::delete('/user-residents/{user_residents}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
+    Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy');
     Route::get('/user-schedule', function () {
         return view('user-schedule');
     })->name('user-schedule');

@@ -43,6 +43,14 @@ class UserController extends Controller
         return redirect()->route('residents')->with('success', 'User deleted successfully');
     }
 
+    public function destroy_user_residents($id)
+    {
+        $admin = User::findOrFail($id);
+        $admin->delete();
+
+        return redirect()->route('user-residents')->with('success', 'User deleted successfully');
+    }
+
     // public function destroy_residents(User $residents)
     // {
     //     $residents->delete();
