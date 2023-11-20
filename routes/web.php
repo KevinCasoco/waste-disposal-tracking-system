@@ -126,7 +126,7 @@ Route::middleware('auth')->group(function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
-    Route::delete('/collector-residents/{collector_residents}', [UserController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
+    Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy');
 
 }); // end of middleware group
 
