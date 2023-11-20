@@ -113,8 +113,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/{id}', [EditProfile::class, 'update'])->name('admin.update');
 
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
-    Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector'])->name('collector.destroy');
-    Route::delete('/residents/{id}', [UserController::class, 'destroy_residents'])->name('residents.destroy');
+    Route::delete('/collector/{id}', [AdminController::class, 'admin_destroy_collector'])->name('collector.admin_destroy_collector');
+    Route::delete('/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
 
 }); // end of middleware group
 
@@ -126,7 +126,7 @@ Route::middleware('auth')->group(function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
-    Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy');
+    Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
 
 }); // end of middleware group
 
@@ -134,7 +134,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
-    Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy');
+    Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
     Route::get('/user-schedule', function () {
         return view('user-schedule');
     })->name('user-schedule');

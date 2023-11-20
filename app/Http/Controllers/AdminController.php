@@ -25,4 +25,20 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('success', 'User deleted successfully');
     }
 
+    public function admin_destroy_collector($id)
+    {
+        $collector = User::findOrFail($id);
+        $collector->delete();
+
+        return redirect()->route('collector')->with('success', 'User deleted successfully');
+    }
+
+    public function admin_destroy_residents($id)
+    {
+        $residents = User::findOrFail($id);
+        $residents->delete();
+
+        return redirect()->route('residents')->with('success', 'User deleted successfully');
+    }
+
 }
