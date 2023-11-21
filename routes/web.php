@@ -124,6 +124,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
+    Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
     Route::get('/collector-schedule', function () {
         return view('collector-schedule');
     })->name('collector-schedule');
