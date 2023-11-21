@@ -62,7 +62,8 @@
 
         <!--Card-->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-                <div x-data="{ deleteCollector: false, itemToDelete: null}">
+                <div x-data="{ deleteCollector: false, adminNewCollector: false, itemToDelete: null}">
+                    <button @click="adminNewCollector = true">Add New Collector</button>
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
@@ -95,6 +96,57 @@
                         @endforeach
                     </tbody>
                 </table>
+
+             <!-- Add New Users Modal -->
+             <div x-show="adminNewCollector" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
+                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+
+                <div x-show="adminNewCollector" @click.away="adminNewCollector = false"
+                    x-transition:enter="ease-out duration-300"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="ease-in duration-200"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-95"
+                    class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
+                    <!-- ... (modal content) ... -->
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
+                        {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg> --}}
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Register New Collector</h3>
+                        <form action="{{ route('collector.create_collector') }}" method="post">
+                            @csrf
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" required>
+                            <br>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" required>
+                            <br>
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" required>
+                            <br>
+                            <label for="role">Role:</label>
+                                <select name="role" required>
+                                    {{-- <option value="admin">Admin</option> --}}
+                                    <option value="collector" selected>Collector</option>
+                                    {{-- <option value="resident">Resident</option> --}}
+                                </select>
+                            <br>
+                            <button type="submit"
+                                    class="text-white bg-blue-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2">
+                                Create
+                            </button>
+                        </form>
+                        <button @click="adminNewCollector = false"
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Delete Modal -->
             <div x-show="deleteCollector" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>

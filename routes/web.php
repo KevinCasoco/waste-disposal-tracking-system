@@ -103,8 +103,9 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    Route::post('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+    Route::post('/admin/create_admin', [AdminController::class, 'create_admin'])->name('admin.create_admin');
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+    Route::post('/collector/create_collector', [AdminController::class, 'create_collector'])->name('collector.create_collector');
     Route::get('/residents', [UserController::class, 'index'])->name('residents');
     Route::get('/schedule', function () {
         return view('schedule');
