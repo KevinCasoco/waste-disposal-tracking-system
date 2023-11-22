@@ -111,7 +111,7 @@ Route::middleware('auth')->group(function () {
         return view('schedule');
     })->name('schedule');
 
-    // Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
     Route::put('/admin/{id}', [AdminController::class, 'update'])->name('admin.update');
 
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
