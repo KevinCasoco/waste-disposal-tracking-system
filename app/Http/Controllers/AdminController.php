@@ -85,13 +85,13 @@ class AdminController extends Controller
 
     public function edit($id)
     {
-            $user = User::find($id);
+        $user = User::find($id);
 
-            if (!$user) {
-                return redirect()->route('admin')->with('error', 'User not found');
-            }
+        if (!$user) {
+            return redirect()->route('admin')->with('error', 'User not found');
+        }
 
-            return view('admin', compact('data'));
+        return view('admin', compact('data'));
     }
 
     // Add an update method to handle the form submission
