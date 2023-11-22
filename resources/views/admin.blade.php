@@ -64,7 +64,7 @@
         <!-- Start Table -->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
-            <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null }">
+            <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null}">
                 <button @click="adminNewUsers = true">Add New Users</button>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
@@ -208,7 +208,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg> --}}
                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to update this user?</h3>
-                            @foreach($data as $item)
+                            {{-- @foreach($data as $item) --}}
                             <form method="post" :action="`{{ route('admin.update', '') }}/${itemToEdit}`">
                                 @csrf
                                 @method('PUT')
@@ -236,7 +236,7 @@
                                     Update
                                 </button>
                             </form>
-                            @endforeach
+                            {{-- @endforeach --}}
                             <button @click="adminEdit = false"
                                     class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                 Cancel
@@ -257,6 +257,7 @@
             // Set the itemToDelete value based on the clicked item's ID
             this.itemToDelete = {{ $item->id }};
         }
+
         function editItem() {
             // Set the itemToDelete value based on the clicked item's ID
             this.itemToEdit = {{ $item->id }};
