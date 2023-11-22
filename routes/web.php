@@ -102,7 +102,6 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 // Admin Dashboard Sidebar
 Route::middleware('auth')->group(function () {
 
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::post('/admin/create_admin', [AdminController::class, 'create_admin'])->name('admin.create_admin');
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
     Route::post('/collector/create_collector', [AdminController::class, 'create_collector'])->name('collector.create_collector');
@@ -111,9 +110,11 @@ Route::middleware('auth')->group(function () {
         return view('schedule');
     })->name('schedule');
 
-    // Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
-    Route::patch('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+    // edit
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::patch('/admin/{item}', [AdminController::class, 'update'])->name('admin.update');
 
+    // delete
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::delete('/admin/collector/{id}', [AdminController::class, 'admin_destroy_collector'])->name('collector.admin_destroy_collector');
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
