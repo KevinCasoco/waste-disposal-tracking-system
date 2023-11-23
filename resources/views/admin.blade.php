@@ -256,6 +256,9 @@
         function deleteItem() {
             // Set the itemToDelete value based on the clicked item's ID
             this.itemToDelete = {{ $item->id }};
+        }
+        function deleteItem() {
+            // Set the itemToDelete value based on the clicked item's ID
             this.itemToEdit = {{ $item->id }};
         }
     </script>
