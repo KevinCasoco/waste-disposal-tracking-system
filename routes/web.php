@@ -112,7 +112,7 @@ Route::middleware('auth')->group(function () {
 
     // edit
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    Route::patch('/admin/{item}', [AdminController::class, 'update'])->name('admin.update');
+    Route::patch('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
 
     // delete
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');

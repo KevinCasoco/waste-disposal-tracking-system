@@ -97,7 +97,7 @@ class AdminController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
             'password' => 'nullable|string|min:6',
-            'role' => 'string',
+            // 'role' => 'string',
         ]);
 
         // Update user information
@@ -105,7 +105,7 @@ class AdminController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
-            'role' => $request->input('role'),
+            // 'role' => $request->input('role'),
         ]);
 
         return redirect()->route('admin')->with('success', 'User updated successfully');
