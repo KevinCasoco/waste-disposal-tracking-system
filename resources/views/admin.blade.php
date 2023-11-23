@@ -65,10 +65,14 @@
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
             <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null}">
-                <button @click="adminNewUsers = true">Add New Users</button>
+                <div class="relative flex justify-end mb-2 ">
+                <button @click="adminNewUsers = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" > <i class="ri-add-circle-line mr-1"></i>Add New User</button>
+                </div>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
+
                     <tr>
+
                         <th data-priority="1">ID</th>
                         <th data-priority="2">Full Name</th>
                         <th data-priority="3">Email Address</th>
@@ -86,14 +90,14 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->role }}</td>
-                        <td>
+                        <td class="text-center">
                             <button @click="adminEdit = true; itemToEdit = $event.target.getAttribute('data-item-id')"
-                            data-item-id="{{ $item->id }}">Edit
+                            data-item-id="{{ $item->id }}" class="w-7 h-6"> <i class="ri-edit-box-fill text-sky-500"></i>
                             </button>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <button @click="adminDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
-                            data-item-id="{{ $item->id }}">Delete
+                            data-item-id="{{ $item->id }}" class="w-7 h-6"><i class="ri-delete-bin-5-fill text-red-600"></i>
                             </button>
                         </td>
                     </tr>
@@ -114,40 +118,47 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
+                    class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
+                    <div class="bg-white py-3 w-[410px] h-[430px]">
                         {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                         </svg> --}}
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Register New Users</h3>
-                        <form action="{{ route('admin.create_admin') }}" method="post">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
+                                Register New Users
+                            </h3>
+                        </div>
+                        <hr class="bg-black border-gray-300 w-[410px]">
+                        <form action="{{ route('admin.create_admin') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
                             @csrf
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" required>
-                            <br>
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" required>
-                            <br>
-                            <label for="password">Password:</label>
-                            <input type="password" name="password" required>
-                            <br>
-                            <label for="role">Role:</label>
-                                <select name="role" required>
+                            <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Name:</label>
+                            <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-[370px]" required>
+
+                            <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-[370px]" required>
+
+                            <label for="password" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
+                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-[370px]" required>
+
+                            <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
+                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
                                     <option value="admin">Admin</option>
                                     <option value="collector">Collector</option>
                                     {{-- <option value="resident">Resident</option> --}}
                                 </select>
-                            <br>
-                            <button type="submit"
-                                    class="text-white bg-blue-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2">
-                                Create
-                            </button>
+
                         </form>
+                        <div class="flex justify-end pr-5 mt-1">
                         <button @click="adminNewUsers = false"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 mr-2">
                             Cancel
                         </button>
+                        <button type="submit"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Create
+                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -165,26 +176,30 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
+                    class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col">
+                        <svg class="mx-auto mb-4 text-gray-500 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this user?</h3>
-                        <form method="post" :action="`{{ route('admin.destroy', '') }}/${itemToDelete}`">
+                        <h3 class="mb-5 text-lg font-normal text-black dark:text-gray-400">Are you sure you want to delete this user?</h3>
+
+                        <div class="flex justify-end items-end pb-2">
+                        <button @click="adminDelete = false"
+                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 mr-2">
+                            Cancel
+                        </button>
+                        <form method="post" :action="`{{ route('admin.destroy', '') }}/${itemToDelete}`" >
                             @csrf
                             @method('DELETE')
+
                             <button type="submit"
                                     class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2">
                                 Delete
                             </button>
                         </form>
-                        <button @click="adminDelete = false"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                            Cancel
-                        </button>
                     </div>
+                  </div>
                 </div>
             </div>
 
@@ -201,15 +216,20 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
+                    class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                         <!-- ... (modal content) ... -->
-                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
+                        <div class="bg-white py-3 w-[410px] h-[385px]">
                             {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg> --}}
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to update this user?</h3>
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
+                                    Edit Profile
+                                </h3>
+                            </div>
+                            <hr class="bg-black border-gray-300 w-[410px]">
                             {{-- @foreach($data as $item) --}}
-                            <form method="post" :action="`{{ route('admin.update', '') }}/${itemToEdit}`">
+                            <form method="post" :action="`{{ route('admin.update', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-5 pb-1">
                                 @csrf
                                 @method('patch')
                                     {{-- <label for="name">ID:</label>
@@ -221,15 +241,15 @@
                                     <label for="email">Email:</label>
                                     <input type="email" name="email" value="{{ $item->email }}" required>
                                     <br> --}}
-                                    <label for="name">ID:</label>
-                                    <input type="text" name="id" value="" disabled>
-                                    <br>
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name" value="" required>
-                                    <br>
-                                    <label for="email">Email:</label>
-                                    <input type="email" name="email" value="" required>
-                                    <br>
+                                    <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
+                                    <input type="text" name="id" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
+
+                                    <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Name:</label>
+                                    <input type="text" name="name" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+
+                                    <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
+                                    <input type="email" name="email" value="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px] mb-5" required>
+
                                     {{-- <label for="password">Password:</label>
                                     <input type="password" name="password">
                                     <br> --}}
@@ -239,17 +259,19 @@
                                         <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
                                         <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option>
                                     </select> --}}
-                                    <br>
-                                <button type="submit"
-                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                    Update
-                                </button>
+
                             </form>
                             {{-- @endforeach --}}
-                            <button @click="adminEdit = false"
-                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                            <div class="flex justify-end pr-5">
+                                <button @click="adminEdit = false"
+                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 mr-2">
                                 Cancel
                             </button>
+                            <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                 Update
+                            </button>
+                        </div>
                      </div>
                 </div>
             </div>

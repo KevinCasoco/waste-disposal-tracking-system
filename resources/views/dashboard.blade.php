@@ -63,17 +63,20 @@
         <div class="bg-slate-200 h-screen w-full overflow-y-auto">
             <div class="p-8">
                 <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+                    <a href="{{ route('admin') }}">
+                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm hover:bg-gray-100 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Admin</li>
+                                <li class="font-bold text-gray-400">
+                                    Admin</li>
                                 <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
                                 <i class="ri-admin-fill mr-3 text-lg"></i>
                             </ul>
                         </div>
                     </div>
-
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+                    </a>
+                    <a href="{{ asset('collector')}}">
+                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm hover:bg-gray-100 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Collector</li>
@@ -82,8 +85,9 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+                    </a>
+                    <a href="{{ asset('residents')}}">
+                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm hover:bg-gray-100 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-gray-400">Residents</li>
@@ -92,7 +96,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    </a>
                     <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
                         <div class="w-3/5 flex justify-start">
                             <ul>
