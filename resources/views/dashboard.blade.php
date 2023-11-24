@@ -64,45 +64,45 @@
             <div class="p-8">
                 <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
                     <a href="{{ route('admin') }}">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm hover:bg-gray-100 hover:shadow-lg">
+                    <div class="p-4 bg-indigo-400 rounded-lg flex items-center h-32 shadow-sm hover:bg-indigo-500 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">
+                                <li class="font-bold text-white">
                                     Admin</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
-                                <i class="ri-admin-fill mr-3 text-lg"></i>
+                                <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
+                                <i class="ri-admin-fill mr-3 text-lg text-white"></i>
                             </ul>
                         </div>
                     </div>
                     </a>
                     <a href="{{ asset('collector')}}">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm hover:bg-gray-100 hover:shadow-lg">
+                    <div class="p-4 bg-[#00D0C2] rounded-lg flex items-center h-32 shadow-sm hover:bg-[#00bbae] hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Collector</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countCollector }}</li>
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
+                                <li class="font-bold text-white">Collector</li>
+                                <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
+                                <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
                             </ul>
                         </div>
                     </div>
                     </a>
                     <a href="{{ asset('residents')}}">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm hover:bg-gray-100 hover:shadow-lg">
+                    <div class="p-4 bg-orange-400 rounded-lg flex items-center h-32 shadow-sm hover:bg-orange-500 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Residents</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countResidents }}</li>
-                                <i class="ri-user-fill mr-3 text-lg"></i>
+                                <li class="font-bold text-white">Residents</li>
+                                <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
+                                <i class="ri-user-fill mr-3 text-lg text-white"></i>
                             </ul>
                         </div>
                     </div>
                     </a>
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+                    <div class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-sm hover:bg-blue-600 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Total Users</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{$totalUser}}</li>
-                                <i class="ri-admin-fill"></i>
+                                <li class="font-bold text-white">Total Users</li>
+                                <li class="font-extrabold text-white text-xl">{{$totalUser}}</li>
+                                <i class="ri-admin-fill text-white"></i>
                             </ul>
                         </div>
                     </div>
@@ -306,45 +306,50 @@
         <div class="bg-slate-200 h-screen w-full overflow-y-auto">
             <div class="p-8">
                 <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+
+                    <div class="p-4 bg-indigo-400 rounded-lg flex items-center h-32 shadow-sm hover:bg-indigo-500 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Admin</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
-                                <i class="ri-admin-fill mr-3 text-lg"></i>
+                                <li class="font-bold text-white">
+                                    Admin</li>
+                                <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
+                                <i class="ri-admin-fill mr-3 text-lg text-white"></i>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+                    <a href="{{ asset('collector-residents')}}">
+                    <div class="p-4 bg-[#00D0C2] rounded-lg flex items-center h-32 shadow-sm hover:bg-[#00bbae] hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Collector</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countCollector }}</li>
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
+                                <li class="font-bold text-white">Collector</li>
+                                <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
+                                <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
+                            </ul>
+                        </div>
+                    </div>
+                    </a>
+
+                    <div class="p-4 bg-orange-400 rounded-lg flex items-center h-32 shadow-sm hover:bg-orange-500 hover:shadow-lg">
+                        <div class="w-3/5 flex justify-start">
+                            <ul>
+                                <li class="font-bold text-white">Residents</li>
+                                <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
+                                <i class="ri-user-fill mr-3 text-lg text-white"></i>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
+                    <div class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-sm hover:bg-blue-600 hover:shadow-lg">
                         <div class="w-3/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-gray-400">Residents</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countResidents }}</li>
-                                <i class="ri-user-fill mr-3 text-lg"></i>
+                                <li class="font-bold text-white">Total Users</li>
+                                <li class="font-extrabold text-white text-xl">{{$totalUser}}</li>
+                                <i class="ri-admin-fill text-white"></i>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Total Users</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{$totalUser}}</li>
-                                <i class="ri-admin-fill"></i>
-                            </ul>
-                        </div>
-                    </div>
 
 
      <!-- Component Start -->
@@ -541,49 +546,53 @@
 
     <!-- START MAIN -->
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
-        <!-- START DASHBOARD -->
-        <div class="bg-slate-200 h-screen w-full overflow-y-auto">
-            <div class="p-8">
-                <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Admin</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countAdmins }}</li>
-                                <i class="ri-admin-fill mr-3 text-lg"></i>
-                            </ul>
-                        </div>
-                    </div>
+    <!-- START DASHBOARD -->
+    <div class="bg-slate-200 h-screen w-full overflow-y-auto">
+        <div class="p-8">
+            <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
 
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Collector</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countCollector }}</li>
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                            </ul>
-                        </div>
+                <div class="p-4 bg-indigo-400 rounded-lg flex items-center h-32 shadow-sm hover:bg-indigo-500 hover:shadow-lg">
+                    <div class="w-3/5 flex justify-start">
+                        <ul>
+                            <li class="font-bold text-white">
+                                Admin</li>
+                            <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
+                            <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Residents</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{ $countResidents }}</li>
-                                <i class="ri-user-fill mr-3 text-lg"></i>
-                            </ul>
-                        </div>
+                <div class="p-4 bg-[#00D0C2] rounded-lg flex items-center h-32 shadow-sm hover:bg-[#00bbae] hover:shadow-lg">
+                    <div class="w-3/5 flex justify-start">
+                        <ul>
+                            <li class="font-bold text-white">Collector</li>
+                            <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
+                            <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="p-4 bg-white rounded-lg flex items-center h-32 shadow-sm">
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-gray-400">Total Users</li>
-                                <li class="font-extrabold text-slate-800 text-xl">{{$totalUser}}</li>
-                                <i class="ri-admin-fill"></i>
-                            </ul>
-                        </div>
+                <a href="{{ asset('user-residents')}}">
+                <div class="p-4 bg-orange-400 rounded-lg flex items-center h-32 shadow-sm hover:bg-orange-500 hover:shadow-lg">
+                    <div class="w-3/5 flex justify-start">
+                        <ul>
+                            <li class="font-bold text-white">Residents</li>
+                            <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
+                            <i class="ri-user-fill mr-3 text-lg text-white"></i>
+                        </ul>
                     </div>
+                </div>
+                </a>
+                <div class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-sm hover:bg-blue-600 hover:shadow-lg">
+                    <div class="w-3/5 flex justify-start">
+                        <ul>
+                            <li class="font-bold text-white">Total Users</li>
+                            <li class="font-extrabold text-white text-xl">{{$totalUser}}</li>
+                            <i class="ri-admin-fill text-white"></i>
+                        </ul>
+                    </div>
+                </div>
+
 
 
      <!-- Component Start -->
