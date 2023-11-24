@@ -64,7 +64,7 @@
         <!-- Start Table -->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
-            <form action="{{ route('send-notification') }}" method="POST">
+            <form action="{{ route('admin.send-notification') }}" method="POST">
                 @csrf
                 <button type="submit">Notify All Users</button>
             </form>

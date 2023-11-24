@@ -113,7 +113,7 @@ Route::middleware('auth')->group(function () {
 
     // notify the users
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
-    Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('send-notification');
+    Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('admin.send-notification');
 
     // edit
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
