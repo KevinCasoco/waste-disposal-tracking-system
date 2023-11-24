@@ -17,7 +17,8 @@ class WasteCollectionSchedule extends Controller
             $user->notify($notification);
         }
 
-        return "Notification sent to all users.";
+        // return "Notification sent to all users.";
+        return view('schedule');
     }
 
     public function showNotificationForm()
