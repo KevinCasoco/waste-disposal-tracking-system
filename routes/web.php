@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\WasteCollectionSchedule;
 use App\Http\Controllers\EditProfile;
 
 /*
@@ -109,6 +110,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedule', function () {
         return view('schedule');
     })->name('schedule');
+
+    // notify the users
+    Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
+    Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('send-notification');
 
     // edit
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');

@@ -64,6 +64,11 @@
         <!-- Start Table -->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
 
+            <form action="{{ route('send-notification') }}" method="POST">
+                @csrf
+                <button type="submit">Notify All Users</button>
+            </form>
+
             <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null}">
                 <button @click="adminNewUsers = true">Add New Users</button>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
