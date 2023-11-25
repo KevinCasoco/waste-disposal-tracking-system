@@ -62,8 +62,7 @@
 
         <!--Card-->
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-                {{-- <div x-data="{ deleteCollector: false, adminNewCollector: false, itemToDelete: null}"> --}}
-                    <div x-data="{ deleteCollector: false, adminNewCollector: false, collectorEdit: false, itemToDelete: null, itemToEdit: null}">
+                <div x-data="{ deleteCollector: false, adminNewCollector: false, collectorEdit: false, itemToDelete: null, itemToEdit: null}">
                     <button @click="adminNewCollector = true">Add New Collector</button>
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
