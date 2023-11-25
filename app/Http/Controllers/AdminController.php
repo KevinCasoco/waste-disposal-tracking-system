@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -46,7 +47,7 @@ class AdminController extends Controller
         // Validate the request
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => 'required|string|min:8',
             'role' => 'required|string',
         ]);
@@ -55,7 +56,7 @@ class AdminController extends Controller
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
+            'password' => Hash::make($request->password),
             'role' => $request->input('role'),
         ]);
 
