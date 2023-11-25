@@ -123,6 +123,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
     Route::patch('/collector/update/{id}', [AdminController::class, 'update_collector'])->name('collector.update_collector');
 
+    // edit residents/users
+    Route::get('/residents', [UserController::class, 'index'])->name('residents');
+    Route::patch('/residents/update/{id}', [AdminController::class, 'update_residents'])->name('residents.update_residents');
+
     // delete
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::delete('/admin/collector/{id}', [AdminController::class, 'admin_destroy_collector'])->name('collector.admin_destroy_collector');
