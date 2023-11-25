@@ -190,9 +190,9 @@
     <!--/container-->
 
     <script>
-        function deleteItem() {
+        function deleteItem(itemId) {
             // Set the itemToDelete value based on the clicked item's ID
-            this.itemToDelete = {{ $item->id }};
+            this.itemToDelete = itemId;
         }
     </script>
 
