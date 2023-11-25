@@ -115,9 +115,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
     Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('admin.send-notification');
 
-    // edit
+    // edit admin
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::patch('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+
+    // edit collector
+    Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+    Route::patch('/collector/update/{id}', [AdminController::class, 'update_collector'])->name('collector.update_collector');
 
     // delete
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');

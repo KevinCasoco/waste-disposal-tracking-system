@@ -112,4 +112,33 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('success', 'User updated successfully');
     }
 
+    // Add an update method to handle the form submission
+    public function update_collector(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        if (!$data) {
+            return redirect()->route('collector')->with('error', 'User not found');
+        }
+
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $data->id,
+            'password' => 'nullable|string|min:6',
+            // 'role' => 'string',
+        ]);
+
+        // Update user information
+        $data->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
+            // 'role' => $request->input('role'),
+        ]);
+
+        return redirect()->route('collector')->with('success', 'User updated successfully');
+    }
+
+
 }
