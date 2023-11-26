@@ -150,19 +150,24 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
-    Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
+    // Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
     Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
     Route::get('/collector-schedule', function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
     // active and inactive for admin
-    Route::get('/collector/activate/{id}', [CollectorController::class, 'activateUser'])->name('collector-residents.activateUser');
-    Route::get('/collector/deactivate/{id}', [CollectorController::class, 'deactivateUser'])->name('collector-residents.deactivateUser');
-    Route::put('/collector/toggle/{id}', [CollectorController::class, 'toggleResidentsStatus'])->name('collector-residents.toggleResidentsStatus');
+    Route::get('/collector-residents/activate/{id}', [CollectorController::class, 'activateUser'])->name('collector-residents.activateUser');
+    Route::get('/collector-residents/deactivate/{id}', [CollectorController::class, 'deactivateUser'])->name('collector-residents.deactivateUser');
+    Route::put('/collector-residents/toggle/{id}', [CollectorController::class, 'toggleResidentsStatus'])->name('collector-residents.toggleResidentsStatus');
 
+    // edit collector
+    Route::patch('/residents-collector/update/{id}', [CollectorController::class, 'update_collector'])->name('collector-residents.update_collector');
+
+    // delete residents-collector
+    Route::get('/collector-residents', [CollectorController::class, 'collector'])->name('collector-residents');
     Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
 
 }); // end of middleware group

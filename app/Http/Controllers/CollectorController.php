@@ -17,6 +17,52 @@ class CollectorController extends Controller
         return view('collector', compact('data'));
     }
 
+    public function index_collector()
+    {
+        // $data = User::all(); // Replace YourModel with your actual model name
+
+        // Fetch users based on role (e.g., 'admin' role)
+        $data = User::where('role', 'residents')->get();
+
+        return view('collector-residents', compact('data'));
+    }
+
+    public function collector()
+    {
+        // Fetch users based on role (e.g., 'admin' role)
+        $data = User::where('role', 'collector')->get();
+
+        return view('collector-residents', compact('data'));
+    }
+
+    // Add an update method to handle the form submission
+    public function update_collector(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        if (!$data) {
+            return redirect()->route('collector-residents')->with('error', 'User not found');
+        }
+
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $data->id,
+            'password' => 'nullable|string|min:6',
+            // 'role' => 'string',
+        ]);
+
+        // Update user information
+        $data->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
+            // 'role' => $request->input('role'),
+        ]);
+
+        return redirect()->route('collector-residents')->with('success', 'User updated successfully');
+    }
+
     public function destroy_collector_residents($id)
     {
         $admin = User::findOrFail($id);
