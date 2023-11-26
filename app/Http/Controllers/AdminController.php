@@ -73,6 +73,7 @@ class AdminController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => 'required|string|min:8',
             'role' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         // Create the user
@@ -81,6 +82,7 @@ class AdminController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->password),
             'role' => $request->input('role'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->route('collector')->with('success', 'User created successfully');
