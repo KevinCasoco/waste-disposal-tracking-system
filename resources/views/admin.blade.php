@@ -81,6 +81,7 @@
                         <th data-priority="4">Role</th>
                         <th data-priority="5">Edit</th>
                         <th data-priority="6">Delete</th>
+                        <th data-priority="7">Status</th>
                     </tr>
                 </thead>
 
@@ -100,6 +101,25 @@
                             <button @click="adminDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
                             data-item-id="{{ $item->id }}">Delete
                             </button>
+                        </td>
+                        <td class="text-center">
+                            <form action="{{ route('admin.toggleUserStatus', $item->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit"
+                                class='py-2 px-4 rounded
+                                @if ($item->status == 'active')
+                                    bg-green-500 hover:bg-green-700 text-white
+                                @else
+                                    bg-red-500 hover:bg-red-700 text-white
+                                @endif'>
+                                @if ($item->status == 'active')
+                                    Active
+                                @else
+                                    Inactive
+                                @endif
+                            </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -144,6 +164,12 @@
                                     {{-- <option value="resident">Resident</option> --}}
                                 </select>
                             <br>
+                            <label for="status">status:</label>
+                            <select name="status" required>
+                                <option value="active" selected>Active</option>
+                                <option value="inactive">Inactive</option>
+                                {{-- <option value="resident">Resident</option> --}}
+                            </select>
                             <button type="submit"
                                     class="text-white bg-blue-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2">
                                 Create

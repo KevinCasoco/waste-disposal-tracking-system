@@ -31,6 +31,7 @@ class UserAccounts extends Seeder
             'email' => 'andreikevincasoco@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'admin',
+            'status' => 'active',
         ]);
 
         // seeding collector
@@ -39,6 +40,7 @@ class UserAccounts extends Seeder
             'email' => 'jayargrifaldea@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'collector',
+            'status' => 'active',
         ]);
 
         // seeding residents
@@ -47,6 +49,7 @@ class UserAccounts extends Seeder
             'email' => 'shaunaloresca@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'residents',
+            'status' => 'active',
         ]);
 
         // $admin = User::create([

@@ -50,6 +50,7 @@ class AdminController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => 'required|string|min:8',
             'role' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         // Create the user
@@ -58,6 +59,7 @@ class AdminController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->password),
             'role' => $request->input('role'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->route('admin')->with('success', 'User created successfully');
@@ -166,6 +168,33 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('residents')->with('success', 'User updated successfully');
+    }
+
+    public function activateUser($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'active';
+        $item->save();
+
+        return redirect()->route('admin')->with('success', 'User activated successfully');
+    }
+
+    public function deactivateUser($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'inactive';
+        $item->save();
+
+        return redirect()->route('admin')->with('success', 'User deactivated successfully');
+    }
+
+    public function toggleUserStatus($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = $item->status === 'active' ? 'inactive' : 'active';
+        $item->update();
+
+        return redirect()->route('admin')->with('success', 'User status updated successfully');
     }
 
 

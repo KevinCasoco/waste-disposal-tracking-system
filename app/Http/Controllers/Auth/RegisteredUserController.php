@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'residents', // Set default value for the role field
+            'status' => 'active', // Set default value for the status field
         ]);
 
         event(new Registered($user));
