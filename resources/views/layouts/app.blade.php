@@ -24,8 +24,7 @@
         <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
         <!--Replace with your tailwind.css once created-->
 
-
-        <!--Regular Datatables CSS-->
+         <!--Regular Datatables CSS-->
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
         <!--Responsive Extension Datatables CSS-->
         <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -36,9 +35,6 @@
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
-        {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.x.x/dist/alpine.min.js" defer></script> --}}
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
         <style>
             /*Overrides for Tailwind CSS */
@@ -94,7 +90,7 @@
                 /*font-bold*/
                 border-radius: .25rem;
                 /*rounded*/
-                background: #667eea !important;
+                background: #4ECE5D !important;
                 /*bg-indigo-500*/
                 border: 1px solid transparent;
                 /*border border-transparent*/
@@ -110,7 +106,7 @@
                 /*font-bold*/
                 border-radius: .25rem;
                 /*rounded*/
-                background: #667eea !important;
+                background: #4ECE5D!important;
                 /*bg-indigo-500*/
                 border: 1px solid transparent;
                 /*border border-transparent*/
@@ -127,7 +123,7 @@
             /*Change colour of responsive icon*/
             table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
             table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-                background-color: #667eea !important;
+                background-color: #4ECE5D !important;
                 /*bg-indigo-500*/
             }
         </style>
@@ -154,4 +150,5 @@
             </main>
         </div>
     </body>
+
 </html>

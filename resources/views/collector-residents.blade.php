@@ -196,6 +196,8 @@
         </div>
         <!--/container-->
 
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
         <script>
             function deleteItem(itemId) {
                 // Set the itemToDelete value based on the clicked item's ID

@@ -84,14 +84,14 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->role }}</td>
-                        <td class="text-sky-500 text-center">
+                        <td class="text-center">
                             <button @click="residentsEdit = true; itemToEdit = $event.target.getAttribute('data-item-id')"
-                                data-item-id="{{ $item->id }}">Edit
+                                data-item-id="{{ $item->id }}" class="w-7 h-6"> <i class="ri-edit-box-fill text-sky-500"></i>
                                 </button>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <button @click="residentsDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
-                            data-item-id="{{ $item->id }}">Delete
+                            data-item-id="{{ $item->id }}" class="w-7 h-6"><i class="ri-delete-bin-5-fill text-red-600"></i>
                             </button>
                         </td>
                         <td class="text-center">
@@ -133,28 +133,31 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
-                        <!-- ... (modal content) ... -->
-                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
+                    class="rounded-lg overflow-hidden transform transition-all flex justify-start">
+                    <!-- ... (modal content) ... -->
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col">
                             <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this user?</h3>
+                            <div class="flex justify-end items-end pb-2">
                             <form method="post" :action="`{{ route('residents.admin_destroy_residents', '') }}/${itemToDelete}`">
                                 @csrf
                                 @method('DELETE')
+                                <button type="button" @click="residentsDelete = false"
+                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 mr-2">
+                                    Cancel
+                                     </button>
                                 <button type="submit"
-                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Delete
                                 </button>
-                            </form>
-                            <button @click="residentsDelete = false"
-                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                Cancel
-                            </button>
+                             </form>
                         </div>
+                    </div>
                 </div>
             </div>
+
 
             <!-- Edit Modal -->
             <div x-show="residentsEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
@@ -169,48 +172,57 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
-                        <!-- ... (modal content) ... -->
-                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col sm:items-center">
+                    class="rounded-lg overflow-hidden transform transition-all flex justify-start">
+                    <!-- ... (modal content) ... -->
+                    <div class="bg-white py-3 w-[410px] h-[436px]">
                             {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg> --}}
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to update this user?</h3>
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
+                                    Edit Profile
+                                </h3>
+                            </div>
+                            <hr class="bg-black border-gray-300 w-[410px]">
                             @foreach($data as $item)
                             <div x-show="itemToEdit === {{ $item->id }}">
-                            <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`">
+                            <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-3 pb-1">
                                 @csrf
                                 @method('patch')
-                                    <label for="name">ID:</label>
-                                    <input type="text" name="id" value="{{ $item->id }}" disabled>
-                                    <br>
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name" value="{{ $item->name }}" required>
-                                    <br>
-                                    <label for="email">Email:</label>
-                                    <input type="email" name="email" value="{{ $item->email }}" required>
-                                    <br>
+                                    <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
+                                    <input type="text" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
+
+                                    <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Name:</label>
+                                    <input type="text" name="name" value="{{ $item->name }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+
+                                    <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
+                                    <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px] mb-2" required>
+
                                     {{-- <label for="password">Password:</label>
                                     <input type="password" name="password">
                                     <br> --}}
-                                    <label for="role">Role:</label>
-                                    <select name="role" required>
-                                        <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                        <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
+                                    <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
+                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px] mb-5" disabled>
+                                        {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option> --}}
                                         <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option>
                                     </select>
-                                    <br>
-                                <button type="submit"
-                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                    Update
-                                </button>
-                            </form>
-                            </div>
-                            @endforeach
-                            <button @click="residentsEdit = false"
-                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                Cancel
-                            </button>
+
+                                    <div class="flex justify-end ">
+                                        <button type="button" @click="residentsEdit = false"
+                                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 mr-2">
+                                        Cancel
+                                         </button>
+                                            <button type="submit"
+                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                Update
+                                            </button>
+
+                                          </div>
+                                        </form>
+                                    </div>
+                                @endforeach
+                        </div>
                      </div>
                 </div>
             </div>
@@ -220,6 +232,8 @@
 
     </div>
     <!--/container-->
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
     <script>
         function deleteItem(itemId) {
