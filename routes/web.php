@@ -38,7 +38,7 @@ use App\Http\Controllers\EditProfile;
 Route::redirect('/', destination: 'login');
 
 Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth', 'verified', 'checkActiveStatus'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
