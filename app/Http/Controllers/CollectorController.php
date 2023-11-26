@@ -47,4 +47,31 @@ class CollectorController extends Controller
 
         return redirect()->route('collector-residents')->with('success', 'User created successfully');
     }
+
+    public function activateCollector($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'active';
+        $item->save();
+
+        return redirect()->route('collector-residents')->with('success', 'User activated successfully');
+    }
+
+    public function deactivateCollector($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'inactive';
+        $item->save();
+
+        return redirect()->route('collector-residents')->with('success', 'User deactivated successfully');
+    }
+
+    public function toggleResidentsStatus($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = $item->status === 'active' ? 'inactive' : 'active';
+        $item->update();
+
+        return redirect()->route('collector-residents')->with('success', 'User status updated successfully');
+    }
 }

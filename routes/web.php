@@ -158,6 +158,11 @@ Route::middleware('auth')->group(function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
+    // active and inactive for admin
+    Route::get('/collector/activate/{id}', [CollectorController::class, 'activateUser'])->name('collector-residents.activateUser');
+    Route::get('/collector/deactivate/{id}', [CollectorController::class, 'deactivateUser'])->name('collector-residents.deactivateUser');
+    Route::put('/collector/toggle/{id}', [CollectorController::class, 'toggleResidentsStatus'])->name('collector-residents.toggleResidentsStatus');
+
     Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
 
 }); // end of middleware group
