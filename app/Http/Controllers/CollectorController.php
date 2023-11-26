@@ -33,6 +33,7 @@ class CollectorController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
             'role' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         // Create the user
@@ -41,8 +42,36 @@ class CollectorController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'role' => $request->input('role'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->route('collector-residents')->with('success', 'User created successfully');
+    }
+
+    public function activateCollector($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'active';
+        $item->save();
+
+        return redirect()->route('collector-residents')->with('success', 'User activated successfully');
+    }
+
+    public function deactivateCollector($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'inactive';
+        $item->save();
+
+        return redirect()->route('collector-residents')->with('success', 'User deactivated successfully');
+    }
+
+    public function toggleResidentsStatus($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = $item->status === 'active' ? 'inactive' : 'active';
+        $item->update();
+
+        return redirect()->route('collector-residents')->with('success', 'User status updated successfully');
     }
 }
