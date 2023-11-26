@@ -101,7 +101,7 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
 
 // Admin Dashboard Sidebar
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     Route::post('/admin/create_admin', [AdminController::class, 'create_admin'])->name('admin.create_admin');
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');

@@ -46,28 +46,5 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
-    protected function attemptLogin(Request $request)
-    {
-        // Attempt to log the user in
-        return Auth::attempt(
-            $this->credentials($request),
-            $request->filled('remember')
-        );
-    }
-
-    protected function sendLoginResponse(Request $request)
-    {
-        $this->clearLoginAttempts($request);
-
-        // Check if the authenticated user is active
-        $user = Auth::user();
-
-        if ($user->status == 'active') {
-            return redirect()->intended($this->redirectPath());
-        } else {
-            Auth::logout();
-            return redirect()->route('login')->with('error', 'Your account is inactive. Please contact the administrator.');
-        }
-    }
 
 }
