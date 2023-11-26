@@ -10,7 +10,8 @@ class WasteCollectionSchedule extends Controller
 {
     public function sendNotification()
     {
-        $users = User::all();
+        // $users = User::all();
+        $users = User::where('status', 'active')->get();
         $notification = new NewNotification();
 
         foreach ($users as $user) {
