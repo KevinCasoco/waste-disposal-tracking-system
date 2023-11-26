@@ -224,5 +224,32 @@ class AdminController extends Controller
         return redirect()->route('collector')->with('success', 'User deactivated successfully');
     }
 
+    public function toggleResidentsStatus($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = $item->status === 'active' ? 'inactive' : 'active';
+        $item->update();
+
+        return redirect()->route('residents')->with('success', 'User status updated successfully');
+    }
+
+    public function activateResidents($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'active';
+        $item->save();
+
+        return redirect()->route('residents')->with('success', 'User activated successfully');
+    }
+
+    public function deactivateResidents($id)
+    {
+        $item = User::findOrFail($id);
+        $item->status = 'inactive';
+        $item->save();
+
+        return redirect()->route('residents')->with('success', 'User deactivated successfully');
+    }
+
 
 }

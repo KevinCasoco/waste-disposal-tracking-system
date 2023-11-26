@@ -125,6 +125,11 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/collector/deactivate/{id}', [AdminController::class, 'deactivateCollector'])->name('collector.deactivateCollector');
     Route::put('/collector/toggle/{id}', [AdminController::class, 'toggleCollectorStatus'])->name('collector.toggleCollectorStatus');
 
+    // active and inactive for residents
+    Route::get('/residents/activate/{id}', [AdminController::class, 'activateResidents'])->name('residents.activateResidents');
+    Route::get('/residents/deactivate/{id}', [AdminController::class, 'deactivateResidents'])->name('residents.deactivateResidents');
+    Route::put('/residents/toggle/{id}', [AdminController::class, 'toggleResidentsStatus'])->name('residents.toggleResidentsStatus');
+
     // edit admin
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::patch('/admin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
