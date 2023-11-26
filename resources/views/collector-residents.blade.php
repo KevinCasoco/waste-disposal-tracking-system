@@ -141,6 +141,12 @@
                                     {{-- <option value="resident">Resident</option> --}}
                                 </select>
                             <br>
+                            <label for="status">status:</label>
+                            <select name="status" required>
+                                <option value="active" selected>Active</option>
+                                <option value="inactive">Inactive</option>
+                                {{-- <option value="resident">Resident</option> --}}
+                            </select>
                             <button type="submit"
                                     class="text-white bg-blue-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2">
                                 Create

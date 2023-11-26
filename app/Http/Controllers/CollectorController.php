@@ -33,6 +33,7 @@ class CollectorController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
             'role' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         // Create the user
@@ -41,6 +42,7 @@ class CollectorController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'role' => $request->input('role'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->route('collector-residents')->with('success', 'User created successfully');
