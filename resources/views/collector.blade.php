@@ -74,6 +74,7 @@
                             <th data-priority="4">Role</th>
                             <th data-priority="5">Edit</th>
                             <th data-priority="6">Delete</th>
+                            <th data-priority="7">Status</th>
                         </tr>
                     </thead>
 
@@ -93,6 +94,25 @@
                                 <button @click="deleteCollector = true; itemToDelete = $event.target.getAttribute('data-item-id')"
                                 data-item-id="{{ $item->id }}">Delete
                                 </button>
+                            </td>
+                            <td class="text-center">
+                                <form action="{{ route('collector.toggleCollectorStatus', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit"
+                                    class='py-2 px-4 rounded
+                                    @if ($item->status == 'active')
+                                        bg-green-500 hover:bg-green-700 text-white
+                                    @else
+                                        bg-red-500 hover:bg-red-700 text-white
+                                    @endif'>
+                                    @if ($item->status == 'active')
+                                        Active
+                                    @else
+                                        Inactive
+                                    @endif
+                                </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

@@ -115,10 +115,15 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
     Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('admin.send-notification');
 
-    // active and inactive
+    // active and inactive for admin
     Route::get('/admin/activate/{id}', [AdminController::class, 'activateUser'])->name('admin.activateUser');
     Route::get('/admin/deactivate/{id}', [AdminController::class, 'deactivateUser'])->name('admin.deactivateUser');
     Route::put('/admin/toggle/{id}', [AdminController::class, 'toggleUserStatus'])->name('admin.toggleUserStatus');
+
+    // active and inactive for collector
+    Route::get('/collector/activate/{id}', [AdminController::class, 'activateCollector'])->name('collector.activateCollector');
+    Route::get('/collector/deactivate/{id}', [AdminController::class, 'deactivateCollector'])->name('collector.deactivateCollector');
+    Route::put('/collector/toggle/{id}', [AdminController::class, 'toggleCollectorStatus'])->name('collector.toggleCollectorStatus');
 
     // edit admin
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
