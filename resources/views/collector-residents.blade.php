@@ -287,11 +287,6 @@
                 // Set the itemToDelete value based on the clicked item's ID
                 this.itemToDelete = itemId;
             }
-
-            // function updateItem(itemId) {
-            //     // Set the itemToDelete value based on the clicked item's ID
-            //     this.itemToEdit = itemId;
-            // }
         </script>
 
         <script>
