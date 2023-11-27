@@ -1,4 +1,6 @@
 <x-app-layout>
+<x-message/>
+
     @if (Auth::user()->role == 'admin')
 
    <!-- START SIDEBAR -->
