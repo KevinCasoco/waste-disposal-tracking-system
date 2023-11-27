@@ -175,8 +175,6 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 // User-Residents Dashboard Sidebar
 Route::middleware('auth')->group(function () {
 
-    Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
-    Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
     Route::get('/user-schedule', function () {
         return view('user-schedule');
     })->name('user-schedule');
@@ -185,9 +183,11 @@ Route::middleware('auth')->group(function () {
     })->name('augmented');
 
     // edit residents/users
-    // Route::get('/residents-user', [UserController::class, 'index_residents'])->name('user-residents');
     Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
 
+    // delete
+    Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
+    Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
