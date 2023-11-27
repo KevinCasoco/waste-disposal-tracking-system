@@ -1,4 +1,6 @@
 <x-app-layout>
+<x-message/>
+
     @if (Auth::user()->role == 'collector')
 
      <!-- START SIDEBAR -->

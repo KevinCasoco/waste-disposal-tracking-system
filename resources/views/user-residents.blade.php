@@ -1,5 +1,7 @@
 <x-app-layout>
-@if (Auth::user()->role == 'residents')
+<x-message/>
+
+    @if (Auth::user()->role == 'residents')
 
  <!-- START SIDEBAR -->
 <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
