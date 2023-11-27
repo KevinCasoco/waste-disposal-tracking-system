@@ -37,20 +37,12 @@ class UserController extends Controller
         return view('user-residents', compact('data'));
     }
 
-    // public function collector()
-    // {
-    //     // Fetch users based on role (e.g., 'admin' role)
-    //     $data = User::where('role', 'collector')->get();
-
-    //     return view('collector-residents', compact('data'));
-    // }
-
     public function destroy_user_residents($id)
     {
         $admin = User::findOrFail($id);
         $admin->delete();
 
-        return redirect()->route('user-residents')->with('success', 'User deleted successfully');
+        return redirect()->route('user-residents')->with('message', 'User deleted successfully');
     }
 
 
