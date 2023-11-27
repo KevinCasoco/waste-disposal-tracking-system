@@ -17,6 +17,44 @@ class UserController extends Controller
         return view('residents', compact('data'));
     }
 
+    public function index_residents()
+    {
+        // $data = User::all(); // Replace YourModel with your actual model name
+
+        // Fetch users based on role (e.g., 'admin' role)
+        $data = User::where('role', 'residents')->get();
+
+        return view('user-residents', compact('data'));
+    }
+
+    // Add an update method to handle the form submission
+    public function update_user_residents(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        if (!$data) {
+            return redirect()->route('user-residents')->with('error', 'User not found');
+        }
+
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $data->id,
+            'password' => 'nullable|string|min:6',
+            // 'role' => 'string',
+        ]);
+
+        // Update user information
+        $data->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
+            // 'role' => $request->input('role'),
+        ]);
+
+        return redirect()->route('user-residents')->with('message', 'User updated successfully');
+    }
+
     public function collector_residents()
     {
         // $data = User::all(); // Replace YourModel with your actual model name

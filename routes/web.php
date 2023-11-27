@@ -184,6 +184,10 @@ Route::middleware('auth')->group(function () {
         return view('augmented');
     })->name('augmented');
 
+    // edit residents/users
+    // Route::get('/residents-user', [UserController::class, 'index_residents'])->name('user-residents');
+    Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
+
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
