@@ -23,7 +23,7 @@ class AdminController extends Controller
         $admin = User::findOrFail($id);
         $admin->delete();
 
-        return redirect()->route('admin')->with('success', 'User deleted successfully');
+        return redirect()->route('admin')->with('message', 'User deleted successfully');
     }
 
     public function admin_destroy_collector($id)
@@ -31,7 +31,7 @@ class AdminController extends Controller
         $collector = User::findOrFail($id);
         $collector->delete();
 
-        return redirect()->route('collector')->with('success', 'User deleted successfully');
+        return redirect()->route('collector')->with('message', 'User deleted successfully');
     }
 
     public function admin_destroy_residents($id)
@@ -39,7 +39,7 @@ class AdminController extends Controller
         $residents = User::findOrFail($id);
         $residents->delete();
 
-        return redirect()->route('residents')->with('success', 'User deleted successfully');
+        return redirect()->route('residents')->with('message', 'User deleted successfully');
     }
 
     public function create_admin(Request $request)
@@ -62,7 +62,7 @@ class AdminController extends Controller
             'status' => $request->input('status'),
         ]);
 
-        return redirect()->route('admin')->with('success', 'User created successfully');
+        return redirect()->route('admin')->with('message', 'User created successfully');
     }
 
     public function create_collector(Request $request)
@@ -85,7 +85,7 @@ class AdminController extends Controller
             'status' => $request->input('status'),
         ]);
 
-        return redirect()->route('collector')->with('success', 'User created successfully');
+        return redirect()->route('collector')->with('message', 'User created successfully');
     }
 
     // Add an update method to handle the form submission
@@ -113,7 +113,7 @@ class AdminController extends Controller
             // 'role' => $request->input('role'),
         ]);
 
-        return redirect()->route('admin')->with('success', 'User updated successfully');
+        return redirect()->route('admin')->with('message', 'User updated successfully');
     }
 
     // Add an update method to handle the form submission
@@ -141,7 +141,7 @@ class AdminController extends Controller
             // 'role' => $request->input('role'),
         ]);
 
-        return redirect()->route('collector')->with('success', 'User updated successfully');
+        return redirect()->route('collector')->with('message', 'User updated successfully');
     }
 
     // Add an update method to handle the form submission
@@ -169,7 +169,7 @@ class AdminController extends Controller
             // 'role' => $request->input('role'),
         ]);
 
-        return redirect()->route('residents')->with('success', 'User updated successfully');
+        return redirect()->route('residents')->with('message', 'User updated successfully');
     }
 
     public function activateUser($id)
@@ -178,7 +178,7 @@ class AdminController extends Controller
         $item->status = 'active';
         $item->save();
 
-        return redirect()->route('admin')->with('success', 'User activated successfully');
+        return redirect()->route('admin')->with('message', 'User activated successfully');
     }
 
     public function deactivateUser($id)
@@ -187,7 +187,7 @@ class AdminController extends Controller
         $item->status = 'inactive';
         $item->save();
 
-        return redirect()->route('admin')->with('success', 'User deactivated successfully');
+        return redirect()->route('admin')->with('message', 'User deactivated successfully');
     }
 
     public function toggleUserStatus($id)
@@ -196,7 +196,7 @@ class AdminController extends Controller
         $item->status = $item->status === 'active' ? 'inactive' : 'active';
         $item->update();
 
-        return redirect()->route('admin')->with('success', 'User status updated successfully');
+        return redirect()->route('admin')->with('message', 'User status updated successfully');
     }
 
     public function toggleCollectorStatus($id)
@@ -205,7 +205,7 @@ class AdminController extends Controller
         $item->status = $item->status === 'active' ? 'inactive' : 'active';
         $item->update();
 
-        return redirect()->route('collector')->with('success', 'User status updated successfully');
+        return redirect()->route('collector')->with('message', 'User status updated successfully');
     }
 
     public function activateCollector($id)
@@ -214,7 +214,7 @@ class AdminController extends Controller
         $item->status = 'active';
         $item->save();
 
-        return redirect()->route('collector')->with('success', 'User activated successfully');
+        return redirect()->route('collector')->with('message', 'User activated successfully');
     }
 
     public function deactivateCollector($id)
@@ -223,7 +223,7 @@ class AdminController extends Controller
         $item->status = 'inactive';
         $item->save();
 
-        return redirect()->route('collector')->with('success', 'User deactivated successfully');
+        return redirect()->route('collector')->with('message', 'User deactivated successfully');
     }
 
     public function toggleResidentsStatus($id)
@@ -232,7 +232,7 @@ class AdminController extends Controller
         $item->status = $item->status === 'active' ? 'inactive' : 'active';
         $item->update();
 
-        return redirect()->route('residents')->with('success', 'User status updated successfully');
+        return redirect()->route('residents')->with('message', 'User status updated successfully');
     }
 
     public function activateResidents($id)
@@ -241,7 +241,7 @@ class AdminController extends Controller
         $item->status = 'active';
         $item->save();
 
-        return redirect()->route('residents')->with('success', 'User activated successfully');
+        return redirect()->route('residents')->with('message', 'User activated successfully');
     }
 
     public function deactivateResidents($id)
@@ -250,7 +250,7 @@ class AdminController extends Controller
         $item->status = 'inactive';
         $item->save();
 
-        return redirect()->route('residents')->with('success', 'User deactivated successfully');
+        return redirect()->route('residents')->with('message', 'User deactivated successfully');
     }
 
 
