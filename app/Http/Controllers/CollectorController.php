@@ -60,7 +60,7 @@ class CollectorController extends Controller
             // 'role' => $request->input('role'),
         ]);
 
-        return redirect()->route('collector-residents')->with('success', 'User updated successfully');
+        return redirect()->route('collector-residents')->with('message', 'User updated successfully');
     }
 
     public function destroy_collector_residents($id)
@@ -68,7 +68,7 @@ class CollectorController extends Controller
         $admin = User::findOrFail($id);
         $admin->delete();
 
-        return redirect()->route('collector-residents')->with('success', 'User deleted successfully');
+        return redirect()->route('collector-residents')->with('message', 'User deleted successfully');
     }
 
     public function create_collector_residents(Request $request)
@@ -91,7 +91,7 @@ class CollectorController extends Controller
             'status' => $request->input('status'),
         ]);
 
-        return redirect()->route('collector-residents')->with('success', 'User created successfully');
+        return redirect()->route('collector-residents')->with('message', 'User created successfully');
     }
 
     public function activateCollector($id)
@@ -100,7 +100,7 @@ class CollectorController extends Controller
         $item->status = 'active';
         $item->save();
 
-        return redirect()->route('collector-residents')->with('success', 'User activated successfully');
+        return redirect()->route('collector-residents')->with('message', 'User activated successfully');
     }
 
     public function deactivateCollector($id)
@@ -109,7 +109,7 @@ class CollectorController extends Controller
         $item->status = 'inactive';
         $item->save();
 
-        return redirect()->route('collector-residents')->with('success', 'User deactivated successfully');
+        return redirect()->route('collector-residents')->with('message', 'User deactivated successfully');
     }
 
     public function toggleResidentsStatus($id)
@@ -118,6 +118,6 @@ class CollectorController extends Controller
         $item->status = $item->status === 'active' ? 'inactive' : 'active';
         $item->update();
 
-        return redirect()->route('collector-residents')->with('success', 'User status updated successfully');
+        return redirect()->route('collector-residents')->with('message', 'User status updated successfully');
     }
 }
