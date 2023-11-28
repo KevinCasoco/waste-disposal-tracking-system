@@ -26,4 +26,28 @@ class WasteCollectionSchedule extends Controller
     {
         return view('schedule');
     }
+
+    public function addEvent(Request $request)
+    {
+        $validatedData = $request->validate([
+            'event_title' => 'required|string',
+            'event_date' => 'required|date',
+            'event_theme' => 'required|string',
+        ]);
+
+        $event = User::create([
+            'title' => $validatedData['event_title'],
+            'date' => $validatedData['event_date'],
+            'theme' => $validatedData['event_theme'],
+        ]);
+
+        return response()->json(['message' => 'Event added successfully', 'event' => $event]);
+    }
+
+    public function getEvents()
+    {
+        $events = User::all();
+
+        return response()->json(['events' => $events]);
+    }
 }

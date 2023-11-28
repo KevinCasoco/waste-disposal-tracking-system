@@ -147,6 +147,11 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/admin/collector/{id}', [AdminController::class, 'admin_destroy_collector'])->name('collector.admin_destroy_collector');
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
 
+    // scheduling for waste collection
+    Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
+    Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
+
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
