@@ -53,6 +53,10 @@ class UserAccounts extends Seeder
             'role' => 'residents',
             'status' => 'active',
             'number' => '',
+            'region' => '',
+            'province' => '',
+            'city' => '',
+            'barangay' => '',
         ]);
 
         // $admin = User::create([
