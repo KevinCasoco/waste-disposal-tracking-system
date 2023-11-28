@@ -29,6 +29,46 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        {{-- <!-- Region --> --}}
+        <div class="mt-4">
+            <x-input-label for="region" :value="__('Region')" />
+            <select id="region" name="region" class="block mt-1 w-full" required>
+                <option value="region" disabled selected>Select Region</option>
+            </select>
+
+            <x-input-error :messages="$errors->get('region')" class="mt-2" />
+        </div>
+
+        {{-- <!-- Province --> --}}
+        <div class="mt-4">
+            <x-input-label for="Province" :value="__('Province')" />
+            <select id="province" name="province" class="block mt-1 w-full" required>
+                <option value="province" disabled selected>Select Province</option>
+            </select>
+
+            <x-input-error :messages="$errors->get('province')" class="mt-2" />
+        </div>
+
+        {{-- <!-- City --> --}}
+        <div class="mt-4">
+            <x-input-label for="region" :value="__('Region')" />
+            <select id="city" name="city" class="block mt-1 w-full" required>
+                <option value="city" disabled selected>Select Region</option>
+            </select>
+
+            <x-input-error :messages="$errors->get('region')" class="mt-2" />
+        </div>
+
+        {{-- <!-- Barangay --> --}}
+        <div class="mt-4">
+            <x-input-label for="Barangay" :value="__('Barangay')" />
+            <select id="barangay" name="barangay" class="block mt-1 w-full" required>
+                <option value="barangay" disabled selected>Select Barangay</option>
+            </select>
+
+            <x-input-error :messages="$errors->get('barangay')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

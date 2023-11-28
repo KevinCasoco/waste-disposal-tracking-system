@@ -28,6 +28,10 @@ class User extends Authenticatable
         'title',
         'time',
         'theme',
+        'region',
+        'province',
+        'city',
+        'barangay',
     ];
 
     /**

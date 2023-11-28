@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('date')->nullable();
             $table->string('theme')->nullable();
+            $table->string('region')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('barangay')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
