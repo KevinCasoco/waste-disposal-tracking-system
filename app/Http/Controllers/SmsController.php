@@ -2,27 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Vonage\Client\Credentials\Basic;
 use Vonage\Client;
 
 class SmsController extends Controller
 {
-    public function sms () {
-        $basic  = new \Vonage\Client\Credentials\Basic("f56fa902", "H12PMQd6QsDgH521");
-        $client = new \Vonage\Client($basic);
+    public function sms()
+    {
+        try {
+            $basic  = new \Vonage\Client\Credentials\Basic("ab86fb09", "14hl9d43yUGhnvOD");
+            $client = new \Vonage\Client($basic);
 
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639094191380", 'WDTS', 'The Collection Time will Be on:')
-        );
+            $users = User::all(['number']);
+            $title = 'WDTS';
+            $text = 'The Collection Time will Be on:';
 
-        $message = $response->current();
+            foreach ($users as $user) {
+                $response = $client->sms()->send(
+                    new \Vonage\SMS\Message\SMS($user->number, $title, $text)
+                );
 
-        if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
-        } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
+                $message = $response->current();
+
+                if ($message->getStatus() == 0) {
+                    echo "The message was sent successfully to {$user->number}\n";
+                } else {
+                    echo "The message to {$user->number} failed with status: " . $message->getStatus() . "\n";
+                }
+            }
+        } catch (\Exception $e) {
+            echo "An error occurred: " . $e->getMessage() . "\n";
         }
     }
-
 }
