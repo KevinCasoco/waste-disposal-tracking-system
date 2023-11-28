@@ -229,7 +229,7 @@
                         </script>
                         <div id="piechart" style="width: 420px; height: 295px;"></div>
                     </div>
-                    <!-- Pie Chart End --> --}}
+                    <!-- Pie Chart End -->
                 </div>
             </div>
         </div>
@@ -440,7 +440,7 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-        <!-- Pie Chart Start -->
+                    <!-- Pie Chart Start -->
                     <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                         <div class="flex justify-between mb-2 items-start">
                             <div class="font-medium">Barangay</div>
