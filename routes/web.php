@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WasteCollectionSchedule;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\EditProfile;
 
 /*
@@ -150,6 +151,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // scheduling for waste collection
     Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
     Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
+
+    // Route for the user roles chart
+    Route::get('/user-roles-chart', [ChartController::class, 'index'])->name('dashboard.index');
 
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
