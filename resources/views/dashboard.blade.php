@@ -203,7 +203,7 @@
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                            {{-- <script type="text/javascript">
+                            <script type="text/javascript">
                             google.charts.load('current', {'packages':['corechart']});
                             google.charts.setOnLoadCallback(drawChart);
 
@@ -721,37 +721,6 @@
             </div>
         </div>
     </main>
-
-    <script>
-        // Parse the data passed from the controller
-        var labels = {!! $labels !!};
-        var data = {!! $data !!};
-
-        // Get the canvas element
-        var ctx = document.getElementById('userRolesChart').getContext('2d');
-
-        // Create the chart
-        var userRolesChart = new Chart(ctx, {
-            type: 'pie', // You can change the chart type as needed (bar, pie, doughnut, etc.)
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'User Roles',
-                    data: data,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Customize the background color
-                    borderColor: 'rgba(75, 192, 192, 1)', // Customize the border color
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
 
     <!-- END MAIN -->
     @endif
