@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="mb-1 group active">
-                <a href="{{ asset('collector-sched')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <a href="{{ asset('collector-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                     <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                     <span class="text-sm">Schedule</span>
                 </a>

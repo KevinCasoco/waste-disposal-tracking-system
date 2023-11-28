@@ -91,7 +91,7 @@
                 /*font-bold*/
                 border-radius: .25rem;
                 /*rounded*/
-                background: #667eea !important;
+                background: #4ECE5D !important;
                 /*bg-indigo-500*/
                 border: 1px solid transparent;
                 /*border border-transparent*/
@@ -107,7 +107,7 @@
                 /*font-bold*/
                 border-radius: .25rem;
                 /*rounded*/
-                background: #667eea !important;
+                background: #4ECE5D !important;
                 /*bg-indigo-500*/
                 border: 1px solid transparent;
                 /*border border-transparent*/
@@ -124,7 +124,7 @@
             /*Change colour of responsive icon*/
             table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
             table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-                background-color: #667eea !important;
+                background-color: #4ECE5D !important;
                 /*bg-indigo-500*/
             }
         </style>
