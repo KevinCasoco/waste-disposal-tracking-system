@@ -70,8 +70,8 @@
                 <thead>
                     <tr>
                         <th data-priority="1">ID</th>
-                        <th data-priority="2">Email Address</th>
-                        <th data-priority="3">Full Name</th>
+                        <th data-priority="2">Full Name</th>
+                        <th data-priority="3">Email Address</th>
                         {{-- <th data-priority="3">Contact Number</th> --}}
                         <th data-priority="4">Role</th>
                         <th data-priority="5">Edit</th>

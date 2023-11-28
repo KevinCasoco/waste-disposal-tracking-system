@@ -75,13 +75,18 @@
                 <thead>
                     <tr>
                         <th data-priority="1">ID</th>
-                        <th data-priority="2">Email Address</th>
-                        <th data-priority="3">Full Name</th>
+                        <th data-priority="2">Full Name</th>
+                        <th data-priority="3">Email Address</th>
                         {{-- <th data-priority="3">Contact Number</th> --}}
                         {{-- <th data-priority="3">Barangay</th> --}}
+                        {{-- <th data-priority="4">Role</th> --}}
                         <th data-priority="4">Role</th>
-                        <th data-priority="5">Edit</th>
-                        <th data-priority="6">Delete</th>
+                        <th data-priority="5">Region</th>
+                        <th data-priority="6">Province</th>
+                        <th data-priority="7">City</th>
+                        <th data-priority="8">Barangay</th>
+                        {{-- <th data-priority="5">Edit</th>
+                        <th data-priority="6">Delete</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +96,11 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->role }}</td>
-                        <td class="text-center">
+                        <td>{{ $item->region }}</td>
+                        <td>{{ $item->province }}</td>
+                        <td>{{ $item->city }}</td>
+                        <td>{{ $item->barangay }}</td>
+                        {{-- <td class="text-center">
                             <button @click="userResidentEdit = true; itemToEdit = $event.target.getAttribute('data-item-id')"
                                 data-item-id="{{ $item->id }}" class="py-1 px-4 rounded bg-sky-500 hover:bg-sky-700 text-white"> <i class="ri-edit-box-fill mr-1"></i>Edit
                             </button>
@@ -100,13 +109,13 @@
                             <button @click="residentsDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
                             data-item-id="{{ $item->id }}"class="py-1 px-4 rounded bg-red-500 hover:bg-red-700 text-white"> <i class="ri-delete-bin-5-fill mr-1"></i>Delete
                         </button>
-                        </td>
+                        </td> --}}
                     </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            <!-- Delete Modal -->
+            {{-- <!-- Delete Modal -->
             <div x-show="residentsDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -144,7 +153,7 @@
                     </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
                 {{-- Edit Modal --}}
                 <div x-show="userResidentEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
