@@ -151,6 +151,8 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
     Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
 
+    // send sms
+    Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
 
 }); // end of middleware group
 
