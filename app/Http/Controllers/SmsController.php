@@ -12,7 +12,7 @@ class SmsController extends Controller
     public function sms()
     {
         try {
-            $basic  = new \Vonage\Client\Credentials\Basic("ab86fb09", "14hl9d43yUGhnvOD");
+            $basic  = new \Vonage\Client\Credentials\Basic("444e63ad", "rF2sxIBvttwnsLSL");
             $client = new \Vonage\Client($basic);
 
             $users = User::all(['number']);
