@@ -193,9 +193,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-schedule', function () {
         return view('user-schedule');
     })->name('user-schedule');
-    Route::get('/augmented', function () {
-        return view('augmented');
-    })->name('augmented');
+
+    // augmented reality with marker
+    Route::get('/kitchen-waste', function () {
+        return view('kitchen-waste');
+    })->name('kitchen-waste');
 
     // edit residents/users
     Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
