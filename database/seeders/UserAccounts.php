@@ -53,7 +53,7 @@ class UserAccounts extends Seeder
             'role' => 'residents',
             'status' => 'active',
             'number' => '639122580523',
-            'region' => '',
+            'region' => 'National Capital Region',
             'province' => '',
             'city' => 'City of Caloocan	',
             'barangay' => 'Barangay 178',
