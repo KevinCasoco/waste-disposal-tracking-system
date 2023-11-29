@@ -27,6 +27,26 @@ class WasteCollectionSchedule extends Controller
         return view('schedule');
     }
 
+    public function collector_showNotificationForm()
+    {
+        return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
+    }
+
+    public function collector_sendNotification()
+    {
+        // $users = User::all();
+        $users = User::where('status', 'active')->get();
+        $notification = new NewNotification();
+
+        foreach ($users as $user) {
+            $user->notify($notification);
+        }
+
+        // return "Notification sent to all users.";
+        return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
+
+    }
+
     public function addEvent(Request $request)
     {
         $validatedData = $request->validate([

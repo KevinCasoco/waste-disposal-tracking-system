@@ -169,6 +169,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
+    // notify the users
+    Route::get('/collector', [WasteCollectionSchedule::class, 'collector_showNotificationForm'])->name('collector');
+    Route::post('/collector-send-notification', [WasteCollectionSchedule::class, 'collector_sendNotification'])->name('collector.collector-send-notification');
+
     // active and inactive for admin
     Route::get('/collector-residents/activate/{id}', [CollectorController::class, 'activateUser'])->name('collector-residents.activateUser');
     Route::get('/collector-residents/deactivate/{id}', [CollectorController::class, 'deactivateUser'])->name('collector-residents.deactivateUser');

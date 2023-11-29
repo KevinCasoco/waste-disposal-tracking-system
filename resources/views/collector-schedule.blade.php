@@ -94,6 +94,11 @@
                        Waste Collection Schedule
                    </div>
 
+                   <form action="{{ route('collector.collector-send-notification') }}" method="POST">
+                    @csrf
+                    <button class="font-bold text-gray-800 text-xl mb-4" type="submit">Notify All Users(Email)</button>
+                    </form>
+
                    <div class="bg-white rounded-lg shadow overflow-hidden">
 
                        <div class="flex items-center justify-between py-2 px-6">
