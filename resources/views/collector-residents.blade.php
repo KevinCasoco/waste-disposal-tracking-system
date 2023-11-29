@@ -80,8 +80,8 @@
                     <thead>
                         <tr>
                             <th data-priority="1">ID</th>
-                            <th data-priority="2">Email Address</th>
-                            <th data-priority="3">Full Name</th>
+                            <th data-priority="2">Full Name</th>
+                            <th data-priority="3">Email Address</th>
                             {{-- <th data-priority="3">Contact Number</th> --}}
                             <th data-priority="4">Role</th>
                             <th data-priority="5">Edit</th>
@@ -317,7 +317,7 @@
             position: relative;
             margin-bottom: 10px;
             margin-top: -50px;
-        
+
             }
             button.dt-button {
                 background-color: #22C55E;
@@ -325,15 +325,15 @@
                 border: 1px solid;
                 border-radius: 11px;
                 height: 42px;
-        
+
                 transition: background-color 0.3s ease; /* Add a smooth transition effect */
-        
+
             }
-        
+
             button.dt-button:hover {
                 background-color: #1c9d4b; /* Change the background color on hover */
             }
-        
+
             </style>
 
         <!-- jQuery Library -->

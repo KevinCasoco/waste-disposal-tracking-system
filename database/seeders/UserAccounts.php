@@ -32,7 +32,7 @@ class UserAccounts extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'admin',
             'status' => 'active',
-            'number' => '639094191380',
+            'number' => '',
         ]);
 
         // seeding collector
@@ -42,7 +42,7 @@ class UserAccounts extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'collector',
             'status' => 'active',
-            'number' => '639122580523',
+            'number' => '',
         ]);
 
         // seeding residents
@@ -55,9 +55,23 @@ class UserAccounts extends Seeder
             'number' => '639122580523',
             'region' => '',
             'province' => '',
-            'city' => '',
-            'barangay' => '',
+            'city' => 'City of Caloocan	',
+            'barangay' => 'Barangay 178',
         ]);
+
+        // // seeding residents
+        // $residents = User::create([
+        //     'name' => 'Karl Doctolero',
+        //     'email' => 'karldoctolero@gmail.com',
+        //     'password' => Hash::make('12345'),
+        //     'role' => 'residents',
+        //     'status' => 'active',
+        //     'number' => '',
+        //     'region' => 'National Capital Region',
+        //     'province' => '',
+        //     'city' => 'City of Caloocan	',
+        //     'barangay' => 'Barangay 178',
+        // ]);
 
         // $admin = User::create([
         //     'name' => $faker->name(),
