@@ -20,7 +20,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WasteCollectionSchedule;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\EditProfile;
-
+use App\Http\Controllers\DoughnutChartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -206,3 +206,6 @@ Route::middleware('auth')->group(function () {
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/doughnut-chart', [DoughnutChartController::class, 'doughnutChart']);
