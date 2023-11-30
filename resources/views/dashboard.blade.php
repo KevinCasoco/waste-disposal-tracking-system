@@ -161,46 +161,6 @@
             });
         </script>
     </div>
-     {{-- Doughnut Chart --}}
-
-	<!-- Bar Chart End  -->
-
-        {{-- <!-- Pie Chart Start -->
-                    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div class="flex justify-between mb-2 items-start">
-                            <div class="font-medium">Barangay</div>
-                        </div>
-
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                            <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                ['Brgy 178',     11],
-                                ['Brgy 179',      2],
-                                ['Brgy 180',  2],
-                                ['Brgy 181', 2],
-                                ['Brgy 182',    7]
-                                ]);
-
-                                var options = {
-
-                                };
-
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                                chart.draw(data, options);
-                            }
-                        </script>
-                        <div id="piechart" style="width: 420px; height: 295px;"></div>
-                    </div>
-                    <!-- Pie Chart End --> --}}
 
                 {{-- Doughnut Chart --}}
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
@@ -448,40 +408,6 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-                    {{-- <!-- Pie Chart Start -->
-                    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div class="flex justify-between mb-2 items-start">
-                            <div class="font-medium">Barangay</div>
-                        </div>
-
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                            <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                ['Brgy 178',     11],
-                                ['Brgy 179',      2],
-                                ['Brgy 180',  2],
-                                ['Brgy 181', 2],
-                                ['Brgy 182',    7]
-                                ]);
-
-                                var options = {
-
-                                };
-
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                                chart.draw(data, options);
-                            }
-                        </script>
-                        <div id="piechart" style="width: 420px; height: 295px;"></div>
-                    </div>
-                    <!-- Pie Chart End --> --}}
                 {{-- Doughnut Chart --}}
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div>
@@ -739,40 +665,6 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-        {{-- <!-- Pie Chart Start -->
-                    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div class="flex justify-between mb-2 items-start">
-                            <div class="font-medium">Barangay</div>
-                        </div>
-
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                            <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                ['Brgy 178',     11],
-                                ['Brgy 179',      2],
-                                ['Brgy 180',  2],
-                                ['Brgy 181', 2],
-                                ['Brgy 182',    7]
-                                ]);
-
-                                var options = {
-
-                                };
-
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                                chart.draw(data, options);
-                            }
-                        </script>
-                        <div id="piechart" style="width: 420px; height: 295px;"></div>
-                    </div>
-                    <!-- Pie Chart End --> --}}
                 {{-- Doughnut Chart --}}
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div>
