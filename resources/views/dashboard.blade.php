@@ -61,6 +61,7 @@
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
        <!-- START DASHBOARD -->
        <div class="bg-slate-200 h-screen w-full overflow-y-auto">
+        {{-- {{$chart}} --}}
         <div class="p-8">
             <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
                 <a href="{{ route('admin') }}">
@@ -110,158 +111,92 @@
 
      <!-- Component Start -->
 	<div class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white rounded-lg shadow-xl sm:p-8 col-span-2 ">
-        <h2 class="text-xl font-bold">Waste Collection</h2>
-		<span class="text-sm font-semibold text-gray-500">OCTOBER 2023</span>
-		<div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3">
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">300</span>
-				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-16 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">178</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">350</span>
-				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">179</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">360</span>
-				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">180</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">370</span>
-				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">181</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">365</span>
-				<div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">182</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">380</span>
-				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">183</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">410</span>
-				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-16 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">184</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">390</span>
-				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">185</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">480</span>
-				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-32 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">186</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">470</span>
-				<div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-12 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full bg-indigo-400 h-28"></div>
-				<span class="absolute bottom-0 text-xs font-bold">187</span>
-			</div>
-			<div class="relative flex flex-col items-center flex-grow pb-5 group">
-				<span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">500</span>
-				<div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
-				<div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
-				<div class="relative flex justify-center w-full h-40 bg-indigo-400"></div>
-				<span class="absolute bottom-0 text-xs font-bold">188</span>
-			</div>
-		</div>
-	</div>
-	<!-- Bar Chart End  -->
+        <div>
+            <canvas id="myBarChart"></canvas>
+        </div>
 
-        {{-- <!-- Pie Chart Start -->
-                    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div class="flex justify-between mb-2 items-start">
-                            <div class="font-medium">Barangay</div>
-                        </div>
+        <script>
+            const barchart = document.getElementById('myBarChart');
 
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                            <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                ['Brgy 178',     11],
-                                ['Brgy 179',      2],
-                                ['Brgy 180',  2],
-                                ['Brgy 181', 2],
-                                ['Brgy 182',    7]
-                                ]);
-
-                                var options = {
-
-                                };
-
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                                chart.draw(data, options);
-                            }
-                        </script>
-                        <div id="piechart" style="width: 420px; height: 295px;"></div>
-                    </div>
-                    <!-- Pie Chart End --> --}}
+            new Chart(barchart, {
+                type: 'bar',
+                data: {
+                    labels: ['Admin', 'Collector', 'Residents'],
+                    datasets: [{
+                        label: 'Number of Users',
+                        data:
+                            // {{ $countAdmins }},
+                            // {{ $countCollector }},
+                            // {{ $countResidents }}
+                            [65, 59, 80, 81, 56, 55, 40]
+                        ,
+                        backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
 
                 {{-- Doughnut Chart --}}
-                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div>
-                            <canvas id="myChart"></canvas>
-                          </div>
+                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
 
-                          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                          <script>
-                            const ctx = document.getElementById('myChart');
+                    <script>
+                        const ctx = document.getElementById('myChart');
 
-                            new Chart(ctx, {
-                              type: 'doughnut',
-                              data: {
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
                                 labels: ['Admin', 'Collector', 'Residents'],
                                 datasets: [{
-                                  label: 'Number of Users',
-                                  data: [2, 1, 1],
-                                  borderWidth: 1
+                                    label: 'Number of Users',
+                                    data: [
+                                        {{ $countAdmins }},
+                                        {{ $countCollector }},
+                                        {{ $countResidents }}
+                                    ],
+                                    borderWidth: 1
                                 }]
-                              },
-                              options: {
+                            },
+                            options: {
                                 scales: {
-                                  y: {
-                                    beginAtZero: true
-                                  }
+                                    y: {
+                                        beginAtZero: true
+                                    }
                                 }
-                              }
-                            });
-                          </script>
-                     </div>
+                            }
+                        });
+                    </script>
+                </div>
                  {{-- Doughnut Chart --}}
                 </div>
             </div>
@@ -473,72 +408,42 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-                    {{-- <!-- Pie Chart Start -->
-                    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div class="flex justify-between mb-2 items-start">
-                            <div class="font-medium">Barangay</div>
-                        </div>
-
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                            <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                ['Brgy 178',     11],
-                                ['Brgy 179',      2],
-                                ['Brgy 180',  2],
-                                ['Brgy 181', 2],
-                                ['Brgy 182',    7]
-                                ]);
-
-                                var options = {
-
-                                };
-
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                                chart.draw(data, options);
-                            }
-                        </script>
-                        <div id="piechart" style="width: 420px; height: 295px;"></div>
-                    </div>
-                    <!-- Pie Chart End --> --}}
-                    {{-- Doughnut Chart --}}
-                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                {{-- Doughnut Chart --}}
+                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div>
                         <canvas id="myChart"></canvas>
-                      </div>
+                    </div>
 
-                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                      <script>
+                    <script>
                         const ctx = document.getElementById('myChart');
 
                         new Chart(ctx, {
-                          type: 'doughnut',
-                          data: {
+                            type: 'doughnut',
+                            data: {
                                 labels: ['Admin', 'Collector', 'Residents'],
                                 datasets: [{
-                                  label: 'Number of Users',
-                                  data: [2, 1, 1],
-                                  borderWidth: 1
+                                    label: 'Number of Users',
+                                    data: [
+                                        {{ $countAdmins }},
+                                        {{ $countCollector }},
+                                        {{ $countResidents }}
+                                    ],
+                                    borderWidth: 1
                                 }]
-                          },
-                          options: {
-                            scales: {
-                              y: {
-                                beginAtZero: true
-                              }
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
                             }
-                          }
                         });
-                      </script>
-                 </div>
-             {{-- Doughnut Chart --}}
+                    </script>
+                </div>
+                 {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
@@ -760,72 +665,42 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-        {{-- <!-- Pie Chart Start -->
-                    <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                        <div class="flex justify-between mb-2 items-start">
-                            <div class="font-medium">Barangay</div>
-                        </div>
-
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                            <script type="text/javascript">
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-
-                                var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                ['Brgy 178',     11],
-                                ['Brgy 179',      2],
-                                ['Brgy 180',  2],
-                                ['Brgy 181', 2],
-                                ['Brgy 182',    7]
-                                ]);
-
-                                var options = {
-
-                                };
-
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                                chart.draw(data, options);
-                            }
-                        </script>
-                        <div id="piechart" style="width: 420px; height: 295px;"></div>
-                    </div>
-                    <!-- Pie Chart End --> --}}
-                    {{-- Doughnut Chart --}}
-                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                {{-- Doughnut Chart --}}
+                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div>
                         <canvas id="myChart"></canvas>
-                      </div>
+                    </div>
 
-                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                      <script>
+                    <script>
                         const ctx = document.getElementById('myChart');
 
                         new Chart(ctx, {
-                          type: 'doughnut',
-                          data: {
+                            type: 'doughnut',
+                            data: {
                                 labels: ['Admin', 'Collector', 'Residents'],
                                 datasets: [{
-                                  label: 'Number of Users',
-                                  data: [2, 1, 1],
-                                  borderWidth: 1
+                                    label: 'Number of Users',
+                                    data: [
+                                        {{ $countAdmins }},
+                                        {{ $countCollector }},
+                                        {{ $countResidents }}
+                                    ],
+                                    borderWidth: 1
                                 }]
-                          },
-                          options: {
-                            scales: {
-                              y: {
-                                beginAtZero: true
-                              }
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
                             }
-                          }
                         });
-                      </script>
-                 </div>
-             {{-- Doughnut Chart --}}
+                    </script>
+                </div>
+                 {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
