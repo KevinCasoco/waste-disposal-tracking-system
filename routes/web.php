@@ -38,9 +38,13 @@ use App\Http\Controllers\DoughnutChartController;
 
 Route::redirect('/', destination: 'login');
 
+// Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
+//     ->middleware(['auth', 'verified', 'checkActiveStatus'])
+//     ->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
-    ->middleware(['auth', 'verified', 'checkActiveStatus'])
+    ->middleware('auth', 'verified', 'checkActiveStatus')
     ->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
