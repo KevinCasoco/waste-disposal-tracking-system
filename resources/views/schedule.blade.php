@@ -79,7 +79,7 @@
 
                 <form action="{{ route('admin.send-notification') }}" method="POST">
                     @csrf
-                    <button class="font-bold text-gray-800 text-xl mb-4" type="submit">Notify All Users(Email)</button>
+                    <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(Email)</button>
                 </form>
 
                 <div class="bg-white rounded-lg shadow overflow-hidden">

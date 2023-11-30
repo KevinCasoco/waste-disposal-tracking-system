@@ -110,7 +110,7 @@
 
      <!-- Component Start -->
 	<div class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white rounded-lg shadow-xl sm:p-8 col-span-2 ">
-		<h2 class="text-xl font-bold">Waste Collection</h2>
+        <h2 class="text-xl font-bold">Waste Collection</h2>
 		<span class="text-sm font-semibold text-gray-500">OCTOBER 2023</span>
 		<div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3">
 			<div class="relative flex flex-col items-center flex-grow pb-5 group">
@@ -194,7 +194,7 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-        <!-- Pie Chart Start -->
+        {{-- <!-- Pie Chart Start -->
                     <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                         <div class="flex justify-between mb-2 items-start">
                             <div class="font-medium">Barangay</div>
@@ -229,7 +229,40 @@
                         </script>
                         <div id="piechart" style="width: 420px; height: 295px;"></div>
                     </div>
-                    <!-- Pie Chart End -->
+                    <!-- Pie Chart End --> --}}
+
+                {{-- Doughnut Chart --}}
+                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                        <div>
+                            <canvas id="myChart"></canvas>
+                          </div>
+
+                          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                          <script>
+                            const ctx = document.getElementById('myChart');
+
+                            new Chart(ctx, {
+                              type: 'doughnut',
+                              data: {
+                                labels: ['Admin', 'Collector', 'Residents'],
+                                datasets: [{
+                                  label: 'Number of Users',
+                                  data: [2, 1, 1],
+                                  borderWidth: 1
+                                }]
+                              },
+                              options: {
+                                scales: {
+                                  y: {
+                                    beginAtZero: true
+                                  }
+                                }
+                              }
+                            });
+                          </script>
+                     </div>
+                 {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
@@ -440,7 +473,7 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-                    <!-- Pie Chart Start -->
+                    {{-- <!-- Pie Chart Start -->
                     <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                         <div class="flex justify-between mb-2 items-start">
                             <div class="font-medium">Barangay</div>
@@ -473,7 +506,39 @@
                         </script>
                         <div id="piechart" style="width: 420px; height: 295px;"></div>
                     </div>
-                    <!-- Pie Chart End -->
+                    <!-- Pie Chart End --> --}}
+                    {{-- Doughnut Chart --}}
+                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                      </div>
+
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                      <script>
+                        const ctx = document.getElementById('myChart');
+
+                        new Chart(ctx, {
+                          type: 'doughnut',
+                          data: {
+                                labels: ['Admin', 'Collector', 'Residents'],
+                                datasets: [{
+                                  label: 'Number of Users',
+                                  data: [2, 1, 1],
+                                  borderWidth: 1
+                                }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            }
+                          }
+                        });
+                      </script>
+                 </div>
+             {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
@@ -695,7 +760,7 @@
 	</div>
 	<!-- Bar Chart End  -->
 
-        <!-- Pie Chart Start -->
+        {{-- <!-- Pie Chart Start -->
                     <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                         <div class="flex justify-between mb-2 items-start">
                             <div class="font-medium">Barangay</div>
@@ -728,44 +793,44 @@
                         </script>
                         <div id="piechart" style="width: 420px; height: 295px;"></div>
                     </div>
-                    <!-- Pie Chart End -->
+                    <!-- Pie Chart End --> --}}
+                    {{-- Doughnut Chart --}}
+                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                      </div>
+
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                      <script>
+                        const ctx = document.getElementById('myChart');
+
+                        new Chart(ctx, {
+                          type: 'doughnut',
+                          data: {
+                                labels: ['Admin', 'Collector', 'Residents'],
+                                datasets: [{
+                                  label: 'Number of Users',
+                                  data: [2, 1, 1],
+                                  borderWidth: 1
+                                }]
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            }
+                          }
+                        });
+                      </script>
+                 </div>
+             {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
-        <div style="width: 80%; margin: auto;">
-            <canvas id="doughnutChart"></canvas>
-        </div>
-
-        <script>
-            var ctx = document.getElementById('doughnutChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: @json($data['labels']),
-                    datasets: [{
-                        data: @json($data['data']),
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.7)',
-                            'rgba(54, 162, 235, 0.7)',
-                            'rgba(255, 206, 86, 0.7)',
-                            'rgba(75, 192, 192, 0.7)',
-                            'rgba(153, 102, 255, 0.7)',
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-            });
-        </script>
 
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- END MAIN -->
     @endif
