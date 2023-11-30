@@ -482,38 +482,42 @@
                         <div id="piechart" style="width: 420px; height: 295px;"></div>
                     </div>
                     <!-- Pie Chart End --> --}}
-                    {{-- Doughnut Chart --}}
-                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                {{-- Doughnut Chart --}}
+                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div>
                         <canvas id="myChart"></canvas>
-                      </div>
+                    </div>
 
-                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                      <script>
+                    <script>
                         const ctx = document.getElementById('myChart');
 
                         new Chart(ctx, {
-                          type: 'doughnut',
-                          data: {
+                            type: 'doughnut',
+                            data: {
                                 labels: ['Admin', 'Collector', 'Residents'],
                                 datasets: [{
-                                  label: 'Number of Users',
-                                  data: [2, 1, 1],
-                                  borderWidth: 1
+                                    label: 'Number of Users',
+                                    data: [
+                                        {{ $countAdmins }},
+                                        {{ $countCollector }},
+                                        {{ $countResidents }}
+                                    ],
+                                    borderWidth: 1
                                 }]
-                          },
-                          options: {
-                            scales: {
-                              y: {
-                                beginAtZero: true
-                              }
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
                             }
-                          }
                         });
-                      </script>
-                 </div>
-             {{-- Doughnut Chart --}}
+                    </script>
+                </div>
+                 {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
@@ -769,38 +773,42 @@
                         <div id="piechart" style="width: 420px; height: 295px;"></div>
                     </div>
                     <!-- Pie Chart End --> --}}
-                    {{-- Doughnut Chart --}}
-                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+                {{-- Doughnut Chart --}}
+                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div>
                         <canvas id="myChart"></canvas>
-                      </div>
+                    </div>
 
-                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                      <script>
+                    <script>
                         const ctx = document.getElementById('myChart');
 
                         new Chart(ctx, {
-                          type: 'doughnut',
-                          data: {
+                            type: 'doughnut',
+                            data: {
                                 labels: ['Admin', 'Collector', 'Residents'],
                                 datasets: [{
-                                  label: 'Number of Users',
-                                  data: [2, 1, 1],
-                                  borderWidth: 1
+                                    label: 'Number of Users',
+                                    data: [
+                                        {{ $countAdmins }},
+                                        {{ $countCollector }},
+                                        {{ $countResidents }}
+                                    ],
+                                    borderWidth: 1
                                 }]
-                          },
-                          options: {
-                            scales: {
-                              y: {
-                                beginAtZero: true
-                              }
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
                             }
-                          }
                         });
-                      </script>
-                 </div>
-             {{-- Doughnut Chart --}}
+                    </script>
+                </div>
+                 {{-- Doughnut Chart --}}
                 </div>
             </div>
         </div>
