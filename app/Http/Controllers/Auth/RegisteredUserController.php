@@ -33,37 +33,20 @@ class RegisteredUserController extends Controller
     {
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // region name
-        $response = Http::get("https://psgc.gitlab.io/api/regions/".$request->region);
-        $region = $response->json('regionName');
-
-        // province
-        $response = Http::get("https://psgc.gitlab.io/api/provinces/".$request->province);
-        $province = $response->json('name');
-
-        // city-municipality
-        $response = Http::get("https://psgc.gitlab.io/api/cities-municipalities/".$request->city);
-        $city = $response->json('name');
-
-        // barangay
-        $response = Http::get("https://psgc.gitlab.io/api/barangays/".$request->barangay);
-        $barangay = $response->json('name');
-
         $user = User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
+            'location' => $request->location,
             'password' => Hash::make($request->password),
             'role' => 'residents', // Set default value for the role field
             'status' => 'active', // Set default value for the status field
-            'region' => $region,
-            'province' => $province,
-            'city' => $city,
-            'barangay' => $barangay,
         ]);
 
         event(new Registered($user));

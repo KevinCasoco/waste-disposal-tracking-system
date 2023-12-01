@@ -27,7 +27,8 @@ class UserAccounts extends Seeder
 
         // seeding admin
         $admin = User::create([
-            'name' => 'Andrei Kevin Casoco',
+            'first_name' => 'Andrei Kevin',
+            'last_name' => 'Casoco',
             'email' => 'andreikevincasoco@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'admin',
@@ -37,7 +38,8 @@ class UserAccounts extends Seeder
 
         // seeding collector
         $collector = User::create([
-            'name' => 'Jayar Grifaldea',
+            'first_name' => 'Jay-Ar',
+            'last_name' => 'Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'collector',
@@ -47,16 +49,14 @@ class UserAccounts extends Seeder
 
         // seeding residents
         $residents = User::create([
-            'name' => 'Shauna Loresca',
+            'first_name' => 'Shauna',
+            'last_name' => 'Loresca',
             'email' => 'shaunaloresca@gmail.com',
+            'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
             'password' => Hash::make('12345'),
             'role' => 'residents',
             'status' => 'active',
             'number' => '639122580523',
-            'region' => 'National Capital Region',
-            'province' => '',
-            'city' => 'City of Caloocan	',
-            'barangay' => 'Barangay 178',
         ]);
 
         // // seeding residents
