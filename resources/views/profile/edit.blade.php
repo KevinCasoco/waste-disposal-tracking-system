@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-end items-end flex-col justify-start bg-slate-200 col-span-2">
+            <div class="flex justify-end items-end flex-col bg-slate-200 col-span-2">
                 <div class="max-w-xl">
                         @include('profile.partials.delete-user-form')
                 </div>
