@@ -46,7 +46,8 @@ class CollectorController extends Controller
 
         // Validate the request
         $request->validate([
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
             'password' => 'nullable|string|min:6',
             // 'role' => 'string',
@@ -54,7 +55,8 @@ class CollectorController extends Controller
 
         // Update user information
         $data->update([
-            'name' => $request->input('name'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
             // 'role' => $request->input('role'),
@@ -75,7 +77,8 @@ class CollectorController extends Controller
     {
         // Validate the request
         $request->validate([
-            'name' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
             'role' => 'required|string',
@@ -84,7 +87,8 @@ class CollectorController extends Controller
 
         // Create the user
         User::create([
-            'name' => $request->input('name'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'role' => $request->input('role'),
