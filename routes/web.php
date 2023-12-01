@@ -38,9 +38,6 @@ use App\Http\Controllers\DoughnutChartController;
 
 Route::redirect('/', destination: 'login');
 
-// Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
-//     ->middleware(['auth', 'verified', 'checkActiveStatus'])
-//     ->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
     ->middleware('auth', 'verified', 'checkActiveStatus')
     ->name('dashboard');
@@ -158,6 +155,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // Route for the user roles chart
     Route::get('/user-roles-chart', [ChartController::class, 'index'])->name('dashboard.index');
+
+    // Route for the active and inactive users
+    Route::get('/chart-data', [ChartController::class, 'getChartData'])->name('dashboard.getChartData');
 
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');

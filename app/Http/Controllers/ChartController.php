@@ -9,17 +9,24 @@ use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
 {
-    // public function index()
-    // {
-    //     $rolesCount = User::select('role', DB::raw('count(*) as total'))
-    //         ->groupBy('role')
-    //         ->pluck('total', 'role')
-    //         ->all();
+    public function getChartData()
+    {
+    $data = [
+        'admin' => [
+            'active' => User::where('role', 'admin')->where('status', 'active')->count(),
+            'inactive' => User::where('role', 'admin')->where('status', 'inactive')->count(),
+        ],
+        'collector' => [
+            'active' => User::where('role', 'collector')->where('status', 'active')->count(),
+            'inactive' => User::where('role', 'collector')->where('status', 'inactive')->count(),
+        ],
+        'residents' => [
+            'active' => User::where('role', 'residents')->where('status', 'active')->count(),
+            'inactive' => User::where('role', 'residents')->where('status', 'inactive')->count(),
+        ],
+    ];
 
-    //     $labels = json_encode(array_keys($rolesCount));
-    //     $data = json_encode(array_values($rolesCount));
-
-    //     return view('dashboard', compact('labels', 'data'));
-    // }
+    return response()->json($data);
+    }
 
 }
