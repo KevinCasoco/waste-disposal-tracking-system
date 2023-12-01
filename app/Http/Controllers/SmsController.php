@@ -12,25 +12,36 @@ class SmsController extends Controller
     public function sms()
     {
         try {
-            $basic  = new \Vonage\Client\Credentials\Basic("444e63ad", "rF2sxIBvttwnsLSL");
-            $client = new \Vonage\Client($basic);
+            $apiKey = "444e63ad";
+            $apiSecret = "rF2sxIBvttwnsLSL";
+            $basic = new Basic($apiKey, $apiSecret);
+            $client = new Client($basic);
 
             $users = User::all(['number']);
             $title = 'WDTS';
-            $text = 'The Collection Time will Be on:';
+            $text = 'The Collection Time will Be on: ';
 
             foreach ($users as $user) {
-                $response = $client->sms()->send(
-                    new \Vonage\SMS\Message\SMS($user->number, $title, $text)
-                );
+                // Check if $user->number is not null or empty
+                // if ($user->number) {
+                    try {
+                        $response = $client->sms()->send(
+                            new \Vonage\SMS\Message\SMS($user->number, $title, $text)
+                        );
 
-                $message = $response->current();
+                        $message = $response->current();
 
-                if ($message->getStatus() == 0) {
-                    echo "The message was sent successfully to {$user->number}\n";
-                } else {
-                    echo "The message to {$user->number} failed with status: " . $message->getStatus() . "\n";
-                }
+                        if ($message->getStatus() == 0) {
+                            echo "The message was sent successfully to {$user->number}\n";
+                        } else {
+                            echo "The message to {$user->number} failed with status: " . $message->getStatus() . "\n";
+                        }
+                    } catch (\Exception $e) {
+                        echo "Failed to send SMS to {$user->number}. Error: " . $e->getMessage() . "\n";
+                    }
+                // } else {
+                //     echo "Skipping user with null or empty number.\n";
+                // }
             }
         } catch (\Exception $e) {
             echo "An error occurred: " . $e->getMessage() . "\n";
