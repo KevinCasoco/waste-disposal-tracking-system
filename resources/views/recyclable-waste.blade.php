@@ -7,66 +7,79 @@
 </head>
 <body style="margin: 0; overflow: hidden;">
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <!-- Marker for tracking -->
-    <a-marker type="pattern" url="{{asset('/images/pattern-recycle.patt')}}" emitevents="true" id="marker">
+    <!-- Marker 1 for tracking -->
+    <a-marker type="pattern" url="{{asset('/images/pattern-bio.patt')}}" emitevents="true" id="marker">
       <!-- Plane to display the image -->
-      <a-plane id="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
+      <a-plane class="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
     </a-marker>
+
+    <!-- Marker 2 for tracking -->
+    <a-marker type="pattern" url="{{asset('/images/pattern-hiro.patt')}}" emitevents="true" id="marker1">
+      <!-- Plane to display the image -->
+      <a-plane class="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
+    </a-marker>
+
+    <!-- Marker 3 for tracking -->
+    <a-marker type="pattern" url="{{asset('/images/pattern-bio.patt')}}" emitevents="true" id="marker2">
+        <!-- Plane to display the image -->
+        <a-plane class="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
+    </a-marker>
+
     <!-- Camera to view the scene -->
     <a-entity camera></a-entity>
   </a-scene>
   <!-- Script to refresh every 5 seconds -->
   <script>
-    const imagePlane = document.getElementById("imagePlane");
-    const marker = document.getElementById("marker");
+    const markers = document.querySelectorAll("[id^=marker]");
+    const imagePlanes = document.querySelectorAll(".imagePlane");
 
-    // const imageUrl = "kevs.jpg";
-    const imageUrl = "{{ asset('images/recyclable materials.jpg') }}";
-    let isAnimationRunning = false; // To prevent multiple animations
+    markers.forEach((marker, index) => {
+      const imagePlane = imagePlanes[index];
+      const imageUrl = `{{ asset('images/non-bio${index + 1}.jpeg') }}`;
+      let isAnimationRunning = false;
 
-    marker.addEventListener("markerFound", () => {
-      if (!isAnimationRunning) {
-        animatePosition(4, 0, 0, 1000); // Animates from (0, 0, 0) to (4, 0, 0) in 1 second
-      }
-    });
-
-    marker.addEventListener("markerLost", () => {
-      if (!isAnimationRunning) {
-        animatePosition(4, 0, 0, 1000); // Animates from (4, 0, 0) to (0, 0, 0) in 1 second
-      }
-    });
-
-    function animatePosition(startX, endX, endY, duration) {
-      isAnimationRunning = true;
-      const startTime = performance.now();
-      const startY = 0;
-
-      function updatePosition(currentTime) {
-        const elapsedTime = currentTime - startTime;
-        if (elapsedTime < duration) {
-          const newX = startX + (endX - startX) * (elapsedTime / duration);
-          const newY = startY + (endY - startY) * (elapsedTime / duration);
-          imagePlane.setAttribute("position", `${newX} ${newY} 0`);
-          requestAnimationFrame(updatePosition);
-        } else {
-          imagePlane.setAttribute("position", `${endX} ${endY} 0`);
-          isAnimationRunning = false;
+      marker.addEventListener("markerFound", () => {
+        if (!isAnimationRunning) {
+          animatePosition(imagePlane, 4, 0, 0, 1000);
         }
+      });
+
+      marker.addEventListener("markerLost", () => {
+        if (!isAnimationRunning) {
+          animatePosition(imagePlane, 4, 0, 0, 1000);
+        }
+      });
+
+      function animatePosition(element, startX, endX, endY, duration) {
+        isAnimationRunning = true;
+        const startTime = performance.now();
+        const startY = 0;
+
+        function updatePosition(currentTime) {
+          const elapsedTime = currentTime - startTime;
+          if (elapsedTime < duration) {
+            const newX = startX + (endX - startX) * (elapsedTime / duration);
+            const newY = startY + (endY - startY) * (elapsedTime / duration);
+            element.setAttribute("position", `${newX} ${newY} 0`);
+            requestAnimationFrame(updatePosition);
+          } else {
+            element.setAttribute("position", `${endX} ${endY} 0`);
+            isAnimationRunning = false;
+          }
+        }
+
+        requestAnimationFrame(updatePosition);
       }
 
-      requestAnimationFrame(updatePosition);
-    }
+      function updateImageSource() {
+        const uniqueParam = Date.now();
+        const newImageUrl = `${imageUrl}?v=${uniqueParam}`;
+        imagePlane.setAttribute("material", "src", newImageUrl);
+      }
 
-    // Function to update the image source
-    function updateImageSource() {
-      const uniqueParam = Date.now(); // Generate a unique parameter
-      const newImageUrl = `${imageUrl}?v=${uniqueParam}`;
-      imagePlane.setAttribute("material", "src", newImageUrl);
-    }
-    // Initial image update
-    updateImageSource();
-    // Check for image update every 5 seconds
-    setInterval(updateImageSource, 5000);
+      updateImageSource();
+      setInterval(updateImageSource, 5000);
+    });
   </script>
 </body>
 </html>
