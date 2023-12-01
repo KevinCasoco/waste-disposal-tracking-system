@@ -72,13 +72,14 @@
                     <thead>
                         <tr>
                             <th data-priority="1">ID</th>
-                            <th data-priority="2">Full Name</th>
+                            <th data-priority="2">First Name</th>
+                            <th data-priority="3">Last Name</th>
                             {{-- <th data-priority="3">Contact Number</th> --}}
-                            <th data-priority="3">Email Address</th>
-                            <th data-priority="4">Role</th>
-                            <th data-priority="5">Edit</th>
-                            <th data-priority="6">Delete</th>
-                            <th data-priority="7">Status</th>
+                            <th data-priority="4">Email Address</th>
+                            <th data-priority="5">Role</th>
+                            <th data-priority="6">Edit</th>
+                            <th data-priority="7">Delete</th>
+                            <th data-priority="8">Status</th>
                         </tr>
                     </thead>
 
@@ -86,7 +87,8 @@
                         @foreach($data as $item)
                         <tr x-on:click="itemToEdit = {{ $item->id }};">
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->first_name }}</td>
+                            <td>{{ $item->last_name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->role }}</td>
                             <td class="text-center">
@@ -150,8 +152,11 @@
                         <hr class="bg-black border-gray-300 w-[410px]">
                         <form action="{{ route('collector.create_collector') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
                             @csrf
-                            <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Name:</label>
-                            <input type="text" name="name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                            <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
+                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+
+                            <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
+                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
 
                             <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
                             <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
@@ -259,10 +264,14 @@
                             <form method="post" :action="`{{ route('collector.update_collector', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                 @csrf
                                 @method('patch')
-                                <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                <input type="text" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
-                                <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Name:</label>
-                                <input type="text" name="name" value="{{ $item->name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+                                <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
+                                <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
+
+                                <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
+                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+
+                                <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
 
                                 <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
