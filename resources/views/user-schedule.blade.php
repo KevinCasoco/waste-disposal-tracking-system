@@ -76,7 +76,7 @@
     <!-- END SIDEBAR -->
 
 
-    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
+    <main class="w-full md:w-[calc(100%-240px)] md:ml-60 bg-slate-200  min-h-screen transition-all main">
 
         <!-- START CALENDAR -->
    <div>
@@ -88,7 +88,7 @@
            }
        </style>
 
-   <div class="antialiased sans-serif bg-gray-100 h-screen">
+   <div class="antialiased sans-serif bg-slate-200  min-h-screen">
        <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
            <div class="container mx-auto px-4 py-2 md:py-5">
 

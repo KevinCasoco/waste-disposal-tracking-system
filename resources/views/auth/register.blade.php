@@ -8,10 +8,10 @@
 
         {{-- <div class="flex justify-start"> --}}
         <!-- First Name -->
-        <div>
+        <div class="mt-3">
             <x-input-label for="first_name" :value="__('First Name')" />
 
-            <x-text-input id="name" class="block mt-1 w-[225px]"
+            <x-text-input id="name" class="block mt-1 w-[100%]"
                             type="text"
                             name="first_name" :value="old('first_name')"
                             required autofocus autocomplete="first_name"
@@ -21,22 +21,22 @@
         </div>
 
         <!-- Last Name -->
-        <div>
-            <x-input-label for="last_name" :value="__('First Name')" />
+        <div class="mt-3">
+            <x-input-label for="last_name" :value="__('Last Name')" />
 
-            <x-text-input id="last_name" class="block mt-1 w-[225px]"
+            <x-text-input id="last_name" class="block mt-1 w-[100%]"
                             type="text"
                             name="last_name" :value="old('last_name')"
                             required autofocus autocomplete="last_name"
-                            placeholder="Enter Your First Name" />
+                            placeholder="Enter Your Last Name" />
 
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div class="ml-4">
+        <div class="mt-3">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-[225px]"
+            <x-text-input id="email" class="block mt-1 w-[100%]"
                             type="email"
                             name="email" :value="old('email')"
                             required autocomplete="username"
@@ -47,22 +47,24 @@
 
         <!-- Location -->
         <div class="status" style="display: none;"></div>
-        <div class="ml-4">
-            <x-input-label for="location" :value="__('location')" />
+        <div class="mt-3">
+            <x-input-label for="location" :value="__('Location')" />
             <textarea id="locationTextarea" rows="4" cols="50"
-                      class="block mt-1 w-[225px]"
+                      class="block mt-1 w-[100%]"
                       name="location" required autocomplete=""
-                      placeholder="Find Your location">{{ old('location') }}</textarea>
+                      placeholder="Find Your Location">{{ old('location') }}</textarea>
 
             <x-input-error :messages="$errors->get('location')" class="mt-2" />
-            <button id="getLocationBtn">Get My Location</button>
+        <div class="flex justify-end mt-2">
+            <x-primary-button id="getLocationBtn" class="bg-green-500 hover:bg-green-700">Location</x-primary-button>
+        </div>
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div>
             <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-[225px]"
+            <x-text-input id="password" class="block mt-1 w-[100%]"
                             type="password"
                             name="password"
                             required autocomplete="new-password"
@@ -72,10 +74,10 @@
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4 ml-4">
+        <div class="mt-3">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-[225px]"
+            <x-text-input id="password_confirmation" class="block mt-1 w-[100%]"
                             type="password"
                             name="password_confirmation"
                             required autocomplete="new-password"

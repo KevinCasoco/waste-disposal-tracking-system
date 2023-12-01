@@ -73,7 +73,7 @@
         <!-- END SIDEBAR -->
 
 
-        <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
+        <main class="w-full md:w-[calc(100%-240px)] md:ml-60 bg-slate-200  min-h-screen transition-all main">
 
             <!-- START CALENDAR -->
        <div>
@@ -86,7 +86,7 @@
                }
            </style>
 
-       <div class="antialiased sans-serif bg-gray-100 h-screen">
+       <div class="antialiased sans-serif bg-slate-200 min-h-screen">
            <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
                <div class="container mx-auto px-4 py-2 md:py-5">
 
@@ -94,7 +94,7 @@
                        Waste Collection Schedule
                    </div>
 
-                   <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST">
+                   <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="absolute flex justify-end -mt-[50px] ml-[776px]">
                     @csrf
                     <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(Email)</button>
                     </form>

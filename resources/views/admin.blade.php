@@ -62,16 +62,16 @@
 
 
     <!--Container-->
-    <div class="md:w-[calc(100%-256px)] md:ml-64 xl:w-[79.7%] mx-auto px-2 p-5 bg-gray-100">
+    <div class="md:w-[calc(100%-240px)] md:ml-60 mx-auto px-2 p-5 bg-slate-200 min-h-screen transition-all main">
 
         <!-- Start Table -->
-        <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+        <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
 
             <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null}">
                 <div class="relative flex justify-end mb-2 ">
                 <button @click="adminNewUsers = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> <i class="ri-add-circle-line mr-1"></i>Add New User</button>
             </div>
-            <table id="example" class="stripe hover display dataTable" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+            <table id="example" class="stripe hover display dataTable " style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
 
                     <tr>
@@ -90,22 +90,22 @@
 
                     @foreach($data as $item)
                     <tr x-on:click="itemToEdit = {{ $item->id }};">
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->first_name }}</td>
-                        <td>{{ $item->last_name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->role }}</td>
+                        <td >{{ $item->id }}</td>
+                        <td >{{ $item->first_name }}</td>
+                        <td >{{ $item->last_name }}</td>
+                        <td >{{ $item->email }}</td>
+                        <td >{{ $item->role }}</td>
                         <td class="text-center ">
                             <button @click="adminEdit = true; itemToEdit = $event.target.getAttribute('data-item-id')"
                             data-item-id="{{ $item->id }}" class="py-1 px-4 rounded bg-sky-500 hover:bg-sky-700 text-white"> <i class="ri-edit-box-fill mr-1"></i>Edit
                             </button>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center ">
                             <button @click="adminDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
                             data-item-id="{{ $item->id }}" class="py-1 px-4 rounded bg-red-500 hover:bg-red-700 text-white"> <i class="ri-delete-bin-5-fill mr-1"></i>Delete
                             </button>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center ">
                             <form action="{{ route('admin.toggleUserStatus', $item->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
@@ -144,7 +144,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[485px]">
+                    <div class="bg-white py-3 w-[410px] h-[550px]">
                         {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                         </svg> --}}
@@ -253,7 +253,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[425px]">
+                    <div class="bg-white py-3 w-[410px] h-[490px]">
                             {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg> --}}
