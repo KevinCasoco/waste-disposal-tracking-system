@@ -3,7 +3,7 @@
 
     @if (Auth::user()->role == 'residents')
 
- <!-- START SIDEBAR -->
+<!-- START SIDEBAR -->
 <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
 <a class="flex item-center pb-4 border-b border-b-gray-700">
     <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="w-16 h-16 rounded object-cover">
@@ -47,6 +47,24 @@
             <span class="text-sm">Camera</span>
         </a>
     </li>
+    <li class="mb-1 group">
+        <a href="{{ asset('kitchen-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+            <i class="ri-ink-bottle-line mr-3 text-lg"></i>
+            <span class="text-sm">Kitchen Waste</span>
+        </a>
+    </li>
+    <li class="mb-1 group">
+        <a href="{{ asset('recyclable-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+            <i class="ri-recycle-fill mr-3 text-lg"></i>
+            <span class="text-sm">Recyclable Waste</span>
+        </a>
+    </li>
+    <li class="mb-1 group">
+        <a href="{{ asset('hazardous-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+            <i class="ri-paint-fill mr-3 text-lg"></i>
+            <span class="text-sm">Hazardous Waste</span>
+        </a>
+    </li>
     {{-- <li class="mb-1 group">
         <a href="Settings.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
             <i class="ri-settings-2-line mr-3 text-lg"></i>
@@ -75,16 +93,14 @@
                 <thead>
                     <tr>
                         <th data-priority="1">ID</th>
-                        <th data-priority="2">Full Name</th>
-                        <th data-priority="3">Email Address</th>
+                        <th data-priority="2">First Name</th>
+                        <th data-priority="3">Last Name</th>
+                        <th data-priority="4">Email Address</th>
                         {{-- <th data-priority="3">Contact Number</th> --}}
                         {{-- <th data-priority="3">Barangay</th> --}}
                         {{-- <th data-priority="4">Role</th> --}}
-                        <th data-priority="4">Role</th>
-                        <th data-priority="5">Region</th>
-                        <th data-priority="6">Province</th>
-                        <th data-priority="7">City</th>
-                        <th data-priority="8">Barangay</th>
+                        <th data-priority="5">Address</th>
+                        <th data-priority="6">Role</th>
                         {{-- <th data-priority="5">Edit</th>
                         <th data-priority="6">Delete</th> --}}
                     </tr>
@@ -93,13 +109,11 @@
                     @foreach($data as $item)
                     <tr x-on:click="itemToEdit = {{ $item->id }};">
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->first_name }}</td>
+                        <td>{{ $item->last_name }}</td>
                         <td>{{ $item->email }}</td>
+                        <td>{{ $item->location }}</td>
                         <td>{{ $item->role }}</td>
-                        <td>{{ $item->region }}</td>
-                        <td>{{ $item->province }}</td>
-                        <td>{{ $item->city }}</td>
-                        <td>{{ $item->barangay }}</td>
                         {{-- <td class="text-center">
                             <button @click="userResidentEdit = true; itemToEdit = $event.target.getAttribute('data-item-id')"
                                 data-item-id="{{ $item->id }}" class="py-1 px-4 rounded bg-sky-500 hover:bg-sky-700 text-white"> <i class="ri-edit-box-fill mr-1"></i>Edit
