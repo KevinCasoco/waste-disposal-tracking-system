@@ -143,9 +143,9 @@
                                                 chartData.residents.active
                                             ],
                                             backgroundColor: [
-                                                '#FF9020',
-                                                '#FF4069',
                                                 '#059BFF',
+                                                '#FF4069',
+                                                '#FF9020',
                                             ],
                                             borderColor: [
                                                 'rgb(255, 99, 132)',
@@ -191,9 +191,9 @@
                                                 {{ $countResidents }}
                                             ],
                                             backgroundColor: [
-                                                '#FF9020',
-                                                '#FF4069',
                                                 '#059BFF',
+                                                '#FF4069',
+                                                '#FF9020',
                                             ],
                                             borderWidth: 1
                                         }]
@@ -368,9 +368,9 @@
                                            chartData.residents.active
                                        ],
                                        backgroundColor: [
-                                           '#FF9020',
-                                           '#FF4069',
-                                           '#059BFF',
+                                            '#059BFF',
+                                            '#FF4069',
+                                            '#FF9020',
                                        ],
                                        borderColor: [
                                            'rgb(255, 99, 132)',
@@ -415,7 +415,12 @@
                                            {{ $countCollector }},
                                            {{ $countResidents }}
                                        ],
-                                       borderWidth: 1
+                                       backgroundColor: [
+                                                '#059BFF',
+                                                '#FF4069',
+                                                '#FF9020',
+                                            ],
+                                            borderWidth: 1
                                    }]
                                },
                                options: {
@@ -600,9 +605,9 @@
                                                 chartData.residents.active
                                             ],
                                             backgroundColor: [
-                                                '#FF9020',
-                                                '#FF4069',
                                                 '#059BFF',
+                                                '#FF4069',
+                                                '#FF9020',
                                             ],
                                             borderColor: [
                                                 'rgb(255, 99, 132)',
@@ -646,6 +651,11 @@
                                                 {{ $countAdmins }},
                                                 {{ $countCollector }},
                                                 {{ $countResidents }}
+                                            ],
+                                            backgroundColor: [
+                                                '#059BFF',
+                                                '#FF4069',
+                                                '#FF9020',
                                             ],
                                             borderWidth: 1
                                         }]

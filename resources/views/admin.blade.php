@@ -86,7 +86,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody >
 
                     @foreach($data as $item)
                     <tr x-on:click="itemToEdit = {{ $item->id }};">
