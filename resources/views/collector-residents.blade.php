@@ -79,7 +79,7 @@
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr>
-                            <th data-priority="1">ID</th>
+                            <th data-priority="1">Plate No.</th>
                             <th data-priority="2">First Name</th>
                             <th data-priority="3">Last Name</th>
                             <th data-priority="4">Email Address</th>
@@ -93,7 +93,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr x-on:click="itemToEdit = {{ $item->id }};">
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->plate_no }}</td>
                             <td>{{ $item->first_name }}</td>
                             <td>{{ $item->last_name }}</td>
                             <td>{{ $item->email }}</td>
@@ -158,6 +158,9 @@
                         </div>
                         <form action="{{ route('collector-residents.create_collector_residents') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
                             @csrf
+                            <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No.</label>
+                            <input type="text" name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+
                             <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
                             <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
 
@@ -270,8 +273,11 @@
                             <form method="post" :action="`{{ route('collector-residents.update_collector', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                 @csrf
                                 @method('patch')
-                                <label for="number" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
+                                {{-- <label for="number" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label> --}}
+                                {{-- <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled> --}}
+
+                                <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No.</label>
+                                <input type="text" name="plate_no" value="{{ $item->plate_no }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
 
                                 <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
                                 <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
