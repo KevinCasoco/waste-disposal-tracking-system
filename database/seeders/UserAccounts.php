@@ -56,7 +56,7 @@ class UserAccounts extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'residents',
             'status' => 'active',
-            'number' => '639094191380',
+            'number' => '639122580523',
         ]);
 
         // // seeding residents
