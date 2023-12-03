@@ -173,6 +173,11 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
         return view('collector-schedule');
     })->name('collector-schedule');
 
+    // static maps
+    Route::get('/location', function () {
+        return view('location');
+    })->name('location');
+
     // notify the users
     Route::get('/collector-email', [WasteCollectionSchedule::class, 'collector_showNotificationForm'])->name('collector-email');
     Route::post('/collector-send-email', [WasteCollectionSchedule::class, 'collector_sendNotification'])->name('collector-send-email.collector-send-notification');
