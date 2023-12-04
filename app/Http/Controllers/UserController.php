@@ -83,5 +83,25 @@ class UserController extends Controller
         return redirect()->route('user-residents')->with('message', 'User deleted successfully');
     }
 
+    public function showUserSchedule()
+    {
+        return view('user-schedule');
+    }
+
+    public function showKitchenWaste()
+    {
+        return view('kitchen-waste');
+    }
+
+    public function showRecyclableWaste()
+    {
+        return view('recyclable-waste');
+    }
+
+    public function showHazardousWaste()
+    {
+        return view('hazardous-waste');
+    }
+
 
 }

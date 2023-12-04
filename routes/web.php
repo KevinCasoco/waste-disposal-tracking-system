@@ -1,26 +1,26 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EditProfile;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\WasteCollectionSchedule;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\EditProfile;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\DoughnutChartController;
+use App\Http\Controllers\WasteCollectionSchedule;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -173,6 +173,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
     Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
+
     Route::get('/collector-schedule', function () {
         return view('collector-schedule');
     })->name('collector-schedule');
@@ -203,23 +204,15 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 // User-Residents Dashboard Sidebar
 Route::middleware('auth')->group(function () {
 
-    Route::get('/user-schedule', function () {
-        return view('user-schedule');
-    })->name('user-schedule');
+    // calendar for collection
+    Route::get('/user-schedule', [UserController::class, 'showUserSchedule'])->name('user-schedule');
 
     // augmented reality with marker
-    Route::get('/kitchen-waste', function () {
-        return view('kitchen-waste');
-    })->name('kitchen-waste');
+    Route::get('/kitchen-waste', [UserController::class, 'showKitchenWaste'])->name('kitchen-waste');
 
-    Route::get('/recyclable-waste', function () {
-        return view('recyclable-waste');
-    })->name('recyclable-waste');
+    Route::get('/recyclable-waste', [UserController::class, 'showRecyclableWaste'])->name('recyclable-waste');
 
-    Route::get('/hazardous-waste', function () {
-        return view('hazardous-waste');
-    })->name('hazardous-waste');
-
+    Route::get('/hazardous-waste', [UserController::class, 'showHazardousWaste'])->name('hazardous-waste');
 
     // edit residents/users
     Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
@@ -227,6 +220,7 @@ Route::middleware('auth')->group(function () {
     // delete
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
     Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
+
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
