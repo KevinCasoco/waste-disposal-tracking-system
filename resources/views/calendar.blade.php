@@ -127,6 +127,28 @@
                                 console.log(error)
                             },
                     });
+                },
+                eventClick: function(event) {
+                    var id = event.id;
+
+                    if(confirm('Are you sure you want to delete?')){
+                        $.ajax({
+                            url:"{{ route('calendar.delete', '') }}" +'/'+ id,
+                            type:"DELETE",
+                            dataType:'json',
+                            success:function(response)
+                            {
+                                // var id = response
+                                // console.log(id)
+                                $('#calendar').fullCalendar('removeEvents', response);
+                                swal("Good job!", "Event Deleted!", "success");
+                            },
+                            error:function(error)
+                            {
+                                console.log(error)
+                            },
+                        });
+                    }
                 }
             })
         });

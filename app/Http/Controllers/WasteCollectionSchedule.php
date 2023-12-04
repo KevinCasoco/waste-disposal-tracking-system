@@ -95,4 +95,19 @@ class WasteCollectionSchedule extends Controller
 
         return response()->json('Event updated');
     }
+
+    public function delete($id)
+    {
+        $schedules = Schedule::find($id);
+            if(!$schedules) {
+                return response()->json([
+                    'error' => 'Unable to locate the ID'
+                ], 404);
+            }
+
+        $schedules->delete();
+        return $id;
+        // return response()->json('Event deleted');
+
+    }
 }
