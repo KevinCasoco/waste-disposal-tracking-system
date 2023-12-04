@@ -267,5 +267,9 @@ class AdminController extends Controller
         return redirect()->route('residents')->with('message', 'User deactivated successfully');
     }
 
+    public function showSchedule()
+    {
+        return view('schedule');
+    }
 
 }
