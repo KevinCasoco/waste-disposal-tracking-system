@@ -13,22 +13,11 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->string('users_id');
             $table->string('title');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->timestamps();
-
-            // $table->id();
-            // $table->unsignedBigInteger('user_id');
-            // $table->string('title')->nullable();
-            // $table->string('start_time')->nullable();
-            // $table->string('end_time')->nullable();
-            // // Add other schedule-related columns
-
-            // // Foreign key relationship
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-            // $table->timestamps();
         });
     }
 

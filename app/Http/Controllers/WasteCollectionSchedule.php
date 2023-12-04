@@ -6,6 +6,7 @@ use App\Models\Schedule;
 use App\Models\User;
 use App\Notifications\NewNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WasteCollectionSchedule extends Controller
 {
@@ -83,15 +84,17 @@ class WasteCollectionSchedule extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string'
-        ]);
+        $userId = Auth::user()->id;
 
-        $schedule = Schedule::create([
+        $schedule = new Schedule([
             'title' =>$request->title,
             'start_date' =>$request->start_date,
             'end_date' =>$request->end_date,
         ]);
+
+        $user = User::find($userId);
+
+        $user->schedules()->save($schedule);
 
         return response()->json($schedule);
     }
@@ -125,6 +128,5 @@ class WasteCollectionSchedule extends Controller
         $schedules->delete();
         return $id;
         // return response()->json('Event deleted');
-
     }
 }
