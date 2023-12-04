@@ -150,8 +150,8 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
 
     // scheduling for waste collection
-    // Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
-    // Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
+    Route::get('/calendar/index', [WasteCollectionSchedule::class, 'index'])->name('calendar.index');
+    Route::post('/calendar', [WasteCollectionSchedule::class, 'store'])->name('calendar.store');
 
     // Route for the user roles chart
     Route::get('/user-roles-chart', [ChartController::class, 'index'])->name('dashboard.index');
@@ -168,8 +168,6 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // Route::get('/calendar', function () {
     //     return view('calendar');
     // })->name('calendar');
-
-    Route::get('/calendar', [WasteCollectionSchedule::class, 'index'])->name('calendar.index');
 
 }); // end of middleware group
 

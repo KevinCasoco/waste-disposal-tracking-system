@@ -48,46 +48,6 @@ class WasteCollectionSchedule extends Controller
 
     }
 
-    // public function addEvent(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'event_title' => 'required|string',
-    //         'event_date' => 'required|date',
-    //         'event_theme' => 'required|string',
-    //     ]);
-
-    //     $event = User::create([
-    //         'title' => $validatedData['event_title'],
-    //         'date' => $validatedData['event_date'],
-    //         'theme' => $validatedData['event_theme'],
-    //     ]);
-
-    //     return response()->json(['message' => 'Event added successfully', 'event' => $event]);
-    // }
-
-    // public function getEvents()
-    // {
-    //     $events = User::all();
-
-    //     return response()->json(['events' => $events]);
-    // }
-
-    // public function store(Request $request, $userId)
-    // {
-    //     // Find the user
-    //     $user = User::find($userId);
-
-    //     // Create a new schedule for the user
-    //     $schedule = $user->schedules()->create([
-    //         'title' => $request->input('title'),
-    //         'start_time' => $request->input('start_time'),
-    //         'end_time' => $request->input('end_time'),
-    //         // Add other schedule-related data
-    //     ]);
-
-    //     // Other logic or redirect as needed
-    // }
-
     public function index()
     {
         $events = array();
@@ -101,5 +61,20 @@ class WasteCollectionSchedule extends Controller
         }
 
         return view('calendar', ['events' => $events]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string'
+        ]);
+
+        $schedule = Schedule::create([
+            'title' =>$request->title,
+            'start_date' =>$request->start_date,
+            'end_date' =>$request->end_date,
+        ]);
+
+        return response()->json($schedule);
     }
 }

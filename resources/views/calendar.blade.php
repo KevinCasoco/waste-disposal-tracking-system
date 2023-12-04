@@ -20,6 +20,25 @@
 </head>
 <body>
 
+    <!-- Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Booking title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="title">
+          <span id="titleError" class="text-danger"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <div class="container">
         <div class="row">
@@ -39,15 +58,55 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             var schedule = @json($events);
-            // console.log(events)
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev, next today',
                     center: 'title',
                     right: 'month, agendaWeek, agendaDay',
                 },
-                events: schedule
+                events: schedule,
+                selectable: true,
+                selectHelper: true,
+                select: function(start, end, allDays) {
+                    $('#bookingModal').modal('toggle');
+
+                    $('#saveBtn').click(function() {
+                        var title = $('#title').val();
+                        var start_date = moment(start).format('YYYY-MM-DD');
+                        var end_date = moment(end).format('YYYY-MM-DD');
+
+                        $.ajax({
+                            url:"{{ route('calendar.store') }}",
+                            type:"POST",
+                            dataType:'json',
+                            data:{ title, start_date, end_date  },
+                            success:function(response)
+                            {
+                                $('#bookingModal').modal('hide')
+                                $('#calendar').fullCalendar('renderEvent', {
+                                    'title': response.title,
+                                    'start' : response.start_date,
+                                    'end'  : response.end_date,
+                                    // 'color' : response.color
+                                });
+                            },
+                            error:function(error)
+                            {
+                                if(error.responseJSON.errors) {
+                                    $('#titleError').html(error.responseJSON.errors.title);
+                                }
+                            },
+                        });
+
+                    });
+                }
             })
         });
     </script>
