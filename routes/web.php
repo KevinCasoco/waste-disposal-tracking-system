@@ -150,8 +150,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
 
     // scheduling for waste collection
-    Route::get('/calendar/index', [WasteCollectionSchedule::class, 'index'])->name('calendar.index');
+    Route::get('/calendar/schedule', [WasteCollectionSchedule::class, 'schedule'])->name('calendar.schedule');
     Route::post('/calendar', [WasteCollectionSchedule::class, 'store'])->name('calendar.store');
+    Route::patch('/calendar/update/{id}', [WasteCollectionSchedule::class, 'update'])->name('calendar.update');
 
     // Route for the user roles chart
     Route::get('/user-roles-chart', [ChartController::class, 'index'])->name('dashboard.index');

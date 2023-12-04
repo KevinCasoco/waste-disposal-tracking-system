@@ -48,12 +48,13 @@ class WasteCollectionSchedule extends Controller
 
     }
 
-    public function index()
+    public function schedule()
     {
         $events = array();
         $schedules = Schedule::all();
         foreach($schedules as $schedule) {
             $events[] = [
+                'id' => $schedule->id,
                 'title' => $schedule->title,
                 'start' => $schedule->start_date,
                 'end' => $schedule->end_date,
@@ -76,5 +77,22 @@ class WasteCollectionSchedule extends Controller
         ]);
 
         return response()->json($schedule);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $schedules = Schedule::find($id);
+            if(!$schedules) {
+                return response()->json([
+                    'error' => 'Unable to locate the ID'
+                ], 404);
+            }
+
+        $schedules->update([
+            'start_date' =>$request->start_date,
+            'end_date' =>$request->end_date,
+        ]);
+
+        return response()->json('Event updated');
     }
 }

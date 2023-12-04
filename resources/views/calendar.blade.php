@@ -106,6 +106,27 @@
                         });
 
                     });
+                },
+                editable: true,
+                eventDrop: function(event) {
+                    var id = event.id;
+                    var start_date = moment(event.start).format('YYYY-MM-DD');
+                    var end_date = moment(event.end).format('YYYY-MM-DD');
+
+                    $.ajax({
+                            url:"{{ route('calendar.update', '') }}" +'/'+ id,
+                            type:"PATCH",
+                            dataType:'json',
+                            data:{ start_date, end_date  },
+                            success:function(response)
+                            {
+                                swal("Good job!", "Event Updated!", "success");
+                            },
+                            error:function(error)
+                            {
+                                console.log(error)
+                            },
+                    });
                 }
             })
         });
