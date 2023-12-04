@@ -150,8 +150,8 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
 
     // scheduling for waste collection
-    Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
-    Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
+    // Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
+    // Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
 
     // Route for the user roles chart
     Route::get('/user-roles-chart', [ChartController::class, 'index'])->name('dashboard.index');
@@ -159,8 +159,17 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // Route for the active and inactive users
     Route::get('/chart-data', [ChartController::class, 'getChartData'])->name('dashboard.getChartData');
 
+    Route::post('/users/{userId}/schedules', [WasteCollectionSchedule::class, 'store']);
+
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
+
+    // // dynamic calendar
+    // Route::get('/calendar', function () {
+    //     return view('calendar');
+    // })->name('calendar');
+
+    Route::get('/calendar', [WasteCollectionSchedule::class, 'index'])->name('calendar.index');
 
 }); // end of middleware group
 

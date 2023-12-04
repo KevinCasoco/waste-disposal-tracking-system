@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
 use App\Models\User;
 use App\Notifications\NewNotification;
 use Illuminate\Http\Request;
@@ -47,27 +48,58 @@ class WasteCollectionSchedule extends Controller
 
     }
 
-    public function addEvent(Request $request)
+    // public function addEvent(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'event_title' => 'required|string',
+    //         'event_date' => 'required|date',
+    //         'event_theme' => 'required|string',
+    //     ]);
+
+    //     $event = User::create([
+    //         'title' => $validatedData['event_title'],
+    //         'date' => $validatedData['event_date'],
+    //         'theme' => $validatedData['event_theme'],
+    //     ]);
+
+    //     return response()->json(['message' => 'Event added successfully', 'event' => $event]);
+    // }
+
+    // public function getEvents()
+    // {
+    //     $events = User::all();
+
+    //     return response()->json(['events' => $events]);
+    // }
+
+    // public function store(Request $request, $userId)
+    // {
+    //     // Find the user
+    //     $user = User::find($userId);
+
+    //     // Create a new schedule for the user
+    //     $schedule = $user->schedules()->create([
+    //         'title' => $request->input('title'),
+    //         'start_time' => $request->input('start_time'),
+    //         'end_time' => $request->input('end_time'),
+    //         // Add other schedule-related data
+    //     ]);
+
+    //     // Other logic or redirect as needed
+    // }
+
+    public function index()
     {
-        $validatedData = $request->validate([
-            'event_title' => 'required|string',
-            'event_date' => 'required|date',
-            'event_theme' => 'required|string',
-        ]);
+        $events = array();
+        $schedules = Schedule::all();
+        foreach($schedules as $schedule) {
+            $events[] = [
+                'title' => $schedule->title,
+                'start' => $schedule->start_date,
+                'end' => $schedule->end_date,
+            ];
+        }
 
-        $event = User::create([
-            'title' => $validatedData['event_title'],
-            'date' => $validatedData['event_date'],
-            'theme' => $validatedData['event_theme'],
-        ]);
-
-        return response()->json(['message' => 'Event added successfully', 'event' => $event]);
-    }
-
-    public function getEvents()
-    {
-        $events = User::all();
-
-        return response()->json(['events' => $events]);
+        return view('calendar', ['events' => $events]);
     }
 }
