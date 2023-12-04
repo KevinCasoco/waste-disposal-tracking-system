@@ -124,4 +124,9 @@ class CollectorController extends Controller
 
         return redirect()->route('collector-residents')->with('message', 'User status updated successfully');
     }
+
+    public function showLocation()
+    {
+        return view('location');
+    }
 }

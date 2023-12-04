@@ -171,17 +171,13 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 // Collector Dashboard Sidebar
 Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
-    // Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
     Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
 
-    Route::get('/collector-schedule', function () {
-        return view('collector-schedule');
-    })->name('collector-schedule');
+    // collection schedule
+    Route::get('/collector-schedule', [WasteCollectionSchedule::class, 'showCollectorSchedule'])->name('collector-schedule');
 
     // static maps
-    Route::get('/location', function () {
-        return view('location');
-    })->name('location');
+    Route::get('/location', [CollectorController::class, 'showLocation'])->name('location');
 
     // notify the users
     Route::get('/collector-email', [WasteCollectionSchedule::class, 'collector_showNotificationForm'])->name('collector-email');

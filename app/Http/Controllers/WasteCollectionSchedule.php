@@ -23,6 +23,11 @@ class WasteCollectionSchedule extends Controller
         return view('schedule');
     }
 
+    public function showCollectorSchedule()
+    {
+        return view('collector-schedule');
+    }
+
     public function showNotificationForm()
     {
         return view('schedule');
