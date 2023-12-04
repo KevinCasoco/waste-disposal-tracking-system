@@ -166,11 +166,6 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
 
-    // // dynamic calendar
-    // Route::get('/calendar', function () {
-    //     return view('calendar');
-    // })->name('calendar');
-
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
@@ -235,6 +230,3 @@ Route::middleware('auth')->group(function () {
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
-
-
-Route::get('/doughnut-chart', [DoughnutChartController::class, 'doughnutChart']);
