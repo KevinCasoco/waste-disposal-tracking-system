@@ -28,9 +28,6 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
-        'title',
-        'time',
-        'theme',
     ];
 
     /**
@@ -52,5 +49,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 
 }
