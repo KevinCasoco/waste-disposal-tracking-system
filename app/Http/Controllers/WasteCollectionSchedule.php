@@ -53,11 +53,23 @@ class WasteCollectionSchedule extends Controller
         $events = array();
         $schedules = Schedule::all();
         foreach($schedules as $schedule) {
+            $color = null;
+            if ($schedule->title == 'Test') {
+                $color = '#924ACE';
+                // return $color;
+            }
+
+            if ($schedule->title == 'Test 1') {
+                $color = '#68801A';
+                // return $color;
+            }
+
             $events[] = [
                 'id' => $schedule->id,
                 'title' => $schedule->title,
                 'start' => $schedule->start_date,
                 'end' => $schedule->end_date,
+                'color' => $color
             ];
         }
 
