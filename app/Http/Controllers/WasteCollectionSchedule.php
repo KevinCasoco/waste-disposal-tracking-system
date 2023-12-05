@@ -74,7 +74,7 @@ class WasteCollectionSchedule extends Controller
                 'id' => $schedule->id,
                 'title' => $schedule->title,
                 'start' => $schedule->start_date,
-                'end' => $schedule->end_date,
+                'time' => $schedule->time,
                 'color' => $color
             ];
         }
@@ -89,7 +89,7 @@ class WasteCollectionSchedule extends Controller
         $schedule = new Schedule([
             'title' =>$request->title,
             'start_date' =>$request->start_date,
-            'end_date' =>$request->end_date,
+            'time' =>$request->time,
         ]);
 
         $user = User::find($userId);
@@ -110,7 +110,7 @@ class WasteCollectionSchedule extends Controller
 
         $schedules->update([
             'start_date' =>$request->start_date,
-            'end_date' =>$request->end_date,
+            'time' =>$request->time,
         ]);
 
         return response()->json('Event updated');

@@ -31,7 +31,13 @@
         <div class="modal-body">
           <input type="text" class="form-control" id="title">
           <span id="titleError" class="text-danger"></span>
+        <label for="start">Start</label>
+        <input type='date' class='form-control' id='start_date' name='start_date' required value='{{ now()->toDateString() }}'>
+
+        <label for="time">Select a time:</label>
+        <input type="time" id="time" name="time" required>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
@@ -80,20 +86,30 @@
                     $('#saveBtn').click(function() {
                         var title = $('#title').val();
                         var start_date = moment(start).format('YYYY-MM-DD');
-                        var end_date = moment(end).format('YYYY-MM-DD');
+                        // var end_date = moment(end).format('YYYY-MM-DD');
+                        // var time = moment(time).format('HH:mm');
+
+                        var selectedTime = document.getElementById('time').value;
+
+                        // Format the time using Moment.js
+                        var time = moment(selectedTime, 'HH:mm').format('HH:mm');
+                        // var formattedTime = moment(selectedTime, 'HH:mm').format('hh:mm A');
+
+                        // Set the formatted time as the value of the input
+                        document.getElementById('time').value = time
 
                         $.ajax({
                             url:"{{ route('calendar.store') }}",
                             type:"POST",
                             dataType:'json',
-                            data:{ title, start_date, end_date  },
+                            data:{ title, start_date, time  },
                             success:function(response)
                             {
                                 $('#bookingModal').modal('hide')
                                 $('#calendar').fullCalendar('renderEvent', {
                                     'title': response.title,
                                     'start' : response.start_date,
-                                    'end'  : response.end_date,
+                                    'time'  : response.time,
                                     // 'color' : response.color
                                 });
                             },
@@ -111,13 +127,14 @@
                 eventDrop: function(event) {
                     var id = event.id;
                     var start_date = moment(event.start).format('YYYY-MM-DD');
-                    var end_date = moment(event.end).format('YYYY-MM-DD');
+                    // var end_date = moment(event.end).format('YYYY-MM-DD');
+                    var time = moment(end).format('HH:mm');
 
                     $.ajax({
                             url:"{{ route('calendar.update', '') }}" +'/'+ id,
                             type:"PATCH",
                             dataType:'json',
-                            data:{ start_date, end_date  },
+                            data:{ start_date, time  },
                             success:function(response)
                             {
                                 swal("Good job!", "Event Updated!", "success");
