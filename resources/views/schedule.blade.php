@@ -77,7 +77,7 @@
                     <button id="exportButton" class="btn btn-success">Export Calendar</button>
                 </div>
                 <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <a href="{{ URL('add-schedule') }}" class="btn btn-success">Add</a>
+                    <a href="{{ asset('add')}}" class="btn btn-success">Add</a>
                 </div>
 
             </div>

@@ -36,7 +36,7 @@
 
     </style>
 
-    <form action="{{ URL('/create-schedule') }}" method="POST">
+    <form action="{{ route('schedule.create') }}" method="POST">
         @csrf
         <label for='title'>{{ __('Title') }}</label>
         <input type='text' class='form-control' id='title' name='title'>

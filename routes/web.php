@@ -114,17 +114,16 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
         return view('schedule');
     })->name('schedule');
 
-    // Start Full Calender=================================================================
-Route::get('fullcalender', [ScheduleController::class, 'index']);
-Route::get('/events', [ScheduleController::class, 'getEvents']);
-Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent']);
-Route::put('/schedule/{id}', [ScheduleController::class, 'update']);
-Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize']);
-Route::get('/events/search', [ScheduleController::class, 'search']);
+    // start calendar
+    Route::get('full-calender', [ScheduleController::class, 'index'])->name('schedule.index');
+    Route::get('/events', [ScheduleController::class, 'getEvents'])->name('schedule.getEvents');
+    Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent'])->name('schedule.deleteEvent');
+    Route::put('/schedule/{id}', [ScheduleController::class, 'update'])->name('schedule.update');
+    Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize'])->name('schedule.resize');
+    Route::get('/events/search', [ScheduleController::class, 'search'])->name('schedule.search');
 
-Route::view('add-schedule', 'add');
-Route::post('create-schedule', [ScheduleController::class, 'create']);
-// End Full Calender=================================================================
+    Route::get('/add', [ScheduleController::class, 'add_schedule'])->name('add');
+    Route::post('/create-schedule', [ScheduleController::class, 'create'])->name('schedule.create');
 
     // notify the users
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');

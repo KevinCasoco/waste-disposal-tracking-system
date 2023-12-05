@@ -10,10 +10,14 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    //
     public function index()
     {
         return view('schedule');
+    }
+
+    public function add_schedule()
+    {
+        return view('add');
     }
 
     public function create(Request $request)
@@ -26,7 +30,7 @@ class ScheduleController extends Controller
         $item->color = $request->color;
         $item->save();
 
-        return redirect('/fullcalender');
+        return redirect('schedule');
     }
 
 
