@@ -12,6 +12,7 @@ use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\DoughnutChartController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\WasteCollectionSchedule;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -113,9 +115,23 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // collection schedule
     Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
 
+    // start calendar
+    Route::get('full-calender', [ScheduleController::class, 'index'])->name('schedule.index');
+    Route::get('/events', [ScheduleController::class, 'getEvents'])->name('schedule.getEvents');
+    Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent'])->name('schedule.deleteEvent');
+    Route::put('/schedule/{id}', [ScheduleController::class, 'update'])->name('schedule.update');
+    Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize'])->name('schedule.resize');
+    Route::get('/events/search', [ScheduleController::class, 'search'])->name('schedule.search');
+
+    Route::get('/add', [ScheduleController::class, 'add_schedule'])->name('add');
+    Route::post('/admin-create-schedule', [ScheduleController::class, 'create'])->name('schedule.create');
+
+    // collection schedule
+    Route::get('/admin-schedule', [WasteCollectionSchedule::class, 'showAdminSchedule'])->name('admin-schedule');
+
     // notify the users
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
-    Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('admin.send-notification');
+    Route::post('/send-notification', [WasteCollectionSchedule::class, 'admin_sendNotification'])->name('schedule.admin_sendNotification');
 
     // active and inactive for admin
     Route::get('/admin/activate/{id}', [AdminController::class, 'activateUser'])->name('admin.activateUser');
@@ -165,6 +181,8 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
+    // Route::get('/sms', 'SmsController@sendSms')->name('sms');
+
 
 }); // end of middleware group
 
@@ -172,6 +190,17 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
+
+    // start calendar
+    Route::get('collector-full-calender', [ScheduleController::class, 'index_collector'])->name('collector-schedule.index_collector');
+    Route::get('/collector-events', [ScheduleController::class, 'getEvents'])->name('collector-schedule.getEvents');
+    Route::delete('/collector-schedule/{id}', [ScheduleController::class, 'deleteEvent'])->name('collector-schedule.deleteEvent');
+    Route::put('/collector-schedule/{id}', [ScheduleController::class, 'update'])->name('collector-schedule.update');
+    Route::put('/collector-schedule/{id}/resize', [ScheduleController::class, 'resize'])->name('collector-schedule.resize');
+    Route::get('/collector-events/search', [ScheduleController::class, 'search'])->name('collector-schedule.search');
+
+    Route::get('/add-collector', [ScheduleController::class, 'add_schedule_collector'])->name('add-collector');
+    Route::post('/create-schedule', [ScheduleController::class, 'create_collector'])->name('collector-schedule.create_collector');
 
     // collection schedule
     Route::get('/collector-schedule', [WasteCollectionSchedule::class, 'showCollectorSchedule'])->name('collector-schedule');

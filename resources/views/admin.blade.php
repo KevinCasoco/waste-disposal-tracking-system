@@ -150,7 +150,7 @@
                         </svg> --}}
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
-                                Register New User
+                                Register New Admin
                             </h3>
                         </div>
                         <hr class="bg-black border-gray-300 w-[410px]">

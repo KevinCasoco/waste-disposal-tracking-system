@@ -34,10 +34,22 @@ class NewNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
-            ->line('The time of collection will be on')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for understanding!');
+         // Access the schedules relationship
+         $schedules = $notifiable->schedules;
+
+         // Create a string to display date and time information
+         $scheduleInfo = '';
+
+         foreach ($schedules as $schedule) {
+             // Assuming you have 'date' and 'time' columns in your Schedule model
+             $scheduleInfo .= "Date: {$schedule->start}, Time: {$schedule->time}\n";
+         }
+
+         return (new MailMessage)
+             ->line('The time of collection will be on:')
+             ->line($scheduleInfo)
+             ->action('Notification Action', url('/'))
+             ->line('Thank you for understanding!');
     }
 
     /**
