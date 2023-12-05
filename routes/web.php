@@ -188,6 +188,17 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
 
+    // start calendar
+    Route::get('collector-full-calender', [ScheduleController::class, 'index_collector'])->name('collector-schedule.index_collector');
+    Route::get('/collector-events', [ScheduleController::class, 'getEvents'])->name('collector-schedule.getEvents');
+    Route::delete('/collector-schedule/{id}', [ScheduleController::class, 'deleteEvent'])->name('collector-schedule.deleteEvent');
+    Route::put('/collector-schedule/{id}', [ScheduleController::class, 'update'])->name('collector-schedule.update');
+    Route::put('/collector-schedule/{id}/resize', [ScheduleController::class, 'resize'])->name('collector-schedule.resize');
+    Route::get('/collector-events/search', [ScheduleController::class, 'search'])->name('collector-schedule.search');
+
+    Route::get('/add-collector', [ScheduleController::class, 'add_schedule_collector'])->name('add-collector');
+    Route::post('/create-schedule', [ScheduleController::class, 'create_collector'])->name('collector-schedule.create_collector');
+
     // collection schedule
     Route::get('/collector-schedule', [WasteCollectionSchedule::class, 'showCollectorSchedule'])->name('collector-schedule');
 

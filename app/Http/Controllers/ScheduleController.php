@@ -15,9 +15,19 @@ class ScheduleController extends Controller
         return view('schedule');
     }
 
+    public function index_collector()
+    {
+        return view('collector-schedule');
+    }
+
     public function add_schedule()
     {
         return view('add');
+    }
+
+    public function add_schedule_collector()
+    {
+        return view('add-collector');
     }
 
     public function create(Request $request)
@@ -31,6 +41,19 @@ class ScheduleController extends Controller
         $item->save();
 
         return redirect('schedule');
+    }
+
+    public function create_collector(Request $request)
+    {
+        $item = new Schedule();
+        $item->title = $request->title;
+        $item->start = $request->start;
+        $item->end = $request->end;
+        $item->description = $request->description;
+        $item->color = $request->color;
+        $item->save();
+
+        return redirect('collector-schedule');
     }
 
 
