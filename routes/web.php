@@ -21,6 +21,7 @@ use App\Http\Controllers\WasteCollectionSchedule;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\EditProfile;
 use App\Http\Controllers\DoughnutChartController;
+use App\Http\Controllers\ScheduleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -113,6 +114,18 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
         return view('schedule');
     })->name('schedule');
 
+    // Start Full Calender=================================================================
+Route::get('fullcalender', [ScheduleController::class, 'index']);
+Route::get('/events', [ScheduleController::class, 'getEvents']);
+Route::delete('/schedule/{id}', [ScheduleController::class, 'deleteEvent']);
+Route::put('/schedule/{id}', [ScheduleController::class, 'update']);
+Route::put('/schedule/{id}/resize', [ScheduleController::class, 'resize']);
+Route::get('/events/search', [ScheduleController::class, 'search']);
+
+Route::view('add-schedule', 'add');
+Route::post('create-schedule', [ScheduleController::class, 'create']);
+// End Full Calender=================================================================
+
     // notify the users
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
     Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('admin.send-notification');
@@ -161,6 +174,8 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
+    // Route::get('/sms', 'SmsController@sendSms')->name('sms');
+
 
 }); // end of middleware group
 
