@@ -126,9 +126,12 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/add', [ScheduleController::class, 'add_schedule'])->name('add');
     Route::post('/admin-create-schedule', [ScheduleController::class, 'create'])->name('schedule.create');
 
+    // collection schedule
+    Route::get('/admin-schedule', [WasteCollectionSchedule::class, 'showAdminSchedule'])->name('admin-schedule');
+
     // notify the users
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');
-    Route::post('/send-notification', [WasteCollectionSchedule::class, 'sendNotification'])->name('admin.send-notification');
+    Route::post('/send-notification', [WasteCollectionSchedule::class, 'admin_sendNotification'])->name('schedule.admin_sendNotification');
 
     // active and inactive for admin
     Route::get('/admin/activate/{id}', [AdminController::class, 'activateUser'])->name('admin.activateUser');

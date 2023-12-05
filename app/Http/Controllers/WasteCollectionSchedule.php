@@ -45,7 +45,12 @@ class WasteCollectionSchedule extends Controller
 
     public function showCollectorSchedule()
     {
-        return view('schedule');
+        return view('collector-schedule');
+    }
+
+    public function showAdminSchedule()
+    {
+        return view('collector');
     }
 
     public function showNotificationForm()
@@ -58,13 +63,62 @@ class WasteCollectionSchedule extends Controller
         return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
     }
 
-    public function collector_sendNotification()
+    public function admin_sendNotification()
     {
-        // $users = User::all();
+        // // $users = User::all();
+        // $users = User::where('status', 'active')->get();
+        // $notification = new NewNotification();
+
+        // foreach ($users as $user) {
+        //     $user->notify($notification);
+        // }
+
         $users = User::where('status', 'active')->get();
         $notification = new NewNotification();
 
         foreach ($users as $user) {
+        // Access the schedules relationship
+        $schedules = $user->schedules;
+
+        foreach ($schedules as $schedule) {
+            // Access schedule properties, for example:
+            $start = $schedule->start;
+            $time = $schedule->time;
+        }
+
+            // Notify the user
+            $user->notify($notification);
+        }
+
+        // return "Notification sent to all users.";
+        return redirect()->route('schedule')->with('message', 'Email was sent successfully');
+
+    }
+
+    public function collector_sendNotification()
+    {
+        // // $users = User::all();
+        // $users = User::where('status', 'active')->get();
+        // $notification = new NewNotification();
+
+        // foreach ($users as $user) {
+        //     $user->notify($notification);
+        // }
+
+        $users = User::where('status', 'active')->get();
+        $notification = new NewNotification();
+
+        foreach ($users as $user) {
+        // Access the schedules relationship
+        $schedules = $user->schedules;
+
+        foreach ($schedules as $schedule) {
+            // Access schedule properties, for example:
+            $start = $schedule->start;
+            $time = $schedule->time;
+        }
+
+            // Notify the user
             $user->notify($notification);
         }
 

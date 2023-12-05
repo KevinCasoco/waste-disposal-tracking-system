@@ -81,7 +81,7 @@
                 </div>
 
             </div>
-            <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="absolute flex justify-end ml-[776px]">
+            <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="absolute flex justify-end ml-[776px]">
                 @csrf
                 <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(Email)</button>
                 </form>
