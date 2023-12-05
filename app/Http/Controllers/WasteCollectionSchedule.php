@@ -12,21 +12,40 @@ class WasteCollectionSchedule extends Controller
 {
     public function sendNotification()
     {
-        // $users = User::all();
+        // // $users = User::all();
+        // $users = User::where('status', 'active')->get();
+        // $notification = new NewNotification();
+
+        // foreach ($users as $user) {
+        //     $user->notify($notification);
+        // }
+
+        // // return "Notification sent to all users.";
+        // return view('schedule');
+
         $users = User::where('status', 'active')->get();
         $notification = new NewNotification();
 
         foreach ($users as $user) {
+        // Access the schedules relationship
+        $schedules = $user->schedules;
+
+        foreach ($schedules as $schedule) {
+            // Access schedule properties, for example:
+            $start = $schedule->start;
+            $time = $schedule->time;
+        }
+
+            // Notify the user
             $user->notify($notification);
         }
 
-        // return "Notification sent to all users.";
         return view('schedule');
     }
 
     public function showCollectorSchedule()
     {
-        return view('collector-schedule');
+        return view('schedule');
     }
 
     public function showNotificationForm()
