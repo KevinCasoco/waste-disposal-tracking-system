@@ -124,7 +124,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/events/search', [ScheduleController::class, 'search'])->name('schedule.search');
 
     Route::get('/add', [ScheduleController::class, 'add_schedule'])->name('add');
-    Route::post('/create-schedule', [ScheduleController::class, 'create'])->name('schedule.create');
+    Route::post('/admin-create-schedule', [ScheduleController::class, 'create'])->name('schedule.create');
 
     // notify the users
     Route::get('/admin', [WasteCollectionSchedule::class, 'showNotificationForm'])->name('admin');

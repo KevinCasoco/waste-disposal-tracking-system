@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -32,15 +34,20 @@ class ScheduleController extends Controller
 
     public function create(Request $request)
     {
-        $item = new Schedule();
-        $item->title = $request->title;
-        $item->start = $request->start;
-        $item->end = $request->end;
-        $item->description = $request->description;
-        $item->color = $request->color;
-        $item->save();
+        $userId = Auth::user()->id;
+
+        $schedule = new Schedule([
+            'title' =>$request->title,
+            'start' =>$request->start,
+            'time' =>$request->time,
+        ]);
+
+        $user = User::find($userId);
+
+        $user->schedules()->save($schedule);
 
         return redirect('schedule');
+
     }
 
     public function create_collector(Request $request)
@@ -77,7 +84,7 @@ class ScheduleController extends Controller
 
         $schedule->update([
             'start' => Carbon::parse($request->input('start_date'))->setTimezone('UTC'),
-            'end' => Carbon::parse($request->input('end_date'))->setTimezone('UTC'),
+            // 'end' => Carbon::parse($request->input('end_date'))->setTimezone('UTC'),
         ]);
 
         return response()->json(['message' => 'Event moved successfully']);
