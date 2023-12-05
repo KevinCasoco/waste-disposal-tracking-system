@@ -44,13 +44,8 @@
         <label for="start">Start</label>
         <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
 
-        <label for="time">End</label>
+        <label for="time">Time</label>
         <input type="time" class='form-control' id="time" name="time" required>
-        {{-- <input type='date' class='form-control' id='end' name='end' required value='{{ now()->toDateString() }}'> --}}
-
-
-        {{-- <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea> --}}
 
         <label for="color">Color</label>
         <input type="color" id="color" name="color" />

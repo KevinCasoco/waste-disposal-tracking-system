@@ -52,13 +52,17 @@ class ScheduleController extends Controller
 
     public function create_collector(Request $request)
     {
-        $item = new Schedule();
-        $item->title = $request->title;
-        $item->start = $request->start;
-        $item->end = $request->end;
-        $item->description = $request->description;
-        $item->color = $request->color;
-        $item->save();
+        $userId = Auth::user()->id;
+
+        $schedule = new Schedule([
+            'title' =>$request->title,
+            'start' =>$request->start,
+            'time' =>$request->time,
+        ]);
+
+        $user = User::find($userId);
+
+        $user->schedules()->save($schedule);
 
         return redirect('collector-schedule');
     }
