@@ -1,14 +1,5 @@
 <x-app-layout>
     @if (Auth::user()->role == 'collector')
-    {{-- <div class="py-6 pt-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're User!") }}
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <!-- START SIDEBAR -->
     <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
@@ -49,7 +40,7 @@
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="#" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <a href="{{ asset('location')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                     <i class="ri-map-fill mr-3 text-lg"></i>
                     <span class="text-sm">Location</span>
                 </a>

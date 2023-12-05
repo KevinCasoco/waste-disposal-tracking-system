@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
 use App\Models\User;
 use App\Notifications\NewNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WasteCollectionSchedule extends Controller
 {
@@ -20,6 +22,11 @@ class WasteCollectionSchedule extends Controller
 
         // return "Notification sent to all users.";
         return view('schedule');
+    }
+
+    public function showCollectorSchedule()
+    {
+        return view('collector-schedule');
     }
 
     public function showNotificationForm()
@@ -47,27 +54,79 @@ class WasteCollectionSchedule extends Controller
 
     }
 
-    public function addEvent(Request $request)
+    public function schedule()
     {
-        $validatedData = $request->validate([
-            'event_title' => 'required|string',
-            'event_date' => 'required|date',
-            'event_theme' => 'required|string',
-        ]);
+        $events = array();
+        $schedules = Schedule::all();
+        foreach($schedules as $schedule) {
+            $color = null;
+            if ($schedule->title == 'Test') {
+                $color = '#924ACE';
+                // return $color;
+            }
 
-        $event = User::create([
-            'title' => $validatedData['event_title'],
-            'date' => $validatedData['event_date'],
-            'theme' => $validatedData['event_theme'],
-        ]);
+            if ($schedule->title == 'Test 1') {
+                $color = '#68801A';
+                // return $color;
+            }
 
-        return response()->json(['message' => 'Event added successfully', 'event' => $event]);
+            $events[] = [
+                'id' => $schedule->id,
+                'title' => $schedule->title,
+                'start' => $schedule->start_date,
+                'time' => $schedule->time,
+                'color' => $color
+            ];
+        }
+
+        return view('calendar', ['events' => $events]);
     }
 
-    public function getEvents()
+    public function store(Request $request)
     {
-        $events = User::all();
+        $userId = Auth::user()->id;
 
-        return response()->json(['events' => $events]);
+        $schedule = new Schedule([
+            'title' =>$request->title,
+            'start_date' =>$request->start_date,
+            'time' =>$request->time,
+        ]);
+
+        $user = User::find($userId);
+
+        $user->schedules()->save($schedule);
+
+        return response()->json($schedule);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $schedules = Schedule::find($id);
+            if(!$schedules) {
+                return response()->json([
+                    'error' => 'Unable to locate the ID'
+                ], 404);
+            }
+
+        $schedules->update([
+            'start_date' =>$request->start_date,
+            'time' =>$request->time,
+        ]);
+
+        return response()->json('Event updated');
+    }
+
+    public function delete($id)
+    {
+        $schedules = Schedule::find($id);
+            if(!$schedules) {
+                return response()->json([
+                    'error' => 'Unable to locate the ID'
+                ], 404);
+            }
+
+        $schedules->delete();
+        return $id;
+        // return response()->json('Event deleted');
     }
 }

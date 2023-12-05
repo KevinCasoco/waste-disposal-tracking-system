@@ -1,27 +1,28 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EditProfile;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\WasteCollectionSchedule;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\EditProfile;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\DoughnutChartController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\WasteCollectionSchedule;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -110,9 +111,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
     Route::post('/collector/create_collector', [AdminController::class, 'create_collector'])->name('collector.create_collector');
     Route::get('/residents', [UserController::class, 'index'])->name('residents');
-    Route::get('/schedule', function () {
-        return view('schedule');
-    })->name('schedule');
+
+    // collection schedule
+    Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
 
     // start calendar
     Route::get('full-calender', [ScheduleController::class, 'index'])->name('schedule.index');
@@ -162,14 +163,18 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
 
     // scheduling for waste collection
-    Route::post('/add-event', [WasteCollectionSchedule::class, 'addEvent']);
-    Route::get('/get-events', [WasteCollectionSchedule::class, 'getEvents']);
+    Route::get('/calendar/schedule', [WasteCollectionSchedule::class, 'schedule'])->name('calendar.schedule');
+    Route::post('/calendar', [WasteCollectionSchedule::class, 'store'])->name('calendar.store');
+    Route::patch('/calendar/update/{id}', [WasteCollectionSchedule::class, 'update'])->name('calendar.update');
+    Route::delete('/calendar/delete/{id}', [WasteCollectionSchedule::class, 'delete'])->name('calendar.delete');
 
     // Route for the user roles chart
     Route::get('/user-roles-chart', [ChartController::class, 'index'])->name('dashboard.index');
 
     // Route for the active and inactive users
     Route::get('/chart-data', [ChartController::class, 'getChartData'])->name('dashboard.getChartData');
+
+    Route::post('/users/{userId}/schedules', [WasteCollectionSchedule::class, 'store']);
 
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
@@ -181,11 +186,13 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 // Collector Dashboard Sidebar
 Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
-    // Route::get('/collector-residents', [UserController::class, 'collector'])->name('collector-residents');
     Route::post('/collector/create_collector_residents', [CollectorController::class, 'create_collector_residents'])->name('collector-residents.create_collector_residents');
-    Route::get('/collector-schedule', function () {
-        return view('collector-schedule');
-    })->name('collector-schedule');
+
+    // collection schedule
+    Route::get('/collector-schedule', [WasteCollectionSchedule::class, 'showCollectorSchedule'])->name('collector-schedule');
+
+    // static maps
+    Route::get('/location', [CollectorController::class, 'showLocation'])->name('location');
 
     // notify the users
     Route::get('/collector-email', [WasteCollectionSchedule::class, 'collector_showNotificationForm'])->name('collector-email');
@@ -208,23 +215,15 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 // User-Residents Dashboard Sidebar
 Route::middleware('auth')->group(function () {
 
-    Route::get('/user-schedule', function () {
-        return view('user-schedule');
-    })->name('user-schedule');
+    // calendar for collection
+    Route::get('/user-schedule', [UserController::class, 'showUserSchedule'])->name('user-schedule');
 
     // augmented reality with marker
-    Route::get('/kitchen-waste', function () {
-        return view('kitchen-waste');
-    })->name('kitchen-waste');
+    Route::get('/kitchen-waste', [UserController::class, 'showKitchenWaste'])->name('kitchen-waste');
 
-    Route::get('/recyclable-waste', function () {
-        return view('recyclable-waste');
-    })->name('recyclable-waste');
+    Route::get('/recyclable-waste', [UserController::class, 'showRecyclableWaste'])->name('recyclable-waste');
 
-    Route::get('/hazardous-waste', function () {
-        return view('hazardous-waste');
-    })->name('hazardous-waste');
-
+    Route::get('/hazardous-waste', [UserController::class, 'showHazardousWaste'])->name('hazardous-waste');
 
     // edit residents/users
     Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
@@ -232,9 +231,7 @@ Route::middleware('auth')->group(function () {
     // delete
     Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
     Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
+
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
-
-
-Route::get('/doughnut-chart', [DoughnutChartController::class, 'doughnutChart']);

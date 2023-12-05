@@ -38,6 +38,7 @@ class UserAccounts extends Seeder
 
         // seeding collector
         $collector = User::create([
+            'plate_no' => '2KZ2L7',
             'first_name' => 'Jay-Ar',
             'last_name' => 'Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
