@@ -23,6 +23,7 @@ class User extends Authenticatable
         'plate_no',
         'first_name',
         'last_name',
+        'number',
         'email',
         'location',
         'password',
