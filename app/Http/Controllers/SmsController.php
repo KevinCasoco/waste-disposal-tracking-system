@@ -63,4 +63,22 @@ class SmsController extends Controller
             echo "The message failed with status: " . $message->getStatus() . "\n";
         }
     }
+
+    public function sms_controller() {
+        $basic  = new \Vonage\Client\Credentials\Basic("fe1715cd", "gp17B0IoabKP3nyy");
+        $client = new \Vonage\Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("639122580523",'WDTS', 'The Collection Time will Be on: ')
+        );
+
+        $message = $response->current();
+
+        if ($message->getStatus() == 0) {
+            // echo "The message was sent successfully\n";
+            return redirect()->route('collector-schedule')->with('message', 'The message was sent successfully');
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
+    }
 }
