@@ -1,7 +1,270 @@
 <x-app-layout>
     @if (Auth::user()->role == 'admin')
-        <!-- START SIDEBAR -->
-        <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
+
+    <div class="relative min-h-screen md:flex">
+
+        <!-- mobile menu bar -->
+        <div class="bg-white text-black flex justify-end md:hidden">
+          <!-- logo -->
+          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
+
+          <!-- mobile menu button -->
+          <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- sidebar -->
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-50">
+
+          <!-- logo -->
+          {{-- <div class="ml-2 flex items-center rounded-md ">
+            <a class="flex item-center ">
+                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
+                <span class="text-lg font-extrabold text-black ml-2">Waste Disposal Tracking System</span>
+            </a>
+          </div>
+          <hr class="my-2 text-gray-600"> --}}
+
+          <!-- nav -->
+          <nav>
+            <ul class="mt-2">
+                <li class="mb-1 group active">
+                    <a href="{{ asset('dashboard') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-dashboard-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Dashboard</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <a href="{{ asset('admin') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-admin-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Admin</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <a href="{{ asset('collector') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Collector</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <a href="{{ asset('residents') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-user-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Residents</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <a href="{{ asset('schedule') }}"
+                        class="flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-calendar-2-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Schedule</span>
+                    </a>
+                </li>
+                <li class="group">
+                    <div>
+                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                            <i class="ri-user-settings-line mr-3 text-lg"></i>
+                            {{ __('Profile') }}
+                        </x-responsive-nav-link>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                                                <i class="ri-logout-box-line mr-3 text-lg"></i>
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+
+          </nav>
+        </div>
+
+        <!-- content -->
+        <div class="flex-grow text-gray-800">
+            <main class="p-6 sm:p-10 space-y-6">
+                {{-- <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+                  <div class="mr-6">
+                    <h1 class="text-4xl font-semibold">Welcome To Dashboard</h1>
+                  </div>
+                </div> --}}
+
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                  <a href="{{ route('admin') }}">
+                  <div class="flex items-center p-6 bg-blue-500 hover:bg-blue-600 shadow-lg shadow rounded-lg hover:shadow-xl">
+
+                      <div class="w-3/5 flex justify-start">
+                          <ul>
+                              <li class="font-extrabold text-white">
+                                  Admin</li>
+                              <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
+                              <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                          </ul>
+                      </div>
+                  </div>
+                  </a>
+
+                  <a href="{{ asset('collector') }}">
+                      <div class="flex items-center p-6 bg-[#FF4069] hover:bg-[#e5395e] shadow-lg shadow rounded-lg hover:shadow-xl">
+
+                          <div class="w-3/5 flex justify-start">
+                              <ul>
+                                  <li class="font-extrabold text-white">
+                                      Collector</li>
+                                  <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
+                                  <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                              </ul>
+                          </div>
+                      </div>
+
+                      <a href="{{ asset('residents') }}">
+                          <div class="flex items-center p-6 bg-orange-400  hover:bg-orange-500 shadow-lg shadow rounded-lg hover:shadow-xl">
+
+                              <div class="w-3/5 flex justify-start">
+                                  <ul>
+                                      <li class="font-bold text-white">Residents</li>
+                                      <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
+                                      <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                                  </ul>
+                              </div>
+                          </div>
+                          </a>
+                              <div class="flex items-center p-6 bg-[#4ECE5D] hover:bg-[#46b953] shadow-lg shadow rounded-lg hover:shadow-xl">
+
+                                  <div class="w-3/5 flex justify-start">
+                                      <ul>
+                                          <li class="font-bold text-white">Total Users</li>
+                                          <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
+                                          <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                                      </ul>
+                                  </div>
+                              </div>
+                </section>
+
+                {{-- Chart --}}
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                  <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                    {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                    <div class="p-4 flex-grow">
+                      <div class="w-[100%] h-[100%] flex justify-center items-center">
+                          <canvas id="myBarChart"></canvas>
+                      </div>
+
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                      <script>
+                          const barchart = document.getElementById('myBarChart');
+                          const chartData = @json($chartData); // Convert PHP array to JSON
+
+                          new Chart(barchart, {
+                              type: 'bar',
+                              data: {
+                                  labels: ['Admin', 'Collector', 'Residents'],
+                                  datasets: [{
+                                      label: 'Active',
+                                      data: [
+                                          chartData.admin.active,
+                                          chartData.collector.active,
+                                          chartData.residents.active
+                                      ],
+                                      backgroundColor: [
+                                          '#059BFF',
+                                          '#FF4069',
+                                          '#FF9020',
+                                      ],
+                                      borderColor: [
+                                          'rgb(255, 99, 132)',
+                                          'rgb(255, 159, 64)',
+                                          'rgb(255, 205, 86)',
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                              },
+                              options: {
+                                  scales: {
+                                      y: {
+                                          beginAtZero: true
+                                      }
+                                  }
+                              }
+                          });
+                      </script>    </div>
+                  </div>
+                  <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                      <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
+                          <canvas id="myChart"></canvas>
+                      </div>
+
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                      <script>
+                          const ctx = document.getElementById('myChart');
+
+                          new Chart(ctx, {
+                              type: 'doughnut',
+                              data: {
+                                  labels: ['Admin', 'Collector', 'Residents'],
+                                  datasets: [{
+                                      label: 'Number of Users',
+                                      data: [
+                                          {{ $countAdmins }},
+                                          {{ $countCollector }},
+                                          {{ $countResidents }}
+                                      ],
+                                      backgroundColor: [
+                                          '#059BFF',
+                                          '#FF4069',
+                                          '#FF9020',
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                              },
+                              options: {
+                                  scales: {
+                                      y: {
+                                          beginAtZero: true
+                                      }
+                                  }
+                              }
+                          });
+                      </script>
+                  </div>
+                    </div>
+
+                </section>
+              </main>
+        </div>
+
+      </div>
+      <script>
+        // grab everything we need
+    const btn = document.querySelector(".mobile-menu-button");
+    const sidebar = document.querySelector(".sidebar");
+    let isSidebarOpen = false;
+
+    // add our event listener for the click
+    btn.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
+
+
+    </script>
+      {{-- --}}
+
+
+        {{-- <!-- START SIDEBAR -->
+        <div class="fixed left-0 top-0 w-60 h-full bg-red-200 p-4">
             <a class="flex item-center pb-4 border-b border-b-gray-700">
                 <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-16 h-16 rounded object-cover">
                 <span class="text-lg font-extrabold text-black ml-1">Waste Disposal Tracking System</span>
@@ -42,7 +305,7 @@
                         <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                         <span class="text-sm">Schedule</span>
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="mb-1 group">
                 <a href="Settings.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="ri-settings-2-line mr-3 text-lg"></i>
@@ -55,178 +318,45 @@
                     <span class="text-sm">Logout</span>
                 </a>
             </li> --}}
-            </ul>
-        </div>
+            {{-- </ul>
+        </div> --}}
 
-        <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
+        {{-- <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div> --}}
         <!-- END SIDEBAR -->
 
-        <!-- START MAIN -->
-        <main class="w-full md:w-[calc(100%-240px)] md:ml-60 bg-slate-200  min-h-screen transition-all main">
-            <!-- START DASHBOARD -->
-            <div class="bg-slate-200 h-screen w-full overflow-y-auto">
-                {{-- {{$chart}} --}}
-                <div class="p-8">
-                    <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-                        <a href="{{ route('admin') }}">
-                            <div
-                                class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">
-                                            Admin</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
-                                        <i class="ri-admin-fill mr-3 text-lg text-white"></i>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ asset('collector') }}">
-                            <div
-                                class="p-4 bg-[#FF4069] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#e5395e] hover:shadow-xl">
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">Collector</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
-                                        <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ asset('residents') }}">
-                            <div
-                                class="p-4 bg-orange-400 rounded-lg flex items-center h-32 shadow-lg hover:bg-orange-500 hover:shadow-xl">
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">Residents</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
-                                        <i class="ri-user-fill mr-3 text-lg text-white"></i>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                        <div
-                            class="p-4 bg-[#4ECE5D] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#46b953] hover:shadow-xl">
-                            <div class="w-3/5 flex justify-start">
-                                <ul>
-                                    <li class="font-bold text-white">Total Users</li>
-                                    <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
-                                    <i class="ri-admin-fill text-white"></i>
-                                </ul>
-                            </div>
-                        </div>
 
-
-                        <!-- Component Start -->
-                        <div
-                            class="flex flex-col items-center w-full max-w-screen-md p-3 pb-3 bg-white rounded-lg shadow-xl sm:p-3 col-span-2 ">
-                            {{-- bar Chart --}}
-                            <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                <canvas id="myBarChart" class="w-[100%] h-[100%]"></canvas>
-                            </div>
-
-                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                            <script>
-                                const barchart = document.getElementById('myBarChart');
-                                const chartData = @json($chartData); // Convert PHP array to JSON
-
-                                new Chart(barchart, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: ['Admin', 'Collector', 'Residents'],
-                                        datasets: [{
-                                            label: 'Active',
-                                            data: [
-                                                chartData.admin.active,
-                                                chartData.collector.active,
-                                                chartData.residents.active
-                                            ],
-                                            backgroundColor: [
-                                                '#059BFF',
-                                                '#FF4069',
-                                                '#FF9020',
-                                            ],
-                                            borderColor: [
-                                                'rgb(255, 99, 132)',
-                                                'rgb(255, 159, 64)',
-                                                'rgb(255, 205, 86)',
-                                            ],
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
-                        </div>
-                        {{-- barChart --}}
-
-                        <div
-                            class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white rounded-lg shadow-xl sm:p-5 col-span-2 ">
-                            {{-- Doughnut Chart --}}
-                            <div>
-                                <canvas id="myChart" class="w-[80%]"></canvas>
-                            </div>
-
-                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                            <script>
-                                const ctx = document.getElementById('myChart');
-
-                                new Chart(ctx, {
-                                    type: 'doughnut',
-                                    data: {
-                                        labels: ['Admin', 'Collector', 'Residents'],
-                                        datasets: [{
-                                            label: 'Number of Users',
-                                            data: [
-                                                {{ $countAdmins }},
-                                                {{ $countCollector }},
-                                                {{ $countResidents }}
-                                            ],
-                                            backgroundColor: [
-                                                '#059BFF',
-                                                '#FF4069',
-                                                '#FF9020',
-                                            ],
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
-                        </div>
-                        {{-- Doughnut Chart --}}
-
-
-                    </div>
-
-                </div>
-            </div>
-        </main>
-        <!-- END MAIN -->
     @endif
 
     @if (Auth::user()->role == 'collector')
-        <!-- START SIDEBAR -->
-        <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
-            <a class="flex item-center pb-4 border-b border-b-gray-700">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-16 h-16 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-1">Waste Disposal Tracking System</span>
-            </a>
+    <div class="relative min-h-screen md:flex">
 
+        <!-- mobile menu bar -->
+        <div class="bg-white text-black flex justify-end md:hidden">
+          <!-- logo -->
+          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
+
+          <!-- mobile menu button -->
+          <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- sidebar -->
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-10">
+
+          <!-- logo -->
+          {{-- <div class="ml-2 flex items-center rounded-md ">
+            <a class="flex item-center ">
+                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
+                <span class="text-lg font-extrabold text-black ml-3">Waste Disposal Tracking System</span>
+            </a>
+          </div>
+          <hr class="my-2 text-gray-600"> --}}
+
+          <!-- nav -->
+          <nav>
             <ul class="mt-2">
                 <li class="mb-1 group active">
                     <a href="{{ asset('dashboard') }}"
@@ -280,20 +410,36 @@
                     <span class="text-sm">Logout</span>
                 </a>
             </li> --}}
+            <li class="group">
+                <div>
+                    <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-user-settings-line mr-3 text-lg"></i>
+                        {{ __('Profile') }}
+                    </x-responsive-nav-link>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                                            <i class="ri-logout-box-line mr-3 text-lg"></i>
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </div>
+            </li>
             </ul>
+          </nav>
         </div>
 
-        <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
-        <!-- END SIDEBAR -->
+        <!-- content -->
+        <div class="flex-grow text-gray-800">
+            <main class="p-6 sm:p-10 space-y-6">
 
-        <!-- START MAIN -->
-        <main class="w-full md:w-[calc(100%-240px)] md:ml-60 bg-slate-200  min-h-screen transition-all main">
-            <!-- START DASHBOARD -->
-            <div class="bg-slate-200 h-screen w-full overflow-y-auto">
-                <div class="p-8">
-                    <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-
-                        <div
+ 	    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+              <div
                             class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
                             <div class="w-3/5 flex justify-start">
                                 <ul>
@@ -339,117 +485,149 @@
                                 </ul>
                             </div>
                         </div>
+		</section>
 
+	{{-- Chart --}}
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                  <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                    {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                    <div class="p-4 flex-grow">
+                      <div class="w-[100%] h-[100%] flex justify-center items-center">
+                          <canvas id="myBarChart"></canvas>
+                      </div>
 
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                       <!-- Component Start -->
-                       <div
-                       class="flex flex-col items-center w-full max-w-screen-md p-3 pb-3 bg-white rounded-lg shadow-xl sm:p-3 col-span-2 ">
-                       {{-- bar Chart --}}
-                       <div class="w-[100%] h-[100%] flex justify-center items-center">
-                           <canvas id="myBarChart" class="w-[100%] h-[100%]"></canvas>
-                       </div>
+                      <script>
+                          const barchart = document.getElementById('myBarChart');
+                          const chartData = @json($chartData); // Convert PHP array to JSON
 
-                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                          new Chart(barchart, {
+                              type: 'bar',
+                              data: {
+                                  labels: ['Admin', 'Collector', 'Residents'],
+                                  datasets: [{
+                                      label: 'Active',
+                                      data: [
+                                          chartData.admin.active,
+                                          chartData.collector.active,
+                                          chartData.residents.active
+                                      ],
+                                      backgroundColor: [
+                                          '#059BFF',
+                                          '#FF4069',
+                                          '#FF9020',
+                                      ],
+                                      borderColor: [
+                                          'rgb(255, 99, 132)',
+                                          'rgb(255, 159, 64)',
+                                          'rgb(255, 205, 86)',
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                              },
+                              options: {
+                                  scales: {
+                                      y: {
+                                          beginAtZero: true
+                                      }
+                                  }
+                              }
+                          });
+                      </script>    </div>
+                  </div>
+                  <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                      <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
+                          <canvas id="myChart"></canvas>
+                      </div>
 
-                       <script>
-                           const barchart = document.getElementById('myBarChart');
-                           const chartData = @json($chartData); // Convert PHP array to JSON
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                           new Chart(barchart, {
-                               type: 'bar',
-                               data: {
-                                   labels: ['Admin', 'Collector', 'Residents'],
-                                   datasets: [{
-                                       label: 'Active',
-                                       data: [
-                                           chartData.admin.active,
-                                           chartData.collector.active,
-                                           chartData.residents.active
-                                       ],
-                                       backgroundColor: [
-                                            '#059BFF',
-                                            '#FF4069',
-                                            '#FF9020',
-                                       ],
-                                       borderColor: [
-                                           'rgb(255, 99, 132)',
-                                           'rgb(255, 159, 64)',
-                                           'rgb(255, 205, 86)',
-                                       ],
-                                       borderWidth: 1
-                                   }]
-                               },
-                               options: {
-                                   scales: {
-                                       y: {
-                                           beginAtZero: true
-                                       }
-                                   }
-                               }
-                           });
-                       </script>
-                   </div>
-                   {{-- barChart --}}
+                      <script>
+                          const ctx = document.getElementById('myChart');
 
-                   <div
-                       class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white rounded-lg shadow-xl sm:p-5 col-span-2 ">
-                       {{-- Doughnut Chart --}}
-                       <div>
-                           <canvas id="myChart" class="w-[80%]"></canvas>
-                       </div>
-
-                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                       <script>
-                           const ctx = document.getElementById('myChart');
-
-                           new Chart(ctx, {
-                               type: 'doughnut',
-                               data: {
-                                   labels: ['Admin', 'Collector', 'Residents'],
-                                   datasets: [{
-                                       label: 'Number of Users',
-                                       data: [
-                                           {{ $countAdmins }},
-                                           {{ $countCollector }},
-                                           {{ $countResidents }}
-                                       ],
-                                       backgroundColor: [
-                                                '#059BFF',
-                                                '#FF4069',
-                                                '#FF9020',
-                                            ],
-                                            borderWidth: 1
-                                   }]
-                               },
-                               options: {
-                                   scales: {
-                                       y: {
-                                           beginAtZero: true
-                                       }
-                                   }
-                               }
-                           });
-                       </script>
-                   </div>
-                   {{-- Doughnut Chart --}}
+                          new Chart(ctx, {
+                              type: 'doughnut',
+                              data: {
+                                  labels: ['Admin', 'Collector', 'Residents'],
+                                  datasets: [{
+                                      label: 'Number of Users',
+                                      data: [
+                                          {{ $countAdmins }},
+                                          {{ $countCollector }},
+                                          {{ $countResidents }}
+                                      ],
+                                      backgroundColor: [
+                                          '#059BFF',
+                                          '#FF4069',
+                                          '#FF9020',
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                              },
+                              options: {
+                                  scales: {
+                                      y: {
+                                          beginAtZero: true
+                                      }
+                                  }
+                              }
+                          });
+                      </script>
+                  </div>
                     </div>
-                </div>
-            </div>
-        </main>
-        <!-- END MAIN -->
+
+                </section>
+              </main>
+        </div>
+
+      </div>
+      <script>
+        // grab everything we need
+    const btn = document.querySelector(".mobile-menu-button");
+    const sidebar = document.querySelector(".sidebar");
+    let isSidebarOpen = false;
+
+    // add our event listener for the click
+    btn.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
+
+
+    </script>
+
     @endif
 
     @if (Auth::user()->role == 'residents')
-        <!-- START SIDEBAR -->
-        <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
-            <a class="flex item-center pb-4 border-b border-b-gray-700">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt=""
-                    class="w-16 h-16 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-1">Waste Disposal Tracking System</span>
-            </a>
+    <div class="relative min-h-screen md:flex">
 
+        <!-- mobile menu bar -->
+        <div class="bg-white text-black flex justify-end md:hidden">
+          <!-- logo -->
+          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
+
+          <!-- mobile menu button -->
+          <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- sidebar -->
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-10">
+
+          <!-- logo -->
+          {{-- <div class="ml-2 flex items-center rounded-md ">
+            <a class="flex item-center ">
+                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
+                <span class="text-lg font-extrabold text-black ml-3">Waste Disposal Tracking System</span>
+            </a>
+          </div>
+          <hr class="my-2 text-gray-600"> --}}
+
+          <!-- nav -->
+          <nav>
             <ul class="mt-2">
                 <li class="mb-1 group active">
                     <a href="{{ asset('dashboard') }}"
@@ -517,20 +695,36 @@
                     <span class="text-sm">Logout</span>
                 </a>
             </li> --}}
+            <li class="group">
+                <div>
+                    <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-user-settings-line mr-3 text-lg"></i>
+                        {{ __('Profile') }}
+                    </x-responsive-nav-link>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                                            <i class="ri-logout-box-line mr-3 text-lg"></i>
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </div>
+            </li>
             </ul>
+          </nav>
         </div>
 
-        <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
-        <!-- END SIDEBAR -->
+        <!-- content -->
+        <div class="flex-grow text-gray-800">
+            <main class="p-6 sm:p-10 space-y-6">
 
-        <!-- START MAIN -->
-        <main class="w-full md:w-[calc(100%-240px)] md:ml-60 bg-slate-200  min-h-screen transition-all main">
-            <!-- START DASHBOARD -->
-            <div class="bg-slate-200 h-screen w-full overflow-y-auto">
-                <div class="p-8">
-                    <div class="grid grid-cols-1 md:cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-
-                        <div
+ 	    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+              <div
                             class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
                             <div class="w-3/5 flex justify-start">
                                 <ul>
@@ -575,109 +769,117 @@
                                 </ul>
                             </div>
                         </div>
+		</section>
 
+	{{-- Chart --}}
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                  <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                    {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                    <div class="p-4 flex-grow">
+                      <div class="w-[100%] h-[100%] flex justify-center items-center">
+                          <canvas id="myBarChart"></canvas>
+                      </div>
 
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                        <!-- Component Start -->
-                        <!-- Component Start -->
-                        <div
-                            class="flex flex-col items-center w-full max-w-screen-md p-3 pb-3 bg-white rounded-lg shadow-xl sm:p-3 col-span-2 ">
-                            {{-- bar Chart --}}
-                            <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                <canvas id="myBarChart" class="w-[100%] h-[100%]"></canvas>
-                            </div>
+                      <script>
+                          const barchart = document.getElementById('myBarChart');
+                          const chartData = @json($chartData); // Convert PHP array to JSON
 
-                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                          new Chart(barchart, {
+                              type: 'bar',
+                              data: {
+                                  labels: ['Admin', 'Collector', 'Residents'],
+                                  datasets: [{
+                                      label: 'Active',
+                                      data: [
+                                          chartData.admin.active,
+                                          chartData.collector.active,
+                                          chartData.residents.active
+                                      ],
+                                      backgroundColor: [
+                                          '#059BFF',
+                                          '#FF4069',
+                                          '#FF9020',
+                                      ],
+                                      borderColor: [
+                                          'rgb(255, 99, 132)',
+                                          'rgb(255, 159, 64)',
+                                          'rgb(255, 205, 86)',
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                              },
+                              options: {
+                                  scales: {
+                                      y: {
+                                          beginAtZero: true
+                                      }
+                                  }
+                              }
+                          });
+                      </script>    </div>
+                  </div>
+                  <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                      <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
+                          <canvas id="myChart"></canvas>
+                      </div>
 
-                            <script>
-                                const barchart = document.getElementById('myBarChart');
-                                const chartData = @json($chartData); // Convert PHP array to JSON
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                                new Chart(barchart, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: ['Admin', 'Collector', 'Residents'],
-                                        datasets: [{
-                                            label: 'Active',
-                                            data: [
-                                                chartData.admin.active,
-                                                chartData.collector.active,
-                                                chartData.residents.active
-                                            ],
-                                            backgroundColor: [
-                                                '#059BFF',
-                                                '#FF4069',
-                                                '#FF9020',
-                                            ],
-                                            borderColor: [
-                                                'rgb(255, 99, 132)',
-                                                'rgb(255, 159, 64)',
-                                                'rgb(255, 205, 86)',
-                                            ],
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
-                        </div>
-                        {{-- barChart --}}
+                      <script>
+                          const ctx = document.getElementById('myChart');
 
-                        <div
-                            class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white rounded-lg shadow-xl sm:p-5 col-span-2 ">
-                            {{-- Doughnut Chart --}}
-                            <div>
-                                <canvas id="myChart" class="w-[80%]"></canvas>
-                            </div>
-
-                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                            <script>
-                                const ctx = document.getElementById('myChart');
-
-                                new Chart(ctx, {
-                                    type: 'doughnut',
-                                    data: {
-                                        labels: ['Admin', 'Collector', 'Residents'],
-                                        datasets: [{
-                                            label: 'Number of Users',
-                                            data: [
-                                                {{ $countAdmins }},
-                                                {{ $countCollector }},
-                                                {{ $countResidents }}
-                                            ],
-                                            backgroundColor: [
-                                                '#059BFF',
-                                                '#FF4069',
-                                                '#FF9020',
-                                            ],
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
-                        </div>
-                        {{-- Doughnut Chart --}}
+                          new Chart(ctx, {
+                              type: 'doughnut',
+                              data: {
+                                  labels: ['Admin', 'Collector', 'Residents'],
+                                  datasets: [{
+                                      label: 'Number of Users',
+                                      data: [
+                                          {{ $countAdmins }},
+                                          {{ $countCollector }},
+                                          {{ $countResidents }}
+                                      ],
+                                      backgroundColor: [
+                                          '#059BFF',
+                                          '#FF4069',
+                                          '#FF9020',
+                                      ],
+                                      borderWidth: 1
+                                  }]
+                              },
+                              options: {
+                                  scales: {
+                                      y: {
+                                          beginAtZero: true
+                                      }
+                                  }
+                              }
+                          });
+                      </script>
+                  </div>
                     </div>
-                </div>
-            </div>
 
-        </main>
+                </section>
+              </main>
+        </div>
 
-        <!-- END MAIN -->
+      </div>
+      <script>
+        // grab everything we need
+    const btn = document.querySelector(".mobile-menu-button");
+    const sidebar = document.querySelector(".sidebar");
+    let isSidebarOpen = false;
+
+    // add our event listener for the click
+    btn.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
+
+
+    </script>
+
     @endif
 
 </x-app-layout>
