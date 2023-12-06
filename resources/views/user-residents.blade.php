@@ -3,85 +3,79 @@
 
     @if (Auth::user()->role == 'residents')
 
-<!-- START SIDEBAR -->
-<div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
-<a class="flex item-center pb-4 border-b border-b-gray-700">
-    <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="w-16 h-16 rounded object-cover">
-    <span class="text-lg font-extrabold text-black ml-1">Waste Disposal Tracking System</span>
-</a>
+    <!-- START SIDEBAR -->
+    <div class="fixed left-0 top-0 w-60 h-full bg-white p-4">
+    <a class="flex item-center pb-4 border-b border-b-gray-700">
+        <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="w-16 h-16 rounded object-cover">
+        <span class="text-lg font-extrabold text-black ml-1">Waste Disposal Tracking System</span>
+    </a>
 
-<ul class="mt-2" >
-    <li class="mb-1 group">
-        <a href="{{ asset('dashboard')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-               <i class="ri-dashboard-fill mr-3 text-lg"></i>
-            <span class="text-sm">Dashboard</span>
-        </a>
-    </li>
-    {{-- <li class="mb-1 group">
-        <a href="{{ asset('admin')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-admin-fill mr-3 text-lg"></i>
-            <span class="text-sm">Admin</span>
-        </a>
-    </li> --}}
-    {{-- <li class="mb-1 group">
-        <a href="{{ asset('collector')}}"  class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-            <span class="text-sm">Collector</span>
-        </a>
-    </li> --}}
-    <li class="mb-1 group active">
-        <a href="{{ asset('user-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-               <i class="ri-user-fill mr-3 text-lg"></i>
-            <span class="text-sm">Residents</span>
-        </a>
-    </li>
-    <li class="mb-1 group">
-        <a href="{{ asset('user-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-calendar-2-fill mr-3 text-lg"></i>
-            <span class="text-sm">Schedule</span>
-        </a>
-    </li>
-    <li class="mb-1 group">
-        <a href="{{ asset('augmented')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-camera-fill mr-3 text-lg"></i>
-            <span class="text-sm">Camera</span>
-        </a>
-    </li>
-    <li class="mb-1 group">
-        <a href="{{ asset('kitchen-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-ink-bottle-line mr-3 text-lg"></i>
-            <span class="text-sm">Kitchen Waste</span>
-        </a>
-    </li>
-    <li class="mb-1 group">
-        <a href="{{ asset('recyclable-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-recycle-fill mr-3 text-lg"></i>
-            <span class="text-sm">Recyclable Waste</span>
-        </a>
-    </li>
-    <li class="mb-1 group">
-        <a href="{{ asset('hazardous-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-            <i class="ri-paint-fill mr-3 text-lg"></i>
-            <span class="text-sm">Hazardous Waste</span>
-        </a>
-    </li>
-    {{-- <li class="mb-1 group">
-        <a href="Settings.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-            <i class="ri-settings-2-line mr-3 text-lg"></i>
-            <span class="text-sm">Settings</span>
-        </a>
-    </li>
-    <li class="mb-1 group">
-        <a href="Login.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-            <i class="ri-logout-box-line mr-3 text-lg"></i>
-            <span class="text-sm">Logout</span>
-        </a>
-    </li> --}}
-</ul>
-</div>
+    <ul class="mt-2" >
+        <li class="mb-1 group">
+            <a href="{{ asset('dashboard')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-dashboard-fill mr-3 text-lg"></i>
+                <span class="text-sm">Dashboard</span>
+            </a>
+        </li>
+        {{-- <li class="mb-1 group">
+            <a href="{{ asset('admin')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-admin-fill mr-3 text-lg"></i>
+                <span class="text-sm">Admin</span>
+            </a>
+        </li> --}}
+        {{-- <li class="mb-1 group">
+            <a href="{{ asset('collector')}}"  class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
+                <span class="text-sm">Collector</span>
+            </a>
+        </li> --}}
+        <li class="mb-1 group active">
+            <a href="{{ asset('user-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-user-fill mr-3 text-lg"></i>
+                <span class="text-sm">Residents</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="{{ asset('user-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-calendar-2-fill mr-3 text-lg"></i>
+                <span class="text-sm">Schedule</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="{{ asset('kitchen-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-ink-bottle-line mr-3 text-lg"></i>
+                <span class="text-sm">Kitchen Waste</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="{{ asset('recyclable-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-recycle-fill mr-3 text-lg"></i>
+                <span class="text-sm">Recyclable Waste</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="{{ asset('hazardous-waste')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-paint-fill mr-3 text-lg"></i>
+                <span class="text-sm">Hazardous Waste</span>
+            </a>
+        </li>
+        {{-- <li class="mb-1 group">
+            <a href="Settings.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                <i class="ri-settings-2-line mr-3 text-lg"></i>
+                <span class="text-sm">Settings</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="Login.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                <i class="ri-logout-box-line mr-3 text-lg"></i>
+                <span class="text-sm">Logout</span>
+            </a>
+        </li> --}}
+    </ul>
+    </div>
 
-<div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
-<!-- END SIDEBAR -->
+    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
+    <!-- END SIDEBAR -->
 
      <!--Container-->
      <div class="md:w-[calc(100%-240px)] md:ml-60 mx-auto px-2 p-5 bg-slate-200 min-h-screen transition-all main">
@@ -129,46 +123,6 @@
                     @endforeach
                 </tbody>
             </table>
-
-            {{-- <!-- Delete Modal -->
-            <div x-show="residentsDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
-                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                </div>
-
-                <div x-show="residentsDelete" @click.away="residentsDelete = false"
-                    x-transition:enter="ease-out duration-300"
-                    x-transition:enter-start="opacity-0 transform scale-95"
-                    x-transition:enter-end="opacity-100 transform scale-100"
-                    x-transition:leave="ease-in duration-200"
-                    x-transition:leave-start="opacity-100 transform scale-100"
-                    x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                    <!-- ... (modal content) ... -->
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col">
-                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg>
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this user?</h3>
-                            <div class="flex justify-end items-end pb-2">
-                            <form method="post" :action="`{{ route('user-residents.destroy_user_residents', '') }}/${itemToDelete}`">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                    Delete
-                                </button>
-                            </form>
-                            <div class="absolute mr-[90px]">
-                            <button @click="residentsDelete = false"
-                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div> --}}
 
                 {{-- Edit Modal --}}
                 <div x-show="userResidentEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
