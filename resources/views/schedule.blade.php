@@ -98,7 +98,7 @@
     <div class="container mt-5">
         {{-- For Search --}}
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="input-group mb-3">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search events">
                     <div class="input-group-append">
@@ -120,11 +120,12 @@
                 @csrf
                 <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(Email)</button>
             </form>
-                {{-- <form action="{{ route('sms') }}" method="POST" class="absolute flex justify-end ml-[776px]">
-                    @csrf
-                    <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(sms)</button>
-                    </form> --}}
 
+            <form action="{{ route('schedule.sms') }}" method="POST" class="absolute flex justify-end ml-[550px]">
+                @csrf
+                <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(sms)</button>
+            </form>
+            
         </div>
 
         <div class="card">
