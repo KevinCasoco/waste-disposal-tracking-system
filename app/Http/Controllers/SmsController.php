@@ -47,7 +47,6 @@ class SmsController extends Controller
         //     echo "An error occurred: " . $e->getMessage() . "\n";
         // }
 
-
         $basic  = new \Vonage\Client\Credentials\Basic("fe1715cd", "gp17B0IoabKP3nyy");
         $client = new \Vonage\Client($basic);
 

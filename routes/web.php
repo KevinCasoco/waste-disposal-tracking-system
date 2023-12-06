@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EditProfile;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -181,7 +182,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // send sms
     Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
-    // Route::get('/sms', 'SmsController@sendSms')->name('sms');
+    Route::post('/sms', [SmsController::class, 'sms'])->name('schedule.sms');
 
 
 }); // end of middleware group
