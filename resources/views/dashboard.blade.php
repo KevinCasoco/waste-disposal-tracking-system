@@ -17,7 +17,7 @@
         </div>
 
         <!-- sidebar -->
-        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-50">
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
           <!-- logo -->
           {{-- <div class="ml-2 flex items-center rounded-md ">
@@ -61,30 +61,29 @@
                 </li>
                 <li class="mb-1 group">
                     <a href="{{ asset('schedule') }}"
-                        class="flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
                         <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                         <span class="text-sm">Schedule</span>
                     </a>
                 </li>
-                <li class="group">
-                    <div>
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                            <i class="ri-user-settings-line mr-3 text-lg"></i>
-                            {{ __('Profile') }}
-                        </x-responsive-nav-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-responsive-nav-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                                <i class="ri-logout-box-line mr-3 text-lg"></i>
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
-                    </div>
+                <li class="mb-1 group">
+                    <a href="{{ asset('profile') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-user-settings-line mr-3 text-lg"></i>
+                        <span class="text-sm">Profile</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    <a :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();"
+                        class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
+                        <i class="ri-logout-box-line mr-3 text-lg"></i>
+                        <span class="text-sm">Logout</span>
+                    </a>
+                </form>
                 </li>
             </ul>
 
@@ -102,7 +101,7 @@
 
                 <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
                   <a href="{{ route('admin') }}">
-                  <div class="flex items-center p-6 bg-blue-500 hover:bg-blue-600 shadow-lg shadow rounded-lg hover:shadow-xl">
+                  <div class="flex items-center p-6 bg-blue-500 hover:bg-blue-600 shadow-lg  rounded-lg hover:shadow-xl">
 
                       <div class="w-3/5 flex justify-start">
                           <ul>
@@ -116,7 +115,7 @@
                   </a>
 
                   <a href="{{ asset('collector') }}">
-                      <div class="flex items-center p-6 bg-[#FF4069] hover:bg-[#e5395e] shadow-lg shadow rounded-lg hover:shadow-xl">
+                      <div class="flex items-center p-6 bg-[#FF4069] hover:bg-[#e5395e] shadow-lg rounded-lg hover:shadow-xl">
 
                           <div class="w-3/5 flex justify-start">
                               <ul>
@@ -129,7 +128,7 @@
                       </div>
 
                       <a href="{{ asset('residents') }}">
-                          <div class="flex items-center p-6 bg-orange-400  hover:bg-orange-500 shadow-lg shadow rounded-lg hover:shadow-xl">
+                          <div class="flex items-center p-6 bg-orange-400  hover:bg-orange-500 shadow-lg rounded-lg hover:shadow-xl">
 
                               <div class="w-3/5 flex justify-start">
                                   <ul>
@@ -140,7 +139,7 @@
                               </div>
                           </div>
                           </a>
-                              <div class="flex items-center p-6 bg-[#4ECE5D] hover:bg-[#46b953] shadow-lg shadow rounded-lg hover:shadow-xl">
+                              <div class="flex items-center p-6 bg-[#4ECE5D] hover:bg-[#46b953] shadow-lg rounded-lg hover:shadow-xl">
 
                                   <div class="w-3/5 flex justify-start">
                                       <ul>
@@ -199,7 +198,8 @@
                                   }
                               }
                           });
-                      </script>    </div>
+                      </script>
+                      </div>
                   </div>
                   <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
                       <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
@@ -344,7 +344,7 @@
         </div>
 
         <!-- sidebar -->
-        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-10">
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
           <!-- logo -->
           {{-- <div class="ml-2 flex items-center rounded-md ">
@@ -410,25 +410,24 @@
                     <span class="text-sm">Logout</span>
                 </a>
             </li> --}}
-            <li class="group">
-                <div>
-                    <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                        <i class="ri-user-settings-line mr-3 text-lg"></i>
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                            <i class="ri-logout-box-line mr-3 text-lg"></i>
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-                </div>
+            <li class="mb-1 group">
+                <a href="{{ asset('profile') }}"
+                    class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                    <i class="ri-user-settings-line mr-3 text-lg"></i>
+                    <span class="text-sm">Profile</span>
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                <a :href="route('logout')"
+                onclick="event.preventDefault();
+                            this.closest('form').submit();"
+                    class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
+                    <i class="ri-logout-box-line mr-3 text-lg"></i>
+                    <span class="text-sm">Logout</span>
+                </a>
+            </form>
             </li>
             </ul>
           </nav>
@@ -615,7 +614,7 @@
         </div>
 
         <!-- sidebar -->
-        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-10">
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
           <!-- logo -->
           {{-- <div class="ml-2 flex items-center rounded-md ">
@@ -695,25 +694,24 @@
                     <span class="text-sm">Logout</span>
                 </a>
             </li> --}}
-            <li class="group">
-                <div>
-                    <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                        <i class="ri-user-settings-line mr-3 text-lg"></i>
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-
-                    <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                            <i class="ri-logout-box-line mr-3 text-lg"></i>
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-                </div>
+            <li class="mb-1 group">
+                <a href="{{ asset('profile') }}"
+                    class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                    <i class="ri-user-settings-line mr-3 text-lg"></i>
+                    <span class="text-sm">Profile</span>
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                <a :href="route('logout')"
+                onclick="event.preventDefault();
+                            this.closest('form').submit();"
+                    class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
+                    <i class="ri-logout-box-line mr-3 text-lg"></i>
+                    <span class="text-sm">Logout</span>
+                </a>
+            </form>
             </li>
             </ul>
           </nav>

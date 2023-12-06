@@ -19,7 +19,7 @@
         </div>
 
         <!-- sidebar -->
-        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-50">
+        <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
           <!-- logo -->
           {{-- <div class="ml-2 flex items-center rounded-md ">
@@ -81,25 +81,24 @@
                         <span class="text-sm">Logout</span>
                     </a>
                 </li> --}}
-                <li class="group">
-                    <div>
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                            <i class="ri-user-settings-line mr-3 text-lg"></i>
-                            {{ __('Profile') }}
-                        </x-responsive-nav-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-responsive-nav-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                                <i class="ri-logout-box-line mr-3 text-lg"></i>
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
-                    </div>
+                <li class="mb-1 group">
+                    <a href="{{ asset('profile') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-user-settings-line mr-3 text-lg"></i>
+                        <span class="text-sm">Profile</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    <a :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();"
+                        class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
+                        <i class="ri-logout-box-line mr-3 text-lg"></i>
+                        <span class="text-sm">Logout</span>
+                    </a>
+                </form>
                 </li>
             </ul>
         </nav>
@@ -173,7 +172,7 @@
                 </table>
 
              <!-- Add New Users Modal -->
-             <div x-show="collectorNewCollector" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
+             <div x-show="collectorNewCollector" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                 </div>
@@ -187,7 +186,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[550px]">
+                    <div class="bg-white py-3 w-[655px] h-[370px]">
                         {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                         </svg> --}}
@@ -196,47 +195,51 @@
                                 Register New Collector
                             </h3>
                         </div>
-                        <form action="{{ route('collector-residents.create_collector_residents') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
+                        <hr class="bg-black border-gray-300 w-[655px]">
+                        <form action="{{ route('collector-residents.create_collector_residents') }}" method="post" class=" flex justify-start pl-5 pr-5 pt-3 pb-3 ">
                             @csrf
+                            <div class="mr-4">
                             <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No.</label>
-                            <input type="text" name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                            <input type="text" name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
-
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            </div>
+                            <div>
                             <label for="password" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
-                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px] mb-2" required>
+                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2" required>
                                     {{-- <option value="admin">Admin</option> --}}
                                     <option value="collector" selected>Collector</option>
                                     {{-- <option value="resident">Resident</option> --}}
                                 </select>
 
                             <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
-                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
                                 <option value="active" selected>Active</option>
                                 <option value="inactive">Inactive</option>
                                 {{-- <option value="resident">Resident</option> --}}
                             </select>
-                            <div class="flex justify-end mt-3">
+                            <div class="flex justify-end mt-8">
                             <button type="submit"
                             class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                 Create
                             </button>
                         </form>
                         <div class="absolute mr-[90px]">
-                        <button @click="collectorNewCollector = false"
+                        <button @click.prevent="collectorNewCollector = false"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                             Cancel
                         </button>
+                    </div>
                     </div>
                 </div>
                 </div>
@@ -244,7 +247,7 @@
         </div>
 
             <!-- Delete Modal -->
-            <div x-show="collectorResidentsDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
+            <div x-show="collectorResidentsDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                 </div>
@@ -284,7 +287,7 @@
             </div>
 
             <!-- Edit Modal -->
-            <div x-show="collectorEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
+            <div x-show="collectorEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                 </div>
@@ -298,7 +301,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[490px]">
+                    <div class="bg-white py-3 w-[410px] h-[495px]">
                             {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg> --}}
