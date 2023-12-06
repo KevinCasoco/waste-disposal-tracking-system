@@ -94,10 +94,10 @@
 
     <form action="{{ route('schedule.create') }}" method="POST">
         @csrf
-        <label for='title'>{{ __('Date of Collection') }}</label>
+        <label for='title'>{{ __('Title') }}</label>
         <input type='text' class='form-control' id='title' name='title'>
 
-        <label for="start">Start</label>
+        <label for="start">Date of Collection</label>
         <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
 
         <label for="time">Time</label>
