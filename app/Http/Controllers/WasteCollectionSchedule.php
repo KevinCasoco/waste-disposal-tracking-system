@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Notifications\NewNotification;
+use App\Notifications\WasteCollectionSchedule as NotificationsWasteCollectionSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,7 +75,7 @@ class WasteCollectionSchedule extends Controller
         // }
 
         $users = User::where('status', 'active')->get();
-        $notification = new NewNotification();
+        $notification = new NotificationsWasteCollectionSchedule();
 
         foreach ($users as $user) {
         // Access the schedules relationship
@@ -106,7 +107,7 @@ class WasteCollectionSchedule extends Controller
         // }
 
         $users = User::where('status', 'active')->get();
-        $notification = new NewNotification();
+        $notification = new NotificationsWasteCollectionSchedule();
 
         foreach ($users as $user) {
         // Access the schedules relationship

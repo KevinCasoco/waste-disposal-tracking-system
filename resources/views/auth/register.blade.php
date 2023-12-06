@@ -45,6 +45,18 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Email Address -->
+        <div class="mt-3">
+            <x-input-label for="number" :value="__('Phone Number')" />
+            <x-text-input id="number" class="block mt-1 w-[100%]"
+                            type="text"
+                            name="number" :value="old('number')"
+                            required autocomplete="number"
+                            placeholder="Enter Your Phone Number" />
+
+            <x-input-error :messages="$errors->get('number')" class="mt-2" />
+        </div>
+
         <!-- Location -->
         <div class="status" style="display: none;"></div>
         <div class="mt-3">

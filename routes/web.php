@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EditProfile;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -180,8 +181,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::post('/users/{userId}/schedules', [WasteCollectionSchedule::class, 'store']);
 
     // send sms
-    Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
-    // Route::get('/sms', 'SmsController@sendSms')->name('sms');
+    Route::post('/sms', [SmsController::class, 'sms'])->name('schedule.sms');
 
 
 }); // end of middleware group
@@ -223,6 +223,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // delete residents-collector
     Route::get('/collector-residents', [CollectorController::class, 'collector'])->name('collector-residents');
     Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
+
+    // send sms
+    Route::post('/sms-controller', [SmsController::class, 'sms_controller'])->name('collector-schedule.sms_controller');
 
 }); // end of middleware group
 
