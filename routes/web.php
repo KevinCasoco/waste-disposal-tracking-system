@@ -181,7 +181,6 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::post('/users/{userId}/schedules', [WasteCollectionSchedule::class, 'store']);
 
     // send sms
-    // Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
     Route::post('/sms', [SmsController::class, 'sms'])->name('schedule.sms');
 
 
@@ -226,7 +225,6 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/collector/{id}', [CollectorController::class, 'destroy_collector_residents'])->name('collector-residents.destroy_collector_residents');
 
     // send sms
-    // Route::get('/sms', 'App\Http\Controllers\SmsController@sms');
     Route::post('/sms-controller', [SmsController::class, 'sms_controller'])->name('collector-schedule.sms_controller');
 
 }); // end of middleware group
