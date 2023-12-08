@@ -77,6 +77,7 @@ class CollectorController extends Controller
     {
         // Validate the request
         $request->validate([
+            'plate_no' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -87,6 +88,7 @@ class CollectorController extends Controller
 
         // Create the user
         User::create([
+            'plate_no' => $request->input('plate_no'),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
@@ -95,7 +97,7 @@ class CollectorController extends Controller
             'status' => $request->input('status'),
         ]);
 
-        return redirect()->route('collector-residents')->with('message', 'User created successfully');
+        return redirect()->route('collector-residents')->with('message', 'Residents created successfully');
     }
 
     public function activateCollector($id)

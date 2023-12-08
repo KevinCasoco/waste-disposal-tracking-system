@@ -94,6 +94,31 @@ class AdminController extends Controller
         return redirect()->route('collector')->with('message', 'Collector created successfully');
     }
 
+    public function create_residents(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => 'required|string|min:8',
+            'role' => 'required|string',
+            'status' => 'required|string',
+        ]);
+
+        // Create the user
+        User::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->password),
+            'role' => $request->input('role'),
+            'status' => $request->input('status'),
+        ]);
+
+        return redirect()->route('residents')->with('message', 'Residents created successfully');
+    }
+
     // Add an update method to handle the form submission
     public function update(Request $request, $id)
     {

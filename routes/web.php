@@ -109,10 +109,12 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     Route::post('/admin/create_admin', [AdminController::class, 'create_admin'])->name('admin.create_admin');
+
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
     Route::post('/collector/create_collector', [AdminController::class, 'create_collector'])->name('collector.create_collector');
+
     Route::get('/residents', [UserController::class, 'index'])->name('residents');
-    Route::post('/admin/create_residents', [UserController::class, 'create_residents'])->name('admin.create_residents');
+    Route::post('/admin/create_residents', [AdminController::class, 'create_residents'])->name('admin.create_residents');
 
     // collection schedule
     Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
