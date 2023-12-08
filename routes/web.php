@@ -112,6 +112,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
     Route::post('/collector/create_collector', [AdminController::class, 'create_collector'])->name('collector.create_collector');
     Route::get('/residents', [UserController::class, 'index'])->name('residents');
+    Route::post('/admin/create_residents', [UserController::class, 'create_residents'])->name('admin.create_residents');
 
     // collection schedule
     Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
