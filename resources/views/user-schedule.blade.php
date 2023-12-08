@@ -49,12 +49,12 @@
                 <span class="text-sm">Collector</span>
             </a>
         </li> --}}
-        <li class="mb-1 group">
+        {{-- <li class="mb-1 group">
             <a href="{{ asset('user-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                 <i class="ri-user-fill mr-3 text-lg"></i>
                 <span class="text-sm">Residents</span>
             </a>
-        </li>
+        </li> --}}
         <li class="mb-1 group active">
             <a href="{{ asset('user-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                 <i class="ri-calendar-2-fill mr-3 text-lg"></i>
