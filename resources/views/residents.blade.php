@@ -7,8 +7,6 @@
 
         <!-- mobile menu bar -->
         <div class="bg-white text-black flex justify-end md:hidden">
-          <!-- logo -->
-          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
 
           <!-- mobile menu button -->
           <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
@@ -21,16 +19,7 @@
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
-          <!-- logo -->
-          {{-- <div class="ml-2 flex items-center rounded-md ">
-            <a class="flex item-center ">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-2">Waste Disposal Tracking System</span>
-            </a>
-          </div>
-          <hr class="my-2 text-gray-600"> --}}
-
-          <!-- nav -->
+            <!-- nav -->
           <nav>
             <ul class="mt-2">
                 <li class="mb-1 group">
@@ -175,9 +164,6 @@
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
                     <div class="bg-white py-3 w-[410px] h-[550px]">
-                        {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg> --}}
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Admin
@@ -284,9 +270,6 @@
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
                     <div class="bg-white py-3 w-[410px] h-[490px]">
-                            {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg> --}}
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Profile
@@ -309,10 +292,6 @@
 
                                 <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-
-                                    {{-- <label for="password">Password:</label>
-                                    <input type="password" name="password">
-                                    <br> --}}
                                     <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
                                     <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
                                         <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
