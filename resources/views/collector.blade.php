@@ -7,8 +7,6 @@
 
         <!-- mobile menu bar -->
         <div class="bg-white text-black flex justify-end md:hidden">
-          <!-- logo -->
-          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
 
           <!-- mobile menu button -->
           <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
@@ -20,15 +18,6 @@
 
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
-
-          <!-- logo -->
-          {{-- <div class="ml-2 flex items-center rounded-md ">
-            <a class="flex item-center ">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-2">Waste Disposal Tracking System</span>
-            </a>
-          </div>
-          <hr class="my-2 text-gray-600"> --}}
 
           <!-- nav -->
           <nav>
@@ -87,26 +76,6 @@
                     </a>
                 </form>
                 </li>
-                {{-- <li class="group">
-                    <div>
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm flex items-center px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                            <i class="ri-user-settings-line mr-3 text-lg"></i>
-                            {{ __('Profile') }}
-                        </x-responsive-nav-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-responsive-nav-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-sm flex items-center  text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                                <i class="ri-logout-box-line mr-3 text-lg"></i>
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
-                    </div>
-                </li> --}}
             </ul>
           </nav>
         </div>
@@ -126,7 +95,6 @@
                             <th data-priority="1">Plate No.</th>
                             <th data-priority="2">First Name</th>
                             <th data-priority="3">Last Name</th>
-                            {{-- <th data-priority="3">Contact Number</th> --}}
                             <th data-priority="4">Email Address</th>
                             <th data-priority="5">Role</th>
                             <th data-priority="6">Edit</th>
@@ -193,9 +161,6 @@
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
                     <div class="bg-white py-3 w-[655px] h-[370px]">
-                        {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg> --}}
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Collector
@@ -310,9 +275,6 @@
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
                     <div class="bg-white py-3 w-[655px] h-[400px]">
-                            {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg> --}}
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Profile
@@ -339,7 +301,6 @@
                                 </div>
 
                                 <div class="mt-1">
-
                                 <label for="email" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Email:</label>
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
 
@@ -443,17 +404,6 @@
             }));
         });
     </script>
-
-	{{-- <script>
-		$(document).ready(function() {
-
-			var table = $('#example').DataTable({
-					responsive: true
-				})
-				.columns.adjust()
-				.responsive.recalc();
-		});
-	</script> --}}
 
 <!-- Script -->
 <script>
