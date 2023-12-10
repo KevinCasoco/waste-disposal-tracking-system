@@ -5,11 +5,9 @@
 
         <!-- mobile menu bar -->
         <div class="bg-white text-black flex justify-end md:hidden">
-          <!-- logo -->
-          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
 
-          <!-- mobile menu button -->
-          <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
+        <!-- mobile menu button -->
+        <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -18,15 +16,6 @@
 
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
-
-          <!-- logo -->
-          {{-- <div class="ml-2 flex items-center rounded-md ">
-            <a class="flex item-center ">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-2">Waste Disposal Tracking System</span>
-            </a>
-          </div>
-          <hr class="my-2 text-gray-600"> --}}
 
           <!-- nav -->
           <nav>
@@ -37,18 +26,6 @@
                         <span class="text-sm">Dashboard</span>
                     </a>
                 </li>
-                {{-- <li class="mb-1 group">
-                    <a href="{{ asset('admin')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-admin-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Admin</span>
-                    </a>
-                </li> --}}
-                {{-- <li class="mb-1 group">
-                    <a href="{{ asset('collector')}}"  class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Collector</span>
-                    </a>
-                </li> --}}
                 <li class="mb-1 group">
                     <a href="{{ asset('collector-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                         <i class="ri-user-fill mr-3 text-lg"></i>
@@ -67,18 +44,6 @@
                         <span class="text-sm">Location</span>
                     </a>
                 </li>
-                {{-- <li class="mb-1 group">
-                    <a href="Settings.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                        <i class="ri-settings-2-line mr-3 text-lg"></i>
-                        <span class="text-sm">Settings</span>
-                    </a>
-                </li>
-                <li class="mb-1 group">
-                    <a href="Login.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                        <i class="ri-logout-box-line mr-3 text-lg"></i>
-                        <span class="text-sm">Logout</span>
-                    </a>
-                </li> --}}
                 <li class="mb-1 group">
                     <a href="{{ asset('profile') }}"
                         class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
