@@ -97,7 +97,6 @@
                         <th data-priority="2">First Name</th>
                         <th data-priority="3">Last Name</th>
                         <th data-priority="4">Email Address</th>
-                        {{-- <th data-priority="3">Contact Number</th> --}}
                         <th data-priority="5">Role</th>
                         <th data-priority="6">Edit</th>
                         <th data-priority="7">Delete</th>
@@ -375,18 +374,6 @@
         }
     </script>
 
-	{{-- <script>
-		$(document).ready(function() {
-
-			var table = $('#example').DataTable({
-					responsive: true
-				})
-				.columns.adjust()
-				.responsive.recalc();
-		});
-	</script> --}}
-
-    <!-- Script -->
     <script>
         $(document).ready(function() {
             var empDataTable = $('#example').DataTable({
@@ -413,18 +400,17 @@
         });
     </script>
 
-<script>
-    // grab everything we need
-const btn = document.querySelector(".mobile-menu-button");
-const sidebar = document.querySelector(".sidebar");
-let isSidebarOpen = false;
+    <script>
+        // grab everything we need
+        const btn = document.querySelector(".mobile-menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        let isSidebarOpen = false;
 
-// add our event listener for the click
-btn.addEventListener("click", () => {
-  sidebar.classList.toggle("-translate-x-full");
-});
-
-</script>
+        // add our event listener for the click
+        btn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        });
+    </script>
 
 @endif
 
