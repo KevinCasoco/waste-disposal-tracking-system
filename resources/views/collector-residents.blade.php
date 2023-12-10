@@ -7,9 +7,6 @@
 
         <!-- mobile menu bar -->
         <div class="bg-white text-black flex justify-end md:hidden">
-          <!-- logo -->
-          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
-
           <!-- mobile menu button -->
           <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,16 +18,7 @@
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
-          <!-- logo -->
-          {{-- <div class="ml-2 flex items-center rounded-md ">
-            <a class="flex item-center ">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-2">Waste Disposal Tracking System</span>
-            </a>
-          </div>
-          <hr class="my-2 text-gray-600"> --}}
-
-          <!-- nav -->
+         <!-- nav -->
           <nav>
             <ul class="mt-2" >
                 <li class="mb-1 group">
@@ -39,18 +27,6 @@
                         <span class="text-sm">Dashboard</span>
                     </a>
                 </li>
-                {{-- <li class="mb-1 group">
-                    <a href="{{ asset('admin')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-admin-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Admin</span>
-                    </a>
-                </li> --}}
-                {{-- <li class="mb-1 group">
-                    <a href="{{ asset('collector')}}"  class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Collector</span>
-                    </a>
-                </li> --}}
                 <li class="mb-1 group active">
                     <a href="{{ asset('collector-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                         <i class="ri-user-fill mr-3 text-lg"></i>
@@ -69,18 +45,6 @@
                         <span class="text-sm">Location</span>
                     </a>
                 </li>
-                {{-- <li class="mb-1 group">
-                    <a href="Settings.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                        <i class="ri-settings-2-line mr-3 text-lg"></i>
-                        <span class="text-sm">Settings</span>
-                    </a>
-                </li>
-                <li class="mb-1 group">
-                    <a href="Login.html" class="flex items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                        <i class="ri-logout-box-line mr-3 text-lg"></i>
-                        <span class="text-sm">Logout</span>
-                    </a>
-                </li> --}}
                 <li class="mb-1 group">
                     <a href="{{ asset('profile') }}"
                         class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
@@ -122,7 +86,6 @@
                             <th data-priority="2">First Name</th>
                             <th data-priority="3">Last Name</th>
                             <th data-priority="4">Email Address</th>
-                            {{-- <th data-priority="3">Contact Number</th> --}}
                             <th data-priority="5">Role</th>
                             <th data-priority="6">Edit</th>
                             <th data-priority="7">Delete</th>
@@ -187,9 +150,6 @@
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
                     <div class="bg-white py-3 w-[655px] h-[370px]">
-                        {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg> --}}
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Collector
@@ -302,9 +262,6 @@
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
                     <div class="bg-white py-3 w-[410px] h-[495px]">
-                            {{-- <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg> --}}
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Profile
@@ -316,8 +273,6 @@
                             <form method="post" :action="`{{ route('collector-residents.update_collector', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                 @csrf
                                 @method('patch')
-                                {{-- <label for="number" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label> --}}
-                                {{-- <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled> --}}
 
                                 <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No.</label>
                                 <input type="text" name="plate_no" value="{{ $item->plate_no }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
@@ -331,9 +286,6 @@
                                 <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
 
-                                    {{-- <label for="password">Password:</label>
-                                    <input type="password" name="password">
-                                    <br> --}}
                                     <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
                                     <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
                                         <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
@@ -424,17 +376,6 @@
                 }));
             });
         </script>
-
-        {{-- <script>
-            $(document).ready(function() {
-
-                var table = $('#example').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
-        </script> --}}
 
     <!-- Script -->
     <script>
