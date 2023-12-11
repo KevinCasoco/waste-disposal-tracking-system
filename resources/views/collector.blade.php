@@ -405,32 +405,53 @@
         });
     </script>
 
-<!-- Script -->
-<script>
-    $(document).ready(function() {
-        var empDataTable = $('#example').DataTable({
-            responsive: true,
-            dom: 'Blfrtip',
-            buttons: [
-                {
-                    extend: 'copy',
-                },
-                {
-                    extend: 'pdf',
-                    exportOptions: {
-                        columns: [0, 1] // Column index which needs to export
-                    }
-                },
-                {
-                    extend: 'csv',
-                },
-                {
-                    extend: 'excel',
-                }
-            ]
-        });
-    });
-</script>
+    <!-- Script -->
+    <script>
+        $(document).ready(function() {
+            var empDataTable = $('#example').DataTable({
+                        responsive: true,
+                        dom: 'Blfrtip',
+                        buttons: [
+                            {
+                                extend: 'copy',
+                            },
+                            {
+                                // extend: 'pdf',
+                                // exportOptions: {
+                                //     columns: [0, 1] // Column index which needs to export
+                                // }
+                                extend: 'pdf',
+                                title: 'Waste Disposal Tracking System PDF Report',
+                                customize: function(doc) {
+                                    // Add custom design to PDF header
+                                    doc.content.splice(0, 1, {
+                                        text: 'Waste Disposal Tracking System PDF Report',
+                                        style: {
+                                            alignment: 'center',
+                                            color: 'red', // Change color as needed
+                                            fontSize: 16 // Adjust font size as needed
+                                        }
+                                    });
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                title: 'Waste Disposal Tracking System CSV Report',
+                                customize: function(xlsx) {
+
+                                }
+                            },
+                            {
+                                extend: 'excel',
+                                title: 'Waste Disposal Tracking System Excel Report',
+                                customize: function(xlsx) {
+
+                                }
+                            }
+                        ]
+                    });
+                });
+    </script>
 <script>
     // grab everything we need
 const btn = document.querySelector(".mobile-menu-button");
