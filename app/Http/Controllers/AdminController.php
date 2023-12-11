@@ -160,7 +160,7 @@ class AdminController extends Controller
 
         // Validate the request
         $request->validate([
-            'plate_np' => 'required|string',
+            'plate_no' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
