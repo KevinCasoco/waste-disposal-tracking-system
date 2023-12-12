@@ -8,6 +8,7 @@ use App\Notifications\NewNotification;
 use App\Notifications\WasteCollectionSchedule as NotificationsWasteCollectionSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class WasteCollectionSchedule extends Controller
 {
@@ -95,6 +96,37 @@ class WasteCollectionSchedule extends Controller
         return redirect()->route('schedule')->with('message', 'Email was sent successfully');
 
     }
+
+
+    // public function admin_sendNotification()
+    // {
+    //     $users = User::where('status', 'active')->get();
+    //     $notification = new NotificationsWasteCollectionSchedule();
+
+    //     foreach ($users as $user) {
+    //         // Access the schedules relationship
+    //         $schedules = $user->schedules;
+
+    //         foreach ($schedules as $schedule) {
+    //             // Access schedule properties
+    //             $start = $schedule->start;
+    //             $time = $schedule->time;
+
+    //             // Check if the scheduled date is one day ahead of the current date
+    //             $scheduledDateTime = Carbon::parse("$start $time");
+    //             $currentDateTime = Carbon::now();
+    //             $dayDifference = $currentDateTime->diffInDays($scheduledDateTime);
+
+    //             if ($dayDifference == 1) {
+    //                 // Notify the user
+    //                 $user->notify($notification);
+    //             }
+    //         }
+    //     }
+
+    //     return redirect()->route('schedule')->with('message', 'Email was sent successfully');
+    // }
+
 
     public function collector_sendNotification()
     {

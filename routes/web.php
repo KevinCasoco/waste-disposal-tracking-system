@@ -73,7 +73,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth', 'status')->group(function () {
 
-    Route::get('register', [RoleController::class, 'roleInRegister'])->name('register');
+    // Route::get('register', [RoleController::class, 'roleInRegister'])->name('register');
 
     // Route::get('register', [RegisteredUserController::class, 'create'])
     //             ->name('register');
