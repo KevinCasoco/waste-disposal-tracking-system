@@ -104,6 +104,7 @@ class AdminController extends Controller
             'password' => 'required|string|min:8',
             'role' => 'required|string',
             'status' => 'required|string',
+            'location' => 'required|string',
         ]);
 
         // Create the user
@@ -114,6 +115,7 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->input('role'),
             'status' => $request->input('status'),
+            'location' => $request->input('location'),
         ]);
 
         return redirect()->route('residents')->with('message', 'Residents created successfully');
