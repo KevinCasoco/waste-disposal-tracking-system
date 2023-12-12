@@ -154,4 +154,50 @@
             </main>
         </div>
     </body>
+
+    <script>
+        const findMyLocation = () => {
+            const status = document.querySelector('.status');
+            const locationTextarea = document.getElementById('locationTextarea');
+
+            const success = (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                const geoApiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+                fetch(geoApiUrl)
+                    .then(res => {
+                        if (!res.ok) {
+                            throw new Error('Failed to retrieve location information');
+                        }
+                        return res.json();
+                    })
+                    .then(data => {
+                        const address = data.display_name || '';
+
+                        if (address) {
+                            status.textContent = '' + address;
+                            locationTextarea.value = '' + address;
+                        } else {
+                            throw new Error('Location information not found');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        status.textContent = 'Error: ' + error.message;
+                    });
+            };
+
+            const error = (err) => {
+                console.error(err);
+                status.textContent = 'Unable to retrieve your location';
+            };
+
+            navigator.geolocation.getCurrentPosition(success, error);
+        };
+
+        // Event listener for the button
+        document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
+    </script>
 </html>
