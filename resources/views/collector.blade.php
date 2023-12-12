@@ -65,19 +65,48 @@
                     </a>
                 </li>
                 <li class="mb-1 group">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                    <a :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();"
+                    <a onclick="document.getElementById('logoutModal').classList.remove('hidden')"
                         class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
-                        <i class="ri-logout-box-line mr-3 text-lg"></i>
+                            <i class="ri-logout-box-line mr-3 text-lg"></i>
                         <span class="text-sm">Logout</span>
                     </a>
-                </form>
                 </li>
             </ul>
           </nav>
+        </div>
+
+         <!-- Logout Modal -->
+         <div id="logoutModal" class="hidden fixed inset-0 overflow-y-auto flex items-center justify-center z-30">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col">
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to logout?</h3>
+                    <div class="flex justify-end items-end pb-2">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();"
+                                class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
+                                <i class="ri-logout-box-line mr-3 text-lg"></i>
+                                <span class="text-sm">Logout</span>
+                            </a>
+                        </form>
+                        <div class="absolute mr-[90px]">
+                            <button onclick="document.getElementById('logoutModal').classList.add('hidden')"
+                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- content -->
