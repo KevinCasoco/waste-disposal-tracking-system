@@ -67,34 +67,18 @@ class WasteCollectionSchedule extends Controller
 
     public function admin_sendNotification()
     {
-        // // $users = User::all();
-        // $users = User::where('status', 'active')->get();
-        // $notification = new NewNotification();
-
-        // foreach ($users as $user) {
-        //     $user->notify($notification);
-        // }
-
         $users = User::where('status', 'active')->get();
-        $notification = new NotificationsWasteCollectionSchedule();
+        // $notification = new NotificationsWasteCollectionSchedule();
+
+        // Access all schedules
+        $schedules = Schedule::all();
 
         foreach ($users as $user) {
-        // Access the schedules relationship
-        $schedules = $user->schedules;
-
-        foreach ($schedules as $schedule) {
-            // Access schedule properties, for example:
-            $start = $schedule->start;
-            $time = $schedule->time;
+            // Notify the user with schedule information
+            $user->notify(new NotificationsWasteCollectionSchedule($schedules));
         }
 
-            // Notify the user
-            $user->notify($notification);
-        }
-
-        // return "Notification sent to all users.";
         return redirect()->route('schedule')->with('message', 'Email was sent successfully');
-
     }
 
 
@@ -139,7 +123,7 @@ class WasteCollectionSchedule extends Controller
         // }
 
         $users = User::where('status', 'active')->get();
-        $notification = new NotificationsWasteCollectionSchedule();
+        // $notification = new NotificationsWasteCollectionSchedule();
 
         foreach ($users as $user) {
         // Access the schedules relationship
@@ -152,7 +136,7 @@ class WasteCollectionSchedule extends Controller
         }
 
             // Notify the user
-            $user->notify($notification);
+            // $user->notify($notification);
         }
 
         // return "Notification sent to all users.";
