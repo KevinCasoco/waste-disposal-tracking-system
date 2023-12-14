@@ -128,7 +128,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="input-group mb-3">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search events">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
                     <div class="input-group-append">
                         <button id="searchButton" class="btn btn-primary">Search</button>
                     </div>
