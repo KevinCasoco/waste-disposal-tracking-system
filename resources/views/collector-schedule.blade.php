@@ -276,8 +276,9 @@
                         return {
                             title: event.title,
                             start: event.start ? event.start.toISOString() : null,
-                            end: event.end ? event.end.toISOString() : null,
-                            color: event.backgroundColor,
+                            time: event.time ? event.time.toISOString() : null,
+                            // end: event.end ? event.end.toISOString() : null,
+                            // color: event.backgroundColor,
                         };
                     });
 
@@ -285,7 +286,7 @@
 
                     var ws = XLSX.utils.json_to_sheet(events);
 
-                    XLSX.utils.book_append_sheet(wb, ws, 'Events');
+                    XLSX.utils.book_append_sheet(wb, ws, 'Waste Collection Schedule');
 
                     var arrayBuffer = XLSX.write(wb, {
                         bookType: 'xlsx',
@@ -298,7 +299,7 @@
 
                     var downloadLink = document.createElement('a');
                     downloadLink.href = URL.createObjectURL(blob);
-                    downloadLink.download = 'events.xlsx';
+                    downloadLink.download = 'waste-collection-schedule.xlsx';
                     downloadLink.click();
                 })
             </script>
