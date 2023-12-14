@@ -144,14 +144,14 @@
                 </div>
 
             </div>
-            <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="absolute flex justify-end ml-[752px]">
+            <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="absolute flex justify-end ml-[780px]">
                 @csrf
-                <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(Email)</button>
+                <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
             </form>
 
-            <form action="{{ route('schedule.sms') }}" method="POST" class="absolute flex justify-end ml-[550px]">
+            <form action="{{ route('schedule.sms') }}" method="POST" class="absolute flex justify-end ml-[570px]">
                 @csrf
-                <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(sms)</button>
+                <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(sms)</button>
             </form>
 
         </div>
