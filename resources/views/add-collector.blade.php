@@ -134,8 +134,8 @@
         <label for="time">Time</label>
         <input type="time" class='form-control' id="time" name="time" required>
 
-        <label for="color">Color</label>
-        <input type="color" id="color" name="color" />
+        {{-- <label for="color">Color</label>
+        <input type="color" id="color" name="color" /> --}}
 
         <input type="submit" value="Save" class="btn btn-success" />
     </form>
