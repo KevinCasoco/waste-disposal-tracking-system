@@ -108,7 +108,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group mb-3">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search events">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
                             <div class="input-group-append">
                                 <button id="searchButton" class="btn btn-primary">Search</button>
                             </div>
@@ -124,14 +124,14 @@
                         </div>
 
                     </div>
-                    <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="absolute flex justify-end ml-[752px]">
+                    <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="absolute flex justify-end ml-[780px]">
                         @csrf
-                        <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(Email)</button>
+                        <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
                     </form>
 
-                    <form action="{{ route('collector-schedule.sms_controller') }}" method="POST" class="absolute flex justify-end ml-[550px]">
+                    <form action="{{ route('collector-schedule.sms_controller') }}" method="POST" class="absolute flex justify-end ml-[570px]">
                         @csrf
-                        <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify All Users(sms)</button>
+                        <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(sms)</button>
                     </form>
 
                 </div>
