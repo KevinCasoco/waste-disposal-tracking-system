@@ -86,39 +86,70 @@ class SmsController extends Controller
     //     }
     // }
 
-    // collector side
+    // // collector side
+    // public function sms_controller()
+    // {
+    //     $users = User::where('status', 'active')->get();
+    //     $schedules = Schedule::all();
+
+    //     foreach ($users as $user) {
+    //         // Modify the SMS content as needed
+    //         $smsContent = 'The Collection Time will Be on: ';
+
+    //         // Modify the phone number field based on your User model structure
+    //         $phoneNumber = $user->number;
+
+    //         $basic  = new \Vonage\Client\Credentials\Basic("59d47bd7", "0bnOjwpUBX1XoujH");
+    //         $client = new \Vonage\Client($basic);
+
+    //         $response = $client->sms()->send(
+    //             new \Vonage\SMS\Message\SMS($phoneNumber, 'WDTS', $smsContent)
+    //         );
+
+    //         $message = $response->current();
+
+    //         if ($message->getStatus() == 0) {
+    //             // SMS sent successfully
+    //             // You may want to log this information or handle it as needed
+    //             // For example: Log::info("SMS sent to $phoneNumber successfully");
+    //         } else {
+    //             // SMS failed to send
+    //             // You may want to log this information or handle it as needed
+    //             // For example: Log::error("SMS to $phoneNumber failed with status: " . $message->getStatus());
+    //         }
+    //     }
+
+    //     return redirect()->route('collector-schedule')->with('message', 'SMS notifications were sent successfully');
+    // }
+
+
     public function sms_controller()
     {
-        $users = User::where('status', 'active')->get();
+        $basic  = new \Vonage\Client\Credentials\Basic("59d47bd7", "0bnOjwpUBX1XoujH");
+        $client = new \Vonage\Client($basic);
+
+        // Retrieve schedules from the database
         $schedules = Schedule::all();
 
-        foreach ($users as $user) {
-            // Modify the SMS content as needed
-            $smsContent = 'The Collection Time will Be on: ';
+        // Build the SMS content with schedule information
+        $smsContent = 'Collection Schedules:' . PHP_EOL;
 
-            // Modify the phone number field based on your User model structure
-            $phoneNumber = $user->phone_number;
-
-            $basic  = new \Vonage\Client\Credentials\Basic("##", "##");
-            $client = new \Vonage\Client($basic);
-
-            $response = $client->sms()->send(
-                new \Vonage\SMS\Message\SMS($phoneNumber, 'WDTS', $smsContent)
-            );
-
-            $message = $response->current();
-
-            if ($message->getStatus() == 0) {
-                // SMS sent successfully
-                // You may want to log this information or handle it as needed
-                // For example: Log::info("SMS sent to $phoneNumber successfully");
-            } else {
-                // SMS failed to send
-                // You may want to log this information or handle it as needed
-                // For example: Log::error("SMS to $phoneNumber failed with status: " . $message->getStatus());
-            }
+        foreach ($schedules as $schedule) {
+            $smsContent .= "Start: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
         }
 
-        return redirect()->route('schedule')->with('message', 'SMS notifications were sent successfully');
+        // Send SMS with the built content
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("639512847808", 'WDTS', $smsContent)
+        );
+
+        $message = $response->current();
+
+        if ($message->getStatus() == 0) {
+            return redirect()->route('collector-schedule')->with('message', 'The message was sent successfully');
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
     }
+
 }
