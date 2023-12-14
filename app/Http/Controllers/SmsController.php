@@ -47,6 +47,8 @@ class SmsController extends Controller
         //     echo "An error occurred: " . $e->getMessage() . "\n";
         // }
 
+        // admin side
+
         $basic  = new \Vonage\Client\Credentials\Basic("fe1715cd", "gp17B0IoabKP3nyy");
         $client = new \Vonage\Client($basic);
 
@@ -64,6 +66,7 @@ class SmsController extends Controller
         }
     }
 
+    // collector side
     public function sms_controller() {
         $basic  = new \Vonage\Client\Credentials\Basic("fe1715cd", "gp17B0IoabKP3nyy");
         $client = new \Vonage\Client($basic);
