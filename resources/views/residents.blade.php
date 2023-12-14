@@ -93,14 +93,14 @@
                             <a :href="route('logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();"
-                                class="flex items-center py-2 px-4 text-black hover:bg-red-500 hover:text-gray-100 rounded-md group-[.active]:bg-red-500 group-[.active]:text-white group-[.selected]:bg-red500 group-[.selected]:text-white transition duration-200">
-                                <i class="ri-logout-box-line mr-3 text-lg"></i>
+                                 class="text-red-500 bg-red hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border border-red-200 text-sm font-medium px-3 py-2.5 hover:text-red-900 focus:z-10 dark:bg-red-700 dark:text-red-300 dark:border-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-600">
+                                <i class="ri-logout-box-line mr-1 text-lg"></i>
                                 <span class="text-sm">Logout</span>
                             </a>
                         </form>
-                        <div class="absolute mr-[90px]">
+                        <div class="absolute mr-[105px]">
                             <button onclick="document.getElementById('logoutModal').classList.add('hidden')"
-                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                    class="text-red-500 bg-red hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-200 rounded-lg border border-red-200 text-sm font-medium px-3 py-2.5 hover:text-red-900 focus:z-10 dark:bg-red-700 dark:text-red-300 dark:border-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-600">
                                 Cancel
                             </button>
                         </div>
@@ -191,44 +191,25 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[550px]">
+                    <div class="bg-white py-3 w-[655px] h-[410px]">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Admin
                             </h3>
                         </div>
-                        <hr class="bg-black border-gray-300 w-[410px]">
-                        <form action="{{ route('admin.create_residents') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
+                        <hr class="bg-black border-gray-300 w-[655px]">
+                        <form action="{{ route('admin.create_residents') }}" method="post" class="flex justify-start pl-5 pr-5 pt-3 pb-3">
                             @csrf
+                            <div class="mr-4">
                             <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
-
-                            <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
-
-                            <label for="password" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
-                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
-
-                            <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px] mb-2" required>
-                                    {{-- <option value="admin">Admin</option> --}}
-                                    {{-- <option value="collector">Collector</option> --}}
-                                    <option value="residents">Resident</option>
-                                </select>
-
-                            <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
-                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-                                <option value="active" selected>Active</option>
-                                <option value="inactive">Inactive</option>
-                                {{-- <option value="resident">Resident</option> --}}
-                            </select>
+                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <!-- Location -->
                             <div class="status" style="display: none;"></div>
-                            <div class="mt-3">
+                            <div class="mt-1">
                                 <x-input-label for="location" :value="__('Location')" />
                                 <textarea id="locationTextarea" rows="4" cols="50"
                                         class="block mt-1 w-[100%]"
@@ -236,10 +217,31 @@
                                         placeholder="Find Your Location">{{ old('location') }}</textarea>
 
                                 <x-input-error :messages="$errors->get('location')" class="mt-2" />
-                            <div class="flex justify-end mt-2">
-                                <x-primary-button id="getLocationBtn" class="bg-green-500 hover:bg-green-700">Location</x-primary-button>
+                            <div class="flex justify-end mt-3">
+                                <button id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</button>
                             </div>
                             </div>
+
+                            </div>
+                            <div>
+                            <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
+                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2" required>
+                                    {{-- <option value="admin">Admin</option> --}}
+                                    {{-- <option value="collector">Collector</option> --}}
+                                    <option value="residents">Resident</option>
+                                </select>
+
+                            <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                <option value="active" selected>Active</option>
+                                <option value="inactive">Inactive</option>
+                                {{-- <option value="resident">Resident</option> --}}
+                            </select>
+                            <label for="email" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Email:</label>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+
+                            <label for="password" class="text-gray-800 block font-bold text-sm tracking-wide">Password:</label>
+                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                             <div class="flex justify-end mt-3">
                                 <button type="submit"
@@ -252,7 +254,8 @@
                                     class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                 Cancel
                             </button>
-                            </div>
+                        </div>
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -313,36 +316,61 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[490px]">
+                    <div class="bg-white py-3 w-[655px] h-[417px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Profile
                                 </h3>
                             </div>
-                            <hr class="bg-black border-gray-300 w-[410px]">
+                            <hr class="bg-black border-gray-300 w-[655px]">
                             @foreach($data as $item)
                             <div x-show="itemToEdit === {{ $item->id }}">
-                            <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`"class="pl-5 pr-5 pt-2 pb-1">
+                            <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`" class="flex justify-start pl-5 pr-5 pt-2 pb-1">
                                 @csrf
                                 @method('patch')
+                                <div class="mr-4">
                                 <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
+                                <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" disabled>
 
                                 <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+
+                                <!-- Location -->
+                                <div class="status" style="display: none;"></div>
+                                <div class="mt-1">
+                                    <x-input-label for="location" :value="__('Location')" />
+                                    <textarea id="locationTextarea" rows="4" cols="50"
+                                        class="block mt-1 w-[100%]" name="location" required autocomplete=""
+                                        placeholder="Find Your Location">{{ old('location', $item->location) }}</textarea>
+
+                                    <x-input-error :messages="$errors->get('location')" class="mt-2" />
+                                    <div class="flex justify-end mt-3">
+                                        {{-- <button id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</button> --}}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div>
+                                <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
+                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
 
                                 <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[370px]" required>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
-                                <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
                                     <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-                                        <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                        <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
+                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                        {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
+                                        {{-- <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option> --}}
                                         <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option>
                                     </select>
-                                    <div class="flex justify-end items-end pt-1">
+
+                                    <label for="status" class="text-gray-800 block font-bold text-sm tracking-wide">Status:</label>
+                                    <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                        <option value="active" {{ $item->status === 'active' ? 'selected' : '' }}>Active</option>
+                                        <option value="inactive" {{ $item->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                    </select>
+
+                                    <div class="flex justify-end items-end pt-3">
                                         <button type="submit"
                                                 class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                             Update
@@ -351,22 +379,25 @@
                                         <button @click.prevent="residentsEdit = false"
                                                 class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                              Cancel
-                                        </button>
+                                            </button>
+                                        </div>
+                                        </div>
+                                    </form>
                                     </div>
                                     </div>
-                                </form>
-                                </div>
-                            @endforeach
-                        </div>
-                     </div>
+                                @endforeach
+                            </div>
+                         </div>
+                    </div>
                 </div>
             </div>
 
+            </div>
+            <!--/Card-->
+        </main>
         </div>
-        <!--/Card-->
-
-    </div>
-    <!--/container-->
+        </div>
+        <!--/container-->
 
     <!-- Datatable CSS -->
     <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
