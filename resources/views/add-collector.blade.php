@@ -125,6 +125,8 @@
 
     <form action="{{ route('collector-schedule.create_collector') }}" method="POST">
         @csrf
+        <h1 class="mt-2 text-2xl font-bold text-center">Waste Collection Schedule</h1>
+
         <label for='title'>{{ __('Date of Collection') }}</label>
         <input type='text' class='form-control' id='title' name='title'>
 
