@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col justify-start bg-slate-200">
+            <div class="absolute ml-[69%] mt-[38%] bg-slate-200">
                 <div class="max-w-xl">
                     @include('profile.partials.delete-user-form')
                 </div>
