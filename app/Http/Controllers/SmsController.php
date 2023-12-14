@@ -50,18 +50,45 @@ class SmsController extends Controller
 
         // admin side
 
-        $basic  = new \Vonage\Client\Credentials\Basic("fe1715cd", "gp17B0IoabKP3nyy");
+        // $basic  = new \Vonage\Client\Credentials\Basic("fe1715cd", "gp17B0IoabKP3nyy");
+        // $client = new \Vonage\Client($basic);
+
+        // $response = $client->sms()->send(
+        //     new \Vonage\SMS\Message\SMS("639122580523",'WDTS', 'The Collection Time will Be on: ')
+        // );
+
+        // $message = $response->current();
+
+        // if ($message->getStatus() == 0) {
+        //     // echo "The message was sent successfully\n";
+        //     return redirect()->route('schedule')->with('message', 'The message was sent successfully');
+        // } else {
+        //     echo "The message failed with status: " . $message->getStatus() . "\n";
+        // }
+
+        // admin
+        $basic  = new \Vonage\Client\Credentials\Basic("59d47bd7", "0bnOjwpUBX1XoujH");
         $client = new \Vonage\Client($basic);
 
+        // Retrieve schedules from the database
+        $schedules = Schedule::all();
+
+        // Build the SMS content with schedule information
+        $smsContent = 'Collection Schedules:' . PHP_EOL;
+
+        foreach ($schedules as $schedule) {
+            $smsContent .= "Start: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
+        }
+
+        // Send SMS with the built content
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639122580523",'WDTS', 'The Collection Time will Be on: ')
+            new \Vonage\SMS\Message\SMS("639512847808", 'WDTS', $smsContent)
         );
 
         $message = $response->current();
 
         if ($message->getStatus() == 0) {
-            // echo "The message was sent successfully\n";
-            return redirect()->route('schedule')->with('message', 'The message was sent successfully');
+            return redirect()->route('collector-schedule')->with('message', 'The message was sent successfully');
         } else {
             echo "The message failed with status: " . $message->getStatus() . "\n";
         }
@@ -122,7 +149,7 @@ class SmsController extends Controller
     //     return redirect()->route('collector-schedule')->with('message', 'SMS notifications were sent successfully');
     // }
 
-
+    // collector button
     public function sms_controller()
     {
         $basic  = new \Vonage\Client\Credentials\Basic("59d47bd7", "0bnOjwpUBX1XoujH");
