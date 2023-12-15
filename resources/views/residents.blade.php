@@ -191,7 +191,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[655px] h-[410px]">
+                    <div class="bg-white py-3 w-[655px] h-[500px]">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Admin
@@ -237,8 +237,12 @@
                                 <option value="inactive">Inactive</option>
                                 {{-- <option value="resident">Resident</option> --}}
                             </select>
+
                             <label for="email" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Email:</label>
                             <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+
+                            <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
+                            <input type="text" name="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
 
                             <label for="password" class="text-gray-800 block font-bold text-sm tracking-wide">Password:</label>
                             <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
@@ -316,7 +320,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[655px] h-[417px]">
+                    <div class="bg-white py-3 w-[655px] h-[450px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Profile
@@ -329,11 +333,14 @@
                                 @csrf
                                 @method('patch')
                                 <div class="mr-4">
-                                <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" disabled>
+                                {{-- <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
+                                <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" disabled> --}}
 
                                 <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
                                 <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+
+                                <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
 
                                 <!-- Location -->
                                 <div class="status" style="display: none;"></div>
@@ -354,8 +361,11 @@
                                 <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
 
-                                <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                                <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
+                                <input type="text" name="number" value="{{ $item->number }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+
+                                {{-- <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required> --}}
 
                                     <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
                                     <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
