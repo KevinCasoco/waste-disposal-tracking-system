@@ -430,7 +430,7 @@
                         </div>
 		</section>
 
-	{{-- Chart --}}
+	            {{-- Chart --}}
                 <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
                   <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
                     {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
@@ -524,19 +524,17 @@
               </main>
         </div>
 
-      </div>
-      <script>
+    </div>
+    <script>
         // grab everything we need
-    const btn = document.querySelector(".mobile-menu-button");
-    const sidebar = document.querySelector(".sidebar");
-    let isSidebarOpen = false;
+        const btn = document.querySelector(".mobile-menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        let isSidebarOpen = false;
 
-    // add our event listener for the click
-    btn.addEventListener("click", () => {
-      sidebar.classList.toggle("-translate-x-full");
-    });
-
-
+        // add our event listener for the click
+        btn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        });
     </script>
 
     @endif
@@ -546,8 +544,6 @@
 
         <!-- mobile menu bar -->
         <div class="bg-white text-black flex justify-end md:hidden">
-          <!-- logo -->
-          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
 
           <!-- mobile menu button -->
           <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
@@ -654,9 +650,8 @@
         <div class="flex-grow text-gray-800">
             <main class="p-6 sm:p-10 space-y-6">
 
- 	    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-              <div
-                            class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <div class="p-4 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
                             <div class="w-3/5 flex justify-start">
                                 <ul>
                                     <li class="font-bold text-white">
@@ -690,19 +685,18 @@
                                 </div>
                             </div>
                         </a>
-                        <div
-                            class="p-4 bg-[#4ECE5D] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#46b953] hover:shadow-xl">
+                        <div class="p-4 bg-[#4ECE5D] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#46b953] hover:shadow-xl">
                             <div class="w-3/5 flex justify-start">
                                 <ul>
                                     <li class="font-bold text-white">Total Users</li>
                                     <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
                                     <i class="ri-admin-fill text-white"></i>
                                 </ul>
-                            </div>
                         </div>
-		</section>
+                    </div>
+		        </section>
 
-	{{-- Chart --}}
+	            {{-- Chart --}}
                 <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
                   <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
                     {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
@@ -796,19 +790,17 @@
               </main>
         </div>
 
-      </div>
-      <script>
+    </div>
+    <script>
         // grab everything we need
-    const btn = document.querySelector(".mobile-menu-button");
-    const sidebar = document.querySelector(".sidebar");
-    let isSidebarOpen = false;
+        const btn = document.querySelector(".mobile-menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        let isSidebarOpen = false;
 
-    // add our event listener for the click
-    btn.addEventListener("click", () => {
-      sidebar.classList.toggle("-translate-x-full");
-    });
-
-
+        // add our event listener for the click
+        btn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        });
     </script>
 
     @endif
