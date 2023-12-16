@@ -162,22 +162,21 @@
             });
         }
     </script>
-      <script>
+
+    <script>
         // grab everything we need
-    const btn = document.querySelector(".mobile-menu-button");
-    const sidebar = document.querySelector(".sidebar");
-    let isSidebarOpen = false;
+        const btn = document.querySelector(".mobile-menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        let isSidebarOpen = false;
 
-    // add our event listener for the click
-    btn.addEventListener("click", () => {
-    sidebar.classList.toggle("-translate-x-full");
-    });
-
+        // add our event listener for the click
+        btn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        });
     </script>
 
 </main>
    <!-- END Main -->
-
 
 @endif
 
