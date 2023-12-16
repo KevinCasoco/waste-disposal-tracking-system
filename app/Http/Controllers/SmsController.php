@@ -67,7 +67,7 @@ class SmsController extends Controller
         // }
 
         // admin
-        $basic  = new \Vonage\Client\Credentials\Basic("59d47bd7", "0bnOjwpUBX1XoujH");
+        $basic  = new \Vonage\Client\Credentials\Basic("a01afc5e", "H8YYkyhcaqXnRYf7");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
@@ -82,7 +82,7 @@ class SmsController extends Controller
 
         // Send SMS with the built content
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639512847808", 'WDTS', $smsContent)
+            new \Vonage\SMS\Message\SMS("639704881156", 'WDTS', $smsContent)
         );
 
         $message = $response->current();
@@ -152,7 +152,7 @@ class SmsController extends Controller
     // collector button
     public function sms_controller()
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("59d47bd7", "0bnOjwpUBX1XoujH");
+        $basic  = new \Vonage\Client\Credentials\Basic("a01afc5e", "H8YYkyhcaqXnRYf7");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
@@ -167,7 +167,7 @@ class SmsController extends Controller
 
         // Send SMS with the built content
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639512847808", 'WDTS', $smsContent)
+            new \Vonage\SMS\Message\SMS("639704881156", 'WDTS', $smsContent)
         );
 
         $message = $response->current();
