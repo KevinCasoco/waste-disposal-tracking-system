@@ -5,28 +5,17 @@
 
         <!-- mobile menu bar -->
         <div class="bg-white text-black flex justify-end md:hidden">
-          <!-- logo -->
-          {{-- <a href="#" class="block p-4 text-black font-bold">WDT System</a> --}}
 
-          <!-- mobile menu button -->
-          <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
+            <!-- mobile menu button -->
+            <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-          </button>
+            </button>
         </div>
 
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
-
-          <!-- logo -->
-          {{-- <div class="ml-2 flex items-center rounded-md ">
-            <a class="flex item-center ">
-                <img src="{{ asset('/images/Waste-Logo.png') }}" alt="" class="w-14 h-14 rounded object-cover">
-                <span class="text-lg font-extrabold text-black ml-2">Waste Disposal Tracking System</span>
-            </a>
-          </div>
-          <hr class="my-2 text-gray-600"> --}}
 
           <!-- nav -->
           <nav>
@@ -123,46 +112,44 @@
             <main class="p-6 sm:p-1 space-y-6">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <div class="container mt-5">
-        {{-- For Search --}}
-        <div class="row">
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
-                    <div class="input-group-append">
-                        <button id="searchButton" class="btn btn-primary">Search</button>
+        <div class="container mt-5">
+            {{-- For Search --}}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
+                        <div class="input-group-append">
+                            <button id="searchButton" class="btn btn-primary">Search</button>
+                        </div>
                     </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
+                        <button id="exportButton" class="btn btn-success">Export Calendar</button>
+                    </div>
+                    <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
+                        <a href="{{ asset('add')}}" class="btn btn-success">Add</a>
+                    </div>
+                </div>
+                <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="absolute flex justify-end ml-[780px]">
+                    @csrf
+                    <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
+                </form>
+
+                <form action="{{ route('schedule.sms') }}" method="POST" class="absolute flex justify-end ml-[570px]">
+                    @csrf
+                    <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(sms)</button>
+                </form>
             </div>
 
-            <div class="col-md-6">
-                <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <button id="exportButton" class="btn btn-success">Export Calendar</button>
+            <div class="card">
+                <div class="card-body">
+                    <div id="calendar" style="width: 100%;height:100vh"></div>
                 </div>
-                <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <a href="{{ asset('add')}}" class="btn btn-success">Add</a>
-                </div>
-
             </div>
-            <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="absolute flex justify-end ml-[780px]">
-                @csrf
-                <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
-            </form>
-
-            <form action="{{ route('schedule.sms') }}" method="POST" class="absolute flex justify-end ml-[570px]">
-                @csrf
-                <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(sms)</button>
-            </form>
-
         </div>
 
-        <div class="card">
-            <div class="card-body">
-                <div id="calendar" style="width: 100%;height:100vh"></div>
-
-            </div>
-        </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -326,15 +313,14 @@
 
     <script>
         // grab everything we need
-    const btn = document.querySelector(".mobile-menu-button");
-    const sidebar = document.querySelector(".sidebar");
-    let isSidebarOpen = false;
+        const btn = document.querySelector(".mobile-menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        let isSidebarOpen = false;
 
-    // add our event listener for the click
-    btn.addEventListener("click", () => {
-    sidebar.classList.toggle("-translate-x-full");
-    });
-
+        // add our event listener for the click
+        btn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        });
     </script>
     </main>
 </div>
