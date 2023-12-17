@@ -476,7 +476,12 @@
                                 extend: 'excel',
                                 title: 'Waste Disposal Tracking System Excel Report',
                                 customize: function(xlsx) {
-
+                                    // // Add custom design to Excel header
+                                    // var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                                    // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
+                                },
+                                exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
                                 }
                             }
                         ]
