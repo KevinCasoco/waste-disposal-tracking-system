@@ -423,10 +423,6 @@
                             extend: 'copy',
                         },
                         {
-                            // extend: 'pdf',
-                            // exportOptions: {
-                            //     columns: [0, 1] // Column index which needs to export
-                            // }
                             extend: 'pdf',
                             title: 'Waste Disposal Tracking System PDF Report',
                             customize: function(doc) {
@@ -458,7 +454,12 @@
                             extend: 'excel',
                             title: 'Waste Disposal Tracking System Excel Report',
                             customize: function(xlsx) {
-
+                                // // Add custom design to Excel header
+                                // var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                                // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
+                            },
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
                             }
                         }
                     ]
