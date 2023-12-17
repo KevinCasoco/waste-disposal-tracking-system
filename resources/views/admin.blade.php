@@ -439,6 +439,12 @@
                                         fontSize: 16 // Adjust font size as needed
                                     }
                                 });
+                                 // Set page size and orientation
+                                doc.pageSize = 'A4'; // You can change to 'letter' or other sizes
+                                doc.pageOrientation = 'portrait'; // 'portrait' or 'landscape'
+                            },
+                            exportOptions: {
+                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
                             }
                         },
                         {
