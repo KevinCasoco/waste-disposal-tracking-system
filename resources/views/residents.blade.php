@@ -508,7 +508,7 @@
                                     // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
                                 },
                                 exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                    columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
                                 }
                             }
                         ]
