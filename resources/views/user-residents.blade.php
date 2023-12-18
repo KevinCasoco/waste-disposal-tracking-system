@@ -149,74 +149,7 @@
                     @endforeach
                 </tbody>
             </table>
-
-                {{-- Edit Modal --}}
-                {{-- <div x-show="userResidentEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center" x-cloak>
-                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                    </div>
-
-                <div x-show="userResidentEdit" @click.away="userResidentEdit = false"
-                    x-transition:enter="ease-out duration-300"
-                    x-transition:enter-start="opacity-0 transform scale-95"
-                    x-transition:enter-end="opacity-100 transform scale-100"
-                    x-transition:leave="ease-in duration-200"
-                    x-transition:leave-start="opacity-100 transform scale-100"
-                    x-transition:leave-end="opacity-0 transform scale-95"
-                    class="rounded-lg overflow-hidden transform transition-all flex justify-start">
-                    <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[490px]">
-                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                            </svg>
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
-                                    Edit Profile
-                                </h3>
-                            </div>
-                            <hr class="bg-black border-gray-300 w-[410px]">
-                            @foreach($data as $item)
-                            <div x-show="itemToEdit === {{ $item->id }}">
-                            <form method="post" :action="`{{ route('user-residents.update_user_residents', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
-                                @csrf
-                                @method('patch')
-                                <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                <input type="text" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
-                                <label for="name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Name:</label>
-                                <input type="text" name="name" value="{{ $item->name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-
-                                <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-
-                                    <label for="password">Password:</label>
-                                    <input type="password" name="password">
-                                    <br>
-                                    <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-                                        <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                        <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
-                                        <option value="resident" selected disabled {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option>
-                                    </select>
-                                    <div class="flex justify-end items-end pt-1">
-                                        <button type="submit"
-                                                class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                            Update
-                                        </button>
-                                    <div class="absolute mr-[93px]">
-                                        <button @click.prevent="userResidentEdit = false"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                             Cancel
-                                        </button>
-                                    </div>
-                                    </div>
-                                </form>
-                                </div>
-                            @endforeach
-                        </div>
-                     </div>
-                </div> --}}
             </div>
-
         </div>
         <!--/Card-->
 
@@ -251,6 +184,7 @@
 				.responsive.recalc();
 		});
 	</script>
+
     <script>
         // grab everything we need
         const btn = document.querySelector(".mobile-menu-button");
