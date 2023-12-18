@@ -316,10 +316,10 @@
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
 
                                     <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
-                                        <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required disabled>
+                                        {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
                                         <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
-                                        <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option>
+                                        {{-- <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option> --}}
                                     </select>
                                     <div class="flex justify-end items-end pt-1">
                                         <button type="submit"
