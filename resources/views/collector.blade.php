@@ -306,7 +306,7 @@
                     <div class="bg-white py-3 w-[655px] h-[400px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
-                                    Edit Profile
+                                    Edit Collector Information
                                 </h3>
                             </div>
                             <hr class="bg-black border-gray-300 w-[655px]">
@@ -324,29 +324,29 @@
 
                                 <label for="first_name" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First Name:</label>
                                 <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-[300px]" required>
-
-                                <label for="last_name" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last Name:</label>
-                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
                                 </div>
 
                                 <div class="mt-1">
+                                <label for="last_name" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last Name:</label>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+
                                 <label for="email" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Email:</label>
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
 
                                 <label for="role" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Role:</label>
-                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required disabled>
                                     {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
                                     <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
                                     <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option>
                                 </select>
 
-                                <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                                {{-- <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
                                 <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
                                     <option value="active" {{ $item->status === 'active' ? 'selected' : '' }}>Active</option>
                                     <option value="inactive" {{ $item->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
-                                </select>
+                                </select> --}}
 
-                                    <div class="flex justify-end items-end pt-9">
+                                    <div class="flex justify-end items-end pt-5">
                                         <button type="submit"
                                                 class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                             Update
@@ -357,7 +357,7 @@
                                              Cancel
                                         </button>
                                     </div>
-                                    </div>
+                                </div>
                                 </form>
                                 </div>
                                 </div>
