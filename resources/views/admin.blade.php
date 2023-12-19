@@ -447,7 +447,7 @@
                             title: 'Waste Disposal Tracking System CSV Report',
                             exportOptions: {
                                 columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
-                            },
+                            }
                         },
                         {
                             extend: 'excel',
