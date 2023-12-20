@@ -135,7 +135,7 @@
                                   <li class="font-extrabold text-white">
                                       Collector</li>
                                   <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
-                                  <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                                  <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
                               </ul>
                           </div>
                       </div>
@@ -147,7 +147,7 @@
                                   <ul>
                                       <li class="font-bold text-white">Residents</li>
                                       <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
-                                      <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                                      <i class="ri-user-fill mr-3 text-lg text-white"></i>
                                   </ul>
                               </div>
                           </div>
@@ -158,7 +158,7 @@
                                       <ul>
                                           <li class="font-bold text-white">Total Users</li>
                                           <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
-                                          <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                                          <i class="ri-user-fill mr-3 text-lg text-white"></i>
                                       </ul>
                                   </div>
                               </div>
@@ -424,7 +424,7 @@
                                 <ul>
                                     <li class="font-bold text-white">Total Users</li>
                                     <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
-                                    <i class="ri-admin-fill text-white"></i>
+                                    <i class="ri-user-fill text-white"></i>
                                 </ul>
                             </div>
                         </div>
@@ -690,7 +690,7 @@
                                 <ul>
                                     <li class="font-bold text-white">Total Users</li>
                                     <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
-                                    <i class="ri-admin-fill text-white"></i>
+                                    <i class="ri-user-fill text-white"></i>
                                 </ul>
                         </div>
                     </div>
