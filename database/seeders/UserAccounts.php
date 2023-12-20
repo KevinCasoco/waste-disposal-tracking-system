@@ -50,9 +50,53 @@ class UserAccounts extends Seeder
 
         // seeding residents
         $residents = User::create([
-            'first_name' => 'Shauna',
-            'last_name' => 'Loresca',
-            'email' => 'shaunaloresca@gmail.com',
+            'first_name' => 'Kevin',
+            'last_name' => '404',
+            'email' => 'kevs404official@gmail.com',
+            'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
+            'password' => Hash::make('12345'),
+            'role' => 'residents',
+            'status' => 'active',
+            'number' => '639122580523',
+        ]);
+
+        $residents = User::create([
+            'first_name' => 'Mikayla',
+            'last_name' => 'Villamor',
+            'email' => 'micaelavillamor@gmail.com',
+            'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
+            'password' => Hash::make('12345'),
+            'role' => 'residents',
+            'status' => 'active',
+            'number' => '639122580523',
+        ]);
+
+        $residents = User::create([
+            'first_name' => 'Noel',
+            'last_name' => 'Devil',
+            'email' => 'noeldevil@gmail.com',
+            'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
+            'password' => Hash::make('12345'),
+            'role' => 'residents',
+            'status' => 'active',
+            'number' => '639122580523',
+        ]);
+
+        $residents = User::create([
+            'first_name' => 'Maynard',
+            'last_name' => 'Coco',
+            'email' => 'maynardcoco@gmail.com',
+            'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
+            'password' => Hash::make('12345'),
+            'role' => 'residents',
+            'status' => 'active',
+            'number' => '639122580523',
+        ]);
+
+        $residents = User::create([
+            'first_name' => 'Patricia',
+            'last_name' => 'Torres',
+            'email' => 'patricatorres@gmail.com',
             'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
             'password' => Hash::make('12345'),
             'role' => 'residents',
