@@ -15,7 +15,7 @@
             </svg>
           </button>
         </div>
-<!-- Commet -->
+<!-- Comme -->
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
