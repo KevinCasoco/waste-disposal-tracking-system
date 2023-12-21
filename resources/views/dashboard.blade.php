@@ -73,7 +73,7 @@
 
           </nav>
         </div>
-
+<!-- Modal -->
         <!-- Logout Modal -->
         <div id="logoutModal" class="hidden fixed inset-0 overflow-y-auto flex items-center justify-center z-30">
             <div class="fixed inset-0 transition-opacity" aria-hidden="true">
