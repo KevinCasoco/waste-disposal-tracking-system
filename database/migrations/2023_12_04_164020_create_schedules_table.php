@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('users_id');
             $table->string('title');
             $table->date('start');
-            $table->time('time');
+            $table->string('time');
             $table->string('color')->nullable();
             $table->timestamps();
         });

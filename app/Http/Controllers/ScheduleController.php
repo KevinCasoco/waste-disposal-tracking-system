@@ -36,10 +36,13 @@ class ScheduleController extends Controller
     {
         $userId = Auth::user()->id;
 
+        // Parse the input time using Carbon
+        $time = Carbon::parse($request->time)->format('h:i A');
+
         $schedule = new Schedule([
             'title' =>$request->title,
             'start' =>$request->start,
-            'time' =>$request->time,
+            'time' =>$time,
         ]);
 
         $user = User::find($userId);
