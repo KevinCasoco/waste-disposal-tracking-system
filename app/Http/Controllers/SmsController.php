@@ -34,7 +34,7 @@ class SmsController extends Controller
         $message = $response->current();
 
         if ($message->getStatus() == 0) {
-            return redirect()->route('collector-schedule')->with('message', 'The message was sent successfully');
+            return redirect()->route('schedule')->with('message', 'The message was sent successfully');
         } else {
             echo "The message failed with status: " . $message->getStatus() . "\n";
         }
