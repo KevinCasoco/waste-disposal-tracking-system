@@ -176,42 +176,62 @@
                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                       <script>
-                          const barchart = document.getElementById('myBarChart');
-                          const chartData = @json($chartData); // Convert PHP array to JSON
+                        const barchart = document.getElementById('myBarChart');
+                        const chartData = @json($chartData); // Convert PHP array to JSON
 
-                          new Chart(barchart, {
-                              type: 'bar',
-                              data: {
-                                  labels: ['Admin', 'Collector', 'Residents'],
-                                  datasets: [{
-                                      label: 'Active',
-                                      data: [
-                                          chartData.admin.active,
-                                          chartData.collector.active,
-                                          chartData.residents.active
-                                      ],
-                                      backgroundColor: [
-                                          '#059BFF',
-                                          '#FF4069',
-                                          '#FF9020',
-                                      ],
-                                      borderColor: [
-                                          'rgb(255, 99, 132)',
-                                          'rgb(255, 159, 64)',
-                                          'rgb(255, 205, 86)',
-                                      ],
-                                      borderWidth: 1
-                                  }]
-                              },
-                              options: {
-                                  scales: {
-                                      y: {
-                                          beginAtZero: true
-                                      }
-                                  }
-                              }
-                          });
-                      </script>
+                        new Chart(barchart, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Admin (Active)', 'Admin (Inactive)', 'Collector (Active)', 'Collector (Inactive)', 'Residents (Active)', 'Residents (Inactive)'],
+                                datasets: [{
+                                    label: 'Active and Inactive Users',
+                                    data: [
+                                        chartData.admin.active,
+                                        chartData.admin.inactive,
+                                        chartData.collector.active,
+                                        chartData.collector.inactive,
+                                        chartData.residents.active,
+                                        chartData.residents.inactive
+                                    ],
+                                    backgroundColor: [
+                                        // '#059BFF',
+                                        // '#7EB6FF',
+                                        // '#FF4069',
+                                        // '#FFA0C2',
+                                        // '#FF9020',
+                                        // '#FFDCA6'
+                                    ],
+                                    borderColor: [
+                                        'rgb(255, 99, 132)',
+                                        'rgb(173, 216, 230)',
+                                        'rgb(255, 159, 64)',
+                                        'rgb(255, 182, 193)',
+                                        'rgb(255, 205, 86)',
+                                        'rgb(255, 222, 173)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: true,
+                                        position: 'top',
+                                        labels: {
+                                            boxWidth: 20,
+                                            usePointStyle: true
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    </script>
+
                       </div>
                   </div>
                   <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
