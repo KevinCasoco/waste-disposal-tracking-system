@@ -829,36 +829,44 @@
                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                       <script>
-                          const ctx = document.getElementById('myChart');
+                        const ctx = document.getElementById('myChart');
 
-                          new Chart(ctx, {
-                              type: 'doughnut',
-                              data: {
-                                  labels: ['Admin', 'Collector', 'Residents'],
-                                  datasets: [{
-                                      label: 'Number of Users',
-                                      data: [
-                                          {{ $countAdmins }},
-                                          {{ $countCollector }},
-                                          {{ $countResidents }}
-                                      ],
-                                      backgroundColor: [
-                                          '#059BFF',
-                                          '#FF4069',
-                                          '#FF9020',
-                                      ],
-                                      borderWidth: 1
-                                  }]
-                              },
-                              options: {
-                                  scales: {
-                                      y: {
-                                          beginAtZero: true
-                                      }
-                                  }
-                              }
-                          });
-                      </script>
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Admin', 'Collector', 'Residents'],
+                                datasets: [{
+                                    label: 'Number of Users',
+                                    data: [
+                                        {{ $countAdmins }},
+                                        {{ $countCollector }},
+                                        {{ $countResidents }}
+                                    ],
+                                    backgroundColor: [
+                                        '#059BFF',
+                                        '#FF4069',
+                                        '#FF9020',
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: true,
+                                        position: 'bottom',
+                                        align: 'center', // Optional: Align the legend items to the center
+                                        labels: {
+                                            boxWidth: 15, // Optional: Adjust the box width of legend items
+                                            padding: 10, // Optional: Add padding between legend items
+                                            usePointStyle: true, // Optional: Use point style for legend items
+                                        },
+                                        maxItems: 3 // Set the maximum number of items to fit in one line
+                                    }
+                                }
+                            }
+                        });
+                    </script>
                   </div>
                     </div>
 
