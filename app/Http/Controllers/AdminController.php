@@ -71,7 +71,7 @@ class AdminController extends Controller
     {
         // Validate the request
         $request->validate([
-            'plate_no' => 'required|string',
+            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/'],
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
