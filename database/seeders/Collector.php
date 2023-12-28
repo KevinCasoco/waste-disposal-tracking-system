@@ -25,5 +25,17 @@ class Collector extends Seeder
             'status' => 'active',
             'number' => '',
         ]);
+
+         // seeding collector
+         $collector = User::create([
+            'plate_no' => 'L2OS7Z6',
+            'first_name' => 'Oliver',
+            'last_name' => 'Sykes',
+            'email' => 'oliversykes@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'collector',
+            'status' => 'inactive',
+            'number' => '',
+        ]);
     }
 }

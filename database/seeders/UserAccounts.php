@@ -25,29 +25,6 @@ class UserAccounts extends Seeder
         //     'role' => 'admin',
         // ]);
 
-        // // seeding admin
-        // $admin = User::create([
-        //     'first_name' => 'Andrei Kevin',
-        //     'last_name' => 'Casoco',
-        //     'email' => 'andreikevincasoco@gmail.com',
-        //     'password' => Hash::make('12345'),
-        //     'role' => 'admin',
-        //     'status' => 'active',
-        //     'number' => '',
-        // ]);
-
-        // // seeding collector
-        // $collector = User::create([
-        //     'plate_no' => '2KZ2L7C',
-        //     'first_name' => 'Jay-Ar',
-        //     'last_name' => 'Grifaldea',
-        //     'email' => 'jayargrifaldea@gmail.com',
-        //     'password' => Hash::make('12345'),
-        //     'role' => 'collector',
-        //     'status' => 'active',
-        //     'number' => '',
-        // ]);
-
         // seeding residents
         $residents = User::create([
             'first_name' => 'Kevin',
@@ -78,7 +55,7 @@ class UserAccounts extends Seeder
             'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
             'password' => Hash::make('12345'),
             'role' => 'residents',
-            'status' => 'active',
+            'status' => 'inactive',
             'number' => '639122580523',
         ]);
 
@@ -100,7 +77,7 @@ class UserAccounts extends Seeder
             'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
             'password' => Hash::make('12345'),
             'role' => 'residents',
-            'status' => 'active',
+            'status' => 'inactive',
             'number' => '639122580523',
         ]);
     }

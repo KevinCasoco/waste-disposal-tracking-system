@@ -24,5 +24,16 @@ class Admin extends Seeder
             'status' => 'active',
             'number' => '',
         ]);
+
+         // seeding admin
+         $admin = User::create([
+            'first_name' => 'Corey',
+            'last_name' => 'Taylor',
+            'email' => 'coreytaylor@gmail.com',
+            'password' => Hash::make('12345'),
+            'role' => 'admin',
+            'status' => 'inactive',
+            'number' => '',
+        ]);
     }
 }
