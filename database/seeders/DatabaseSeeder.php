@@ -20,11 +20,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UserAccounts::class,
+            Admin::class,
         ]);
 
         $this->call([
-            Admin::class,
+            Collector::class,
         ]);
+
+        $this->call([
+            UserAccounts::class,
+        ]);
+
     }
 }
