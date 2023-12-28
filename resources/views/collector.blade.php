@@ -320,7 +320,7 @@
                                 <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" disabled>
 
                                 <label for="plate_no" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Plate No.</label>
-                                <input type="text" name="plate_no" value="{{ $item->plate_no }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]">
+                                <input type="text" name="plate_no" pattern="[0-9A-Z]{7}" title="Please enter a valid plate number (e.g., 8KH2Z9)" value="{{ $item->plate_no }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]">
 
                                 <label for="first_name" class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First Name:</label>
                                 <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-[300px]" required>
