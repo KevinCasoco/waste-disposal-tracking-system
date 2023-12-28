@@ -77,7 +77,7 @@ class CollectorController extends Controller
     {
         // Validate the request
         $request->validate([
-            'plate_no' => 'required|string',
+            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/'],
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users',
@@ -86,7 +86,7 @@ class CollectorController extends Controller
             'status' => 'required|string',
         ]);
 
-        // Create the user
+        // Create the collector
         User::create([
             'plate_no' => $request->input('plate_no'),
             'first_name' => $request->input('first_name'),
