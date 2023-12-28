@@ -164,22 +164,20 @@ class AdminController extends Controller
 
         // Validate the request
         $request->validate([
-            'plate_no' => 'required|string',
+            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/'],
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
-            'password' => 'nullable|string|min:6',
-            // 'role' => 'string',
+            'password' => 'nullable|string|min:8',
         ]);
 
-        // Update user information
+        // Update collector information
         $data->update([
             'plate_no' => $request->input('plate_no'),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
-            // 'role' => $request->input('role'),
         ]);
 
         return redirect()->route('collector')->with('message', 'Collector updated successfully');
