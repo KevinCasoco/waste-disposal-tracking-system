@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserAccounts::class,
         ]);
+
+        $this->call([
+            Admin::class,
+        ]);
     }
 }

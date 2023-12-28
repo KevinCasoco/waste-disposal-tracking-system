@@ -25,20 +25,20 @@ class UserAccounts extends Seeder
         //     'role' => 'admin',
         // ]);
 
-        // seeding admin
-        $admin = User::create([
-            'first_name' => 'Andrei Kevin',
-            'last_name' => 'Casoco',
-            'email' => 'andreikevincasoco@gmail.com',
-            'password' => Hash::make('12345'),
-            'role' => 'admin',
-            'status' => 'active',
-            'number' => '',
-        ]);
+        // // seeding admin
+        // $admin = User::create([
+        //     'first_name' => 'Andrei Kevin',
+        //     'last_name' => 'Casoco',
+        //     'email' => 'andreikevincasoco@gmail.com',
+        //     'password' => Hash::make('12345'),
+        //     'role' => 'admin',
+        //     'status' => 'active',
+        //     'number' => '',
+        // ]);
 
         // seeding collector
         $collector = User::create([
-            'plate_no' => '2KZ2L7',
+            'plate_no' => '2KZ2L7C',
             'first_name' => 'Jay-Ar',
             'last_name' => 'Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
