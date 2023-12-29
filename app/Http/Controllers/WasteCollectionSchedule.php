@@ -81,36 +81,6 @@ class WasteCollectionSchedule extends Controller
         return redirect()->route('schedule')->with('message', 'Email was sent successfully');
     }
 
-
-    // public function admin_sendNotification()
-    // {
-    //     $users = User::where('status', 'active')->get();
-    //     $notification = new NotificationsWasteCollectionSchedule();
-
-    //     foreach ($users as $user) {
-    //         // Access the schedules relationship
-    //         $schedules = $user->schedules;
-
-    //         foreach ($schedules as $schedule) {
-    //             // Access schedule properties
-    //             $start = $schedule->start;
-    //             $time = $schedule->time;
-
-    //             // Check if the scheduled date is one day ahead of the current date
-    //             $scheduledDateTime = Carbon::parse("$start $time");
-    //             $currentDateTime = Carbon::now();
-    //             $dayDifference = $currentDateTime->diffInDays($scheduledDateTime);
-
-    //             if ($dayDifference == 1) {
-    //                 // Notify the user
-    //                 $user->notify($notification);
-    //             }
-    //         }
-    //     }
-
-    //     return redirect()->route('schedule')->with('message', 'Email was sent successfully');
-    // }
-
     public function collector_sendNotification()
     {
         $users = User::where('status', 'active')->get();
@@ -126,39 +96,6 @@ class WasteCollectionSchedule extends Controller
 
         return redirect()->route('schedule')->with('message', 'Email was sent successfully');
     }
-
-
-    // public function collector_sendNotification()
-    // {
-    //     // // $users = User::all();
-    //     // $users = User::where('status', 'active')->get();
-    //     // $notification = new NewNotification();
-
-    //     // foreach ($users as $user) {
-    //     //     $user->notify($notification);
-    //     // }
-
-    //     $users = User::where('status', 'active')->get();
-    //     // $notification = new NotificationsWasteCollectionSchedule();
-
-    //     foreach ($users as $user) {
-    //     // Access the schedules relationship
-    //     $schedules = $user->schedules;
-
-    //     foreach ($schedules as $schedule) {
-    //         // Access schedule properties, for example:
-    //         $start = $schedule->start;
-    //         $time = $schedule->time;
-    //     }
-
-    //         // Notify the user
-    //         // $user->notify($notification);
-    //     }
-
-    //     // return "Notification sent to all users.";
-    //     return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
-
-    // }
 
     public function schedule()
     {
