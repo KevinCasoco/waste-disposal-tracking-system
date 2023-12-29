@@ -133,8 +133,16 @@
         <label for="start">Date of Collection</label>
         <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
 
+        <?php
+            // Get the current time and subtract 3 hours
+            $current_time = date("H:i", strtotime("-3 hours"));
+        ?>
+
+        {{-- <label for="time">Time</label>
+        <input type="time" class='form-control' id="time" name="time" required> --}}
+
         <label for="time">Time</label>
-        <input type="time" class='form-control' id="time" name="time" required>
+        <input type="time" class='form-control' id="time" name="time" required value='<?php echo $current_time; ?>'>
 
         {{-- <label for="color">Color</label>
         <input type="color" id="color" name="color" /> --}}
