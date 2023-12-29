@@ -196,7 +196,7 @@
                     <div class="bg-white py-3 w-[655px] h-[500px]">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
-                                Register New Admin
+                                Register New Residents
                             </h3>
                         </div>
                         <hr class="bg-black border-gray-300 w-[655px]">
@@ -244,7 +244,7 @@
                             <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
 
                             <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
-                            <input type="text" name="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+                            <input type="text" name="number" pattern="^\+639\d{9}$" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
 
                             <label for="password" class="text-gray-800 block font-bold text-sm tracking-wide">Password:</label>
                             <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
