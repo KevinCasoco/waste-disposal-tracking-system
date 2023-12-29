@@ -23,7 +23,7 @@ class SmsController extends Controller
         $smsContent = 'Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
-            $smsContent .= "Start: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
+            $smsContent .= "Date: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
         }
 
         // Send SMS with the built content
@@ -53,7 +53,7 @@ class SmsController extends Controller
         $smsContent = 'Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
-            $smsContent .= "Start: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
+            $smsContent .= "Date: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
         }
 
         // Send SMS with the built content
