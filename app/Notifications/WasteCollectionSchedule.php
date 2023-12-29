@@ -36,19 +36,26 @@ class WasteCollectionSchedule extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-         // Create a string to display date and time information
-         $scheduleInfo = '';
+        // Create a string to display date and time information
+        $scheduleInfo = '';
 
-         foreach ($this->schedules as $schedule) {
-             // Assuming you have 'date' and 'time' columns in your Schedule model
-             $scheduleInfo .= "Date: {$schedule->start}, Time: {$schedule->time}\n";
-         }
+        foreach ($this->schedules as $schedule) {
+            // Assuming you have 'date' and 'time' columns in your Schedule model
+            $scheduleInfo .= "Date: {$schedule->start}, Time: {$schedule->time}\n";
+        }
 
-         return (new MailMessage)
-             ->line('The time of collection will be on:')
-             ->line($scheduleInfo)
-             ->action('Notification Action', url('/'))
-             ->line('Thank you for understanding!');
+        $mailMessage = (new MailMessage)
+            ->line('The time of collection will be on:');
+
+        // Use the line method for each schedule
+        foreach ($this->schedules as $schedule) {
+            $mailMessage->line("Date: {$schedule->start}, Time: {$schedule->time}");
+        }
+
+        $mailMessage->action('Notification Action', url('/'))
+            ->line('Thank you for understanding!');
+
+        return $mailMessage;
     }
 
     /**
