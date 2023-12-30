@@ -130,14 +130,19 @@
         <label for='title'>{{ __('Date of Collection') }}</label>
         <input type='text' class='form-control' id='title' name='title'>
 
-        <label for="start">Start</label>
+        <label for="start">Date of Collection</label>
         <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
 
-        <label for="time">Time</label>
+        <label for="time">Time of Collection</label>
         <input type="time" class='form-control' id="time" name="time" required>
 
-        {{-- <label for="color">Color</label>
-        <input type="color" id="color" name="color" /> --}}
+        <script>
+          // Get the current time in the "HH:mm" format
+          var currentTime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+
+          // Set the current time as the value for the "Time" input
+          document.getElementById('time').value = currentTime;
+        </script>
 
         <input type="submit" value="Save" class="btn btn-success" />
     </form>
