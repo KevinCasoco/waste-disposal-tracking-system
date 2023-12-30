@@ -277,38 +277,41 @@
         }
 
 
-        // Exporting Function
+        // export excel file
         document.getElementById('exportButton').addEventListener('click', function() {
-            var events = calendar.getEvents().map(function(event) {
-                return {
-                    title: event.title,
-                    start: event.start ? event.start.toISOString() : null,
-                    time: event.time ? event.time.toISOString() : null,
-                    // end: event.end ? event.end.toISOString() : null,
-                    // color: event.backgroundColor,
-                };
+                var events = calendar.getEvents().map(function(event) {
+                    return {
+                        title: event.title,
+                        start: event.start ? formatDate(event.start) : null,
+                        time: event.extendedProps.time,
+                    };
+                });
+
+                var wb = XLSX.utils.book_new();
+
+                var ws = XLSX.utils.json_to_sheet(events);
+
+                XLSX.utils.book_append_sheet(wb, ws, 'Waste Collection Schedule');
+
+                var arrayBuffer = XLSX.write(wb, {
+                    bookType: 'xlsx',
+                    type: 'array'
+                });
+
+                var blob = new Blob([arrayBuffer], {
+                    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                });
+
+                var downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'waste-collection-schedule.xlsx';
+                downloadLink.click();
             });
 
-            var wb = XLSX.utils.book_new();
-
-            var ws = XLSX.utils.json_to_sheet(events);
-
-            XLSX.utils.book_append_sheet(wb, ws, 'Waste Collection Schedule');
-
-            var arrayBuffer = XLSX.write(wb, {
-                bookType: 'xlsx',
-                type: 'array'
-            });
-
-            var blob = new Blob([arrayBuffer], {
-                type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            });
-
-            var downloadLink = document.createElement('a');
-            downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = 'waste-collection-schedule.xlsx';
-            downloadLink.click();
-        })
+            function formatDate(date) {
+                // Extract only the date part from the ISO string
+                return date ? date.toISOString().split('T')[0] : null;
+            }
     </script>
 
     <script>
