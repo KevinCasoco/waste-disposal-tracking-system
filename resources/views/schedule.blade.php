@@ -277,8 +277,8 @@
         }
 
 
-        // export excel file
-        document.getElementById('exportButton').addEventListener('click', function() {
+            // export excel file
+            document.getElementById('exportButton').addEventListener('click', function() {
                 var events = calendar.getEvents().map(function(event) {
                     return {
                         title: event.title,
@@ -289,7 +289,14 @@
 
                 var wb = XLSX.utils.book_new();
 
-                var ws = XLSX.utils.json_to_sheet(events);
+                var ws = XLSX.utils.json_to_sheet(events , { origin: 'A2' });
+
+                // Add a title header at the top with styling
+                var titleHeader = [['Waste Collection Schedule']];
+                XLSX.utils.sheet_add_aoa(ws, titleHeader, {
+                    origin: { r: 0, c: 0 },
+                    style: { font: { bold: true, size: 16 } } // Example styling - adjust as needed
+                });
 
                 XLSX.utils.book_append_sheet(wb, ws, 'Waste Collection Schedule');
 
