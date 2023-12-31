@@ -9,9 +9,9 @@ class CollectorController extends Controller
 {
     public function index()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
+        // pagination for collector
+        // $data = User::where('role', 'collector')->paginate(10);
 
-        // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'collector')->get();
 
         return view('collector', compact('data'));
@@ -19,9 +19,9 @@ class CollectorController extends Controller
 
     public function index_collector()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
+        // pagination for collector
+        // $data = User::where('role', 'residents')->paginate(10);
 
-        // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'residents')->get();
 
         return view('collector-residents', compact('data'));
@@ -29,7 +29,6 @@ class CollectorController extends Controller
 
     public function collector()
     {
-        // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'collector')->get();
 
         return view('collector-residents', compact('data'));
