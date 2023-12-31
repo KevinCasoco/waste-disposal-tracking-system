@@ -200,4 +200,62 @@
         // Event listener for the button
         document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
     </script>
+
+    {{-- googlep maps api with barangay *need credit card* --}}
+    {{-- <script>
+        const findMyLocation = () => {
+            const status = document.querySelector('.status');
+            const locationTextarea = document.getElementById('locationTextarea');
+
+            const success = (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=YOUR_GOOGLE_MAPS_API_KEY`;
+
+                fetch(geoApiUrl)
+                    .then(res => {
+                        if (!res.ok) {
+                            throw new Error('Failed to retrieve location information');
+                        }
+                        return res.json();
+                    })
+                    .then(data => {
+                        const results = data.results;
+                        if (results.length > 0) {
+                            // Extract barangay information from the results
+                            const barangay = results[0].address_components.find(component => {
+                                return component.types.includes('sublocality_level_1') ||
+                                    component.types.includes('sublocality');
+                            });
+
+                            const address = barangay ? barangay.long_name : '';
+
+                            if (address) {
+                                status.textContent = '' + address;
+                                locationTextarea.value = '' + address;
+                            } else {
+                                throw new Error('Barangay information not found');
+                            }
+                        } else {
+                            throw new Error('Location information not found');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        status.textContent = 'Error: ' + error.message;
+                    });
+            };
+
+            const error = (err) => {
+                console.error(err);
+                status.textContent = 'Unable to retrieve your location';
+            };
+
+            navigator.geolocation.getCurrentPosition(success, error);
+        };
+
+        // Event listener for the button
+        document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
+    </script> --}}
 </html>
