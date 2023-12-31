@@ -131,7 +131,7 @@
                         </tr>
                     </thead>
 
-                    <tbody >
+                    <tbody>
 
                         @foreach($data as $item)
                         <tr x-on:click="itemToEdit = {{ $item->id }};">
@@ -173,6 +173,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{-- data for pagination xx
+                {{ $data->links() }} --}}
 
                  <!-- Add New Users Modal -->
                  <div x-show="adminNewUsers" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>

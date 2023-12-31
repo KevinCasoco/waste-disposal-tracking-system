@@ -10,9 +10,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
+        // pagination for admin
+        // $data = User::where('role', 'admin')->paginate(10);
 
-        // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'admin')->get();
 
         return view('admin', compact('data'));
