@@ -178,6 +178,9 @@
 
             </table>
 
+            {{-- data for pagination xx
+            {{ $data->links() }} --}}
+
              <!-- Add New Users Modal -->
              <div x-show="residentNewUsers" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">

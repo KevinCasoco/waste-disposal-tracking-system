@@ -9,7 +9,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
+        // pagination for residents
+        // $data = User::where('role', 'residents')->paginate(10);
 
         // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'residents')->get();
@@ -19,7 +20,8 @@ class UserController extends Controller
 
     public function index_residents()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
+        // pagination for residents
+        // $data = User::where('role', 'residents')->paginate(10);
 
         // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'residents')->get();
@@ -57,8 +59,6 @@ class UserController extends Controller
 
     public function collector_residents()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
-
         // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'residents')->get();
 
@@ -67,8 +67,6 @@ class UserController extends Controller
 
     public function residents()
     {
-        // $data = User::all(); // Replace YourModel with your actual model name
-
         // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'residents')->get();
 
