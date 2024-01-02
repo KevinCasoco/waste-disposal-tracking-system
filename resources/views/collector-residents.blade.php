@@ -104,8 +104,8 @@
         <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
 
             <div x-data="{ collectorResidentsDelete: false, collectorEdit: false, collectorNewCollector: false, itemToDelete: null, itemToEdit: null }">
-                <div class="relative flex justify-end mb-2 ">
-                    <button @click="collectorNewCollector = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" > <i class="ri-add-circle-line mr-1"></i>Add New Collector</button>
+                <div class="relative mb-2 text-left">
+                    <button @click="collectorNewCollector = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 inline-block"> <i class="ri-add-circle-line mr-1"></i>Add New Collector</button>
                 </div>
 
                 <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -350,7 +350,7 @@
         <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
         <link href='https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css' rel='stylesheet' type='text/css'>
 
-        <style type="text/css">
+        {{-- <style type="text/css">
             .dt-buttons{
             width: 86%;
             position: relative;
@@ -372,6 +372,31 @@
             button.dt-button:hover {
                 background-color: #1c9d4b; /* Change the background color on hover */
             }
+
+            </style> --}}
+
+            <style type="text/css">
+                .dt-buttons{
+                width: 86%;
+                position: relative;
+                margin-bottom: 10px;
+
+
+                }
+                button.dt-button {
+                    background-color: #22C55E;
+                    color: white;
+                    border: 1px solid;
+                    border-radius: 11px;
+                    height: 42px;
+
+                    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+
+                }
+
+                button.dt-button:hover {
+                    background-color: #1c9d4b; /* Change the background color on hover */
+                }
 
             </style>
 
