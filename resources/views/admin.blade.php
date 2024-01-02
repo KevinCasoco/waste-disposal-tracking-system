@@ -110,7 +110,7 @@
         <main class="p-6 sm:p-10 space-y-6">
 
             <!-- Start Table -->
-            <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
+            <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
 
                 <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null}">
                     <div class="relative flex justify-end mb-2 ">
