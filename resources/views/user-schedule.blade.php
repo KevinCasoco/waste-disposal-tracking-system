@@ -108,7 +108,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <!-- START CALENDAR -->
-        <div class="card">
+        <div class="card overflow-x-auto">
             <div class="card-body">
                 <div id="calendar" style="width: 100%;height:100vh"></div>
 
@@ -118,6 +118,17 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+    <style>
+        /* Your existing styles for the calendar header */
+
+        /* Media query for mobile view */
+        @media only screen and (max-width: 600px) {
+            .fc-header-toolbar {
+                font-size: 10px; /* Adjust the font size as needed */
+            }
+        }
+    </style>
 
     <script type="text/javascript">
         $.ajaxSetup({

@@ -14,16 +14,30 @@
                 </div>
             </div>
 
+           <!-- Delete User Form (Hidden in Mobile View) -->
+            <div class="hidden sm:block"> <!-- Hide on small screens -->
+                <div class="max-w-xl">
+                    @include('profile.partials.delete-user-form')
+                </div>
+            </div>
+
             <div class="flex flex-col justify-start p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg md:col-span-2 md:row-span-2">
                 <div class="max-w-xl">
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
 
-            <div class="flex justify-end">
+            {{-- <div class="grid grid-cols-1">
                 <div class="max-w-xl">
                     @include('profile.partials.delete-user-form')
                 </div>
+            </div> --}}
+
+            <!-- Mobile View Button in Bottom Left Corner -->
+            <div class="left-4 bottom-4 sm:hidden">
+
+                @include('profile.partials.delete-user-form')
+
             </div>
         </div>
     </div>
