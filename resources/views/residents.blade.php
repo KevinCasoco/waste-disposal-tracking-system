@@ -114,6 +114,9 @@
             <main class="p-6 sm:p-10 space-y-6">
               <!-- Start Table -->
         <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
+            <div class="mb-4">
+                <h2 class="text-2xl font-bold">RESIDENTS TABLE INFORMATION</h2>
+            </div>
 
             <div x-data="{ residentsDelete: false, residentsEdit: false, residentNewUsers: false, itemToDelete: null, itemToEdit: null}">
                 <div class="relative flex justify-end mb-2 ">
