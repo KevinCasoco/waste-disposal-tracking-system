@@ -75,7 +75,7 @@
         </div> --}}
 
         <!-- Responsive Settings Options -->
-        <div class="pt-5 pb-1 border-t border-gray-200 dark:border-gray-600">
+        <div class="pt-4 border-t border-gray-200 dark:border-gray-600">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-600 dark:text-gray-200">
                     {{ Auth::user()->first_name }} {{Auth::user()->last_name}} | {{ Auth::user()->role }}
