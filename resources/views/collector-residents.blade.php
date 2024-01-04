@@ -102,6 +102,9 @@
     <main class="p-6 sm:p-10 space-y-6">
         <!-- Start Table -->
         <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
+            <div class="mb-4">
+                <h2 class="text-2xl font-bold">COLLECTOR TABLE INFORMATION</h2>
+            </div>
 
             <div x-data="{ collectorResidentsDelete: false, collectorEdit: false, collectorNewCollector: false, itemToDelete: null, itemToEdit: null }">
                 <div class="relative flex justify-end mb-2 ">
