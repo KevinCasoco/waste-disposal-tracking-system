@@ -114,6 +114,10 @@
             <main class="p-6 sm:p-10 space-y-6">
               <!-- Start Table -->
         <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
+                <div class="mb-4">
+                    <h2 class="text-2xl font-bold">COLLECTOR TABLE INFORMATION</h2>
+                </div>
+
                 <div x-data="{ deleteCollector: false, adminNewCollector: false, collectorEdit: false, itemToDelete: null, itemToEdit: null}">
                     <div class="relative flex justify-end mb-2 ">
                         <button @click="adminNewCollector = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" > <i class="ri-add-circle-line mr-1"></i>Add New Collector</button>
