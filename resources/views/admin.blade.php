@@ -111,6 +111,9 @@
 
             <!-- Start Table -->
             <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
+                <div class="mb-4">
+                    <h2 class="text-2xl font-bold">ADMIN TABLE INFORMATION</h2>
+                </div>
 
                 <div x-data="{ adminDelete: false, adminEdit: false, adminNewUsers: false, itemToDelete: null, itemToEdit: null}">
                     <div class="relative flex justify-end mb-2 ">
