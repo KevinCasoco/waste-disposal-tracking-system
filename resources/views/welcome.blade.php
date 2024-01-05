@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Landing Page</title>
+        <title>Waste Disposal Tracking System</title>
 
         <link rel="icon" type="image/x-icon" href="{{asset('/images/Waste-Logo.png')}}">
 
