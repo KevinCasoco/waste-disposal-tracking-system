@@ -94,7 +94,7 @@ class WasteCollectionSchedule extends Controller
             $user->notify(new NotificationsWasteCollectionSchedule($schedules));
         }
 
-        return redirect()->route('schedule')->with('message', 'Email was sent successfully');
+        return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
     }
 
     public function schedule()
