@@ -153,6 +153,8 @@
                 {{ $slot }}
             </main>
         </div>
+
+        @include('footer')
     </body>
 
     <script>
