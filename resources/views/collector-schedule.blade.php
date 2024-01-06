@@ -271,6 +271,7 @@
                 document.getElementById('exportButton').addEventListener('click', function() {
                 var events = calendar.getEvents().map(function(event) {
                     return {
+                        id: event.id,
                         title: event.title,
                         start: event.start ? formatDate(event.start) : null,
                         time: event.extendedProps.time,
