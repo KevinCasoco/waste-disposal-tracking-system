@@ -154,7 +154,7 @@
             </main>
         </div>
 
-        @include('footer')
+        {{-- @include('footer') --}}
     </body>
 
     <script>
