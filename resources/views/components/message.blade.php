@@ -1,4 +1,4 @@
-@if(session()->has('message'))
+{{-- @if(session()->has('message'))
 
 <div x-data="{show : true}" x-show="show" x-init="setTimeout(()=> show = false, 10000)" class="bg-[#4ECE5D] fixed m-10 bottom-0 right-0 z-20 border-t-4 border-black rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
     <div class="flex">
@@ -9,4 +9,17 @@
     </div>
   </div>
 
+@endif --}}
+
+@if(session()->has('message'))
+    <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 10000)" class="bg-[#4ECE5D] fixed m-10 bottom-0 right-0 z-20 border-t-4 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
+        <div class="flex">
+            <div class="py-1">
+                <img src="{{ asset('/images/Waste-Logo.png') }}" class="fill-current h-6 w-6 text-blue-700 mr-4" alt="Waste Logo">
+            </div>
+            <div>
+                <p class="mt-1.5 text-sm text-white">{{ session('message') }}</p>
+            </div>
+        </div>
+    </div>
 @endif
