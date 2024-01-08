@@ -303,7 +303,7 @@
                         <div class="bg-white py-3 w-[410px] h-[490px]">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
-                                        Edit Profile
+                                        Edit Admin Information
                                     </h3>
                                 </div>
                                 <hr class="bg-black border-gray-300 w-[410px]">
