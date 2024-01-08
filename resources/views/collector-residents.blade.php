@@ -374,6 +374,7 @@
 
             button.dt-button:hover {
                 background-color: #1c9d4b; /* Change the background color on hover */
+                color: black;
             }
 
             </style>
