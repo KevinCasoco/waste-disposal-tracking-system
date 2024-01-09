@@ -264,7 +264,7 @@
                             <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                             </svg>
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this user?</h3>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this admin?</h3>
                             <div class="flex justify-end items-end pb-2">
                             <form method="post" :action="`{{ route('admin.destroy', '') }}/${itemToDelete}`">
                                 @csrf
@@ -356,49 +356,6 @@
          </div>
         </div>
         <!--/container-->
-
-        <!-- Datatable CSS -->
-        <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
-        <link href='https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css' rel='stylesheet' type='text/css'>
-
-        <style type="text/css">
-        .dt-buttons{
-        width: 86%;
-        position: relative;
-        margin-bottom: 10px;
-        margin-top: -50px;
-
-        }
-        button.dt-button {
-            background-color: #22C55E;
-            color: white;
-            border: 1px solid;
-            border-radius: 11px;
-            height: 42px;
-
-            transition: background-color 0.3s ease; /* Add a smooth transition effect */
-
-        }
-
-        button.dt-button:hover {
-            background-color: #1c9d4b; /* Change the background color on hover */
-            color: black;
-        }
-
-        </style>
-
-        <!-- jQuery Library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-        <!-- Datatable JS -->
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-        {{-- Export-Files-Buttons --}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
         {{-- Alphine --}}
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
