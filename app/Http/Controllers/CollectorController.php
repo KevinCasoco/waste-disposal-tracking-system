@@ -61,7 +61,7 @@ class CollectorController extends Controller
             'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
         ]);
 
-        return redirect()->route('collector-residents')->with('message', 'User updated successfully');
+        return redirect()->route('collector-residents')->with('message', 'Collector updated successfully');
     }
 
     public function destroy_collector_residents($id)
@@ -96,7 +96,7 @@ class CollectorController extends Controller
             'status' => $request->input('status'),
         ]);
 
-        return redirect()->route('collector-residents')->with('message', 'Residents created successfully');
+        return redirect()->route('collector-residents')->with('message', 'Collector created successfully');
     }
 
     public function activateCollector($id)
