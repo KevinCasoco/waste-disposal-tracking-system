@@ -40,7 +40,7 @@ class CollectorController extends Controller
         $data = User::find($id);
 
         if (!$data) {
-            return redirect()->route('collector-residents')->with('error', 'User not found');
+            return redirect()->route('collector-residents')->with('error', 'Collector not found');
         }
 
         // Validate the request
@@ -69,7 +69,7 @@ class CollectorController extends Controller
         $admin = User::findOrFail($id);
         $admin->delete();
 
-        return redirect()->route('collector-residents')->with('message', 'User deleted successfully');
+        return redirect()->route('collector-residents')->with('message', 'Collector deleted successfully');
     }
 
     public function create_collector_residents(Request $request)
