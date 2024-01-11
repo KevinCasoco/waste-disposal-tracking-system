@@ -20,10 +20,13 @@ class SmsController extends Controller
         $schedules = Schedule::all();
 
         // Build the SMS content with schedule information
-        $smsContent = 'Collection Schedules:' . PHP_EOL;
+        $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
-            $smsContent .= "Admin ID: {$schedule->users_id}, Location: {$schedule->title}, Date: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
+            $smsContent .= "Admin ID: {$schedule->users_id},\n
+                            Location: {$schedule->title},\n
+                            Date: {$schedule->start},\n
+                            Time: {$schedule->time}" . PHP_EOL;
         }
 
         // Send SMS with the built content
@@ -50,7 +53,7 @@ class SmsController extends Controller
         $schedules = Schedule::all();
 
         // Build the SMS content with schedule information
-        $smsContent = 'Collection Schedules:' . PHP_EOL;
+        $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
             $smsContent .= "Collector ID: {$schedule->users_id}, Location: {$schedule->title}, Date: {$schedule->start}, Time: {$schedule->time}" . PHP_EOL;
