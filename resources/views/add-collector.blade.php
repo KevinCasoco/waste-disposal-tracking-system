@@ -95,6 +95,7 @@
         }
 
         input,
+        select,
         textarea {
             width: 100%;
             padding: 10px;
@@ -127,8 +128,19 @@
         @csrf
         <h1 class="mt-2 text-2xl font-bold text-center">Waste Collection Schedule</h1>
 
-        <label for='title'>{{ __('Date of Collection') }}</label>
-        <input type='text' class='form-control' id='title' name='title'>
+        <label for='title'>{{ __('Location') }}</label>
+        <select name="title" id='title' name='title' class="form-control" required>
+            <option value="#">Location</option>
+            <option value="Barangay 168">Barangay 168</option>
+            <option value="Barangay 169">Barangay 169</option>
+            <option value="Barangay 170">Barangay 170</option>
+            <option value="Barangay 171">Barangay 171</option>
+            <option value="Barangay 172">Barangay 172</option>
+            <option value="Barangay 173">Barangay 173</option>
+            <option value="Barangay 174">Barangay 174</option>
+            <option value="Barangay 175">Barangay 175</option>
+            <option value="Barangay 176">Barangay 176</option>
+        </select>
 
         <label for="start">Date of Collection</label>
         <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
