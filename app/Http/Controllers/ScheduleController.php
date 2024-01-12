@@ -49,8 +49,7 @@ class ScheduleController extends Controller
 
         $user->schedules()->save($schedule);
 
-        return redirect('schedule');
-
+        return redirect()->route('schedule')->with('message', 'Schedule added successfully');
     }
 
     public function create_collector(Request $request)
