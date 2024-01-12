@@ -174,6 +174,37 @@
             }
          </style>
 
+         <!-- Create Schedule Design -->
+        <style>
+            .form {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            label {
+                display: block;
+                margin-top: 20px;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type="submit"] {
+                margin-top: 20px;
+                background-color: green;
+                color: white;
+            }
+
+        </style>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 

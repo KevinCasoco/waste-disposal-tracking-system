@@ -102,58 +102,7 @@
         </div>
     </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <style>
-        .form {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        label {
-            display: block;
-            margin-top: 20px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        input[type="submit"] {
-            margin-top: 20px;
-            background-color: green;
-            color: white;
-        }
-
-    </style>
-
-    <script>
-        // grab everything we need
-        const btn = document.querySelector(".mobile-menu-button");
-        const sidebar = document.querySelector(".sidebar");
-        let isSidebarOpen = false;
-
-        // add our event listener for the click
-        btn.addEventListener("click", () => {
-        sidebar.classList.toggle("-translate-x-full");
-        });
-    </script>
-
-    <div class="form">>
+    <div class="form">
         <form action="{{ route('collector-schedule.create_collector') }}" method="POST">
             @csrf
             <h1 class="mt-2 text-2xl font-bold text-center">Waste Collection Schedule</h1>
@@ -186,11 +135,21 @@
             document.getElementById('time').value = currentTime;
             </script>
 
-            <input type="submit" value="Save" class="btn btn-success" />
+            <input type="submit" value="Save" class="" />
         </form>
     </div>
-</body>
-</html>
+
+    <script>
+        // grab everything we need
+        const btn = document.querySelector(".mobile-menu-button");
+        const sidebar = document.querySelector(".sidebar");
+        let isSidebarOpen = false;
+
+        // add our event listener for the click
+        btn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        });
+    </script>
 
 @endif
 
