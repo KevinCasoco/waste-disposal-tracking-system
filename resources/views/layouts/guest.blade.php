@@ -28,6 +28,7 @@
         </div>
     </body>
 
+
     <script>
         const findMyLocation = () => {
             const status = document.querySelector('.status');
@@ -84,7 +85,7 @@
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            const apiKey = '##############'; // Replace with your actual API key
+            const apiKey = '';
             const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
             fetch(geoApiUrl)
@@ -96,7 +97,7 @@
                 })
                 .then(data => {
                     if (data.status === 'OK') {
-                        const address = data.results[0].formatted_address || '';
+                        const address = data.results[5].formatted_address || '';
 
                         if (address) {
                             status.textContent = '' + address;
