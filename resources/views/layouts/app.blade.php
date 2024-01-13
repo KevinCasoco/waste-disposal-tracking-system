@@ -323,7 +323,7 @@
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            const apiKey = 'AIzaSyAEbOt7pSZBVIRpgLp24OZw0RIxZ3WqGZo'; // Replace with your actual API key
+            const apiKey = '##########'; // Replace with your actual API key
             const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
             fetch(geoApiUrl)
@@ -377,7 +377,7 @@
                 const latitude = position.coords.latitude;
                 const longitude = position.coords.longitude;
 
-                const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAEbOt7pSZBVIRpgLp24OZw0RIxZ3WqGZo`;
+                const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=#########`;
 
                 fetch(geoApiUrl)
                     .then(res => {
