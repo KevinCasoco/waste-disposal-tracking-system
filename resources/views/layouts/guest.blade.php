@@ -77,6 +77,60 @@
     {{-- googlep maps api with barangay *need credit card* --}}
     {{-- <script>
         const findMyLocation = () => {
+        const status = document.querySelector('.status');
+        const locationTextarea = document.getElementById('locationTextarea');
+
+        const success = (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            const apiKey = 'AIzaSyAEbOt7pSZBVIRpgLp24OZw0RIxZ3WqGZo'; // Replace with your actual API key
+            const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+            fetch(geoApiUrl)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Failed to retrieve location information');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    if (data.status === 'OK') {
+                        const address = data.results[0].formatted_address || '';
+
+                        if (address) {
+                            status.textContent = '' + address;
+                            locationTextarea.value = '' + address;
+                        } else {
+                            throw new Error('Location information not found');
+                        }
+                    } else {
+                        throw new Error('Google Maps API request failed');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    status.textContent = 'Error: ' + error.message;
+                });
+        };
+
+        const error = (err) => {
+            console.error(err);
+            status.textContent = 'Unable to retrieve your location';
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error);
+    };
+
+    // Event listener for the button
+    document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
+
+    </script> --}}
+
+
+    {{-- googlep maps api with barangay *need credit card* --}}
+    {{-- <script>
+        const findMyLocation = () => {
             const status = document.querySelector('.status');
             const locationTextarea = document.getElementById('locationTextarea');
 
@@ -84,7 +138,7 @@
                 const latitude = position.coords.latitude;
                 const longitude = position.coords.longitude;
 
-                const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=YOUR_GOOGLE_MAPS_API_KEY`;
+                const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAEbOt7pSZBVIRpgLp24OZw0RIxZ3WqGZo`;
 
                 fetch(geoApiUrl)
                     .then(res => {
