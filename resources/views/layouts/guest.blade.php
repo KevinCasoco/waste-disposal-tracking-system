@@ -29,7 +29,7 @@
     </body>
 
 
-    <script>
+    {{-- <script>
         const findMyLocation = () => {
             const status = document.querySelector('.status');
             const locationTextarea = document.getElementById('locationTextarea');
@@ -73,10 +73,10 @@
 
         // Event listener for the button
         document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
-    </script>
+    </script> --}}
 
     {{-- googlep maps api with barangay *need credit card* --}}
-    {{-- <script>
+    <script>
         const findMyLocation = () => {
         const status = document.querySelector('.status');
         const locationTextarea = document.getElementById('locationTextarea');
@@ -85,7 +85,7 @@
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            const apiKey = '';
+            const apiKey = '{{ config("services.google_maps.api_key") }}';
             const geoApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
             fetch(geoApiUrl)
@@ -97,7 +97,7 @@
                 })
                 .then(data => {
                     if (data.status === 'OK') {
-                        const address = data.results[5].formatted_address || '';
+                        const address = data.results[6].formatted_address || '';
 
                         if (address) {
                             status.textContent = '' + address;
@@ -126,7 +126,7 @@
     // Event listener for the button
     document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
 
-    </script> --}}
+    </script>
 
 
     {{-- googlep maps api with barangay *need credit card* --}}
