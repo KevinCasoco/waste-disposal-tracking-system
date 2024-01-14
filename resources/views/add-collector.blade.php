@@ -107,8 +107,8 @@
             @csrf
             <h1 class="mt-6 text-2xl font-bold text-center">Waste Collection Schedule</h1>
 
-            <label for='title'>{{ __('Location') }}</label>
-            <select name="title" id='title' name='title' class="form-control" required>
+            <label for='location'>{{ __('Location') }}</label>
+            <select name="location" id='location' name='location' class="form-control" required>
                 <option value="#">Location</option>
                 <option value="Barangay 168">Barangay 168</option>
                 <option value="Barangay 169">Barangay 169</option>
