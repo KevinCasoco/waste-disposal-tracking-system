@@ -40,7 +40,7 @@ class ScheduleController extends Controller
         $time = Carbon::parse($request->time)->format('h:i A');
 
         $schedule = new Schedule([
-            'title' =>$request->title,
+            'location' =>$request->location,
             'start' =>$request->start,
             'time' =>$time,
         ]);
@@ -111,9 +111,9 @@ class ScheduleController extends Controller
 
     public function search(Request $request)
     {
-        $searchKeywords = $request->input('title');
+        $searchKeywords = $request->input('location');
 
-        $matchingEvents = Schedule::where('title', 'like', '%' . $searchKeywords . '%')->get();
+        $matchingEvents = Schedule::where('location', 'like', '%' . $searchKeywords . '%')->get();
 
         return response()->json($matchingEvents);
     }
