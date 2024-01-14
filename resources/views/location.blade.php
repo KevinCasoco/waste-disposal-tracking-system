@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     @if (Auth::user()->role == 'collector')
 
         <!DOCTYPE html>
@@ -76,10 +76,10 @@
 
 @endif
 
-</x-app-layout>
+</x-app-layout> --}}
 
 
-{{-- <x-app-layout>
+<x-app-layout>
     @if (Auth::user()->role == 'collector')
         <!DOCTYPE html>
         <html lang="en">
@@ -163,4 +163,4 @@
 
         </html>
     @endif
-</x-app-layout> --}}
+</x-app-layout>
