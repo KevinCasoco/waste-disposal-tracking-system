@@ -97,7 +97,7 @@
                 })
                 .then(data => {
                     if (data.status === 'OK') {
-                        const address = data.results[6].formatted_address || '';
+                        const address = data.results[5].formatted_address || '';
 
                         if (address) {
                             status.textContent = '' + address;
