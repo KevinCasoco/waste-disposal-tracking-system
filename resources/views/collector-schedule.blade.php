@@ -167,7 +167,7 @@
 
                     // Deleting The Event
                     eventContent: function(info) {
-                        var eventTitle = info.event.title;
+                        var eventTitle = info.event.extendedProps.location;
                         var eventElement = document.createElement('div');
                         eventElement.innerHTML = '<span style="cursor: pointer;">❌</span> ' + eventTitle;
 
@@ -256,7 +256,7 @@
                 function filterAndDisplayEvents(searchKeywords) {
                     $.ajax({
                         method: 'GET',
-                        url: `/events/search?title=${searchKeywords}`,
+                        url: `/events/search?location=${searchKeywords}`,
                         success: function(response) {
                             calendar.removeAllEvents();
                             calendar.addEventSource(response);
@@ -272,7 +272,7 @@
                 var events = calendar.getEvents().map(function(event) {
                     return {
                         id: event.id,
-                        title: event.title,
+                        location: event.extendedProps.location,
                         start: event.start ? formatDate(event.start) : null,
                         time: event.extendedProps.time,
                     };
