@@ -130,7 +130,7 @@ class WasteCollectionSchedule extends Controller
         $userId = Auth::user()->id;
 
         $schedule = new Schedule([
-            'title' =>$request->title,
+            'location' =>$request->location,
             'start_date' =>$request->start_date,
             'time' =>$request->time,
         ]);
