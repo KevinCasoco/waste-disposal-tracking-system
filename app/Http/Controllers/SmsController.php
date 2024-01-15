@@ -24,7 +24,7 @@ class SmsController extends Controller
 
         foreach ($schedules as $schedule) {
             $smsContent .= "Admin ID: {$schedule->users_id},\n
-                            Location: {$schedule->title},\n
+                            Location: {$schedule->location},\n
                             Date: {$schedule->start},\n
                             Time: {$schedule->time}" . PHP_EOL;
         }
@@ -57,7 +57,7 @@ class SmsController extends Controller
 
         foreach ($schedules as $schedule) {
             $smsContent .= "Collector ID: {$schedule->users_id},\n
-                            Location: {$schedule->title},\n
+                            Location: {$schedule->location},\n
                             Date: {$schedule->start},\n
                             Time: {$schedule->time}" . PHP_EOL;
         }
