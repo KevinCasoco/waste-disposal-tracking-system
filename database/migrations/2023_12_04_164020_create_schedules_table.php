@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('location');
             $table->date('start');
             $table->string('time');
-            $table->string('color')->nullable();
             $table->timestamps();
         });
     }
