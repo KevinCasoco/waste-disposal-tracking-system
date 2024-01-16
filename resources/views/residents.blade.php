@@ -226,7 +226,7 @@
 
                                 <x-input-error :messages="$errors->get('location')" class="mt-2" />
                             <div class="flex justify-end mt-3">
-                                <button id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</button>
+                                <i id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</i>
                             </div>
                             </div>
 
