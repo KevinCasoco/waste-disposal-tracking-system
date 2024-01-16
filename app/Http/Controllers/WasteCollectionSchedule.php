@@ -14,17 +14,6 @@ class WasteCollectionSchedule extends Controller
 {
     public function sendNotification()
     {
-        // // $users = User::all();
-        // $users = User::where('status', 'active')->get();
-        // $notification = new NewNotification();
-
-        // foreach ($users as $user) {
-        //     $user->notify($notification);
-        // }
-
-        // // return "Notification sent to all users.";
-        // return view('schedule');
-
         $users = User::where('status', 'active')->get();
         $notification = new NewNotification();
 

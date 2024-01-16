@@ -14,7 +14,6 @@ class Schedule extends Model
         'users_id',
         'start',
         'time',
-        'description',
     ];
 
     public function user()
