@@ -54,13 +54,34 @@ class WasteCollectionSchedule extends Controller
         return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
     }
 
+    // without 1 day validation before sending to users
+    // public function admin_sendNotification()
+    // {
+    //     $users = User::where('status', 'active')->get();
+    //     // $notification = new NotificationsWasteCollectionSchedule();
+
+    //     // Access all schedules
+    //     $schedules = Schedule::all();
+
+    //     foreach ($users as $user) {
+    //         // Notify the user with schedule information
+    //         $user->notify(new NotificationsWasteCollectionSchedule($schedules));
+    //     }
+
+    //     return redirect()->route('schedule')->with('message', 'Email was sent successfully');
+    // }
+
+    // with 1 day before the exact date before sending to email
     public function admin_sendNotification()
     {
-        $users = User::where('status', 'active')->get();
-        // $notification = new NotificationsWasteCollectionSchedule();
+        // Get the current date
+        $currentDate = Carbon::now();
 
-        // Access all schedules
-        $schedules = Schedule::all();
+        // Get all active users
+        $users = User::where('status', 'active')->get();
+
+        // Access all schedules for which the scheduled date is one day before the current date
+        $schedules = Schedule::whereDate('start', $currentDate->copy()->addDay()->toDateString())->get();
 
         foreach ($users as $user) {
             // Notify the user with schedule information
