@@ -13,7 +13,7 @@ class SmsController extends Controller
     public function sms()
     {
         // admin
-        $basic  = new \Vonage\Client\Credentials\Basic("a01afc5e", "H8YYkyhcaqXnRYf7");
+        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
@@ -46,7 +46,7 @@ class SmsController extends Controller
     // collector button
     public function sms_controller()
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("a01afc5e", "H8YYkyhcaqXnRYf7");
+        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
