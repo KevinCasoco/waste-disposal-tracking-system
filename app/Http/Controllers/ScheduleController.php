@@ -24,7 +24,10 @@ class ScheduleController extends Controller
 
     public function add_schedule()
     {
-        return view('add');
+        // retrieve address for residents and populate to dropdown
+        $locations = User::where('role', 'residents')->pluck('location', 'id');
+
+        return view('add',compact('locations'));
     }
 
     public function add_schedule_collector()
@@ -50,6 +53,10 @@ class ScheduleController extends Controller
         $user->schedules()->save($schedule);
 
         return redirect()->route('schedule')->with('message', 'Schedule added successfully');
+        // return redirect()->route('schedule')->with([
+        //     'message' => 'Schedule added successfully',
+        //     'locations' => Schedule::pluck('location', 'id'),
+        // ]);
     }
 
     public function create_collector(Request $request)
