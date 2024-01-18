@@ -109,19 +109,12 @@
 
             <label for='location'>{{ __('Location') }}</label>
 
-            <select name="location" id='location' name='location' class="form-control" required>
-                <option value="#">Location</option>
-                <option value="Barangay 168">Barangay 168</option>
-                <option value="Barangay 169">Barangay 169</option>
-                <option value="Barangay 170">Barangay 170</option>
-                <option value="Barangay 171">Barangay 171</option>
-                <option value="Barangay 172">Barangay 172</option>
-                <option value="Barangay 173">Barangay 173</option>
-                <option value="Barangay 174">Barangay 174</option>
-                <option value="Barangay 175">Barangay 175</option>
-                <option value="Barangay 176">Barangay 176</option>
+            <select name="location" id="location" class="form-control" required>
+                <option value="">Select Location</option>
+                @foreach($locations as $id => $location)
+                    <option value="{{ $location }}">{{ $location }}</option>
+                @endforeach
             </select>
-
 
             <label for="start">Date of Collection</label>
             <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>

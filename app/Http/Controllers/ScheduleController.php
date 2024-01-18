@@ -24,7 +24,10 @@ class ScheduleController extends Controller
 
     public function add_schedule()
     {
-        return view('add');
+        // retrieve address for residents and populate to dropdown
+        $locations = User::where('role', 'residents')->pluck('location', 'id');
+
+        return view('add',compact('locations'));
     }
 
     public function add_schedule_collector()
