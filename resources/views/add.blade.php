@@ -112,7 +112,7 @@
             <select name="location" id="location" class="form-control" required>
                 <option value="">Select Location</option>
                 @foreach($locations as $id => $location)
-                    <option value="{{ $id }}">{{ $location }}</option>
+                    <option value="{{ $location }}">{{ $location }}</option>
                 @endforeach
             </select>
 
