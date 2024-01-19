@@ -44,6 +44,7 @@ class SmsController extends Controller
     // collector button
     public function sms_controller()
     {
+        // vonage sms api credentials
         $basic  = new \Vonage\Client\Credentials\Basic("80cd2c81", "OdKVwJeopoTsQM4V");
         $client = new \Vonage\Client($basic);
 
