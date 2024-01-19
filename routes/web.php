@@ -32,11 +32,11 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::redirect('/', destination: 'login');
+// Route::redirect('/', destination: 'login');
 
 Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
     ->middleware('auth', 'verified', 'checkActiveStatus')
