@@ -13,7 +13,7 @@ class SmsController extends Controller
     public function sms()
     {
         // admin
-        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
+        $basic  = new \Vonage\Client\Credentials\Basic("80cd2c81", "OdKVwJeopoTsQM4V");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
@@ -23,10 +23,7 @@ class SmsController extends Controller
         $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
-            $smsContent .= "Admin ID: {$schedule->users_id},\n
-                            Location: {$schedule->location},\n
-                            Date: {$schedule->start},\n
-                            Time: {$schedule->time}" . PHP_EOL;
+            $smsContent .= "Admin ID: {$schedule->users_id},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
         }
 
         // Send SMS with the built content
@@ -46,7 +43,7 @@ class SmsController extends Controller
     // collector button
     public function sms_controller()
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
+        $basic  = new \Vonage\Client\Credentials\Basic("80cd2c81", "OdKVwJeopoTsQM4V");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
@@ -56,10 +53,7 @@ class SmsController extends Controller
         $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
-            $smsContent .= "Collector ID: {$schedule->users_id},\n
-                            Location: {$schedule->location},\n
-                            Date: {$schedule->start},\n
-                            Time: {$schedule->time}" . PHP_EOL;
+            $smsContent .= "Collector ID: {$schedule->users_id},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
         }
 
         // Send SMS with the built content

@@ -29,7 +29,7 @@
     </body>
 
 
-    {{-- <script>
+    <script>
         const findMyLocation = () => {
             const status = document.querySelector('.status');
             const locationTextarea = document.getElementById('locationTextarea');
@@ -73,10 +73,10 @@
 
         // Event listener for the button
         document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
-    </script> --}}
+    </script>
 
     {{-- googlep maps api with barangay *need credit card* --}}
-    <script>
+    {{-- <script>
         const findMyLocation = () => {
         const status = document.querySelector('.status');
         const locationTextarea = document.getElementById('locationTextarea');
@@ -127,7 +127,7 @@
     document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
 
     </script>
-
+ --}}
 
     {{-- googlep maps api with barangay *need credit card* --}}
     {{-- <script>
