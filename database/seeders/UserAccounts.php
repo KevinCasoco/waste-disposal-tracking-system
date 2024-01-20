@@ -34,7 +34,7 @@ class UserAccounts extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'residents',
             'status' => 'active',
-            'number' => '639122580523',
+            'number' => '639094191380',
         ]);
 
         $residents = User::create([
@@ -63,7 +63,7 @@ class UserAccounts extends Seeder
             'first_name' => 'Maynard',
             'last_name' => 'Coco',
             'email' => 'maynardcoco@gmail.com',
-            'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
+            'location' => 'University of Caloocan, Congressional Road, Bagumbong, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1421, Philippines',
             'password' => Hash::make('12345'),
             'role' => 'residents',
             'status' => 'active',
@@ -78,7 +78,7 @@ class UserAccounts extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'residents',
             'status' => 'inactive',
-            'number' => '639122580523',
+            'number' => '639704881156',
         ]);
     }
 }
