@@ -24,8 +24,8 @@ class ScheduleController extends Controller
 
     public function add_schedule()
     {
-        // retrieve address for residents and populate to dropdown
-        $locations = User::where('role', 'residents')->pluck('location', 'id');
+        // retrieve unique addresses for residents and populate to dropdown
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
 
         return view('add', compact('locations'));
     }
