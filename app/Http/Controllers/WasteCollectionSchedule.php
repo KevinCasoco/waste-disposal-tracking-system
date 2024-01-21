@@ -137,23 +137,51 @@ class WasteCollectionSchedule extends Controller
     // }
 
     // with 1 day before the exact date before sending to email
+    // public function collector_sendNotification()
+    // {
+    //      // Get the current date
+    //      $currentDate = Carbon::now();
+
+    //      // Get all active users
+    //      $users = User::where('status', 'active')->get();
+
+    //      // Access all schedules for which the scheduled date is one day before the current date
+    //      $schedules = Schedule::whereDate('start', $currentDate->copy()->addDay()->toDateString())->get();
+
+    //      foreach ($users as $user) {
+    //          // Notify the user with schedule information
+    //          $user->notify(new NotificationsWasteCollectionSchedule($schedules));
+    //      }
+
+    //      return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
+    // }
+
+    // with 1 day before the exact date before sending to email
+    // residents matches the location to dropdown
     public function collector_sendNotification()
     {
-         // Get the current date
-         $currentDate = Carbon::now();
+        // Get the current date
+        $currentDate = Carbon::now();
 
-         // Get all active users
-         $users = User::where('status', 'active')->get();
+        // Get all active users
+        $users = User::where('status', 'active')->get();
 
-         // Access all schedules for which the scheduled date is one day before the current date
-         $schedules = Schedule::whereDate('start', $currentDate->copy()->addDay()->toDateString())->get();
+        foreach ($users as $user) {
+            // Get the user's location (assuming the address contains location information)
+            $userLocation = $user->location; // Update this line based on your actual structure
 
-         foreach ($users as $user) {
-             // Notify the user with schedule information
-             $user->notify(new NotificationsWasteCollectionSchedule($schedules));
-         }
+            // Access schedules with the same location and scheduled date one day before the current date
+            $schedules = Schedule::whereDate('start', $currentDate->copy()->addDay()->toDateString())
+                                ->where('location', $userLocation)
+                                ->get();
 
-         return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
+            if ($schedules->isNotEmpty()) {
+                // Notify the user with schedule information
+                $user->notify(new NotificationsWasteCollectionSchedule($schedules));
+            }
+        }
+
+        return redirect()->route('collector-schedule')->with('message', 'Email was sent successfully');
     }
 
     public function schedule()
