@@ -127,7 +127,7 @@ class SmsController extends Controller
 
     // // with 1 day before the exact date before sending to sms
     // // residents matches the location to dropdown
-    // public function sms()
+    // public function sms_controller()
     // {
     //     // Get the current date
     //     $currentDate = Carbon::now();
