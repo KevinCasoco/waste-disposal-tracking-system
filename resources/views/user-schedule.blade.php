@@ -138,6 +138,36 @@
             timeZone: 'UTC',
             events: '/events',
             editable: true,
+
+            // Displaying The Event
+            eventContent: function(info) {
+                var eventTitle = info.event.extendedProps.location;
+                var eventElement = document.createElement('div');
+                eventElement.innerHTML = '<span style="cursor: pointer;"></span> ' + eventTitle;
+
+                    eventElement.querySelector('span').addEventListener('click', function() {
+                        if (confirm("Are you sure you want to delete this event?")) {
+                            var eventId = info.event.id;
+                                $.ajax({
+                                    method: 'DELETE',
+                                    url: '/schedule/' + eventId,
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        console.log('Event deleted successfully.');
+                                        calendar.refetchEvents(); // Refresh events after deletion
+                                    },
+                                    error: function(error) {
+                                        console.error('Error deleting event:', error);
+                                    }
+                                });
+                            }
+                        });
+                        return {
+                            domNodes: [eventElement]
+                        };
+                    },
         });
 
         calendar.render();
