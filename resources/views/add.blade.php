@@ -116,6 +116,7 @@
                 @endforeach
             </select>
 
+            <label for="label">Please take note that 1 day before the schedule can only notify the users!</label>
             <label for="start">Date of Collection</label>
             <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
 
