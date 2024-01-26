@@ -198,6 +198,7 @@ class AdminController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
+            'number' => 'required',
             'password' => 'nullable|string|min:6',
             'location' => 'nullable|string',
             // 'role' => 'string',
@@ -210,6 +211,7 @@ class AdminController extends Controller
             'email' => $request->input('email'),
             'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
             'location' => $request->input('location'),
+            'number' => $request->input('number'),
             // 'role' => $request->input('role'),
         ]);
 

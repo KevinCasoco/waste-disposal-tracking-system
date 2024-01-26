@@ -372,7 +372,8 @@
                                 <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
 
                                 <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
-                                <input type="text" name="number" value="{{ $item->number }}" pattern="^\639\d{9}$" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+                                <div id="country-selector"></div>
+                                <input type="tel" id="number" name="number" value="{{ $item->number }}" pattern="^\639\d{9}$" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
 
                                 <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
                                 <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required disabled>
