@@ -36,7 +36,8 @@ class RegisteredUserController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'number' => ['required', 'regex:/^\+639\d{9}$/'],
+            // 'number' => ['required', 'regex:/^\+639\d{9}$/'],
+            'number' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
