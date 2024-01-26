@@ -24,6 +24,12 @@
         <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
         <!--Replace with your tailwind.css once created-->
 
+        <!-- Include the required CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+        <!-- Include jQuery (required) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Include the intl-tel-input JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
         <!--Regular Datatables CSS-->
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -264,6 +270,25 @@
                     }
                 ]
             });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+        // Initialize the input field
+        var input = document.querySelector("#number");
+        var iti = window.intlTelInput(input, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            separateDialCode: true,
+            initialCountry: "PH",
+            dropdownContainer: document.getElementById('country-selector')
+        });
+
+        // Set an event listener to update the selected country
+        input.addEventListener("countrychange", function() {
+            var countryData = iti.getSelectedCountryData();
+            console.log(countryData);
+        });
         });
     </script>
 

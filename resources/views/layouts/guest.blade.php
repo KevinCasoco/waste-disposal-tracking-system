@@ -54,7 +54,7 @@
             console.log(countryData);
           });
         });
-      </script>
+    </script>
 
     <script>
         const findMyLocation = () => {
