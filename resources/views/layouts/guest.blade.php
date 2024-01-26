@@ -13,6 +13,13 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <!-- Include the required CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+        <!-- Include jQuery (required) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Include the intl-tel-input JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -30,6 +37,24 @@
         </div>
     </body>
 
+    <script>
+        $(document).ready(function() {
+          // Initialize the input field
+          var input = document.querySelector("#number");
+          var iti = window.intlTelInput(input, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            separateDialCode: true,
+            initialCountry: "PH",
+            dropdownContainer: document.getElementById('country-selector')
+          });
+
+          // Set an event listener to update the selected country
+          input.addEventListener("countrychange", function() {
+            var countryData = iti.getSelectedCountryData();
+            console.log(countryData);
+          });
+        });
+      </script>
 
     <script>
         const findMyLocation = () => {

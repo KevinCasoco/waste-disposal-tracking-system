@@ -47,9 +47,10 @@
 
         <!-- Phone Number -->
         <div class="mt-3">
+            <div id="country-selector"></div>
             <x-input-label for="number" :value="__('Phone Number')" />
             <x-text-input id="number" class="block mt-1 w-[100%]"
-                            type="text"
+                            type="tel"
                             name="number" :value="old('number')"
                             required autocomplete="number"
                             placeholder="Enter Your Phone Number" />
