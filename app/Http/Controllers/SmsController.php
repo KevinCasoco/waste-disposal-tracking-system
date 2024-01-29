@@ -15,7 +15,7 @@ class SmsController extends Controller
     public function sms()
     {
         // vonage sms api credentials
-        $basic  = new \Vonage\Client\Credentials\Basic("80cd2c81", "OdKVwJeopoTsQM4V");
+        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
         $client = new \Vonage\Client($basic);
 
         // Retrieve schedules from the database
@@ -30,7 +30,7 @@ class SmsController extends Controller
 
         // Send SMS with the built content
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639704881156", 'WDTS', $smsContent)
+            new \Vonage\SMS\Message\SMS("639307296980", 'WDTS', $smsContent)
         );
 
         $message = $response->current();
