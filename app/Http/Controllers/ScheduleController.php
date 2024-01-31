@@ -60,6 +60,9 @@ class ScheduleController extends Controller
 
     public function create_collector(Request $request)
     {
+        // Get the authenticated user
+        $user = Auth::user();
+
         $userId = Auth::user()->id;
 
         // Parse the input time using Carbon
@@ -69,6 +72,7 @@ class ScheduleController extends Controller
             'location' =>$request->location,
             'start' =>$request->start,
             'time' =>$time,
+            'plate_no' => $user->plate_no,
         ]);
 
         $user = User::find($userId);
