@@ -27,12 +27,12 @@ class Admin extends Seeder
 
          // seeding admin
          $admin = User::create([
-            'first_name' => 'Corey',
-            'last_name' => 'Taylor',
-            'email' => 'coreytaylor@gmail.com',
+            'first_name' => 'Waste',
+            'last_name' => 'Disposal',
+            'email' => 'wastedisposaltrackingsystem@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'admin',
-            'status' => 'inactive',
+            'status' => 'active',
             'number' => '',
         ]);
     }
