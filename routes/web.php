@@ -230,7 +230,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 }); // end of middleware group
 
 // User-Residents Dashboard Sidebar
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
 
     // calendar for collection
     Route::get('/user-schedule', [UserController::class, 'showUserSchedule'])->name('user-schedule');
