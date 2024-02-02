@@ -20,6 +20,7 @@ class Collector extends Seeder
             'first_name' => 'Jay-Ar',
             'last_name' => 'Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
+            'email_verified_at' => '2024-02-02 12:42:50',
             'password' => Hash::make('12345'),
             'role' => 'collector',
             'status' => 'active',

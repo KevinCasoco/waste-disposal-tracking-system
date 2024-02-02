@@ -30,6 +30,7 @@ class UserAccounts extends Seeder
             'first_name' => 'Kevin',
             'last_name' => '404',
             'email' => 'kevs404official@gmail.com',
+            'email_verified_at' => '2024-02-02 12:42:50',
             'location' => 'Langit Road, Bagong Silang, Zone 15, District 1, Caloocan, Northern Manila District, Metro Manila, 1428, Philippines',
             'password' => Hash::make('12345'),
             'role' => 'residents',

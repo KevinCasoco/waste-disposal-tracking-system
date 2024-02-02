@@ -19,6 +19,7 @@ class Admin extends Seeder
             'first_name' => 'Andrei Kevin',
             'last_name' => 'Casoco',
             'email' => 'andreikevincasoco@gmail.com',
+            'email_verified_at' => '2024-02-02 12:42:50',
             'password' => Hash::make('12345'),
             'role' => 'admin',
             'status' => 'active',
