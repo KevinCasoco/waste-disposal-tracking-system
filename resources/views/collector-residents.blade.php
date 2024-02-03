@@ -106,8 +106,8 @@
             </div>
 
             <div x-data="{ collectorResidentsDelete: false, collectorEdit: false, collectorNewCollector: false, itemToDelete: null, itemToEdit: null }">
-                <div class="relative mb-16 ">
-                    <button @click="collectorNewCollector = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" > <i class="ri-add-circle-line mr-1"></i>Add New Collector</button>
+                <div class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
+                    <button @click="collectorNewCollector = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"> <i class="ri-add-circle-line mr-1"></i>Add New Collector</button>
                     <div class="md:flex-shrink-0 mt-[47px]">
                         <!-- Data Table Buttons -->
                         <script>
@@ -247,32 +247,31 @@
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                    <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[655px] h-[370px]">
+                    <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[355px]">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Collector
                             </h3>
                         </div>
-                        <hr class="bg-black border-gray-300 w-[655px]">
-                        <form action="{{ route('collector-residents.create_collector_residents') }}" method="post" class=" flex justify-start pl-5 pr-5 pt-3 pb-3 ">
+                        <hr class="bg-black border-gray-300 w-full">
+                        <form action="{{ route('collector-residents.create_collector_residents') }}" method="post" class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-2 pb-1">
                             @csrf
-                            <div class="mr-4">
+                            <div class="sm:mr-4">
                             <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No.</label>
-                            <input type="text" name="plate_no" pattern="[0-9A-Z]{7}" title="Please enter a valid plate number (e.g., 8KH2Z9)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <input type="text" name="plate_no" pattern="[0-9A-Z]{7}" title="Please enter a valid plate number (e.g., 8KH2Z9)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                             <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                             <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                             <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
                             </div>
                             <div>
                             <label for="password" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
-                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]" required>
 
                             <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
                                 <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2" required>
@@ -287,23 +286,24 @@
                                 <option value="inactive">Inactive</option>
                                 {{-- <option value="resident">Resident</option> --}}
                             </select>
-                            <div class="flex justify-end mt-8">
+                            <div class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-6 mt-6 ">
                             <button type="submit"
                             class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                 Create
                             </button>
-                        </form>
+
                         <div class="absolute mr-[90px]">
                         <button @click.prevent="collectorNewCollector = false"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                            Cancel
+                        Cancel
                         </button>
                     </div>
-                    </div>
                 </div>
                 </div>
-            </div>
+            </form>
         </div>
+    </div>
+</div>
 
             <!-- Delete Modal -->
             <div x-show="collectorResidentsDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
@@ -360,13 +360,13 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                     <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[410px] h-[495px]">
+                    <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[495px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Collector Information
                                 </h3>
                             </div>
-                            <hr class="bg-black border-gray-300 w-[410px]">
+                            <hr class="bg-black border-gray-300 w-full">
                             @foreach($data as $item)
                             <div x-show="itemToEdit.toString() === '{{ $item->id }}'">
                             <form method="post" :action="`{{ route('collector-residents.update_collector', '') }}/${itemToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
@@ -374,19 +374,19 @@
                                 @method('patch')
 
                                 <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No.</label>
-                                <input type="text" name="plate_no" pattern="[0-9A-Z]{7}" title="Please enter a valid plate number (e.g., 8KH2Z9)" value="{{ $item->plate_no }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" disabled>
+                                <input type="text" name="plate_no" pattern="[0-9A-Z]{7}" title="Please enter a valid plate number (e.g., 8KH2Z9)" value="{{ $item->plate_no }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" disabled>
 
                                 <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required>
 
                                 <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required>
 
                                 <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required>
+                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required>
 
                                     <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[370px]" required disabled>
+                                    <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required disabled>
                                         {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
                                         <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
                                         {{-- <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option> --}}
