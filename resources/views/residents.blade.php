@@ -109,18 +109,86 @@
             </div>
         </div>
 
-        <!-- content -->
-        <div class="flex-grow text-gray-800">
-            <main class="p-6 sm:p-10 space-y-6">
-              <!-- Start Table -->
-        <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
-            <div class="mb-4">
+      <!-- content -->
+      <div class="flex-grow text-gray-800">
+        <main class="p-3 sm:p-4 space-y-5">
+          <!-- Start Table -->
+          <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
+            <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
                 <h2 class="text-2xl font-bold">RESIDENTS TABLE INFORMATION</h2>
             </div>
 
             <div x-data="{ residentsDelete: false, residentsEdit: false, residentNewUsers: false, itemToDelete: null, itemToEdit: null}">
                 <div class="relative mb-16">
                     <button @click="residentNewUsers = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> <i class="ri-add-circle-line mr-1"></i>Add New User</button>
+                    <div class="md:flex-shrink-0 mt-[47px]">
+                        <!-- Data Table Buttons -->
+                        <script>
+                            $(document).ready(function () {
+                                var empDataTable = $('#example').DataTable({
+                                    responsive: true,
+                                    dom: 'Blfrtip',
+                                    buttons: [
+                                        {
+                                            extend: 'copy',
+                                        },
+                                        {
+                                            extend: 'pdf',
+                                            title: 'Waste Disposal Tracking System PDF Report',
+                                            customize: function (doc) {
+                                                // Add custom design to PDF header
+                                                doc.content.splice(0, 1, {
+                                                    text: 'Waste Disposal Tracking System PDF Report',
+                                                    style: {
+                                                        alignment: 'center',
+                                                        color: 'red', // Change color as needed
+                                                        fontSize: 16 // Adjust font size as needed
+                                                    }
+                                                });
+                                                // Set page size and orientation
+                                                doc.pageSize = 'A4'; // You can change to 'letter' or other sizes
+                                                doc.pageOrientation = 'portrait'; // 'portrait' or 'landscape'
+                                            },
+                                            exportOptions: {
+                                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                            }
+                                        },
+                                        {
+                                            extend: 'csv',
+                                            title: 'Waste Disposal Tracking System CSV Report',
+                                            exportOptions: {
+                                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                            },
+                                            customize: function (csv) {
+                                                // Custom CSV header with a single cell spanning all columns
+                                                var customHeader = 'Waste Disposal Tracking System Report\n';
+                                                return customHeader + csv;
+                                            },
+                                        },
+                                        {
+                                            extend: 'excel',
+                                            title: 'Waste Disposal Tracking System Excel Report',
+                                            customize: function (xlsx) {
+                                                // // Add custom design to Excel header
+                                                // var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                                                // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
+                                            },
+                                            exportOptions: {
+                                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                            }
+                                        },
+                                        {
+                                            extend: 'print', // Add print button
+                                            title: 'Waste Disposal Tracking System Print Report',
+                                            exportOptions: {
+                                                columns: [0, 1, 2, 3, 4, 7]
+                                            }
+                                        }
+                                    ]
+                                });
+                            });
+                        </script>
+                    </div>
                 </div>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
@@ -338,7 +406,7 @@
                             </div>
                             <hr class="bg-black border-gray-300 w-[655px]">
                             @foreach($data as $item)
-                            <div x-show="itemToEdit === {{ $item->id }}">
+                            <div x-show="itemToEdit.toString() === '{{ $item->id }}'">
                             <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`" class="flex justify-start pl-5 pr-5 pt-2 pb-1">
                                 @csrf
                                 @method('patch')
