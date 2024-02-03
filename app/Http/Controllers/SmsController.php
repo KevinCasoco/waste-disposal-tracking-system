@@ -86,6 +86,48 @@ class SmsController extends Controller
     //     return redirect()->route('schedule')->with('message', 'SMS sent to all users.');
     // }
 
+    // admin button
+    // recipient number dynamic based on the number of residents
+    // public function sms()
+    // {
+    //     // vonage sms api credentials
+    //     $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
+    //     $client = new \Vonage\Client($basic);
+
+    //     // Retrieve schedules from the database
+    //     $schedules = Schedule::all();
+
+    //     // Retrieve users from the database to get their phone numbers
+    //     $users = User::all(); // Assuming you have a User model
+
+    //     // Build the SMS content with schedule information
+    //     $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
+
+    //     foreach ($schedules as $schedule) {
+    //         $smsContent .= "Admin ID: {$schedule->users_id},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
+    //     }
+
+    //     // Send SMS to each user's phone number
+    //     foreach ($users as $user) {
+    //         // Check if the user has a phone number
+    //         if ($user->phone_number) {
+    //             // Send SMS with the built content to the user's phone number
+    //             $response = $client->sms()->send(
+    //                 new \Vonage\SMS\Message\SMS($user->phone_number, 'WDTS', $smsContent)
+    //             );
+
+    //             $message = $response->current();
+
+    //             if ($message->getStatus() == 0) {
+    //                 // If the message was sent successfully, redirect with success message
+    //                 return redirect()->route('schedule')->with('message', 'The message was sent successfully');
+    //             } else {
+    //                 // If the message failed, display the status
+    //                 echo "The message failed with status: " . $message->getStatus() . "\n";
+    //             }
+    //         }
+    //     }
+    // }
 
     // // with 1 day before the exact date before sending to sms
     // // residents matches the location to dropdown
