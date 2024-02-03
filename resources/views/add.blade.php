@@ -108,13 +108,39 @@
             <h1 class="mt-6 text-2xl font-bold text-center">Waste Collection Schedule</h1>
 
             <label for='location'>{{ __('Location') }}</label>
+                <select id="addressDropdown" name="location">
+                    <option value="">Select Address</option>
+                    @foreach($locations as $id => $location)
+                        <?php
+                            // Split the address by commas
+                            $parts = explode(',', $location);
+                            // Extract the second part and remove leading/trailing spaces
+                            $secondValue = trim($parts[1]);
+                        ?>
+                        <option value="{{ $location }}">{{ $secondValue }}</option>
+                    @endforeach
+                </select>
 
-            <select name="location" id="location" class="form-control" required>
-                <option value="">Select Location</option>
-                @foreach($locations as $id => $location)
-                    <option value="{{ $location }}">{{ $location }}</option>
-                @endforeach
-            </select>
+            <script>
+                // Function to extract the second value from an address
+                function extractSecondValue(address) {
+                    // Split the address by commas
+                    var parts = address.split(',');
+                    // Extract the second part and remove leading/trailing spaces
+                    var secondValue = parts[1].trim();
+                    return secondValue;
+                }
+
+                // Extract second values from the addresses
+                var value1 = extractSecondValue(address1);
+
+                // Add extracted values to the dropdown list
+                var dropdown = document.getElementById("addressDropdown");
+                var option1 = document.createElement("option");
+                option1.text = value1;
+                option1.value = value1;
+                dropdown.add(option1);
+            </script>
 
             <label for="label">Please take note that 1 day before the schedule can only notify the users!</label>
             <label for="start">Date of Collection</label>
