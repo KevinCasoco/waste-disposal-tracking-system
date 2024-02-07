@@ -109,18 +109,21 @@
             </div>
         </div>
 
-        <!-- content -->
-        <div class="flex-grow text-gray-800">
-            <main class="p-6 sm:p-10 space-y-6">
-              <!-- Start Table -->
-        <div id='recipients' class="p-8 m-3 lg:mt-0 rounded shadow-lg bg-white">
-            <div class="mb-4">
+      <!-- content -->
+      <div class="flex-grow text-gray-800">
+        <main class="p-3 sm:p- 4 space-y-5">
+          <!-- Start Table -->
+          <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
+            <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
                 <h2 class="text-2xl font-bold">RESIDENTS TABLE INFORMATION</h2>
             </div>
 
             <div x-data="{ residentsDelete: false, residentsEdit: false, residentNewUsers: false, itemToDelete: null, itemToEdit: null}">
-                <div class="relative mb-16">
-                    <button @click="residentNewUsers = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> <i class="ri-add-circle-line mr-1"></i>Add New User</button>
+                <div class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
+                    <button @click="residentNewUsers = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> <i class="ri-add-circle-line mr-1"></i>Add New User</button>
+                    <div class="md:flex-shrink-0 mt-[47px]">
+
+                    </div>
                 </div>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
@@ -197,30 +200,33 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                    <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[655px] h-[500px]">
+                    class="bg-white rounded overflow-hidden transform transition-all flex justify-start mx-3">
+                    <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[410px]">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                 Register New Residents
                             </h3>
                         </div>
-                        <hr class="bg-black border-gray-300 w-[655px]">
-                        <form action="{{ route('admin.create_residents') }}" method="post" class="flex justify-start pl-5 pr-5 pt-3 pb-3">
+                        <hr class="bg-black border-gray-300 w-full">
+                        <form action="{{ route('admin.create_residents') }}" method="post" class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-2 pb-1">
                             @csrf
-                            <div class="mr-4">
-                            <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <div class="sm:mr-4">
+                            <label for="first_name" class="text-gray-800 block font-bold text-sm tracking-wide">First Name:</label>
+                            <input type="text" name="first_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 w-full sm:w-[300px]" required>
 
-                            <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <label for="last_name" class="text-gray-800 block font-bold text-sm tracking-wide">Last Name:</label>
+                            <input type="text" name="last_name" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 w-full sm:w-[300px]" required>
+
+                            <label for="number" class="text-gray-800 block font-bold text-sm tracking-wide">Phone Number</label>
+                            <div id="country-selector" ></div>
+                            <input type="tel" id="number" name="number" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-full md:w-[300px] " required>
 
                             <!-- Location -->
                             <div class="status" style="display: none;"></div>
-                            <div class="mt-1">
+                            <div>
                                 <x-input-label for="location" :value="__('Location')" />
                                 <textarea id="locationTextarea" rows="4" cols="50"
-                                        class="block mt-1 w-[100%]"
+                                        class="block mt-1 w-[100%] h-[70px]"
                                         name="location" required autocomplete=""
                                         placeholder="Find Your Location">{{ old('location') }}</textarea>
 
@@ -233,29 +239,29 @@
                             </div>
                             <div>
                             <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2" required>
+                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px] mb-2" required>
                                     {{-- <option value="admin">Admin</option> --}}
                                     {{-- <option value="collector">Collector</option> --}}
                                     <option value="residents">Resident</option>
                                 </select>
 
                             <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
-                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required>
                                 <option value="active" selected>Active</option>
                                 <option value="inactive">Inactive</option>
                                 {{-- <option value="resident">Resident</option> --}}
                             </select>
 
                             <label for="email" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Email:</label>
-                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+                            <input type="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-full sm:w-[300px]" required>
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
-                            <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
+                            {{-- <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
                             <div id="country-selector"></div>
-                            <input type="tel" id="number" name="number" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+                            <input type="tel" id="number" name="number" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required> --}}
 
                             <label for="password" class="text-gray-800 block font-bold text-sm tracking-wide">Password:</label>
-                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                             <div class="flex justify-end mt-3">
                                 <button type="submit"
@@ -328,29 +334,33 @@
                     x-transition:leave="ease-in duration-200"
                     x-transition:leave-start="opacity-100 transform scale-100"
                     x-transition:leave-end="opacity-0 transform scale-95"
-                    class="rounded-lg overflow-hidden transform transition-all flex justify-start">
-                    <!-- ... (modal content) ... -->
-                    <div class="bg-white py-3 w-[655px] h-[400px]">
+                    class="rounded-lg overflow-hidden transform transition-all flex justify-start mx-3">
+                    <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[370px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Residents Information
                                 </h3>
+                                <button @click="residentsEdit = false" aria-label="Close" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </div>
-                            <hr class="bg-black border-gray-300 w-[655px]">
+                            <hr class="bg-black border-gray-300 w-full">
                             @foreach($data as $item)
-                            <div x-show="itemToEdit === {{ $item->id }}">
-                            <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`" class="flex justify-start pl-5 pr-5 pt-2 pb-1">
+                            <div x-show="itemToEdit.toString() === '{{ $item->id }}'">
+                            <form method="post" :action="`{{ route('residents.update_residents', '') }}/${itemToEdit}`" class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-3 pb-1">
                                 @csrf
                                 @method('patch')
-                                <div class="mr-4">
+                                <div class="sm:mr-4">
                                 {{-- <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
                                 <input type="id" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" disabled> --}}
 
                                 <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                                <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                                 <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]" required>
+                                <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                                 <!-- Location -->
                                 <div class="status" style="display: none;"></div>
@@ -369,50 +379,124 @@
                             </div>
                             <div>
                                 <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required>
 
                                 <label for="number" class="text-gray-800 block mb-1 mt-1 font-bold text-sm tracking-wide">Phone Number</label>
                                 <div id="country-selector"></div>
-                                <input type="tel" id="number" name="number" value="{{ $item->number }}" pattern="^\639\d{9}$" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-[300px]" required>
+                                <input type="tel" id="number" name="number" value="{{ $item->number }}" pattern="^\639\d{9}$" title="Please enter a valid phone number that starts with (e.g., +639)" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-full sm:w-[300px]" required>
 
                                 <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required disabled>
+                                <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required disabled>
                                     {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
                                     {{-- <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option> --}}
                                     <option value="resident" {{ $item->role === 'residents' ? 'selected' : '' }}>Resident</option>
                                 </select>
 
-                                <div class="flex justify-end items-end pt-3">
-                                    <button type="submit"
-                                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                <div class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-5 gap-x-2 pt-3">
+                                    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                         Update
                                     </button>
-                                <div class="absolute mr-[93px]">
-                                        <button @click.prevent="residentsEdit = false"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                             Cancel
+
+                                    <div class="absolute mr-[93px]">
+                                            <button @click.prevent="residentsEdit = false"
+                                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                Cancel
                                             </button>
-                                        </div>
-                                        </div>
-                                    </form>
                                     </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                         </div>
-                    </div>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+        </div>
 
+                <style>
+                    @media (min-width: 640px) {
+                        .sm\:mr-4 {
+                            margin-right: 1rem;
+                        }
+                    }
+                </style>
             </div>
-            <!--/Card-->
-        </main>
         </div>
+
         </div>
-        <!--/container-->
+        <!--/Card-->
+    </main>
+    </div>
+    </div>
+    <!--/container-->
 
     {{-- Alphine --}}
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+    <script>
+        $(document).ready(function() {
+            var empDataTable = $('#example').DataTable({
+                responsive: true,
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        extend: 'copy',
+                    },
+                    {
+                        extend: 'pdf',
+                        title: 'Waste Disposal Tracking System PDF Report',
+                        customize: function(doc) {
+                            // Add custom design to PDF header
+                            doc.content.splice(0, 1, {
+                                text: 'Waste Disposal Tracking System PDF Report',
+                                style: {
+                                    alignment: 'center',
+                                    color: 'red', // Change color as needed
+                                    fontSize: 16 // Adjust font size as needed
+                                }
+                            });
+                             // Set page size and orientation
+                            doc.pageSize = 'A4'; // You can change to 'letter' or other sizes
+                            doc.pageOrientation = 'portrait'; // 'portrait' or 'landscape'
+                        },
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        title: 'Waste Disposal Tracking System CSV Report',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                        },
+                        customize: function (csv) {
+                            // Custom CSV header with a single cell spanning all columns
+                            var customHeader = 'Waste Disposal Tracking System Report\n';
+                            return customHeader + csv;
+                        },
+                    },
+                    {
+                        extend: 'excel',
+                        title: 'Waste Disposal Tracking System Excel Report',
+                        customize: function(xlsx) {
+                            // // Add custom design to Excel header
+                            // var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                            // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
+                        },
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                        }
+                    },
+                    {
+                        extend: 'print', // Add print button
+                        title: 'Waste Disposal Tracking System Print Report',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 7]
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
 
     <script>
         function deleteItem(itemId) {

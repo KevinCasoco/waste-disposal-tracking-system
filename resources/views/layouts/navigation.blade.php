@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-3 shadow-md">
-        <div class="flex justify-between h-16">
+    <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-3 shadow-md overflow-x-auto">
+        <div class="flex justify-between h-16 overflow-x-auto">
             <div class="flex items-center">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
