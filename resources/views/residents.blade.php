@@ -340,6 +340,11 @@
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                     Edit Residents Information
                                 </h3>
+                                <button @click="residentsEdit = false" aria-label="Close" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
                             </div>
                             <hr class="bg-black border-gray-300 w-full">
                             @foreach($data as $item)
