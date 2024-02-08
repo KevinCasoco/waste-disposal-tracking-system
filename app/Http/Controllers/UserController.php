@@ -101,5 +101,9 @@ class UserController extends Controller
         return view('hazardous-waste');
     }
 
+    public function showAugmentedReality()
+    {
+        return view('augmented-reality');
+    }
 
 }
