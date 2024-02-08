@@ -235,6 +235,9 @@ Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
     // calendar for collection
     Route::get('/user-schedule', [UserController::class, 'showUserSchedule'])->name('user-schedule');
 
+    // dynamic augmented reality 3 marker for 3 sample images
+    Route::get('/augmented-reality', [UserController::class, 'showAugmentedReality'])->name('augmented-reality');
+
     // augmented reality with marker
     Route::get('/kitchen-waste', [UserController::class, 'showKitchenWaste'])->name('kitchen-waste');
 
