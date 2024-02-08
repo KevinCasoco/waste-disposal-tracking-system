@@ -7,19 +7,19 @@
 </head>
 <body style="margin: 0; overflow: hidden;">
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <!-- Marker 1 for tracking -->
+    <!-- Marker 1  Hazardous Waste for tracking -->
     <a-marker type="pattern" url="{{asset('/images/pattern-hazardous-waste.patt')}}" emitevents="true" id="marker">
       <!-- Plane to display the image -->
       <a-plane class="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
     </a-marker>
 
-    <!-- Marker 2 for tracking -->
+    <!-- Marker 2 Recyclable Waste for tracking -->
     <a-marker type="pattern" url="{{asset('/images/pattern-hiro.patt')}}" emitevents="true" id="marker1">
       <!-- Plane to display the image -->
       <a-plane class="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
     </a-marker>
 
-    <!-- Marker 3 for tracking -->
+    <!-- Marker 3 Kitchen Waste for tracking -->
     <a-marker type="pattern" url="{{asset('/images/pattern-bio.patt')}}" emitevents="true" id="marker2">
         <!-- Plane to display the image -->
         <a-plane class="imagePlane" position="4 0 0" rotation="-90 0 0" width="4" height="2.25" material="shader: flat; scale: 2 2 2"></a-plane>
@@ -35,7 +35,7 @@
 
     markers.forEach((marker, index) => {
       const imagePlane = imagePlanes[index];
-      const imageUrl = `{{ asset('images/hazard${index + 1}.jpeg') }}`;
+      const imageUrl = `{{ asset('images/augmented-reality${index + 1}.jpeg') }}`;
       let isAnimationRunning = false;
 
       marker.addEventListener("markerFound", () => {
