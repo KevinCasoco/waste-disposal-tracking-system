@@ -20,6 +20,7 @@
         <link rel="dns-prefetch" href="//unpkg.com" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
         <!--Replace with your tailwind.css once created-->
