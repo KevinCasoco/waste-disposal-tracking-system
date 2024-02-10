@@ -98,8 +98,10 @@
 
       <!-- content -->
       <div class="flex-grow text-gray-800">
-        <main class="p-2 sm:p-1 space-y-6">
-            <div class="container mt-3">
+        <main class="p-6 sm:p-1 space-y-6">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+            <div class="container mt-5">
                 {{-- For Search --}}
                 <div class="row">
                     <div class="col-md-4">
@@ -120,20 +122,19 @@
                         </div>
 
                     </div>
-            <div class="sm:flex md:flex mt-1">
-                    <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="ml-3">
+                    <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="absolute flex justify-end ml-[780px]">
                         @csrf
                         <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
                     </form>
 
-                    <form action="{{ route('collector-schedule.sms_controller') }}" method="POST" class="ml-3">
+                    <form action="{{ route('collector-schedule.sms_controller') }}" method="POST" class="absolute flex justify-end ml-[570px]">
                         @csrf
                         <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(sms)</button>
                     </form>
-                </div>
-            </div>
 
-                <div class="card overflow-x-auto">
+                </div>
+
+                <div class="card">
                     <div class="card-body">
                         <div id="calendar" style="width: 100%;height:100vh"></div>
 
@@ -143,17 +144,6 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-
-            <style>
-                /* Your existing styles for the calendar header */
-
-                /* Media query for mobile view */
-                @media only screen and (max-width: 600px) {
-                    .fc-header-toolbar {
-                        font-size: 10px; /* Adjust the font size as needed */
-                    }
-                }
-            </style>
 
             <script type="text/javascript">
                 $.ajaxSetup({
