@@ -116,7 +116,7 @@
             {{-- For Search --}}
             <div class="row">
                 <div class="col-md-4">
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
                         <div class="input-group-append">
                             <button id="searchButton" class="btn btn-primary">Search</button>
@@ -125,22 +125,26 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
+                    <div class="btn-group mb-2" role="group" aria-label="Calendar Actions">
                         <button id="exportButton" class="btn btn-success">Export Calendar</button>
                     </div>
-                    <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                        <a href="{{ asset('add')}}" class="btn btn-success">Add</a>
+                    <div class="btn-group mb-2 ml-1" role="group" aria-label="Calendar Actions">
+                        <a href="{{ asset('add')}}" class="btn btn-success px-3">Create New Schedule</a>
                     </div>
                 </div>
-                <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="absolute flex justify-end ml-[780px]">
-                    @csrf
-                    <button class="py-2 px-4 mb-3 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
-                </form>
 
-                <form action="{{ route('schedule.sms') }}" method="POST" class="absolute flex justify-end ml-[570px]">
-                    @csrf
-                    <button class="py-2 px-4 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(sms)</button>
-                </form>
+                <div class="sm:flex md:flex mt-1">
+                    {{-- email notification --}}
+                    <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="ml-3">
+                       @csrf
+                       <button class="py-2 px-2 mb-2 rounded bg-green-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(Email)</button>
+                   </form>
+                   {{-- sms notification --}}
+                   <form action="{{ route('schedule.sms') }}" method="POST" class="ml-3">
+                       @csrf
+                       <button class="py-2 px-2 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(SMS)</button>
+                   </form>
+                </div>
             </div>
 
             <div class="card">
