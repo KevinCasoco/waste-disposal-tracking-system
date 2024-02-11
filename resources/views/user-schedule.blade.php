@@ -148,7 +148,11 @@
 
                 // Displaying The Event
                 eventContent: function(info) {
-                    var eventTitle = info.event.extendedProps.location;
+                    var address = info.event.extendedProps.location; // Assuming the address is stored within the location property
+                    var secondPart = address.split(',')[1].trim();
+                    console.log(secondPart);
+
+                    var eventTitle = secondPart; // You can use this part of the address as the event title, if needed
                     var eventElement = document.createElement('div');
                     eventElement.innerHTML = '<span style="cursor: pointer;"></span> ' + eventTitle;
 
