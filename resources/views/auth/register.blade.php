@@ -49,7 +49,7 @@
         <div class="mt-3">
             <div id="country-selector"></div>
             <x-input-label for="number" :value="__('Phone Number')" />
-            <x-text-input id="number" class="block mt-1 w-[100%]"
+            <x-text-input id="number"
                             type="tel"
                             name="number" :value="old('number')"
                             required autocomplete="number"
@@ -62,10 +62,10 @@
         <div class="status" style="display: none;"></div>
         <div class="mt-3">
             <x-input-label for="location" :value="__('Location')" />
-            <textarea id="locationTextarea" rows="4" cols="50"
+            <x-textarea-input id="locationTextarea" rows="4" cols="50"
                       class="block mt-1 w-[100%]"
                       name="location" required autocomplete=""
-                      placeholder="Find Your Location">{{ old('location') }}</textarea>
+                      placeholder="Find Your Location">{{ old('location') }}</x-textarea-input>
 
             <x-input-error :messages="$errors->get('location')" class="mt-2" />
         <div class="flex justify-end mt-2">
