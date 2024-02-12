@@ -225,10 +225,10 @@
                                 <div class="status" style="display: none;"></div>
                                 <div>
                                     <x-input-label for="location" :value="__('Location')" />
-                                    <textarea id="locationTextarea" rows="4" cols="50"
+                                    <x-textarea-input id="locationTextarea" rows="4" cols="50"
                                             class="block mt-1 w-[100%] h-[70px]"
                                             name="location" required autocomplete=""
-                                            placeholder="Find Your Location">{{ old('location') }}</textarea>
+                                            placeholder="Find Your Location">{{ old('location') }}</x-textarea-input>
 
                                     <x-input-error :messages="$errors->get('location')" class="mt-2" />
                                 <div class="flex justify-end mt-3">
@@ -366,9 +366,9 @@
                                     <div class="status" style="display: none;"></div>
                                     <div class="mt-1">
                                         <x-input-label for="location" :value="__('Location')" />
-                                        <textarea id="locationTextarea" rows="4" cols="50"
+                                        <x-textarea-input id="locationTextarea" rows="4" cols="50"
                                             class="block mt-1 w-[100%]" name="location" required autocomplete=""
-                                            placeholder="Find Your Location">{{ old('location', $item->location) }}</textarea>
+                                            placeholder="Find Your Location">{{ old('location', $item->location) }}</x-textarea-input>
 
                                         <x-input-error :messages="$errors->get('location')" class="mt-2" />
                                         <div class="flex justify-end mt-3">
