@@ -16,7 +16,7 @@ class Collector extends Seeder
     {
         // seeding collector
         $collector = User::create([
-            'plate_no' => '2KZ2L7C',
+            'plate_no' => 'WDTS101',
             'first_name' => 'Jay-Ar',
             'last_name' => 'Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
@@ -24,19 +24,17 @@ class Collector extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'collector',
             'status' => 'active',
-            'number' => '',
         ]);
 
          // seeding collector
          $collector = User::create([
-            'plate_no' => 'L2OS7Z6',
+            'plate_no' => 'WDTS102',
             'first_name' => 'Oliver',
             'last_name' => 'Sykes',
             'email' => 'oliversykes@gmail.com',
             'password' => Hash::make('12345'),
             'role' => 'collector',
             'status' => 'inactive',
-            'number' => '',
         ]);
     }
 }
