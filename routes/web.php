@@ -116,6 +116,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // collection schedule
     Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
 
+    // collection schedule list
+    Route::get('/schedule-list', [ScheduleController::class, 'index_schedule'])->name('schedule-list');
+    Route::patch('/schedule-list/update/{id}', [ScheduleController::class, 'update_schedule'])->name('schedule-list.update_schedule');
+
     // start calendar
     Route::get('full-calender', [ScheduleController::class, 'index'])->name('schedule.index');
     Route::get('/events', [ScheduleController::class, 'getEvents'])->name('schedule.getEvents');
@@ -165,6 +169,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::delete('/admin/collector/{id}', [AdminController::class, 'admin_destroy_collector'])->name('collector.admin_destroy_collector');
     Route::delete('/admin/residents/{id}', [AdminController::class, 'admin_destroy_residents'])->name('residents.admin_destroy_residents');
+    Route::delete('/admin/schedule/{id}', [ScheduleController::class, 'schedule_destroy'])->name('schedule-list.schedule_destroy');
 
     // scheduling for waste collection
     Route::get('/calendar/schedule', [WasteCollectionSchedule::class, 'schedule'])->name('calendar.schedule');

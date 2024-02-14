@@ -22,6 +22,16 @@ class ScheduleController extends Controller
         return view('collector-schedule');
     }
 
+    public function index_schedule()
+    {
+        $data = Schedule::all();
+
+        // retrieve unique addresses for residents and populate to dropdown
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+        return view('schedule-list', compact('data', 'locations'));
+    }
+
     public function add_schedule()
     {
         // retrieve unique addresses for residents and populate to dropdown
@@ -56,6 +66,44 @@ class ScheduleController extends Controller
         $user->schedules()->save($schedule);
 
         return redirect()->route('schedule')->with('message', 'Schedule added successfully');
+    }
+
+    public function update_schedule(Request $request, $id)
+    {
+        $data = Schedule::find($id);
+
+        if (!$data) {
+            return redirect()->route('schedule-list')->with('error', 'Schedule not found');
+        }
+
+        // Validate the request
+        $request->validate([
+            'plate_no' => 'nullable|string',
+            'location' => 'nullable|string',
+            'start' => 'nullable|string',
+            'time' => 'nullable|date_format:H:i',
+        ]);
+
+        // Parse the input time using Carbon
+        $time = Carbon::parse($request->time)->format('h:i A');
+
+        // Update schedule information
+        $data->update([
+            'plate_no' => $request->input('plate_no'),
+            'location' => $request->input('location'),
+            'start' => $request->input('start'),
+            'time' => $time, // Use the parsed time value
+        ]);
+
+        return redirect()->route('schedule-list')->with('message', 'Schedule updated successfully');
+    }
+
+    public function schedule_destroy($id)
+    {
+        $schedule_list = Schedule::findOrFail($id);
+        $schedule_list->delete();
+
+        return redirect()->route('schedule-list')->with('message', 'Schedule deleted successfully');
     }
 
     public function create_collector(Request $request)
