@@ -24,7 +24,9 @@ class ScheduleController extends Controller
 
     public function index_schedule()
     {
-        return view('schedule-list');
+        $data = Schedule::all();
+
+        return view('schedule-list', compact('data'));
     }
 
     public function add_schedule()
