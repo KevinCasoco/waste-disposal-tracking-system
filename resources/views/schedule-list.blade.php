@@ -327,7 +327,11 @@
                                         <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="start" name="start" value="{{ $item->start }}" required>
 
                                         <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time of Collection:</label>
-                                        <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="time" name="time" value="{{ $item->time }}" required>
+                                            <?php
+                                            // converting time value into time object
+                                            $time = \Carbon\Carbon::createFromFormat('h:i A', $item->time)->format('H:i');
+                                            ?>
+                                        <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="time" name="time" value="{{ $time }}" required>
 
                                         <div class="flex justify-end items-end pt-1">
                                             <button type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
