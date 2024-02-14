@@ -304,46 +304,42 @@
                                 <hr class="bg-black border-gray-300 w-full">
                                 @foreach($data as $item)
                                 <div x-show="scheduleToEdit.toString() === '{{ $item->id }}'">
-                                <form method="post" :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
-                                    @csrf
-                                    @method('patch')
-                                    {{-- <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                    <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]" disabled> --}}
+                                    <form method="post" :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
+                                        @csrf
+                                        @method('patch')
 
-                                    <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
-                                    <select id="addressDropdown" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
-                                        <option value="">Select Address</option>
-                                        @foreach($locations as $id => $location)
+                                        <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
+                                        <input type="hidden" name="schedule_id" value="{{ $item->id }}">
+                                        <select id="addressDropdown" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                                            <option value="">Select Address</option>
+                                            @foreach($locations as $id => $location)
                                             <?php
-                                                // Split the address by commas
-                                                $parts = explode(',', $location);
-                                                // Extract the second part and remove leading/trailing spaces
-                                                $secondValue = trim($parts[1]);
+                                            // Split the address by commas
+                                            $parts = explode(',', $location);
+                                            // Extract the second part and remove leading/trailing spaces
+                                            $secondValue = trim($parts[1]);
                                             ?>
-                                            <option value="{{ $location }}">{{ $secondValue }}</option>
-                                        @endforeach
-                                    </select>
+                                            <option value="{{ $location }}" @if($item->location == $location) selected @endif>{{ $secondValue }}</option>
+                                            @endforeach
+                                        </select>
 
-                                    {{-- <label for="label">Please take note that 1 day before the schedule can only notify the users!</label> --}}
-                                    <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date of Collection:</label>
-                                    <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id='start' name='start' value="{{ $item->start }}" required>
+                                        <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date of Collection:</label>
+                                        <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="start" name="start" value="{{ $item->start }}" required>
 
-                                    <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time of Collection:</label>
-                                    <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="time" name="time" value="{{ $item->time }}" required>
+                                        <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time of Collection:</label>
+                                        <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="time" name="time" value="{{ $item->time }}" required>
 
-                                    <div class="flex justify-end items-end pt-1">
-                                    <button type="submit"
-                                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                        Update
-                                    </button>
-                                    <div class="absolute mr-[93px]">
-                                        <button @click.prevent="scheduleEdit = false"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                            Cancel
-                                    </button>
-                                    </div>
-                                    </div>
-                                </form>
+                                        <div class="flex justify-end items-end pt-1">
+                                            <button type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                Update
+                                            </button>
+                                            <div class="absolute mr-[93px]">
+                                                <button @click.prevent="scheduleEdit = false" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 @endforeach
                          </div>

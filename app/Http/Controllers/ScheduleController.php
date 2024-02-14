@@ -72,6 +72,9 @@ class ScheduleController extends Controller
     {
         $data = User::find($id);
 
+        // Parse the input time using Carbon
+        $time = Carbon::parse($request->time)->format('h:i A');
+
         if (!$data) {
             return redirect()->route('schedule-list')->with('error', 'Schedule not found');
         }
