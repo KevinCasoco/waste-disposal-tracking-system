@@ -68,6 +68,14 @@ class ScheduleController extends Controller
         return redirect()->route('schedule')->with('message', 'Schedule added successfully');
     }
 
+    public function schedule_destroy($id)
+    {
+        $schedule_list = Schedule::findOrFail($id);
+        $schedule_list->delete();
+
+        return redirect()->route('schedule-list')->with('message', 'Schedule deleted successfully');
+    }
+
     public function create_collector(Request $request)
     {
         // Get the authenticated user
