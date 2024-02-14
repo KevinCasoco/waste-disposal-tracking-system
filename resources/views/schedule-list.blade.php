@@ -197,8 +197,8 @@
                             <hr class="bg-black border-gray-300 w-full">
                             <form action="{{ route('schedule.create') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
                                 @csrf
-                                <label for='location'>{{ __('Location') }}</label>
-                                    <select id="addressDropdown" name="location">
+                                <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
+                                    <select id="addressDropdown" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
                                         <option value="">Select Address</option>
                                         @foreach($locations as $id => $location)
                                             <?php
@@ -211,12 +211,12 @@
                                         @endforeach
                                     </select>
 
-                                <label for="label">Please take note that 1 day before the schedule can only notify the users!</label>
-                                <label for="start">Date of Collection</label>
-                                <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
+                                {{-- <label for="label">Please take note that 1 day before the schedule can only notify the users!</label> --}}
+                                <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date of Collection:</label>
+                                <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id='start' name='start' required value='{{ now()->toDateString() }}'>
 
-                                <label for="time">Time of Collection</label>
-                                <input type="time" class='form-control' id="time" name="time" required>
+                                <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time of Collection:</label>
+                                <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="time" name="time" required>
 
                                 <div class="flex justify-end mt-3">
                                     <button type="submit"
@@ -293,7 +293,7 @@
                         <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[490px]">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
-                                        Edit Admin Information
+                                        Edit Schedule Information
                                     </h3>
                                     <button @click="scheduleEdit = false" aria-label="Close" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
                                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -304,29 +304,33 @@
                                 <hr class="bg-black border-gray-300 w-full">
                                 @foreach($data as $item)
                                 <div x-show="scheduleToEdit.toString() === '{{ $item->id }}'">
-                                <form method="post" :action="`{{ route('admin.update', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
+                                <form method="post" :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                     @csrf
                                     @method('patch')
-                                        <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                        <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]" disabled>
+                                    <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
+                                    <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]" disabled>
 
-                                        <label for="first_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First Name:</label>
-                                        <input type="text" name="first_name" value="{{ $item->first_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required>
+                                    <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
+                                    <select id="addressDropdown" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                                        <option value="">Select Address</option>
+                                        @foreach($locations as $id => $location)
+                                            <?php
+                                                // Split the address by commas
+                                                $parts = explode(',', $location);
+                                                // Extract the second part and remove leading/trailing spaces
+                                                $secondValue = trim($parts[1]);
+                                            ?>
+                                            <option value="{{ $location }}">{{ $secondValue }}</option>
+                                        @endforeach
+                                    </select>
 
+                                    {{-- <label for="label">Please take note that 1 day before the schedule can only notify the users!</label> --}}
+                                    <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date of Collection:</label>
+                                    <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id='start' name='start' value="{{ $item->start }}" required>
 
-                                        <label for="last_name" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last Name:</label>
-                                        <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
+                                    <label for="start" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time of Collection:</label>
+                                    <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" id="time" name="time" value="{{ $item->time }}" required>
 
-
-                                        <label for="email" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                                        <input type="email" name="email" value="{{ $item->email }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
-
-                                        <label for="role" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                        <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required disabled>
-                                            <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                            {{-- <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option>
-                                            <option value="resident" {{ $item->role === 'resident' ? 'selected' : '' }}>Resident</option> --}}
-                                        </select>
                                     <div class="flex justify-end items-end pt-1">
                                     <button type="submit"
                                             class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">

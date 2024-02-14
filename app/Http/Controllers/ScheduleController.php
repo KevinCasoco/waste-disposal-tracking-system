@@ -68,6 +68,33 @@ class ScheduleController extends Controller
         return redirect()->route('schedule')->with('message', 'Schedule added successfully');
     }
 
+    public function update_schedule(Request $request, $id)
+    {
+        $data = User::find($id);
+
+        if (!$data) {
+            return redirect()->route('schedule-list')->with('error', 'Schedule not found');
+        }
+
+        // Validate the request
+        $request->validate([
+            'plate_no' => 'nullable|string',
+            'location' => 'nullable|string',
+            'start' => 'nullable|string',
+            'time' => 'nullable|string',
+        ]);
+
+        // Update schedule information
+        $data->update([
+            'plate_no' => $request->input('plate_no'),
+            'location' => $request->input('location'),
+            'start' => $request->input('start'),
+            'time' => $request->input('time'),
+        ]);
+
+        return redirect()->route('schedule-list')->with('message', 'Schedule updated successfully');
+    }
+
     public function schedule_destroy($id)
     {
         $schedule_list = Schedule::findOrFail($id);

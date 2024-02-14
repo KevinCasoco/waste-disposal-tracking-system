@@ -118,6 +118,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // collection schedule list
     Route::get('/schedule-list', [ScheduleController::class, 'index_schedule'])->name('schedule-list');
+    Route::patch('/schedule-list/update/{id}', [ScheduleController::class, 'update_schedule'])->name('schedule-list.update_schedule');
 
     // start calendar
     Route::get('full-calender', [ScheduleController::class, 'index'])->name('schedule.index');
