@@ -116,6 +116,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // collection schedule
     Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
 
+    // collection schedule list
+    Route::get('/schedule-list', [ScheduleController::class, 'index_schedule'])->name('schedule-list');
+
     // start calendar
     Route::get('full-calender', [ScheduleController::class, 'index'])->name('schedule.index');
     Route::get('/events', [ScheduleController::class, 'getEvents'])->name('schedule.getEvents');

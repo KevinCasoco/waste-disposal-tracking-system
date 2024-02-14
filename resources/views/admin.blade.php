@@ -50,7 +50,14 @@
                 <li class="mb-1 group">
                     <a href="{{ asset('schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                         <i class="ri-calendar-2-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Schedule</span>
+                        <span class="text-sm">Calendar Schedule</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <a href="{{ asset('schedule-list') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                        <i class="ri-calendar-2-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Schedule List</span>
                     </a>
                 </li>
                 <li class="mb-1 group">

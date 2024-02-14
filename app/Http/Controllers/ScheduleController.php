@@ -22,6 +22,11 @@ class ScheduleController extends Controller
         return view('collector-schedule');
     }
 
+    public function index_schedule()
+    {
+        return view('schedule-list');
+    }
+
     public function add_schedule()
     {
         // retrieve unique addresses for residents and populate to dropdown
