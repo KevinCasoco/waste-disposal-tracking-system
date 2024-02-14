@@ -70,10 +70,7 @@ class ScheduleController extends Controller
 
     public function update_schedule(Request $request, $id)
     {
-        $data = User::find($id);
-
-        // Parse the input time using Carbon
-        $time = Carbon::parse($request->time)->format('h:i A');
+        $data = Schedule::find($id);
 
         if (!$data) {
             return redirect()->route('schedule-list')->with('error', 'Schedule not found');
@@ -84,15 +81,18 @@ class ScheduleController extends Controller
             'plate_no' => 'nullable|string',
             'location' => 'nullable|string',
             'start' => 'nullable|string',
-            'time' => 'nullable|string',
+            'time' => 'nullable|date_format:H:i',
         ]);
+
+        // Parse the input time using Carbon
+        $time = Carbon::parse($request->time)->format('h:i A');
 
         // Update schedule information
         $data->update([
             'plate_no' => $request->input('plate_no'),
             'location' => $request->input('location'),
             'start' => $request->input('start'),
-            'time' => $request->input('time'),
+            'time' => $time, // Use the parsed time value
         ]);
 
         return redirect()->route('schedule-list')->with('message', 'Schedule updated successfully');
