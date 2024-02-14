@@ -188,7 +188,7 @@
                         x-transition:leave-end="opacity-0 transform scale-95"
                         class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                         <!-- ... (modal content) ... -->
-                        <div class="bg-white py-3 w-full sm:w-[340px] h-full sm:h-[550px]">
+                        <div class="bg-white py-3 w-full sm:w-[340px] h-full sm:h-[350px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                     Add New Schedule
@@ -290,7 +290,7 @@
                         x-transition:leave-end="opacity-0 transform scale-95"
                         class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                         <!-- ... (modal content) ... -->
-                        <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[490px]">
+                        <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[350px]">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                         Edit Schedule Information
@@ -307,8 +307,8 @@
                                 <form method="post" :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                     @csrf
                                     @method('patch')
-                                    <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
-                                    <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]" disabled>
+                                    {{-- <label for="id" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">ID:</label>
+                                    <input type="number" name="id" value="{{ $item->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]" disabled> --}}
 
                                     <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
                                     <select id="addressDropdown" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
