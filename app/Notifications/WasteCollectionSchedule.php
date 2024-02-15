@@ -41,7 +41,7 @@ class WasteCollectionSchedule extends Notification
 
         foreach ($this->schedules as $schedule) {
             // Assuming you have 'date' and 'time' columns in your Schedule model
-            $scheduleInfo .= "Location: {$schedule->location}, Date: {$schedule->start}, Time: {$schedule->time}\n";
+            $scheduleInfo .= "Plate No: {$schedule->plate_no}, Location: {$schedule->location}, Date: {$schedule->start}, Time: {$schedule->time}\n";
         }
 
         $mailMessage = (new MailMessage)
@@ -49,7 +49,7 @@ class WasteCollectionSchedule extends Notification
 
         // Use the line method for each schedule
         foreach ($this->schedules as $schedule) {
-            $mailMessage->line("Location: {$schedule->location}, Date: {$schedule->start}, Time: {$schedule->time}");
+            $mailMessage->line("Plate No: {$schedule->plate_no}, Location: {$schedule->location}, Date: {$schedule->start}, Time: {$schedule->time}");
         }
 
         $mailMessage->action('Notification Action', url('/'))
