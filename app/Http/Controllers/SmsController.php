@@ -25,7 +25,7 @@ class SmsController extends Controller
         $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
 
         foreach ($schedules as $schedule) {
-            $smsContent .= "Admin ID: {$schedule->users_id},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
+            $smsContent .= "Admin ID: {$schedule->users_id},\n Plate No.: {$schedule->plate_no},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
         }
 
         // Send SMS with the built content
