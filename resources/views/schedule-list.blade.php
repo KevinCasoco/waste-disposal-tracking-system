@@ -188,7 +188,7 @@
                         x-transition:leave-end="opacity-0 transform scale-95"
                         class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
                         <!-- ... (modal content) ... -->
-                        <div class="bg-white py-3 w-full sm:w-[340px] h-full sm:h-[350px]">
+                        <div class="bg-white py-3 w-full sm:w-[340px] h-full sm:h-[430px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                     Add New Schedule
@@ -197,6 +197,15 @@
                             <hr class="bg-black border-gray-300 w-full">
                             <form action="{{ route('schedule.create') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
                                 @csrf
+
+                                <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
+                                <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                                    <option value="">Select Plate Number</option>
+                                    @foreach($users as $user)
+                                        <option>{{ $user->plate_no }}</option>
+                                    @endforeach
+                                </select>
+
                                 <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
                                     <select id="addressDropdown" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
                                         <option value="">Select Address</option>
@@ -290,7 +299,7 @@
                         x-transition:leave-end="opacity-0 transform scale-95"
                         class="rounded-lg overflow-hidden transform transition-all flex justify-start">
                         <!-- ... (modal content) ... -->
-                        <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[350px]">
+                        <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[430px]">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                         Edit Schedule Information
@@ -307,6 +316,13 @@
                                     <form method="post" :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                         @csrf
                                         @method('patch')
+
+                                        <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
+                                        <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                                            @foreach($users as $user)
+                                            <opttion value="{{ $user->plate_no }}"></opttion>
+                                            @endforeach
+                                        </select>
 
                                         <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
                                         <input type="hidden" name="schedule_id" value="{{ $item->id }}">

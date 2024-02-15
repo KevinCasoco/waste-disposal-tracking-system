@@ -26,10 +26,12 @@ class ScheduleController extends Controller
     {
         $data = Schedule::all();
 
+        $users = User::whereNotNull('plate_no')->get();
+
         // retrieve unique addresses for residents and populate to dropdown
         $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
 
-        return view('schedule-list', compact('data', 'locations'));
+        return view('schedule-list', compact('data', 'users', 'locations'));
     }
 
     public function add_schedule()
@@ -56,6 +58,7 @@ class ScheduleController extends Controller
         $time = Carbon::parse($request->time)->format('h:i A');
 
         $schedule = new Schedule([
+            'plate_no' =>$request->plate_no,
             'location' =>$request->location,
             'start' =>$request->start,
             'time' =>$time,
