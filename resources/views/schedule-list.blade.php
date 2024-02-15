@@ -319,9 +319,13 @@
 
                                         <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
                                         <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
-                                            @foreach($users as $user)
-                                            <opttion value="{{ $user->plate_no }}"></opttion>
-                                            @endforeach
+                                            <option>Select Plate Number</option>
+                                                @foreach($users as $user)
+                                                    <option>{{ $user->plate_no }}</option>
+                                                @endforeach
+                                                {{-- @foreach($users as $user)
+                                                    <option {{ $user->plate_no == $editUser->plate_no ? 'selected' : '' }}>{{ $user->plate_no }}</option>
+                                                @endforeach --}}
                                         </select>
 
                                         <label for="location" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
