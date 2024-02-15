@@ -408,14 +408,14 @@
                                 doc.pageOrientation = 'portrait'; // 'portrait' or 'landscape'
                             },
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                columns: [0, 1, 2, 3, 4, 5 ] // Specify the column indices you want to export
                             }
                         },
                         {
                             extend: 'csv',
                             title: 'Waste Disposal Tracking System CSV Report',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                columns: [0, 1, 2, 3, 4, 5] // Specify the column indices you want to export
                             },
                             customize: function (csv) {
                                 // Custom CSV header with a single cell spanning all columns
@@ -432,14 +432,14 @@
                                 // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
                             },
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                columns: [0, 1, 2, 3, 4, 5] // Specify the column indices you want to export
                             }
                         },
                         {
                             extend: 'print', // Add print button
                             title: 'Waste Disposal Tracking System Print Report',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 7]
+                                columns: [0, 1, 2, 3, 4, 5]
                             }
                         }
                     ]
