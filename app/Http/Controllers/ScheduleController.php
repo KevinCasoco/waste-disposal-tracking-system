@@ -170,7 +170,7 @@ class ScheduleController extends Controller
         $time = Carbon::parse($request->time)->format('h:i A');
 
         $schedule = new Schedule([
-            'plate_no' => $user->plate_no,
+            'plate_no' => $request->plate_no,
             'location' =>$request->location,
             'start' =>$request->start,
             'time' =>$time,
