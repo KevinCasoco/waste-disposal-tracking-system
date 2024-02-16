@@ -34,6 +34,18 @@ class ScheduleController extends Controller
         return view('schedule-list', compact('data', 'users', 'locations'));
     }
 
+    public function index_collector_schedule()
+    {
+        $data = Schedule::all();
+
+        $users = User::whereNotNull('plate_no')->get();
+
+        // retrieve unique addresses for residents and populate to dropdown
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+        return view('collector-schedule-list', compact('data', 'users', 'locations'));
+    }
+
     public function add_schedule()
     {
         // retrieve unique addresses for residents and populate to dropdown
@@ -101,12 +113,50 @@ class ScheduleController extends Controller
         return redirect()->route('schedule-list')->with('message', 'Schedule updated successfully');
     }
 
+    public function collector_update_schedule(Request $request, $id)
+    {
+        $data = Schedule::find($id);
+
+        if (!$data) {
+            return redirect()->route('collector-schedule-list')->with('error', 'Schedule not found');
+        }
+
+        // Validate the request
+        $request->validate([
+            'plate_no' => 'nullable|string',
+            'location' => 'nullable|string',
+            'start' => 'nullable|string',
+            'time' => 'nullable|date_format:H:i',
+        ]);
+
+        // Parse the input time using Carbon
+        $time = Carbon::parse($request->time)->format('h:i A');
+
+        // Update schedule information
+        $data->update([
+            'plate_no' => $request->input('plate_no'),
+            'location' => $request->input('location'),
+            'start' => $request->input('start'),
+            'time' => $time, // Use the parsed time value
+        ]);
+
+        return redirect()->route('collector-schedule-list')->with('message', 'Schedule updated successfully');
+    }
+
     public function schedule_destroy($id)
     {
         $schedule_list = Schedule::findOrFail($id);
         $schedule_list->delete();
 
         return redirect()->route('schedule-list')->with('message', 'Schedule deleted successfully');
+    }
+
+    public function collector_schedule_destroy($id)
+    {
+        $schedule_list = Schedule::findOrFail($id);
+        $schedule_list->delete();
+
+        return redirect()->route('collector-schedule-list')->with('message', 'Schedule deleted successfully');
     }
 
     public function create_collector(Request $request)
@@ -120,10 +170,11 @@ class ScheduleController extends Controller
         $time = Carbon::parse($request->time)->format('h:i A');
 
         $schedule = new Schedule([
+            // 'plate_no' => $user->plate_no, save the schedule based on the plate no of collector auth
+            'plate_no' => $request->plate_no,
             'location' =>$request->location,
             'start' =>$request->start,
             'time' =>$time,
-            'plate_no' => $user->plate_no,
         ]);
 
         $user = User::find($userId);
