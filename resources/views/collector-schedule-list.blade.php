@@ -184,7 +184,7 @@
                                 </h3>
                             </div>
                             <hr class="bg-black border-gray-300 w-full">
-                            <form action="{{ route('schedule.create') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
+                            <form action="{{ route('collector-schedule.create_collector') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
                                 @csrf
 
                                 <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
