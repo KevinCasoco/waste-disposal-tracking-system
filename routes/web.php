@@ -213,6 +213,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // collection schedule list
     Route::get('/collector-schedule-list', [ScheduleController::class, 'index_collector_schedule'])->name('collector-schedule-list');
     Route::patch('/collector-schedule-list/update/{id}', [ScheduleController::class, 'collector_update_schedule'])->name('collector-schedule-list.collector_update_schedule');
+    Route::delete('/collector/schedule/{id}', [ScheduleController::class, 'collector_schedule_destroy'])->name('collector-schedule-list.collector_schedule_destroy');
 
     // static maps
     Route::get('/location', [CollectorController::class, 'showLocation'])->name('location');

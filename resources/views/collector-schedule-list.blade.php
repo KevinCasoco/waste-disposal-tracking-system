@@ -112,9 +112,9 @@
                     <h2 class="text-2xl font-bold">SCHEDULE TABLE INFORMATION</h2>
                 </div>
 
-                <div x-data="{ scheduleDelete: false, scheduleEdit: false, newSchedules: false, scheduleToDelete: null, scheduleToEdit: null}">
+                <div x-data="{ scheduleCollectorDelete: false, scheduleCollectorEdit: false, newCollectorSchedules: false, collectorScheduleToDelete: null, collectorScheduleToEdit: null}">
                     <div class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
-                    <button @click="newSchedules = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i class="ri-add-circle-line mr-1"></i>Add New Schedule</button>
+                    <button @click="newCollectorSchedules = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i class="ri-add-circle-line mr-1"></i>Add New Schedule</button>
                     <div class="md:flex-shrink-0 mt-[47px]">
 
                     </div>
@@ -137,7 +137,7 @@
                     <tbody>
 
                         @foreach($data as $item)
-                        <tr x-on:click="scheduleToEdit = {{ $item->id }};">
+                        <tr x-on:click="collectorScheduleToEdit = {{ $item->id }};">
                             <td >{{ $item->id }}</td>
                             <td >{{ $item->users_id }}</td>
                             <td >{{ $item->plate_no }}</td>
@@ -145,12 +145,12 @@
                             <td >{{ $item->start }}</td>
                             <td >{{ $item->time }}</td>
                             <td class="text-center ">
-                                <button @click="scheduleEdit = true; scheduleToEdit = $event.target.getAttribute('data-item-id')"
+                                <button @click="scheduleCollectorEdit = true; collectorScheduleToEdit = $event.target.getAttribute('data-item-id')"
                                 data-item-id="{{ $item->id }}" class="py-1 px-4 rounded bg-sky-500 hover:bg-sky-700 text-white"> <i class="ri-edit-box-fill mr-1"></i>Edit
                                 </button>
                             </td>
                             <td class="text-center ">
-                                <button @click="scheduleDelete = true; scheduleToDelete = $event.target.getAttribute('data-item-id')"
+                                <button @click="scheduleCollectorDelete = true; collectorScheduleToDelete = $event.target.getAttribute('data-item-id')"
                                 data-item-id="{{ $item->id }}" class="py-1 px-4 rounded bg-red-500 hover:bg-red-700 text-white"> <i class="ri-delete-bin-5-fill mr-1"></i>Delete
                                 </button>
                             </td>
@@ -163,12 +163,12 @@
                 {{ $data->links() }} --}}
 
                  <!-- Add New Users Modal -->
-                 <div x-show="newSchedules" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
+                 <div x-show="newCollectorSchedules" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                     </div>
 
-                    <div x-show="newSchedules" @click.away="newSchedules = false"
+                    <div x-show="newCollectorSchedules" @click.away="newCollectorSchedules = false"
                         x-transition:enter="ease-out duration-300"
                         x-transition:enter-start="opacity-0 transform scale-95"
                         x-transition:enter-end="opacity-100 transform scale-100"
@@ -223,7 +223,7 @@
                                     </button>
                                 </form>
                                 <div class="absolute mr-[90px]">
-                                <button @click="newSchedules = false"
+                                <button @click="newCollectorSchedules = false"
                                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                     Cancel
                                 </button>
@@ -234,12 +234,12 @@
                 </div>
 
                 <!-- Delete Modal -->
-                <div x-show="scheduleDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
+                <div x-show="scheduleCollectorDelete" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                     </div>
 
-                    <div x-show="scheduleDelete" @click.away="scheduleDelete = false"
+                    <div x-show="scheduleCollectorDelete" @click.away="scheduleCollectorDelete = false"
                         x-transition:enter="ease-out duration-300"
                         x-transition:enter-start="opacity-0 transform scale-95"
                         x-transition:enter-end="opacity-100 transform scale-100"
@@ -254,7 +254,7 @@
                             </svg>
                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to remove this schedule?</h3>
                             <div class="flex justify-end items-end pb-2">
-                            <form method="post" :action="`{{ route('schedule-list.schedule_destroy', '') }}/${scheduleToDelete}`">
+                            <form method="post" :action="`{{ route('collector-schedule-list.collector_schedule_destroy', '') }}/${collectorScheduleToDelete}`">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
@@ -263,7 +263,7 @@
                                 </button>
                             </form>
                             <div class="absolute mr-[90px]">
-                            <button @click="scheduleDelete = false"
+                            <button @click="scheduleCollectorDelete = false"
                                     class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                 Cancel
                             </button>
@@ -274,12 +274,12 @@
                 </div>
 
                 <!-- Edit Modal -->
-                <div x-show="scheduleEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
+                <div x-show="scheduleCollectorEdit" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
                     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                     </div>
 
-                    <div x-show="scheduleEdit" @click.away="scheduleEdit = false"
+                    <div x-show="scheduleCollectorEdit" @click.away="scheduleCollectorEdit = false"
                         x-transition:enter="ease-out duration-300"
                         x-transition:enter-start="opacity-0 transform scale-95"
                         x-transition:enter-end="opacity-100 transform scale-100"
@@ -293,7 +293,7 @@
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                         Edit Schedule Information
                                     </h3>
-                                    <button @click="scheduleEdit = false" aria-label="Close" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+                                    <button @click="scheduleCollectorEdit = false" aria-label="Close" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
                                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                         </svg>
@@ -301,8 +301,8 @@
                                 </div>
                                 <hr class="bg-black border-gray-300 w-full">
                                 @foreach($data as $item)
-                                <div x-show="scheduleToEdit.toString() === '{{ $item->id }}'">
-                                    <form method="post" :action="`{{ route('collector-schedule-list.collector_update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
+                                <div x-show="collectorScheduleToEdit.toString() === '{{ $item->id }}'">
+                                    <form method="post" :action="`{{ route('collector-schedule-list.collector_update_schedule', '') }}/${collectorScheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                         @csrf
                                         @method('patch')
 
@@ -344,7 +344,7 @@
                                                 Update
                                             </button>
                                             <div class="absolute mr-[93px]">
-                                                <button @click.prevent="scheduleEdit = false" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                <button @click.prevent="scheduleCollectorEdit = false" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                                     Cancel
                                                 </button>
                                             </div>
@@ -435,8 +435,8 @@
 
         <script>
             function deleteItem(itemId) {
-                // Set the scheduleToDelete value based on the clicked item's ID
-                this.scheduleToDelete = itemId;
+                // Set the collectorScheduleToDelete value based on the clicked item's ID
+                this.collectorScheduleToDelete = itemId;
             }
         </script>
 
@@ -444,7 +444,7 @@
             window.addEventListener('DOMContentLoaded', () => {
                 Alpine.data('yourComponentName', () => ({
                     collectorEdit: false,
-                    scheduleToEdit: null, // Variable to store the selected item
+                    collectorScheduleToEdit: null, // Variable to store the selected item
                 }));
             });
         </script>
