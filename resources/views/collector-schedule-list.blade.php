@@ -302,7 +302,7 @@
                                 <hr class="bg-black border-gray-300 w-full">
                                 @foreach($data as $item)
                                 <div x-show="scheduleToEdit.toString() === '{{ $item->id }}'">
-                                    <form method="post" :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
+                                    <form method="post" :action="`{{ route('collector-schedule-list.collector_update_schedule', '') }}/${scheduleToEdit}`" class="pl-5 pr-5 pt-2 pb-1">
                                         @csrf
                                         @method('patch')
 
