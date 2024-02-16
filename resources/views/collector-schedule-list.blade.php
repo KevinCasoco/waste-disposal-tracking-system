@@ -17,49 +17,38 @@
         <!-- sidebar -->
         <div class="sidebar bg-white text-black w-64 space-y-6 py-1 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out z-20">
 
-          <!-- nav -->
-          <nav>
-            <ul class="mt-2">
+           <!-- nav -->
+           <nav>
+            <ul class="mt-2" >
                 <li class="mb-1 group">
-                    <a href="{{ asset('dashboard') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                    <a href="{{ asset('dashboard')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                         <i class="ri-dashboard-fill mr-3 text-lg"></i>
                         <span class="text-sm">Dashboard</span>
                     </a>
                 </li>
                 <li class="mb-1 group">
-                    <a href="{{ asset('admin') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                        <i class="ri-admin-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Admin</span>
-                    </a>
-                </li>
-                <li class="mb-1 group">
-                    <a href="{{ asset('collector') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                        <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
+                    <a href="{{ asset('collector-residents')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                        <i class="ri-user-fill mr-3 text-lg"></i>
                         <span class="text-sm">Collector</span>
                     </a>
                 </li>
                 <li class="mb-1 group">
-                    <a href="{{ asset('residents') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                        <i class="ri-user-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Residents</span>
-                    </a>
-                </li>
-                <li class="mb-1 group">
-                    <a href="{{ asset('schedule') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                    <a href="{{ asset('collector-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                         <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                         <span class="text-sm">Calendar Schedule</span>
                     </a>
                 </li>
                 <li class="mb-1 group active">
-                    <a href="{{ asset('schedule-list') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
+                    <a href="{{ asset('collector-schedule-list') }}"
+                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                         <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                         <span class="text-sm">Schedule List</span>
+                    </a>
+                </li>
+                <li class="mb-1 group">
+                    <a href="{{ asset('location')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                        <i class="ri-map-fill mr-3 text-lg"></i>
+                        <span class="text-sm">Location</span>
                     </a>
                 </li>
                 <li class="mb-1 group">
