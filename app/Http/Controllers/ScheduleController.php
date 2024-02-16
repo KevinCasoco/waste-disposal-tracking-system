@@ -170,6 +170,7 @@ class ScheduleController extends Controller
         $time = Carbon::parse($request->time)->format('h:i A');
 
         $schedule = new Schedule([
+            // 'plate_no' => $user->plate_no, save the schedule based on the plate no of collector auth
             'plate_no' => $request->plate_no,
             'location' =>$request->location,
             'start' =>$request->start,
