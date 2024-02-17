@@ -151,6 +151,27 @@
                 </div>
             </div>
 
+            <!-- Delete Event Modal -->
+            <div class="modal fade" id="deleteEventModal" tabindex="-1" role="dialog" aria-labelledby="deleteEventModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteEventModalLabel">Delete Event</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this event?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" id="confirmDeleteEvent" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -175,7 +196,7 @@
                     events: '/events',
                     editable: true,
 
-                     // Deleting The Event
+                    // Deleting The Event
                     eventContent: function(info) {
                         var address = info.event.extendedProps.location; // Assuming the address is stored within the location property
                         var secondPart = address.split(',')[1].trim();
@@ -186,7 +207,10 @@
                         eventElement.innerHTML = '<span style="cursor: pointer;">❌</span> ' + eventTitle;
 
                         eventElement.querySelector('span').addEventListener('click', function() {
-                            if (confirm("Are you sure you want to delete this event?")) {
+                            // Trigger Bootstrap modal for confirmation
+                            $('#deleteEventModal').modal('show');
+                            // Handle deletion when confirmed
+                            $('#confirmDeleteEvent').on('click', function() {
                                 var eventId = info.event.id;
                                 $.ajax({
                                     method: 'DELETE',
@@ -197,13 +221,16 @@
                                     success: function(response) {
                                         console.log('Event deleted successfully.');
                                         calendar.refetchEvents(); // Refresh events after deletion
+                                        $('#deleteEventModal').modal('hide'); // Hide modal after deletion
                                     },
                                     error: function(error) {
                                         console.error('Error deleting event:', error);
+                                        $('#deleteEventModal').modal('hide'); // Hide modal if deletion fails
                                     }
                                 });
-                            }
+                            });
                         });
+
                         return {
                             domNodes: [eventElement]
                         };
