@@ -60,10 +60,14 @@ class ScheduleController extends Controller
 
     public function add_schedule_collector()
     {
+        $data = Schedule::all();
+
+        $users = User::whereNotNull('plate_no')->get();
+
         // retrieve unique addresses for residents and populate to dropdown
         $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
 
-        return view('add-collector', compact('locations'));
+        return view('add-collector', compact('data', 'users', 'locations'));
     }
 
     public function create(Request $request)
