@@ -107,8 +107,16 @@
             @csrf
             <h1 class="mt-6 text-2xl font-bold text-center">Waste Collection Schedule</h1>
 
+            <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
+                                <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                                    <option value="">Select Plate Number</option>
+                                    @foreach($users as $user)
+                                        <option>{{ $user->plate_no }}</option>
+                                    @endforeach
+                                </select>
+
             <label for='location'>{{ __('Location') }}</label>
-                <select id="addressDropdown" name="location">
+                <select id="addressDropdown" name="location" required>
                     <option value="">Select Address</option>
                     @foreach($locations as $id => $location)
                         <?php
