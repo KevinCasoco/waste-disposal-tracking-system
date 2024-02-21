@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,9 @@ class DashboardController extends Controller
             $countAdmins = User::where('role', 'admin')->count();
             $countCollector = User::where('role', 'collector')->count();
             $countResidents = User::where('role', 'residents')->count();
+            $countSchedules = Schedule::count();
             $totalUser = User::count();
 
-        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'totalUser'));
+        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser'));
     }
 }
