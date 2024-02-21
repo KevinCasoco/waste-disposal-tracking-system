@@ -17,6 +17,15 @@
         @csrf
         @method('patch')
 
+        @if (Auth::user()->role == 'collector')
+        <div>
+            <x-input-label for="plate_no" :value="__('First Name')" />
+            <x-text-input id="plate_no" name="plate_no" type="text" class="mt-1 block w-full" :value="old('plate_no', $user->plate_no)" required autofocus autocomplete="plate_no" />
+            <x-input-error class="mt-2" :messages="$errors->get('plate_no')" />
+        </div>
+
+        @endif
+
         <div>
             <x-input-label for="first_name" :value="__('First Name')" />
             <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)" required autofocus autocomplete="first_name" />

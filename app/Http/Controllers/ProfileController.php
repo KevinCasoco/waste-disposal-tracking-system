@@ -28,6 +28,11 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
+        // Update plate number
+        if ($request->filled('plate_number')) {
+            $user->plate_number = $request->input('plate_number');
+        }
+
         // Update first name
         if ($request->filled('first_name')) {
             $user->first_name = $request->input('first_name');
@@ -39,7 +44,7 @@ class ProfileController extends Controller
         }
 
         // Update other fields using fill if needed
-        $user->fill($request->except(['_token', '_method', 'first_name', 'last_name']));
+        $user->fill($request->except(['_token', '_method', 'first_name', 'last_name', 'plate_number']));
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
