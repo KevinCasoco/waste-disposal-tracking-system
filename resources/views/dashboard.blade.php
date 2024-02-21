@@ -464,16 +464,18 @@
                             </div>
                         </div>
 
+                        <a href="{{ asset('collector-schedule-list') }}">
                         <div
                             class="p-4 bg-[#4ECE5D] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#46b953] hover:shadow-xl">
                             <div class="w-3/5 flex justify-start">
                                 <ul>
-                                    <li class="font-bold text-white">Total Users</li>
-                                    <li class="font-extrabold text-white text-xl">{{ $totalUser }}</li>
-                                    <i class="ri-user-fill text-white"></i>
+                                    <li class="font-bold text-white">Schedules</li>
+                                    <li class="font-extrabold text-white text-xl">{{ $countSchedules  }}</li>
+                                    <i class="ri-calendar-fill text-white"></i>
                                 </ul>
                             </div>
                         </div>
+                        </a>
 		</section>
 
 	            {{-- Chart --}}
