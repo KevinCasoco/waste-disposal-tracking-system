@@ -208,7 +208,7 @@
                         x-transition:leave-start="opacity-100 transform scale-100"
                         x-transition:leave-end="opacity-0 transform scale-95"
                         class="bg-white rounded overflow-hidden transform transition-all flex justify-start mx-3">
-                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[410px]">
+                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[430px]">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
                                     Register New Residents
@@ -233,7 +233,7 @@
                                 <div>
                                     <x-input-label for="location" :value="__('Location')" />
                                     <x-textarea-input id="locationTextarea" rows="4" cols="50"
-                                            class="block mt-1 w-[100%] h-[70px]"
+                                            class="block mt-1 w-[100%] h-[90px]"
                                             name="location" required autocomplete=""
                                             placeholder="Find Your Location">{{ old('location') }}</x-textarea-input>
 
