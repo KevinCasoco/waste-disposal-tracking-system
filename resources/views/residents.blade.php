@@ -342,7 +342,7 @@
                         x-transition:leave-start="opacity-100 transform scale-100"
                         x-transition:leave-end="opacity-0 transform scale-95"
                         class="rounded-lg overflow-hidden transform transition-all flex justify-start mx-3">
-                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[370px]">
+                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[410px]">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
                                         Edit Residents Information
@@ -374,12 +374,12 @@
                                     <div class="mt-1">
                                         <x-input-label for="location" :value="__('Location')" />
                                         <x-textarea-input id="locationTextarea" rows="4" cols="50"
-                                            class="block mt-1 w-[100%]" name="location" required autocomplete=""
+                                            class="block mt-1 w-[100%] h-[90px]" name="location" required autocomplete=""
                                             placeholder="Find Your Location">{{ old('location', $item->location) }}</x-textarea-input>
 
                                         <x-input-error :messages="$errors->get('location')" class="mt-2" />
                                         <div class="flex justify-end mt-3">
-                                            {{-- <button id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</button> --}}
+                                            <i id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</i>
                                         </div>
                                     </div>
 
