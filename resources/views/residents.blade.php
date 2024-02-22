@@ -370,16 +370,16 @@
                                     <input type="text" name="last_name" value="{{ $item->last_name }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]" required>
 
                                     <!-- Location -->
-                                    <div class="status" style="display: none;"></div>
+                                    <div class="residents-status" style="display: none;"></div>
                                     <div class="mt-1">
                                         <x-input-label for="location" :value="__('Location')" />
-                                        <x-textarea-input id="locationTextarea" rows="4" cols="50"
+                                        <x-textarea-input id="residents-locationTextarea" rows="4" cols="50"
                                             class="block mt-1 w-[100%] h-[90px]" name="location" required autocomplete=""
                                             placeholder="Find Your Location">{{ old('location', $item->location) }}</x-textarea-input>
 
                                         <x-input-error :messages="$errors->get('location')" class="mt-2" />
                                         <div class="flex justify-end mt-3">
-                                            <i id="getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</i>
+                                            <i id="residents-getLocationBtn" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Location</i>
                                         </div>
                                     </div>
 

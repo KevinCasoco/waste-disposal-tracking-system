@@ -285,6 +285,51 @@
         document.getElementById('getLocationBtn').addEventListener('click', findMyLocation);
     </script>
 
+    <script>
+        const findMyLocationResidents = () => {
+            const status = document.querySelector('.residents-status');
+            const locationTextarea = document.getElementById('residents-locationTextarea');
+
+            const success = (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                const geoApiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+                fetch(geoApiUrl)
+                    .then(res => {
+                        if (!res.ok) {
+                            throw new Error('Failed to retrieve location information');
+                        }
+                        return res.json();
+                    })
+                    .then(data => {
+                        const address = data.display_name || '';
+
+                        if (address) {
+                            status.textContent = '' + address;
+                            locationTextarea.value = '' + address;
+                        } else {
+                            throw new Error('Location information not found');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        status.textContent = 'Error: ' + error.message;
+                    });
+            };
+
+            const error = (err) => {
+                console.error(err);
+                status.textContent = 'Unable to retrieve your location';
+            };
+
+            navigator.geolocation.getCurrentPosition(success, error);
+        };
+
+        // Event listener for the button
+        document.getElementById('residents-getLocationBtn').addEventListener('click', findMyLocationResidents);
+    </script>
 
     {{-- googlep maps api with barangay *need credit card* --}}
     {{-- <script>
