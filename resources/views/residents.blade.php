@@ -396,7 +396,7 @@
                                     <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]" required disabled>
                                         {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
                                         {{-- <option value="collector" {{ $item->role === 'collector' ? 'selected' : '' }}>Collector</option> --}}
-                                        <option value="resident" {{ $item->role === 'residents' ? 'selected' : '' }}>Resident</option>
+                                        <option value="resident" {{ $item->role === 'residents' ? 'selected' : '' }} disabled>Resident</option>
                                     </select>
 
                                     <div class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-5 gap-x-2 pt-3">
