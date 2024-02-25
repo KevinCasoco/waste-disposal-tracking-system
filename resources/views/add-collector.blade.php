@@ -46,10 +46,17 @@
            </li>
            <li class="mb-1 group active">
             <a href="{{ asset('collector-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                <i class="ri-calendar-2-fill mr-3 text-lg"></i>
+                <span class="text-sm">Calendar Schedule</span>
+            </a>
+            </li>
+            <li class="mb-1 group">
+                <a href="{{ asset('collector-schedule-list') }}"
+                    class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
                     <i class="ri-calendar-2-fill mr-3 text-lg"></i>
-                   <span class="text-sm">Schedule</span>
-               </a>
-           </li>
+                    <span class="text-sm">Schedule List</span>
+                </a>
+            </li>
            <li class="mb-1 group">
             <a href="{{ asset('profile') }}"
                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
@@ -105,29 +112,30 @@
     <div class="form">
         <form action="{{ route('collector-schedule.create_collector') }}" method="POST">
             @csrf
+            <div class="bg-white rounded-xl shadow-xl border-solid my-5 py-0.5 pb-10 px-5 mx-auto w-full sm:w-[450px] h-full sm:h-[450px]">
             <h1 class="mt-6 text-2xl font-bold text-center">Waste Collection Schedule</h1>
 
             <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
-            <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
-                <option value="">Select Plate Number</option>
-                @foreach($users as $user)
-                    <option>{{ $user->plate_no }}</option>
-                @endforeach
-            </select>
+                                <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full" required>
+                                    <option value="">Select Plate Number</option>
+                                    @foreach($users as $user)
+                                        <option>{{ $user->plate_no }}</option>
+                                    @endforeach
+                                </select>
 
             <label for='location'>{{ __('Location') }}</label>
-            <select id="addressDropdown" name="location" required>
-                <option value="">Select Address</option>
-                @foreach($locations as $id => $location)
-                    <?php
-                        // Split the address by commas
-                        $parts = explode(',', $location);
-                        // Extract the second part and remove leading/trailing spaces
-                        $secondValue = trim($parts[1]);
-                    ?>
-                    <option value="{{ $location }}">{{ $secondValue }}</option>
-                @endforeach
-            </select>
+                <select id="addressDropdown" name="location" required>
+                    <option value="">Select Address</option>
+                    @foreach($locations as $id => $location)
+                        <?php
+                            // Split the address by commas
+                            $parts = explode(',', $location);
+                            // Extract the second part and remove leading/trailing spaces
+                            $secondValue = trim($parts[1]);
+                        ?>
+                        <option value="{{ $location }}">{{ $secondValue }}</option>
+                    @endforeach
+                </select>
 
             <script>
                 // Function to extract the second value from an address
@@ -150,12 +158,19 @@
                 dropdown.add(option1);
             </script>
 
-            <label for="label">Please take note that 1 day before the schedule can only notify the users!</label>
-            <label for="start">Date of Collection</label>
-            <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
+            {{-- <label for="label">Please take note that 1 day before the schedule can only notify the users!</label> --}}
 
-            <label for="time">Time of Collection</label>
-            <input type="time" class='form-control' id="time" name="time" required>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div>
+                    <label for="start">Date of Collection</label>
+                    <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id='start' name='start' required value='{{ now()->toDateString() }}'>
+                </div>
+
+                <div>
+                    <label for="time">Time of Collection</label>
+                    <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="time" name="time" required>
+                </div>
+            </div>
 
             <script>
             // Get the current time in the "HH:mm" format
@@ -165,40 +180,40 @@
             document.getElementById('time').value = currentTime;
             </script>
 
-           <button type="submit" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 w-full mt-6">Save</button>
+            <button type="submit" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 w-full mt-6">Save</button>
         </form>
     </div>
 
-    <!-- Create Schedule Design -->
-    <style>
-        .form {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+      <!-- Create Schedule Design -->
+        <style>
+            .form {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
 
-        label {
-            display: block;
-            margin-top: 20px;
-        }
+            label {
+                display: block;
+                margin-top: 20px;
+            }
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
 
-        input[type="submit"] {
-            margin-top: 20px;
-            background-color: green;
-            color: white;
-        }
+            input[type="submit"] {
+                margin-top: 20px;
+                background-color: green;
+                color: white;
+            }
 
-    </style>
+        </style>
 
     <script>
         // grab everything we need
