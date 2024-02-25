@@ -19,7 +19,7 @@
 
         @if (Auth::user()->role == 'collector')
         <div>
-            <x-input-label for="plate_no" :value="__('First Name')" />
+            <x-input-label for="plate_no" :value="__('Plate No.')" />
             <x-text-input id="plate_no" name="plate_no" type="text" class="mt-1 block w-full" :value="old('plate_no', $user->plate_no)" required autofocus autocomplete="plate_no" />
             <x-input-error class="mt-2" :messages="$errors->get('plate_no')" />
         </div>
