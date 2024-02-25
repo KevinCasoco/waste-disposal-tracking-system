@@ -112,10 +112,11 @@
     <div class="form">
         <form action="{{ route('schedule.create') }}" method="POST">
             @csrf
+            <div class="bg-white rounded-xl shadow-xl border-solid my-5 py-0.5 pb-10 px-5 mx-auto w-full sm:w-[450px] h-full sm:h-[450px]">
             <h1 class="mt-6 text-2xl font-bold text-center">Waste Collection Schedule</h1>
 
             <label for="plate_no" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate No:</label>
-                                <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                                <select name="plate_no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full" required>
                                     <option value="">Select Plate Number</option>
                                     @foreach($users as $user)
                                         <option>{{ $user->plate_no }}</option>
@@ -157,12 +158,19 @@
                 dropdown.add(option1);
             </script>
 
-            <label for="label">Please take note that 1 day before the schedule can only notify the users!</label>
-            <label for="start">Date of Collection</label>
-            <input type='date' class='form-control' id='start' name='start' required value='{{ now()->toDateString() }}'>
+            {{-- <label for="label">Please take note that 1 day before the schedule can only notify the users!</label> --}}
 
-            <label for="time">Time of Collection</label>
-            <input type="time" class='form-control' id="time" name="time" required>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div>
+                    <label for="start">Date of Collection</label>
+                    <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id='start' name='start' required value='{{ now()->toDateString() }}'>
+                </div>
+
+                <div>
+                    <label for="time">Time of Collection</label>
+                    <input type="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="time" name="time" required>
+                </div>
+            </div>
 
             <script>
             // Get the current time in the "HH:mm" format
