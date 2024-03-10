@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-3 shadow-md overflow-x-auto">
+    <div class="max-w-9xl mx-auto pl-3 sm:px-6 lg:px-3 shadow-md overflow-x-auto">
         <div class="flex justify-between h-16 overflow-x-auto">
             <div class="flex items-center">
                 <!-- Logo -->
@@ -10,7 +10,7 @@
                     </a>
                 </div>
 
-                <span class="text-lg font-extrabold text-black ml-2">WDTS</span>
+                <span class="text-lg font-extrabold text-black ml-1">WDTS</span>
 
                 <!-- Navigation Links -->
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -75,9 +75,9 @@
         </div> --}}
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-600 dark:text-gray-200">
+        <div class="pt-[20px] border-t border-gray-200 dark:border-gray-600">
+            <div class="pr-2">
+                <div class="font-medium text-base text-gray-600 dark:text-gray-200 text-[12px] md:text-[17px]">
                     {{ Auth::user()->first_name }} {{Auth::user()->last_name}} | {{ Auth::user()->role }}
                 </div>
             {{--
