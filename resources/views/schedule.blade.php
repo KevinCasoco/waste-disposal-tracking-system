@@ -122,15 +122,12 @@
             <!-- content -->
             <div class="flex-grow text-gray-800">
                 <main class="p-1 pb-3 space-y-6">
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-                    <div class="container mt-4">
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"><div class="container mt-4 hidden md:block">
                         {{-- For Search --}}
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="input-group mb-2">
-                                    <input type="text" id="searchInput" class="form-control"
-                                        placeholder="Search Schedule">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
                                     <div class="input-group-append">
                                         <button id="searchButton" class="btn btn-primary">Search</button>
                                     </div>
@@ -148,38 +145,77 @@
 
                             <div class="sm:flex md:flex mt-1">
                                 {{-- email notification --}}
-                                <form action="{{ route('schedule.admin_sendNotification') }}" method="POST"
-                                    class="ml-3">
+                                <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="ml-3">
                                     @csrf
-                                    <button class="py-2 px-2 mb-2 rounded bg-green-500 hover:bg-green-700 text-white"
-                                        type="submit"><i class="ri-mail-send-line mr-1"></i>Notify
-                                        Users(Email)</button>
+                                    <button class="py-2 px-2 mb-2 rounded bg-green-500 hover:bg-green-700 text-white" type="submit">
+                                        <i class="ri-mail-send-line mr-1"></i>Notify Users(Email)
+                                    </button>
                                 </form>
                                 {{-- sms notification --}}
                                 <form action="{{ route('schedule.sms') }}" method="POST" class="ml-3">
                                     @csrf
-                                    <button class="py-2 px-2 mb-3 rounded bg-red-500 hover:bg-green-700 text-white"
-                                        type="submit"><i class="ri-mail-send-line mr-1"></i>Notify
-                                        Users(SMS)</button>
+                                    <button class="py-2 px-2 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit">
+                                        <i class="ri-mail-send-line mr-1"></i>Notify Users(SMS)
+                                    </button>
                                 </form>
                             </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                {{-- <div id="calendar" style="width: 100%;height:100vh"></div> --}}
-                                <div id="calendar" class="w-full h-screen overflow-x-auto"></div>
-                                {{-- <div id="calendar" class="w-full h-screen overflow-x-auto text-[10px] sm:text-[20px]"></div> --}}
+                        </div>
+                    </div>
+
+                    <div class="container mt-4 md:hidden">
+                        {{-- For Search --}}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group mb-2">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
+                                    <div class="input-group-append">
+                                        <button id="searchButton" class="btn btn-primary">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <div class="" role="group" aria-label="Calendar Actions">
+                                            <button id="exportButton" class="py-2 px-2 rounded bg-green-500 hover:bg-green-700 text-white w-100 btn-success">Export Calendar</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <div class="" role="group" aria-label="Calendar Actions">
+                                            <a href="{{ asset('add') }}" ><button id="exportButton" class="py-2 px-2 rounded bg-green-500 hover:bg-green-700 text-white w-100 btn-success">Add New Sched</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <form action="{{ route('schedule.admin_sendNotification') }}" method="POST" class="ml-0 ml-md-3">
+                                            @csrf
+                                            <button class="py-2 px-2 rounded bg-green-500 hover:bg-green-700 text-white w-100" type="submit">
+                                                <i class="ri-mail-send-line mr-1"></i>Notify(Email)
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <form action="{{ route('schedule.sms') }}" method="POST" class="ml-0 ml-md-3">
+                                            @csrf
+                                            <button class="py-2 px-2 rounded bg-red-500 hover:bg-green-700 text-white w-100" type="submit">
+                                                <i class="ri-mail-send-line mr-1"></i>Notify(SMS)
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                    <style>
-                        /* Example of applying Tailwind classes to adjust font size */
-                        /* #calendar .fc-toolbar-title {
-              font-size: 20px;
-            } */
-                    </style>
+
+                    <div class="container mt-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="calendar" class="w-full h-screen overflow-x-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <style>
                         /* Regular font size for desktop */
@@ -254,12 +290,12 @@
                             // Deleting The Event
                             eventContent: function(info) {
                                 var address = info.event.extendedProps
-                                .location; // Assuming the address is stored within the location property
+                                    .location; // Assuming the address is stored within the location property
                                 var secondPart = address.split(',')[1].trim();
                                 console.log(secondPart);
 
                                 var eventTitle =
-                                secondPart; // You can use this part of the address as the event title, if needed
+                                    secondPart; // You can use this part of the address as the event title, if needed
                                 var eventElement = document.createElement('div');
                                 // eventElement.classList.add('flex', 'items-center', 'h-[100px]' ); // Adjust the height as needed, e.g., h-12
                                 // eventElement.innerHTML = '<span style="cursor: pointer; overflow-wrap: break-word;" >❌</span> ' + eventTitle;
@@ -302,14 +338,14 @@
                                             success: function(response) {
                                                 console.log('Event deleted successfully.');
                                                 calendar
-                                            .refetchEvents(); // Refresh events after deletion
+                                                    .refetchEvents(); // Refresh events after deletion
                                                 $('#deleteEventModal').modal(
-                                                'hide'); // Hide modal after deletion
+                                                    'hide'); // Hide modal after deletion
                                             },
                                             error: function(error) {
                                                 console.error('Error deleting event:', error);
                                                 $('#deleteEventModal').modal(
-                                                'hide'); // Hide modal if deletion fails
+                                                    'hide'); // Hide modal if deletion fails
                                             }
                                         });
                                     });
