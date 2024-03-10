@@ -795,7 +795,14 @@
                                     <li class="font-bold text-white">
                                         Admin</li>
                                     <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
-                                    <i class="ri-admin-fill mr-3 text-lg text-white"></i>
+                                </ul>
+                            </div>
+
+                            <div class="w-3/5 flex justify-end ">
+                                <ul>
+                                    <li class="mt-2">
+                                        <i class="ri-admin-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -806,7 +813,14 @@
                                 <ul>
                                     <li class="font-bold text-white">Collector</li>
                                     <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
-                                    <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
+                                </ul>
+                            </div>
+
+                            <div class="w-3/5 flex justify-end ">
+                                <ul>
+                                    <li class="mt-2">
+                                        <i class="ri-map-pin-user-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -818,7 +832,14 @@
                                     <ul>
                                         <li class="font-bold text-white">Residents</li>
                                         <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
-                                        <i class="ri-user-fill mr-3 text-lg text-white"></i>
+                                    </ul>
+                                </div>
+
+                                <div class="w-3/5 flex justify-end ">
+                                    <ul>
+                                        <li class="mt-2">
+                                            <i class="ri-user-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -830,9 +851,16 @@
                                 <ul>
                                     <li class="font-bold text-white">Total Users</li>
                                     <li class="font-extrabold text-white text-xl">{{ $countSchedules  }}</li>
-                                    <i class="ri-calendar-fill text-white"></i>
                                 </ul>
-                        </div>
+                            </div>
+
+                            <div class="w-3/5 flex justify-end ">
+                                <ul>
+                                    <li class="mt-2">
+                                        <i class="ri-calendar-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                    </li>
+                                </ul>
+                            </div>
                     </div>
                         </a>
 		        </section>
