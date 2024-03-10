@@ -6,7 +6,7 @@
             <div class="bg-white text-black flex justify-end md:hidden">
 
                 <!-- mobile menu button -->
-                <button class="mobile-menu-button p-4 focus:outline-none focus:bg-white">
+                <button class="mobile-menu-button pr-3 pt-3 pb-3 focus:outline-none focus:bg-white">
                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -121,10 +121,10 @@
 
             <!-- content -->
             <div class="flex-grow text-gray-800">
-                <main class="p-4 sm:p-1 space-y-6">
+                <main class="p-1 pb-3 space-y-6">
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-                    <div class="container mt-5">
+                    <div class="container mt-4">
                         {{-- For Search --}}
                         <div class="row">
                             <div class="col-md-4">
