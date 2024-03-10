@@ -116,7 +116,7 @@
 
         <!-- content -->
         <div class="flex-grow text-gray-800">
-            <main class="p-6 sm:p-1 space-y-6">
+            <main class="p-4 sm:p-1 space-y-6">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <div class="container mt-5">
@@ -156,10 +156,18 @@
 
             <div class="card">
                 <div class="card-body">
-                    <div id="calendar" style="width: 100%;height:100vh"></div>
+                    {{-- <div id="calendar" style="width: 100%;height:100vh"></div> --}}
+                    <div id="calendar" class="w-full h-screen"></div>
                 </div>
             </div>
         </div>
+        <style>
+            /* Example of applying Tailwind classes to adjust font size */
+            #calendar .fc-toolbar-title {
+              font-size: 20px; /* Use Tailwind classes or define your own styles */
+            }
+            </style>
+
 
          <!-- Delete Event Modal -->
          <div class="modal fade" id="deleteEventModal" tabindex="-1" role="dialog" aria-labelledby="deleteEventModalLabel" aria-hidden="true">
@@ -218,7 +226,26 @@
 
                 var eventTitle = secondPart; // You can use this part of the address as the event title, if needed
                 var eventElement = document.createElement('div');
-                eventElement.innerHTML = '<span style="cursor: pointer;">❌</span> ' + eventTitle;
+                // eventElement.classList.add('flex', 'items-center', 'h-[100px]' ); // Adjust the height as needed, e.g., h-12
+                // eventElement.innerHTML = '<span style="cursor: pointer; overflow-wrap: break-word;" >❌</span> ' + eventTitle;
+
+                // Assuming eventTitle is "Congressional Road"
+                var maxLength = 10; // Adjust this value according to your needs
+
+                // Check if the eventTitle length exceeds the maximum length
+                if (eventTitle.length > maxLength) {
+                    // Split the eventTitle into words
+                    var words = eventTitle.split(' ');
+                    // Concatenate the first word with a line break after it, and join the rest of the words
+                    var truncatedTitle = words[0] + ' <br>' + words.slice(1).join(' ');
+                    // Assign the truncated title with Tailwind CSS classes to ensure line break
+                    var truncatedTitleWithBreak = '<span class="whitespace-normal break-words" style="cursor: pointer;">❌</span> ' + truncatedTitle;
+                    // Assign the truncated title with line breaks to the innerHTML of the span element
+                    eventElement.innerHTML = truncatedTitleWithBreak;
+                } else {
+                    // If the length is within the limit, simply assign the eventTitle to the innerHTML
+                    eventElement.innerHTML = '<span class="whitespace-normal break-words" style="cursor: pointer;">❌</span> ' + eventTitle;
+                }
 
                 eventElement.querySelector('span').addEventListener('click', function() {
                     // Trigger Bootstrap modal for confirmation
