@@ -128,24 +128,40 @@
                               <li class="font-extrabold text-white">
                                   Admin</li>
                               <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
-                              <i class="ri-admin-fill mr-3 text-lg text-white"></i>
                           </ul>
                       </div>
+
+                      <div class="w-3/5 flex justify-end ">
+                        <ul>
+                            <li class="mt-2">
+                                <i class="ri-admin-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                            </li>
+                        </ul>
+                    </div>
                   </div>
                   </a>
 
                   <a href="{{ asset('collector') }}">
-                      <div class="flex items-center p-6 bg-[#FF4069] hover:bg-[#e5395e] shadow-lg rounded-lg hover:shadow-xl">
+                    <div class="flex p-6 bg-[#FF4069] hover:bg-[#e5395e] shadow-lg rounded-lg hover:shadow-xl">
+                        <div class="w-3/5 flex justify-between">
+                            <ul>
+                                <li class="font-extrabold text-white">
+                                    Collector
+                                </li>
+                                <li class="font-extrabold text-white text-xl">
+                                    {{ $countCollector }}
+                                </li>
+                            </ul>
+                        </div>
 
-                          <div class="w-3/5 flex justify-start">
-                              <ul>
-                                  <li class="font-extrabold text-white">
-                                      Collector</li>
-                                  <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
-                                  <i class="ri-map-pin-user-fill mr-3 text-lg text-white"></i>
-                              </ul>
-                          </div>
-                      </div>
+                        <div class="w-3/5 flex justify-end ">
+                            <ul>
+                                <li class="mt-2">
+                                    <i class="ri-map-pin-user-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                       <a href="{{ asset('residents') }}">
                           <div class="flex items-center p-6 bg-orange-400  hover:bg-orange-500 shadow-lg rounded-lg hover:shadow-xl">
@@ -154,9 +170,16 @@
                                   <ul>
                                       <li class="font-bold text-white">Residents</li>
                                       <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
-                                      <i class="ri-user-fill mr-3 text-lg text-white"></i>
                                   </ul>
                               </div>
+
+                              <div class="w-3/5 flex justify-end ">
+                                <ul>
+                                    <li class="mt-2">
+                                        <i class="ri-user-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                    </li>
+                                </ul>
+                            </div>
                           </div>
                           </a>
                         <a href="{{ asset('schedule-list') }}">
@@ -167,9 +190,16 @@
                                       <ul>
                                           <li class="font-bold text-white">Schedules</li>
                                           <li class="font-extrabold text-white text-xl">{{ $countSchedules }}</li>
-                                          <i class="ri-calendar-fill mr-3 text-lg text-white"></i>
                                       </ul>
                                   </div>
+
+                                  <div class="w-3/5 flex justify-end ">
+                                    <ul>
+                                        <li class="mt-2">
+                                            <i class="ri-calendar-fill mr-3 text-lg text-white" style="font-size: 36px;"></i>
+                                        </li>
+                                    </ul>
+                                </div>
                               </div>
                           </a>
 
