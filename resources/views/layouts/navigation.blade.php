@@ -75,7 +75,7 @@
         </div> --}}
 
         <!-- Responsive Settings Options -->
-        <div class="pt-[20px] border-t border-gray-200 dark:border-gray-600">
+        <div class="flex justify-center items-center border-t border-gray-200 dark:border-gray-600">
             <div class="pr-2">
                 <div class="font-medium text-base text-gray-600 dark:text-gray-200 text-[12px] md:text-[17px]">
                     {{ Auth::user()->first_name }} {{Auth::user()->last_name}} | {{ Auth::user()->role }}
