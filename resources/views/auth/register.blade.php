@@ -4,7 +4,9 @@
     <form method="POST" action="{{ route('register') }}" class="">
         @csrf
 
-        <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
+        <a href="{{ asset('/') }}" >
+            <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
+        </a>
 
         {{-- <div class="flex justify-start"> --}}
         <!-- First Name -->

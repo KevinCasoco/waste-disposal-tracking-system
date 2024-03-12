@@ -4,9 +4,9 @@
 
     <form method="POST" action="{{ route('login') }}" class="py-8">
         @csrf
-
-        <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
-
+        <a href="{{ asset('/') }}" >
+            <img src="{{asset('/images/Waste-Logo.png')}}" alt="" class="mb-2 w-24 h-24 rounded object-cover ml-auto mr-auto">
+        </a>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
