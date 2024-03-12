@@ -18,7 +18,7 @@
     </head>
     <body class="antialiased">
 
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-white dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
@@ -33,12 +33,18 @@
                 </div>
             @endif
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <img src="{{asset('/images/Waste-Logo.png')}}" alt="Waste Logo" class="h-32 w-auto bg-gray-100 dark:bg-gray-900 rounded-full">
+            <div class="max-w-7xl mx-auto p-6 lg:p-8 mt-2">
+                <div class="flex flex-col lg:flex-row justify-center items-center bg-white rounded-xl mb-8 lg:mb-32 gap-x-14 p-4 lg:p-8">
+                    <img src="{{asset('/images/Waste-Logo.png')}}" alt="Waste Logo" class="h-[320px] lg:h-[520px] w-auto bg-gray-100 dark:bg-gray-900 rounded-full mb-4 lg:mb-0">
+                    <div class="w-full lg:w-[600px] bg-white text-center py-6 lg:py-10 px-4 lg:px-10 rounded-xl shadow-xl border border-gray-500 sm:rounded-full">
+                        <h1 class="text-xl lg:text-4xl font-bold mb-4">Waste Disposal Tracking System</h1>
+                        <p class="text-base lg:text-lg">
+                            Waste Disposal Tracking System for District 3 of Caloocan City—a smart solution designed to streamline waste collection. This software keeps tabs on garbage pickup schedules, ensuring residents are informed, while helping authorities manage waste responsibly from start to finish. It's a step towards cleaner surroundings and greener practices.
+                        </p>
+                    </div>
                 </div>
 
-                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white flex justify-center">WASTE DISPOSAL TRACKING SYSTEM 2023 - 2024</h2>
+                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white flex justify-center text-center">WASTE DISPOSAL TRACKING SYSTEM 2023 - 2024</h2>
 
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white flex justify-center">Members</h2>
 
