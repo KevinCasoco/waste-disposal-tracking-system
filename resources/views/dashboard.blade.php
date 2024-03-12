@@ -204,25 +204,24 @@
                           </a>
 
                 </section>
-            {{-- Chart --}}
-            <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+
+                {{-- Chart --}}
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                  <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
                     {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
                     <div class="p-4 flex-grow">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold mb-4 text-center">Active and Inactive Users</h2>
-                            <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                <canvas id="myBarChart"></canvas>
-                            </div>
-                        </div>
+                    <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
+                      <div class="w-[100%] h-[100%] flex justify-center items-center">
+                          <canvas id="myBarChart"></canvas>
+                      </div>
 
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                        <script>
-                            const barchart = document.getElementById('myBarChart');
-                            const chartData = @json($chartData); // Convert PHP array to JSON
+                      <script>
+                        const barchart = document.getElementById('myBarChart');
+                        const chartData = @json($chartData); // Convert PHP array to JSON
 
-                            new Chart(barchart, {
+                        new Chart(barchart, {
                                 type: 'bar',
                                 data: {
                                     labels: ['Admin', 'Collector', 'Residents'],
@@ -289,15 +288,14 @@
                                     }
                                 }
                             });
-                        </script>
+                    </script>
 
                       </div>
                   </div>
-
                   <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
-                      <div class="w-[60%] py-5 font-semibold border-b border-gray-100"> <div>
-                            <h2 class="text-xl font-semibold mb-4 text-center">Roles</h2>
-                          <canvas id="myChart"></canvas>
+                    <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
+                    <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
+                          <canvas class="flex justify-center items-center" id="myChart"></canvas>
                       </div>
 
                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -551,101 +549,100 @@
                             </div>
                         </div>
                         </a>
-		        </section>
+		</section>
 
 	            {{-- Chart --}}
-            <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                  <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
                     {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
                     <div class="p-4 flex-grow">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold mb-4 text-center">Active and Inactive Users</h2>
-                            <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                <canvas id="myBarChart"></canvas>
-                            </div>
+                        <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
+                        <div class="w-[100%] h-[100%] flex justify-center items-center">
+                            <canvas id="myBarChart"></canvas>
                         </div>
 
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                         <script>
-                            const barchart = document.getElementById('myBarChart');
-                            const chartData = @json($chartData); // Convert PHP array to JSON
+                          const barchart = document.getElementById('myBarChart');
+                          const chartData = @json($chartData); // Convert PHP array to JSON
 
-                            new Chart(barchart, {
-                                type: 'bar',
-                                data: {
-                                    labels: ['Admin', 'Collector', 'Residents'],
-                                    datasets: [{
-                                        label: 'Active Users',
-                                        data: [
-                                            chartData.admin.active,
-                                            chartData.collector.active,
-                                            chartData.residents.active
-                                        ],
-                                        backgroundColor: [
-                                            '#46b953',
-                                            '#46b953',
-                                            '#46b953'
-                                        ],
-                                        borderColor: [
-                                            'rgb(255, 99, 132)',
-                                            'rgb(173, 216, 230)',
-                                            'rgb(255, 159, 64)',
-                                            'rgb(255, 182, 193)',
-                                            'rgb(255, 205, 86)',
-                                            'rgb(255, 222, 173)'
-                                        ],
-                                        borderWidth: 1
-                                    },
-                                    {
-                                        label: 'Inactive Users',
-                                        data: [
-                                            chartData.admin.inactive,
-                                            chartData.collector.inactive,
-                                            chartData.residents.inactive
-                                        ],
-                                        backgroundColor: [
-                                            '#FF4069',
-                                            '#FF4069',
-                                            '#FF4069'
-                                        ],
-                                        borderColor: [
-                                            'rgb(255, 99, 132)',
-                                            'rgb(173, 216, 230)',
-                                            'rgb(255, 159, 64)',
-                                            'rgb(255, 182, 193)',
-                                            'rgb(255, 205, 86)',
-                                            'rgb(255, 222, 173)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    },
-                                    plugins: {
-                                        legend: {
-                                            display: true,
-                                            position: 'top',
-                                            labels: {
-                                                boxWidth: 20,
-                                                usePointStyle: true
-                                            }
-                                        }
-                                    }
-                                }
-                            });
-                        </script>
+                          new Chart(barchart, {
+                                  type: 'bar',
+                                  data: {
+                                      labels: ['Admin', 'Collector', 'Residents'],
+                                      datasets: [{
+                                          label: 'Active Users',
+                                          data: [
+                                              chartData.admin.active,
+                                              chartData.collector.active,
+                                              chartData.residents.active
+                                          ],
+                                          backgroundColor: [
+                                              '#46b953',
+                                              '#46b953',
+                                              '#46b953'
+                                          ],
+                                          borderColor: [
+                                              'rgb(255, 99, 132)',
+                                              'rgb(173, 216, 230)',
+                                              'rgb(255, 159, 64)',
+                                              'rgb(255, 182, 193)',
+                                              'rgb(255, 205, 86)',
+                                              'rgb(255, 222, 173)'
+                                          ],
+                                          borderWidth: 1
+                                      },
+                                      {
+                                          label: 'Inactive Users',
+                                          data: [
+                                              chartData.admin.inactive,
+                                              chartData.collector.inactive,
+                                              chartData.residents.inactive
+                                          ],
+                                          backgroundColor: [
+                                              '#FF4069',
+                                              '#FF4069',
+                                              '#FF4069'
+                                          ],
+                                          borderColor: [
+                                              'rgb(255, 99, 132)',
+                                              'rgb(173, 216, 230)',
+                                              'rgb(255, 159, 64)',
+                                              'rgb(255, 182, 193)',
+                                              'rgb(255, 205, 86)',
+                                              'rgb(255, 222, 173)'
+                                          ],
+                                          borderWidth: 1
+                                      }]
+                                  },
+                                  options: {
+                                      scales: {
+                                          y: {
+                                              beginAtZero: true
+                                          }
+                                      },
+                                      plugins: {
+                                          legend: {
+                                              display: true,
+                                              position: 'top',
+                                              labels: {
+                                                  boxWidth: 20,
+                                                  usePointStyle: true
+                                              }
+                                          }
+                                      }
+                                  }
+                              });
+                      </script>
+
                         </div>
                   </div>
                   <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
-                    <div class="w-[60%] py-5 font-semibold border-b border-gray-100"> <div>
-                        <h2 class="text-xl font-semibold mb-4 text-center">Roles</h2>
-                      <canvas id="myChart"></canvas>
-                    </div>
+                    <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
+                    <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
+                          <canvas class="flex justify-center items-center" id="myChart"></canvas>
+                      </div>
 
                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -906,98 +903,96 @@
 		        </section>
 
 	            {{-- Chart --}}
-            <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                  <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
                     {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
                     <div class="p-4 flex-grow">
-                        <div class="p-4">
-                            <h2 class="text-xl font-semibold mb-4 text-center">Active and Inactive Users</h2>
-                            <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                <canvas id="myBarChart"></canvas>
-                            </div>
+                        <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
+                        <div class="w-[100%] h-[100%] flex justify-center items-center">
+                            <canvas id="myBarChart"></canvas>
                         </div>
 
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                         <script>
-                            const barchart = document.getElementById('myBarChart');
-                            const chartData = @json($chartData); // Convert PHP array to JSON
+                          const barchart = document.getElementById('myBarChart');
+                          const chartData = @json($chartData); // Convert PHP array to JSON
 
-                            new Chart(barchart, {
-                                type: 'bar',
-                                data: {
-                                    labels: ['Admin', 'Collector', 'Residents'],
-                                    datasets: [{
-                                        label: 'Active Users',
-                                        data: [
-                                            chartData.admin.active,
-                                            chartData.collector.active,
-                                            chartData.residents.active
-                                        ],
-                                        backgroundColor: [
-                                            '#46b953',
-                                            '#46b953',
-                                            '#46b953'
-                                        ],
-                                        borderColor: [
-                                            'rgb(255, 99, 132)',
-                                            'rgb(173, 216, 230)',
-                                            'rgb(255, 159, 64)',
-                                            'rgb(255, 182, 193)',
-                                            'rgb(255, 205, 86)',
-                                            'rgb(255, 222, 173)'
-                                        ],
-                                        borderWidth: 1
-                                    },
-                                    {
-                                        label: 'Inactive Users',
-                                        data: [
-                                            chartData.admin.inactive,
-                                            chartData.collector.inactive,
-                                            chartData.residents.inactive
-                                        ],
-                                        backgroundColor: [
-                                            '#FF4069',
-                                            '#FF4069',
-                                            '#FF4069'
-                                        ],
-                                        borderColor: [
-                                            'rgb(255, 99, 132)',
-                                            'rgb(173, 216, 230)',
-                                            'rgb(255, 159, 64)',
-                                            'rgb(255, 182, 193)',
-                                            'rgb(255, 205, 86)',
-                                            'rgb(255, 222, 173)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    },
-                                    plugins: {
-                                        legend: {
-                                            display: true,
-                                            position: 'top',
-                                            labels: {
-                                                boxWidth: 20,
-                                                usePointStyle: true
-                                            }
-                                        }
-                                    }
-                                }
-                            });
-                        </script>
+                          new Chart(barchart, {
+                                  type: 'bar',
+                                  data: {
+                                      labels: ['Admin', 'Collector', 'Residents'],
+                                      datasets: [{
+                                          label: 'Active Users',
+                                          data: [
+                                              chartData.admin.active,
+                                              chartData.collector.active,
+                                              chartData.residents.active
+                                          ],
+                                          backgroundColor: [
+                                              '#46b953',
+                                              '#46b953',
+                                              '#46b953'
+                                          ],
+                                          borderColor: [
+                                              'rgb(255, 99, 132)',
+                                              'rgb(173, 216, 230)',
+                                              'rgb(255, 159, 64)',
+                                              'rgb(255, 182, 193)',
+                                              'rgb(255, 205, 86)',
+                                              'rgb(255, 222, 173)'
+                                          ],
+                                          borderWidth: 1
+                                      },
+                                      {
+                                          label: 'Inactive Users',
+                                          data: [
+                                              chartData.admin.inactive,
+                                              chartData.collector.inactive,
+                                              chartData.residents.inactive
+                                          ],
+                                          backgroundColor: [
+                                              '#FF4069',
+                                              '#FF4069',
+                                              '#FF4069'
+                                          ],
+                                          borderColor: [
+                                              'rgb(255, 99, 132)',
+                                              'rgb(173, 216, 230)',
+                                              'rgb(255, 159, 64)',
+                                              'rgb(255, 182, 193)',
+                                              'rgb(255, 205, 86)',
+                                              'rgb(255, 222, 173)'
+                                          ],
+                                          borderWidth: 1
+                                      }]
+                                  },
+                                  options: {
+                                      scales: {
+                                          y: {
+                                              beginAtZero: true
+                                          }
+                                      },
+                                      plugins: {
+                                          legend: {
+                                              display: true,
+                                              position: 'top',
+                                              labels: {
+                                                  boxWidth: 20,
+                                                  usePointStyle: true
+                                              }
+                                          }
+                                      }
+                                  }
+                              });
+                      </script>
                       </div>
                   </div>
                   <div class="flex items-center flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
-                    <div class="w-[60%] py-5 font-semibold border-b border-gray-100"> <div>
-                        <h2 class="text-xl font-semibold mb-4 text-center">Roles</h2>
-                      <canvas id="myChart"></canvas>
-                    </div>
+                    <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
+                    <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100"> <div>
+                          <canvas class="flex justify-center items-center" id="myChart"></canvas>
+                      </div>
 
                       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
