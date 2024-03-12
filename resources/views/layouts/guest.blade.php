@@ -24,7 +24,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-50 dark:bg-gray-900">
+
+        <div class="min-h-screen w-full flex justify-between sm:justify-center items-center sm:pt-0 dark:bg-gray-900 gap-x-20 shadow-lg">
+            <div class="hidden sm:block pt-10">
+                <h1 class="font-bold text-4xl">Waste Disposal Tracking System  </h1>
+                 <img src="{{asset('/images/login-logo.png')}}" alt="" class="mb-2 w-[500px] h-auto rounded object-cover ml-auto mr-auto">
+            </div>
+            {{--
+            <div class="min-h-screen w-full flex flex-col justify-center sm:justify-center items-center sm:pt-0 bg-gray-50 dark:bg-gray-900  sm:pl-[600px]"> --}}
+
             {{-- <div>
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
