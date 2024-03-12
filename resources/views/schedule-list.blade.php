@@ -135,7 +135,7 @@
 
                         <tr>
                             <th data-priority="1">ID</th>
-                            <th data-priority="2">User Role</th>
+                            {{-- <th data-priority="2">User Role</th> --}}
                             <th data-priority="3">Plate No</th>
                             <th data-priority="4">Address</th>
                             <th data-priority="5">Date</th>
@@ -150,7 +150,7 @@
                         @foreach($data as $item)
                         <tr x-on:click="scheduleToEdit = {{ $item->id }};">
                             <td >{{ $item->id }}</td>
-                            <td >{{ $item->users_id }}</td>
+                            {{-- <td >{{ $item->users_id }}</td> --}}
                             <td >{{ $item->plate_no }}</td>
                             <td >{{ $item->location }}</td>
                             <td >{{ $item->start }}</td>
