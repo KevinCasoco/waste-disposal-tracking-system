@@ -18,7 +18,7 @@
     </head>
     <body class="antialiased">
 
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-white dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
@@ -33,9 +33,16 @@
                 </div>
             @endif
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <img src="{{asset('/images/Waste-Logo.png')}}" alt="Waste Logo" class="h-32 w-auto bg-gray-100 dark:bg-gray-900 rounded-full">
+            <div class="max-w-7xl mx-auto p-6 lg:p-8 mt-2">
+                <div class="flex justify-between items-center bg-white rounded-xl mb-32 gap-x-14">
+                    <img src="{{asset('/images/Waste-Logo.png')}}" alt="Waste Logo" class="h-[520px] w-auto bg-gray-100 dark:bg-gray-900 rounded-full">
+                    <div class="w-[600px] bg-white text-center py-10 px-10 rounded-full shadow-xl border border-gray-500">
+                        <h1 class="text-4xl font-bold">Waste Disposal Traking System </h1>
+                        <p class="text-lg">
+                            Waste Disposal Tracking System for District 3 of Caloocan City—a smart solution designed to streamline waste collection. This software keeps tabs on garbage pickup schedules, ensuring residents are informed, while helping authorities manage waste responsibly from start to finish. It's a step towards cleaner surroundings and greener practices.
+                        </p>
+
+                    </div>
                 </div>
 
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white flex justify-center">WASTE DISPOSAL TRACKING SYSTEM 2023 - 2024</h2>
