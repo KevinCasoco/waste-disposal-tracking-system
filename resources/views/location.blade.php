@@ -194,7 +194,7 @@
                 </div>
             </form>
             <!-- Replace YOUR_API_KEY with your actual API key -->
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3NkyX1hnbnQy-i5JmEVM65SRPXjfisPo&callback=initMap" defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key={{ config("services.google_maps.api_key") }}&callback=initMap" defer></script>
             <script>
                 function initMap() {
                     var wiseChoiceLocation = {
