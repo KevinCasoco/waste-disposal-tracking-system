@@ -36,10 +36,20 @@ class WasteCollectionSchedule extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+        // Filter schedules to only include those with the same location as the user
+        $userLocationSchedules = $this->schedules->filter(function ($schedule) use ($notifiable) {
+            return $schedule->location === $notifiable->location;
+        });
+
+        // If there are no schedules for the user's location, return an empty MailMessage
+        if ($userLocationSchedules->isEmpty()) {
+            return (new MailMessage);
+        }
+
         // Create a string to display date and time information
         $scheduleInfo = '';
 
-        foreach ($this->schedules as $schedule) {
+        foreach ($userLocationSchedules as $schedule) {
             // Assuming you have 'date' and 'time' columns in your Schedule model
             $scheduleInfo .= "Plate No: {$schedule->plate_no}, Location: {$schedule->location}, Date: {$schedule->start}, Time: {$schedule->time}\n";
         }
@@ -48,7 +58,7 @@ class WasteCollectionSchedule extends Notification
             ->line('The time of collection will be on:');
 
         // Use the line method for each schedule
-        foreach ($this->schedules as $schedule) {
+        foreach ($userLocationSchedules as $schedule) {
             $mailMessage->line("Plate No: {$schedule->plate_no}, Location: {$schedule->location}, Date: {$schedule->start}, Time: {$schedule->time}");
         }
 
