@@ -128,6 +128,9 @@ class CollectorController extends Controller
 
     public function showLocation()
     {
-        return view('location');
+         // retrieve unique addresses for residents and populate to dropdown
+         $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+         return view('location', compact('locations'));
     }
 }

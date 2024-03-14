@@ -175,13 +175,24 @@
                     <h1 class="text-2xl font-bold" style="cursor: default;">Google Maps</h1>
                 </div>
                 <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">1st Location:</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City Hall</label>
                     <input id="wise_choice_location" type="text" name="wisehoice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="964 Quirino Hwy, Novaliches, Quezon City, 1123 Metro Manila" disabled />
                 </div>
 
                 <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">2nd Location:</label>
-                    <input id="customer_address" type="text" id="address" name="address" value="" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Customer's Address" required />
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
+                    <select  id="address" type="text" id="address" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
+                        <option value="">Select Address</option>
+                                @foreach($locations as $id => $location)
+                                            <?php
+                                                // Split the address by commas
+                                                $parts = explode(',', $location);
+                                                // Extract the second part and remove leading/trailing spaces
+                                                $secondValue = trim($parts[1]);
+                                            ?>
+                                            <option value="{{ $location }}">{{ $secondValue }}</option>
+                                        @endforeach
+                        </select>
                 </div>
 
                 <div class="mb-6">
@@ -218,7 +229,7 @@
                 });
 
                     document.getElementById('track_order_button').addEventListener('click', function() {
-                        var customerAddress = document.getElementById('customer_address').value;
+                        var customerAddress = document.getElementById('address').value;
 
                         var request = {
                             origin: wiseChoiceLocation,
@@ -243,6 +254,27 @@
                     });
                 });
             }
+        </script>
+
+        <script>
+            // Function to extract the second value from an address
+            function extractSecondValue(address) {
+                // Split the address by commas
+                var parts = address.split(',');
+                // Extract the second part and remove leading/trailing spaces
+                var secondValue = parts[1].trim();
+                return secondValue;
+            }
+
+            // Extract second values from the addresses
+            var value1 = extractSecondValue(address1);
+
+            // Add extracted values to the dropdown list
+            var dropdown = document.getElementById("address");
+            var option1 = document.createElement("option");
+            option1.text = value1;
+            option1.value = value1;
+            dropdown.add(option1);
         </script>
 
             <!-- Map Container -->
