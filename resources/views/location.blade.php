@@ -168,44 +168,69 @@
 <x-app-layout>
     @if (Auth::user()->role == 'collector')
         <!-- Content -->
-    <div class="flex justify-center items-center py-4">
-        <div class="w-full mx-6 sm:w-[500px]">
-            <form>
-                <div class="text-center mb-5">
+        <div class="flex justify-center items-center py-4 ">
+            {{-- For Web View --}}
+            {{-- <div class="w-full mx-6 sm:w-full hidden md:block"> --}}
+            <div class="w-full mx-6 sm:w-full">
+                <div class="flex justify-center flex-col">
+                    <form>
+                        {{-- <div class="text-center mb-5">
                     <h1 class="text-2xl font-bold" style="cursor: default;">Google Maps</h1>
-                </div>
-                <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City Hall</label>
-                    <input id="wise_choice_location" type="text" name="wisehoice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="964 Quirino Hwy, Novaliches, Quezon City, 1123 Metro Manila" disabled />
-                </div>
+                </div> --}}
 
-                <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-                    <select  id="address" type="text" id="address" name="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]" required>
-                        <option value="">Select Address</option>
-                                @foreach($locations as $id => $location)
-                                            <?php
-                                                // Split the address by commas
-                                                $parts = explode(',', $location);
-                                                // Extract the second part and remove leading/trailing spaces
-                                                $secondValue = trim($parts[1]);
-                                            ?>
-                                            <option value="{{ $location }}">{{ $secondValue }}</option>
-                                        @endforeach
+                <div class="grid grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City Hall</label>
+                        <input id="wise_choice_location" type="text" name="wisehoice"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value="964 Quirino Hwy, Novaliches, Quezon City, 1123 Metro Manila" disabled />
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
+                        <select id="address" type="text" id="address" name="location"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full"
+                            required>
+                            <option value="">Select Address</option>
+                            @foreach ($locations as $id => $location)
+                                <?php
+                                // Split the address by commas
+                                $parts = explode(',', $location);
+                                // Extract the second part and remove leading/trailing spaces
+                                $secondValue = trim($parts[1]);
+                                ?>
+                                <option value="{{ $location }}">{{ $secondValue }}</option>
+                            @endforeach
                         </select>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plate No:</label>
+                        <input id="plate_no" type="text" name="plate_no" value="{{ Auth::user()->plate_no }}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            disabled />
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Distance:</label>
+                        <input id="transportation_time" type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            readonly />
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transportation Time (Motorcycle):</label>
-                    <input id="transportation_time" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly />
+                        <div
+                            class="flex justify-center gap-x-2 mb-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">
+                            <button id="track_order_button" type="button" class="text-white p-2.5 w-full">Go</button>
+                        </div>
+                    </form>
                 </div>
+                <!-- Map Container -->
+                <div id="map" style="height: 700px;" class=""></div>
+            </div>
 
-                <div class="flex justify-end gap-x-2 mb-3">
-                    <button id="track_order_button" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Go</button>
-                </div>
-            </form>
+
+
             <!-- Replace YOUR_API_KEY with your actual API key -->
-            <script src="https://maps.googleapis.com/maps/api/js?key={{ config("services.google_maps.api_key") }}&callback=initMap" defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initMap"
+                defer></script>
             <script>
                 function initMap() {
                     var wiseChoiceLocation = {
@@ -224,9 +249,9 @@
                     });
 
                     // Trigger button click event after page is loaded
-                window.addEventListener('load', function() {
-                    document.getElementById('track_order_button').click();
-                });
+                    window.addEventListener('load', function() {
+                        document.getElementById('track_order_button').click();
+                    });
 
                     document.getElementById('track_order_button').addEventListener('click', function() {
                         var customerAddress = document.getElementById('address').value;
@@ -242,45 +267,40 @@
                         };
 
                         directionsService.route(request, function(result, status) {
-                        if (status == google.maps.DirectionsStatus.OK) {
-                            directionsRenderer.setDirections(result);
+                            if (status == google.maps.DirectionsStatus.OK) {
+                                directionsRenderer.setDirections(result);
 
-                            // Display motorcycle travel duration
-                            var motorcycleDuration = result.routes[0].legs[0].duration.text;
-                            document.getElementById('transportation_time').value = motorcycleDuration;
-                        } else {
-                            console.error("Directions request failed due to " + status);
-                        }
+                                // Display motorcycle travel duration
+                                var motorcycleDuration = result.routes[0].legs[0].duration.text;
+                                document.getElementById('transportation_time').value = motorcycleDuration;
+                            } else {
+                                console.error("Directions request failed due to " + status);
+                            }
+                        });
                     });
-                });
-            }
-        </script>
+                }
+            </script>
 
-        <script>
-            // Function to extract the second value from an address
-            function extractSecondValue(address) {
-                // Split the address by commas
-                var parts = address.split(',');
-                // Extract the second part and remove leading/trailing spaces
-                var secondValue = parts[1].trim();
-                return secondValue;
-            }
+            <script>
+                // Function to extract the second value from an address
+                function extractSecondValue(address) {
+                    // Split the address by commas
+                    var parts = address.split(',');
+                    // Extract the second part and remove leading/trailing spaces
+                    var secondValue = parts[1].trim();
+                    return secondValue;
+                }
 
-            // Extract second values from the addresses
-            var value1 = extractSecondValue(address1);
+                // Extract second values from the addresses
+                var value1 = extractSecondValue(address1);
 
-            // Add extracted values to the dropdown list
-            var dropdown = document.getElementById("address");
-            var option1 = document.createElement("option");
-            option1.text = value1;
-            option1.value = value1;
-            dropdown.add(option1);
-        </script>
+                // Add extracted values to the dropdown list
+                var dropdown = document.getElementById("address");
+                var option1 = document.createElement("option");
+                option1.text = value1;
+                option1.value = value1;
+                dropdown.add(option1);
+            </script>
 
-            <!-- Map Container -->
-            <div id="map" style="height: 400px;" class=""></div>
-        </div>
-    </div>
-    <!-- End Content -->
     @endif
 </x-app-layout>
