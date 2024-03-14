@@ -111,17 +111,35 @@
 
         <!-- content -->
         <div class="flex-grow text-gray-800">
-            <main class="p-6 sm:p-1 space-y-6">
+            <main class="p-1 pb-3 space-y-6">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
             <!-- START CALENDAR -->
+        <div class="container mt-2">
             <div class="card">
                 <div class="card-body">
-                    <div id="calendar" style="width: 100%;height:100vh"></div>
+                    <div id="calendar" class="w-full h-screen overflow-x-auto"></div>
 
                 </div>
             </div>
         </div>
+    </div>
+
+        <style>
+            /* Regular font size for desktop */
+            .fc-header-toolbar {
+                font-size: 16px;
+                /* Adjust the font size as needed */
+            }
+
+            /* Media query for mobile devices */
+            @media (max-width: 768px) {
+                .fc-header-toolbar {
+                    font-size: 8px;
+                    /* Adjust the font size for mobile devices */
+                }
+            }
+        </style>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -146,15 +164,40 @@
                 events: '/events',
                 editable: true,
 
-                // Displaying The Event
-                eventContent: function(info) {
-                    var address = info.event.extendedProps.location; // Assuming the address is stored within the location property
-                    var secondPart = address.split(',')[1].trim();
-                    console.log(secondPart);
+               // Deleting The Event
+               eventContent: function(info) {
+                                var address = info.event.extendedProps
+                                    .location; // Assuming the address is stored within the location property
+                                var secondPart = address.split(',')[1].trim();
+                                console.log(secondPart);
 
-                    var eventTitle = secondPart; // You can use this part of the address as the event title, if needed
-                    var eventElement = document.createElement('div');
-                    eventElement.innerHTML = '<span style="cursor: pointer;"></span> ' + eventTitle;
+                                var eventTitle =
+                                    secondPart; // You can use this part of the address as the event title, if needed
+                                var eventElement = document.createElement('div');
+                                // eventElement.classList.add('flex', 'items-center', 'h-[100px]' ); // Adjust the height as needed, e.g., h-12
+                                // eventElement.innerHTML = '<span style="cursor: pointer; overflow-wrap: break-word;" >❌</span> ' + eventTitle;
+
+                                // Assuming eventTitle is "Congressional Road"
+                                var maxLength = 10; // Adjust this value according to your needs
+
+                                // Check if the eventTitle length exceeds the maximum length
+                                if (eventTitle.length > maxLength) {
+                                    // Split the eventTitle into words
+                                    var words = eventTitle.split(' ');
+                                    // Concatenate the first word with a line break after it, and join the rest of the words
+                                    var truncatedTitle = words[0] + ' <br>' + words.slice(1).join(' ');
+                                    // Assign the truncated title with Tailwind CSS classes to ensure line break
+                                    var truncatedTitleWithBreak =
+                                        '<span class="whitespace-normal break-words" style="cursor: pointer;"></span> ' +
+                                        truncatedTitle;
+                                    // Assign the truncated title with line breaks to the innerHTML of the span element
+                                    eventElement.innerHTML = truncatedTitleWithBreak;
+                                } else {
+                                    // If the length is within the limit, simply assign the eventTitle to the innerHTML
+                                    eventElement.innerHTML =
+                                        '<span class="whitespace-normal break-words" style="cursor: pointer;"></span> ' +
+                                        eventTitle;
+                                }
 
                         // eventElement.querySelector('span').addEventListener('click', function() {
                         //     if (confirm("Are you sure you want to delete this event?")) {
