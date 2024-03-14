@@ -105,10 +105,10 @@
 
       <!-- content -->
       <div class="flex-grow text-gray-800">
-        <main class="p-6 sm:p-1 space-y-6">
+        <main class="p-1 pb-3 space-y-6">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-            <div class="container mt-5">
+        <div class="container mt-4 hidden md:block">
                 {{-- For Search --}}
                 <div class="row">
                     <div class="col-md-4">
@@ -139,17 +139,82 @@
                        <form action="{{ route('collector-schedule.sms_controller') }}" method="POST" class="ml-3">
                            @csrf
                            <button class="py-2 px-2 mb-3 rounded bg-red-500 hover:bg-green-700 text-white" type="submit"><i class="ri-mail-send-line mr-1"></i>Notify Users(SMS)</button>
-                       </form>
-                    </div>
-
+                    </form>
                 </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <div id="calendar" style="width: 100%;height:100vh"></div>
+            </div>
+        </div>
+
+
+            <div class="container mt-4 md:hidden">
+                {{-- For Search --}}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group mb-2">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search Schedule">
+                            <div class="input-group-append">
+                                <button id="searchButton" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <div class="" role="group" aria-label="Calendar Actions">
+                                    <button id="exportButton" class="py-2 px-2 rounded bg-green-500 hover:bg-green-700 text-white w-100 btn-success">Export Calendar</button>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <div class="" role="group" aria-label="Calendar Actions">
+                                    <a href="{{ asset('add-collector')}}" ><button id="exportButton" class="py-2 px-2 rounded bg-green-500 hover:bg-green-700 text-white w-100 btn-success">Add New Sched</button></a>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <form action="{{ route('collector-send-email.collector-send-notification') }}" method="POST" class="ml-0 ml-md-3">
+                                    @csrf
+                                    <button class="py-2 px-2 rounded bg-green-500 hover:bg-green-700 text-white w-100" type="submit">
+                                        <i class="ri-mail-send-line mr-1"></i>Notify(Email)
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <form action="{{ route('collector-schedule.sms_controller') }}" method="POST" class="ml-0 ml-md-3">
+                                    @csrf
+                                    <button class="py-2 px-2 rounded bg-red-500 hover:bg-green-700 text-white w-100" type="submit">
+                                        <i class="ri-mail-send-line mr-1"></i>Notify(SMS)
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="container mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="calendar" class="w-full h-screen overflow-x-auto"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <style>
+                /* Regular font size for desktop */
+                .fc-header-toolbar {
+                    font-size: 16px;
+                    /* Adjust the font size as needed */
+                }
+
+                /* Media query for mobile devices */
+                @media (max-width: 768px) {
+                    .fc-header-toolbar {
+                        font-size: 8px;
+                        /* Adjust the font size for mobile devices */
+                    }
+                }
+            </style>
 
             <!-- Delete Event Modal -->
             <div class="modal fade" id="deleteEventModal" tabindex="-1" role="dialog" aria-labelledby="deleteEventModalLabel" aria-hidden="true">
@@ -198,13 +263,38 @@
 
                     // Deleting The Event
                     eventContent: function(info) {
-                        var address = info.event.extendedProps.location; // Assuming the address is stored within the location property
+                        var address = info.event.extendedProps
+                            .location; // Assuming the address is stored within the location property
                         var secondPart = address.split(',')[1].trim();
                         console.log(secondPart);
 
-                        var eventTitle = secondPart; // You can use this part of the address as the event title, if needed
+                        var eventTitle =
+                            secondPart; // You can use this part of the address as the event title, if needed
                         var eventElement = document.createElement('div');
-                        eventElement.innerHTML = '<span style="cursor: pointer;">❌</span> ' + eventTitle;
+                        // eventElement.classList.add('flex', 'items-center', 'h-[100px]' ); // Adjust the height as needed, e.g., h-12
+                        // eventElement.innerHTML = '<span style="cursor: pointer; overflow-wrap: break-word;" >❌</span> ' + eventTitle;
+
+                        // Assuming eventTitle is "Congressional Road"
+                        var maxLength = 10; // Adjust this value according to your needs
+
+                        // Check if the eventTitle length exceeds the maximum length
+                        if (eventTitle.length > maxLength) {
+                            // Split the eventTitle into words
+                            var words = eventTitle.split(' ');
+                            // Concatenate the first word with a line break after it, and join the rest of the words
+                            var truncatedTitle = words[0] + ' <br>' + words.slice(1).join(' ');
+                            // Assign the truncated title with Tailwind CSS classes to ensure line break
+                            var truncatedTitleWithBreak =
+                                '<span class="whitespace-normal break-words" style="cursor: pointer;">❌</span> ' +
+                                truncatedTitle;
+                            // Assign the truncated title with line breaks to the innerHTML of the span element
+                            eventElement.innerHTML = truncatedTitleWithBreak;
+                        } else {
+                            // If the length is within the limit, simply assign the eventTitle to the innerHTML
+                            eventElement.innerHTML =
+                                '<span class="whitespace-normal break-words" style="cursor: pointer;">❌</span> ' +
+                                eventTitle;
+                        }
 
                         eventElement.querySelector('span').addEventListener('click', function() {
                             // Trigger Bootstrap modal for confirmation
@@ -216,16 +306,20 @@
                                     method: 'DELETE',
                                     url: '/schedule/' + eventId,
                                     headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
                                     },
                                     success: function(response) {
                                         console.log('Event deleted successfully.');
-                                        calendar.refetchEvents(); // Refresh events after deletion
-                                        $('#deleteEventModal').modal('hide'); // Hide modal after deletion
+                                        calendar
+                                            .refetchEvents(); // Refresh events after deletion
+                                        $('#deleteEventModal').modal(
+                                            'hide'); // Hide modal after deletion
                                     },
                                     error: function(error) {
                                         console.error('Error deleting event:', error);
-                                        $('#deleteEventModal').modal('hide'); // Hide modal if deletion fails
+                                        $('#deleteEventModal').modal(
+                                            'hide'); // Hide modal if deletion fails
                                     }
                                 });
                             });
