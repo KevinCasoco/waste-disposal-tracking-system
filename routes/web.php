@@ -191,7 +191,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // Trash Bin routes
     Route::get('/admin-trash-bin', [TrashBinController::class, 'index'])->name('index.admin-trash-bin');
-    // Route::get('/trash-bins/create', [TrashBinController::class, 'create'])->name('trash-bins.create');
+    Route::post('/admin-trash-bin/create', [TrashBinController::class, 'create'])->name('admin-trash-bin.create');
     // Route::post('/trash-bins', [TrashBinController::class, 'store'])->name('trash-bins.store');
     // Route::get('/trash-bins/{trashBin}', [TrashBinController::class, 'show'])->name('trash-bins.show');
     // Route::get('/trash-bins/{trashBin}/edit', [TrashBinController::class, 'edit'])->name('trash-bins.edit');

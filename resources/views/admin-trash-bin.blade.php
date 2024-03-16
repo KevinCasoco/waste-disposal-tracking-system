@@ -9,6 +9,8 @@
 <div class="flex justify-center items-center py-4">
     <div class="w-full mx-6 sm:w-[500px]">
         <form id="trash_bin_form">
+        <form action="{{ route('admin-trash-bin.create') }}" method="post" class="pl-5 pr-5 pt-3 pb-3">
+            @csrf
             <div class="mb-6">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trash Bin Location (Barangay or City):</label>
                 <input id="trash_bin_location" type="text" name="trash_bin_location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Barangay or City" required />

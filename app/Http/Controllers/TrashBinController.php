@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TrashBin;
 use Illuminate\Http\Request;
 
 class TrashBinController extends Controller
