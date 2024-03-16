@@ -65,6 +65,13 @@
                         </a>
                     </li>
                     <li class="mb-1 group">
+                        <a href="{{ asset('admin-trash-bin') }}"
+                            class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                            <i class="ri-delete-bin-4-fill mr-3 text-lg"></i>
+                            <span class="text-sm">Trash Bin</span>
+                        </a>
+                    </li>
+                    <li class="mb-1 group">
                         <a href="{{ asset('profile') }}"
                             class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
                             <i class="ri-user-settings-line mr-3 text-lg"></i>
