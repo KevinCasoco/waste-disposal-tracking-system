@@ -20,6 +20,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\TrashBinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,8 +189,14 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // send sms
     Route::post('/sms', [SmsController::class, 'sms'])->name('schedule.sms');
 
-    // trash bin
-    Route::get('/admin-trash-bin', [CollectorController::class, 'trashBin'])->name('trashBin.admin-trash-bin');
+    // Trash Bin routes
+    Route::get('/admin-trash-bin', [TrashBinController::class, 'index'])->name('index.admin-trash-bin');
+    // Route::get('/trash-bins/create', [TrashBinController::class, 'create'])->name('trash-bins.create');
+    // Route::post('/trash-bins', [TrashBinController::class, 'store'])->name('trash-bins.store');
+    // Route::get('/trash-bins/{trashBin}', [TrashBinController::class, 'show'])->name('trash-bins.show');
+    // Route::get('/trash-bins/{trashBin}/edit', [TrashBinController::class, 'edit'])->name('trash-bins.edit');
+    // Route::put('/trash-bins/{trashBin}', [TrashBinController::class, 'update'])->name('trash-bins.update');
+    // Route::delete('/trash-bins/{trashBin}', [TrashBinController::class, 'destroy'])->name('trash-bins.destroy');
 
 }); // end of middleware group
 

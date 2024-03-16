@@ -133,9 +133,4 @@ class CollectorController extends Controller
 
          return view('location', compact('locations'));
     }
-
-    public function trashBin()
-    {
-        return view('admin-trash-bin');
-    }
 }
