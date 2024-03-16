@@ -7,7 +7,7 @@
     </x-slot>
        <!-- Content -->
 <div class="flex justify-center items-center py-4">
-    <div class="w-full mx-6 sm:w-[500px]">
+    <div class="w-full mx-6">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3NkyX1hnbnQy-i5JmEVM65SRPXjfisPo&callback=initMap" defer></script>
         <script>
             var map;
@@ -78,7 +78,7 @@
                     </script>
 
                     <!-- Map Container -->
-                    <div id="map" style="height: 400px;" class=""></div>
+                    <div id="map" style="height: 700px;" class=""></div>
                 </div>
             </div>
             <!-- End Content -->
