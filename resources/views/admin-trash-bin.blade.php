@@ -7,7 +7,7 @@
     </x-slot>
        <!-- Content -->
 <div class="flex justify-center items-center py-4">
-    <div class="w-full mx-6 sm:w-[500px]">
+    <div class="w-full mx-6">
         <form id="trash_bin_form" method="post" action="{{ route('admin-trash-bin.create') }}">
             @csrf
             <div class="mb-6">
@@ -17,8 +17,8 @@
             <!-- Add hidden inputs for latitude and longitude -->
             <input type="hidden" id="latitude" name="latitude">
             <input type="hidden" id="longitude" name="longitude">
-            <div class="flex justify-end gap-x-2 mb-3">
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Trash Bin</button>
+            <div class="flex justify-end gap-x-2 mb-6">
+                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Trash Bin</button>
             </div>
         </form>
 
@@ -92,7 +92,7 @@
                     </script>
 
                     <!-- Map Container -->
-                    <div id="map" style="height: 400px;" class=""></div>
+                    <div id="map" style="height: 700px;" class=""></div>
                 </div>
             </div>
             <!-- End Content -->
