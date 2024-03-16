@@ -257,6 +257,8 @@ Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
     // dynamic augmented reality 3 marker for 3 sample images
     Route::get('/augmented-reality', [UserController::class, 'showAugmentedReality'])->name('augmented-reality');
 
+    Route::get('/residents-trash-bin', [UserController::class, 'showTrashBin'])->name('showTrashBin.residents-trash-bin');
+
     // // augmented reality with marker
     // Route::get('/kitchen-waste', [UserController::class, 'showKitchenWaste'])->name('kitchen-waste');
 

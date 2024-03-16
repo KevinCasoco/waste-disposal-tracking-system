@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TrashBin;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -104,6 +105,13 @@ class UserController extends Controller
     public function showAugmentedReality()
     {
         return view('augmented-reality');
+    }
+
+    public function showTrashBin()
+    {
+        $trashBins = TrashBin::all();
+
+        return view('residents-trash-bin' , compact('trashBins'));
     }
 
 }
