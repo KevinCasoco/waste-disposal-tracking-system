@@ -20,6 +20,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\TrashBinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,6 +189,14 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // send sms
     Route::post('/sms', [SmsController::class, 'sms'])->name('schedule.sms');
 
+    // Trash Bin routes
+    Route::get('/admin-trash-bin', [TrashBinController::class, 'index'])->name('index.admin-trash-bin');
+    Route::post('/admin-trash-bin/create', [TrashBinController::class, 'create'])->name('admin-trash-bin.create');
+    // Route::post('/trash-bins', [TrashBinController::class, 'store'])->name('trash-bins.store');
+    // Route::get('/trash-bins/{trashBin}', [TrashBinController::class, 'show'])->name('trash-bins.show');
+    // Route::get('/trash-bins/{trashBin}/edit', [TrashBinController::class, 'edit'])->name('trash-bins.edit');
+    // Route::put('/trash-bins/{trashBin}', [TrashBinController::class, 'update'])->name('trash-bins.update');
+    // Route::delete('/trash-bins/{trashBin}', [TrashBinController::class, 'destroy'])->name('trash-bins.destroy');
 
 }); // end of middleware group
 
@@ -247,6 +256,8 @@ Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
 
     // dynamic augmented reality 3 marker for 3 sample images
     Route::get('/augmented-reality', [UserController::class, 'showAugmentedReality'])->name('augmented-reality');
+
+    Route::get('/residents-trash-bin', [UserController::class, 'showTrashBin'])->name('showTrashBin.residents-trash-bin');
 
     // // augmented reality with marker
     // Route::get('/kitchen-waste', [UserController::class, 'showKitchenWaste'])->name('kitchen-waste');
