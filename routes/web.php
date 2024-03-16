@@ -188,6 +188,8 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // send sms
     Route::post('/sms', [SmsController::class, 'sms'])->name('schedule.sms');
 
+    // trash bin
+    Route::get('/admin-trash-bin', [CollectorController::class, 'trashBin'])->name('trashBin.admin-trash-bin');
 
 }); // end of middleware group
 
