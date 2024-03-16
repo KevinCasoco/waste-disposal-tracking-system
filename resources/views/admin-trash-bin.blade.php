@@ -43,6 +43,14 @@
                     map: map,
                 });
 
+                @foreach($trashBins as $trashBin)
+                var marker = new google.maps.Marker({
+                    position: { lat: {{ $trashBin->latitude }}, lng: {{ $trashBin->longitude }} },
+                    map: map,
+                    title: "Trash Bin Location"
+                });
+                @endforeach
+
                 // Function to add trash bin marker to the map
                 function addTrashBinMarker(lat, lng) {
                     var trashBinLocation = new google.maps.LatLng(lat, lng);
@@ -54,39 +62,39 @@
                     trashBinMarkers.push(trashBinMarker); // Add marker to the array
                 }
 
-               // Handle form submission to add trash bin marker
-    document.getElementById('trash_bin_form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form submission
-        var trashBinLocation = document.getElementById('trash_bin_location').value;
+                // Handle form submission to add trash bin marker
+                document.getElementById('trash_bin_form').addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent form submission
+                    var trashBinLocation = document.getElementById('trash_bin_location').value;
 
-        // Use Google Maps Geocoding API to convert address to coordinates
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ 'address': trashBinLocation }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                var trashBinLat = results[0].geometry.location.lat();
-                var trashBinLng = results[0].geometry.location.lng();
+                    // Use Google Maps Geocoding API to convert address to coordinates
+                    var geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({ 'address': trashBinLocation }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            var trashBinLat = results[0].geometry.location.lat();
+                            var trashBinLng = results[0].geometry.location.lng();
 
-                // Set the values of latitude and longitude hidden inputs
-                document.getElementById('latitude').value = trashBinLat;
-                document.getElementById('longitude').value = trashBinLng;
+                            // Set the values of latitude and longitude hidden inputs
+                            document.getElementById('latitude').value = trashBinLat;
+                            document.getElementById('longitude').value = trashBinLng;
 
-                // Add trash bin marker to the map
-                addTrashBinMarker(trashBinLat, trashBinLng);
+                            // Add trash bin marker to the map
+                            addTrashBinMarker(trashBinLat, trashBinLng);
 
-                // Now submit the form
-                document.getElementById('trash_bin_form').submit();
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    });
-            }
-        </script>
+                            // Now submit the form
+                            document.getElementById('trash_bin_form').submit();
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+                });
+                        }
+                    </script>
 
-        <!-- Map Container -->
-        <div id="map" style="height: 400px;" class=""></div>
-    </div>
-</div>
-<!-- End Content -->
+                    <!-- Map Container -->
+                    <div id="map" style="height: 400px;" class=""></div>
+                </div>
+            </div>
+            <!-- End Content -->
     @endif
 </x-app-layout>

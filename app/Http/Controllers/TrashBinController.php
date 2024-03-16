@@ -9,7 +9,8 @@ class TrashBinController extends Controller
 {
     public function index()
     {
-        return view('admin-trash-bin');
+        $trashBins = TrashBin::all();
+        return view('admin-trash-bin', compact('trashBins'));
     }
 
     public function create(Request $request)
