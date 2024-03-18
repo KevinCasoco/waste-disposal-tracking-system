@@ -31,5 +31,9 @@ class DatabaseSeeder extends Seeder
             UserAccounts::class,
         ]);
 
+        $this->call([
+            TrashBin::class,
+        ]);
+
     }
 }
