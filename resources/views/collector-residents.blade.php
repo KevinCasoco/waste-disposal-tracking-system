@@ -114,75 +114,31 @@
                 </div>
 
                 <div x-data="{ collectorResidentsDelete: false, collectorEdit: false, collectorNewCollector: false, itemToDelete: null, itemToEdit: null }">
-                    <div class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
-                        <button @click="collectorNewCollector = true" class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"> <i class="ri-add-circle-line mr-1"></i>Add New Collector</button>
+
+                     {{-- Web View --}}
+                     <div class="hidden md:block">
+                        <div
+                            class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
+                            <button @click="collectorNewCollector = true"
+                                class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
+                                    class="ri-add-circle-line mr-1"></i>Add New Admin</button>
+                            <div class="md:flex-shrink-0 ">
+
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Mobile View --}}
+                    <div class="md:hidden flex justify-end">
+                        <button @click="collectorNewCollector = true"
+                            class=" text-white -mt-[70px] sm:mt-[300px] text-center w-8 h-8">
+                            {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                class="bg-green-500 rounded-full p-1 shadow-md">
+                                <path fill="#ffffff"
+                                    d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                            </svg>
+                        </button>
                         <div class="md:flex-shrink-0 mt-[47px]">
-                            <!-- Data Table Buttons -->
-                            <script>
-                                $(document).ready(function () {
-                                    var empDataTable = $('#example').DataTable({
-                                        responsive: true,
-                                        dom: 'Blfrtip',
-                                        buttons: [
-                                            {
-                                                extend: 'copy',
-                                            },
-                                            {
-                                                extend: 'pdf',
-                                                title: 'Waste Disposal Tracking System PDF Report',
-                                                customize: function (doc) {
-                                                    // Add custom design to PDF header
-                                                    doc.content.splice(0, 1, {
-                                                        text: 'Waste Disposal Tracking System PDF Report',
-                                                        style: {
-                                                            alignment: 'center',
-                                                            color: 'red', // Change color as needed
-                                                            fontSize: 16 // Adjust font size as needed
-                                                        }
-                                                    });
-                                                    // Set page size and orientation
-                                                    doc.pageSize = 'A4'; // You can change to 'letter' or other sizes
-                                                    doc.pageOrientation = 'portrait'; // 'portrait' or 'landscape'
-                                                },
-                                                exportOptions: {
-                                                    columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
-                                                }
-                                            },
-                                            {
-                                                extend: 'csv',
-                                                title: 'Waste Disposal Tracking System CSV Report',
-                                                exportOptions: {
-                                                    columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
-                                                },
-                                                customize: function (csv) {
-                                                    // Custom CSV header with a single cell spanning all columns
-                                                    var customHeader = 'Waste Disposal Tracking System Report\n';
-                                                    return customHeader + csv;
-                                                },
-                                            },
-                                            {
-                                                extend: 'excel',
-                                                title: 'Waste Disposal Tracking System Excel Report',
-                                                customize: function (xlsx) {
-                                                    // // Add custom design to Excel header
-                                                    // var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                                                    // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
-                                                },
-                                                exportOptions: {
-                                                    columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
-                                                }
-                                            },
-                                            {
-                                                extend: 'print', // Add print button
-                                                title: 'Waste Disposal Tracking System Print Report',
-                                                exportOptions: {
-                                                    columns: [0, 1, 2, 3, 4, 7]
-                                                }
-                                            }
-                                        ]
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
 
@@ -431,6 +387,84 @@
 
             {{-- Alphine --}}
             <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+            <!-- Data Table Buttons -->
+            <script>
+                $(document).ready(function () {
+                    var empDataTable = $('#example').DataTable({
+                        responsive: true,
+                        dom: 'Blfrtip',
+                        buttons: [
+                            {
+                                extend: 'copy',
+                            },
+                            {
+                                extend: 'pdf',
+                                title: 'Waste Disposal Tracking System PDF Report',
+                                customize: function (doc) {
+                                    // Add custom design to PDF header
+                                    doc.content.splice(0, 1, {
+                                        text: 'Waste Disposal Tracking System PDF Report',
+                                        style: {
+                                            alignment: 'center',
+                                            color: 'red', // Change color as needed
+                                            fontSize: 16 // Adjust font size as needed
+                                        }
+                                    });
+                                    // Set page size and orientation
+                                    doc.pageSize = 'A4'; // You can change to 'letter' or other sizes
+                                    doc.pageOrientation = 'portrait'; // 'portrait' or 'landscape'
+                                },
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                }
+                            },
+                            // {
+                            //     extend: 'csv',
+                            //     title: 'Waste Disposal Tracking System CSV Report',
+                            //     exportOptions: {
+                            //         columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                            //     },
+                            //     customize: function (csv) {
+                            //         // Custom CSV header with a single cell spanning all columns
+                            //         var customHeader = 'Waste Disposal Tracking System Report\n';
+                            //         return customHeader + csv;
+                            //     },
+                            // },
+                            {
+                                extend: 'excel',
+                                title: 'Waste Disposal Tracking System Excel Report',
+                                customize: function (xlsx) {
+                                    // // Add custom design to Excel header
+                                    // var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                                    // $('row:first c', sheet).attr('s', '32'). // Change the style as needed
+                                },
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 7] // Specify the column indices you want to export
+                                }
+                            },
+                            {
+                                extend: 'print', // Add print button
+                                title: 'Waste Disposal Tracking System Print Report',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 7]
+                                }
+                            }
+                        ]
+                    });
+                });
+            </script>
+            <style>
+                @media only screen and (max-width: 768px) {
+                    #example_wrapper .dt-buttons {
+                        text-align: center !important;
+                    }
+
+                    .dt-button {
+                        width: 100px;
+                    }
+                }
+            </style>
 
             <script>
                 function deleteItem(itemId) {
