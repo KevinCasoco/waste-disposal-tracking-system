@@ -14,12 +14,67 @@ class SmsController extends Controller
 {
     // using PhilSMS
     // admin button
+    // public function sms()
+    // {
+    //     $users = User::all();
+
+    //     foreach ($users as $user) {
+    //         $this->sendSMS([$user->number], 'Hello, ' . $user->name . '! This is a test SMS from PhilSMS API.', 'YourName');
+    //     }
+
+    //     return response()->json(['message' => 'SMS sent to all users successfully!']);
+    // }
+
+    // private function sendSMS($number, $message, $senderId)
+    // {
+    //     $client = new GuzzleHttpClient();
+
+    //     $response = $client->request('POST', 'https://app.philsms.com/api/v3/sms/send', [
+    //         'headers' => [
+    //             'Authorization' => 'Bearer 598|KEf7EduktO8iDVSpx9nrm2lOkBAlV63FxVlHXJM5',
+    //             'Content-Type' => 'application/json',
+    //         ],
+    //         'json' => [
+    //             'recipient' => implode(',', $number),
+    //             'sender_id' => 'PhilSMS',
+    //             'type' => 'plain',
+    //             'message' => $message,
+    //         ],
+    //     ]);
+
+    //     // Check if the request was successful
+    //     if ($response->getStatusCode() === 200) {
+    //         // Log::info('SMS sent to ' . $phoneNumber . ' successfully!'); // Removed log statement
+    //     } else {
+    //         // Log::error('Failed to send SMS to ' . $phoneNumber); // Removed log statement
+    //     }
+    // }
+
+    // using PhilSMS
+    // admin button
     public function sms()
     {
+        // Retrieve all users
         $users = User::all();
 
+        // Retrieve all schedules
+        $schedules = Schedule::all();
+
+        // Initialize SMS content variable
+        $smsContent = '';
+
+        // Iterate through schedules to build SMS content
+        foreach ($schedules as $schedule) {
+            $smsContent .= "Admin ID: {$schedule->users_id},\nPlate No.: {$schedule->plate_no},\nLocation: {$schedule->location},\nDate: {$schedule->start},\nTime: {$schedule->time}\n\n";
+        }
+
+        // Iterate through each user
         foreach ($users as $user) {
-            $this->sendSMS([$user->number], 'Hello, ' . $user->name . '! This is a test SMS from PhilSMS API.', 'YourName');
+            // Construct SMS message including user's name and schedule information
+            $message = 'Hello, ' . $user->name . "! Waste Collection Schedules will be on:\n" . $smsContent;
+
+            // Send SMS to the user
+            $this->sendSMS([$user->number], $message, 'YourName');
         }
 
         return response()->json(['message' => 'SMS sent to all users successfully!']);
