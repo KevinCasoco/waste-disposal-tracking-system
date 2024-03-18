@@ -77,7 +77,8 @@ class SmsController extends Controller
             $this->sendSMS([$user->number], $message, 'YourName');
         }
 
-        return response()->json(['message' => 'SMS sent to all users successfully!']);
+        // return response()->json(['message' => 'SMS sent to all users successfully!']);
+        return redirect()->route('schedule')->with('message', 'SMS sent to all users.');
     }
 
     private function sendSMS($number, $message, $senderId)
@@ -276,34 +277,63 @@ class SmsController extends Controller
     // }
 
     // collector button
+    // public function sms_controller()
+    // {
+    //     // vonage sms api credentials
+    //     $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
+    //     $client = new \Vonage\Client($basic);
+
+    //     // Retrieve schedules from the database
+    //     $schedules = Schedule::all();
+
+    //     // Build the SMS content with schedule information
+    //     $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
+
+    //     foreach ($schedules as $schedule) {
+    //         $smsContent .= "Collector ID: {$schedule->users_id},\n Plate No.: {$schedule->plate_no},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
+    //     }
+
+    //     // Send SMS with the built content
+    //     $response = $client->sms()->send(
+    //         new \Vonage\SMS\Message\SMS("639307296980", 'WDTS', $smsContent)
+    //     );
+
+    //     $message = $response->current();
+
+    //     if ($message->getStatus() == 0) {
+    //         return redirect()->route('collector-schedule')->with('message', 'The message was sent successfully');
+    //     } else {
+    //         echo "The message failed with status: " . $message->getStatus() . "\n";
+    //     }
+    // }
+
     public function sms_controller()
     {
-        // vonage sms api credentials
-        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
-        $client = new \Vonage\Client($basic);
+         // Retrieve all users
+         $users = User::all();
 
-        // Retrieve schedules from the database
-        $schedules = Schedule::all();
+         // Retrieve all schedules
+         $schedules = Schedule::all();
 
-        // Build the SMS content with schedule information
-        $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
+         // Initialize SMS content variable
+         $smsContent = '';
 
-        foreach ($schedules as $schedule) {
-            $smsContent .= "Collector ID: {$schedule->users_id},\n Plate No.: {$schedule->plate_no},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
-        }
+         // Iterate through schedules to build SMS content
+         foreach ($schedules as $schedule) {
+             $smsContent .= "Admin ID: {$schedule->users_id},\nPlate No.: {$schedule->plate_no},\nLocation: {$schedule->location},\nDate: {$schedule->start},\nTime: {$schedule->time}\n\n";
+         }
 
-        // Send SMS with the built content
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639307296980", 'WDTS', $smsContent)
-        );
+         // Iterate through each user
+         foreach ($users as $user) {
+             // Construct SMS message including user's name and schedule information
+             $message = 'Hello, ' . $user->name . "! Waste Collection Schedules will be on:\n" . $smsContent;
 
-        $message = $response->current();
+             // Send SMS to the user
+             $this->sendSMS([$user->number], $message, 'YourName');
+         }
 
-        if ($message->getStatus() == 0) {
-            return redirect()->route('collector-schedule')->with('message', 'The message was sent successfully');
-        } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
-        }
+        // return response()->json(['message' => 'SMS sent to all users successfully!']);
+        return redirect()->route('collector-schedule')->with('message', 'SMS sent to all users.');
     }
 
     // phone number dynamic based on the valid phone number of residents
