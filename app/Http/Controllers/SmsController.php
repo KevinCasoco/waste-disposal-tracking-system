@@ -5,42 +5,81 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use App\Models\User;
 use Carbon\Carbon;
+use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Http\Request;
 use Vonage\Client\Credentials\Basic;
 use Vonage\Client;
 
 class SmsController extends Controller
 {
+    // using PhilSMS
     // admin button
     public function sms()
     {
-        // vonage sms api credentials
-        $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
-        $client = new \Vonage\Client($basic);
+        $users = User::all();
 
-        // Retrieve schedules from the database
-        $schedules = Schedule::all();
-
-        // Build the SMS content with schedule information
-        $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
-
-        foreach ($schedules as $schedule) {
-            $smsContent .= "Admin ID: {$schedule->users_id},\n Plate No.: {$schedule->plate_no},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
+        foreach ($users as $user) {
+            $this->sendSMS([$user->number], 'Hello, ' . $user->name . '! This is a test SMS from PhilSMS API.', 'YourName');
         }
 
-        // Send SMS with the built content
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("639307296980", 'WDTS', $smsContent)
-        );
+        return response()->json(['message' => 'SMS sent to all users successfully!']);
+    }
 
-        $message = $response->current();
+    private function sendSMS($number, $message, $senderId)
+    {
+        $client = new GuzzleHttpClient();
 
-        if ($message->getStatus() == 0) {
-            return redirect()->route('schedule')->with('message', 'The message was sent successfully');
+        $response = $client->request('POST', 'https://app.philsms.com/api/v3/sms/send', [
+            'headers' => [
+                'Authorization' => 'Bearer 598|KEf7EduktO8iDVSpx9nrm2lOkBAlV63FxVlHXJM5',
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'recipient' => implode(',', $number),
+                'sender_id' => 'PhilSMS',
+                'type' => 'plain',
+                'message' => $message,
+            ],
+        ]);
+
+        // Check if the request was successful
+        if ($response->getStatusCode() === 200) {
+            // Log::info('SMS sent to ' . $phoneNumber . ' successfully!'); // Removed log statement
         } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
+            // Log::error('Failed to send SMS to ' . $phoneNumber); // Removed log statement
         }
     }
+
+    // // admin button
+    // public function sms()
+    // {
+    //     // vonage sms api credentials
+    //     $basic  = new \Vonage\Client\Credentials\Basic("59e7dbad", "2kKXDNaClVCz33u2");
+    //     $client = new \Vonage\Client($basic);
+
+    //     // Retrieve schedules from the database
+    //     $schedules = Schedule::all();
+
+    //     // Build the SMS content with schedule information
+    //     $smsContent = 'Waste Collection Schedules:' . PHP_EOL;
+
+    //     foreach ($schedules as $schedule) {
+    //         $smsContent .= "Admin ID: {$schedule->users_id},\n Plate No.: {$schedule->plate_no},\n Location: {$schedule->location},\n Date: {$schedule->start},\n Time: {$schedule->time}" . PHP_EOL;
+    //     }
+
+    //     // Send SMS with the built content
+    //     $response = $client->sms()->send(
+    //         new \Vonage\SMS\Message\SMS("639307296980", 'WDTS', $smsContent)
+    //     );
+
+    //     $message = $response->current();
+
+    //     if ($message->getStatus() == 0) {
+    //         return redirect()->route('schedule')->with('message', 'The message was sent successfully');
+    //     } else {
+    //         echo "The message failed with status: " . $message->getStatus() . "\n";
+    //     }
+    // }
 
     // phone number dynamic based on the valid phone number of residents
     // admin button
