@@ -415,18 +415,18 @@
                                 columns: [0, 1, 2, 3, 4, 5 ] // Specify the column indices you want to export
                             }
                         },
-                        {
-                            extend: 'csv',
-                            title: 'Waste Disposal Tracking System CSV Report',
-                            exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5] // Specify the column indices you want to export
-                            },
-                            customize: function (csv) {
-                                // Custom CSV header with a single cell spanning all columns
-                                var customHeader = 'Waste Disposal Tracking System Report\n';
-                                return customHeader + csv;
-                            },
-                        },
+                        // {
+                        //     extend: 'csv',
+                        //     title: 'Waste Disposal Tracking System CSV Report',
+                        //     exportOptions: {
+                        //         columns: [0, 1, 2, 3, 4, 5] // Specify the column indices you want to export
+                        //     },
+                        //     customize: function (csv) {
+                        //         // Custom CSV header with a single cell spanning all columns
+                        //         var customHeader = 'Waste Disposal Tracking System Report\n';
+                        //         return customHeader + csv;
+                        //     },
+                        // },
                         {
                             extend: 'excel',
                             title: 'Waste Disposal Tracking System Excel Report',
