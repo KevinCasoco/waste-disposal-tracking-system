@@ -87,7 +87,7 @@ class SmsController extends Controller
 
         $response = $client->request('POST', 'https://app.philsms.com/api/v3/sms/send', [
             'headers' => [
-                'Authorization' => 'Bearer 598|KEf7EduktO8iDVSpx9nrm2lOkBAlV63FxVlHXJM5',
+                'Authorization' => 'Bearer 602|bsMVZEh0tfP5EgAviSgZrjJoiA2MotwekxxAEE0Q',
                 'Content-Type' => 'application/json',
             ],
             'json' => [
