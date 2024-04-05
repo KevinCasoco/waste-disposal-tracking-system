@@ -25,7 +25,7 @@ class Sensor extends Seeder
 
          // seeding collector
          $sensor = SensorData::create([
-            'weight' => '1.2500',
+            'weight' => '0.2500',
         ]);
     }
 }

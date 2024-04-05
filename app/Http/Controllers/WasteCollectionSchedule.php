@@ -290,12 +290,29 @@ class WasteCollectionSchedule extends Controller
         return $id;
         // return response()->json('Event deleted');
     }
+
+    // with considering to timestamp value
+    // public function checkWeightAndNotify()
+    // {
+    //     // Assuming you have a method to get the latest weight from the Sensor model
+    //     $latestWeight = SensorData::latest()->value('weight');
+
+    //     if ($latestWeight > 1.0000) {
+    //         $admins = User::where('role', 'admin')->get();
+    //         Notification::send($admins, new SensorNotification());
+    //         return response()->json(['message' => 'Notification sent to admins.']);
+    //     }
+
+    //     return response()->json(['message' => 'Weight is within limit.']);
+    // }
+
+    // without considering to timestamp value
     public function checkWeightAndNotify()
     {
-        // Assuming you have a method to get the latest weight from the Sensor model
-        $latestWeight = SensorData::latest()->value('weight');
+        // Retrieve the last recorded weight from the SensorData model
+        $latestWeight = SensorData::orderBy('id', 'desc')->value('weight');
 
-        if ($latestWeight > 1.0000) {
+        if ($latestWeight !== null && $latestWeight >= 1.0000) {
             $admins = User::where('role', 'admin')->get();
             Notification::send($admins, new SensorNotification());
             return response()->json(['message' => 'Notification sent to admins.']);
