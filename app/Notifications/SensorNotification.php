@@ -35,7 +35,7 @@ class SensorNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The weight has exceeded 2 kg.')
+            ->line('The weight has exceeded 1 kg.')
             ->action('View Sensor Data', url('/sensor_data'))
             ->line('Thank you for using our application!');
     }
