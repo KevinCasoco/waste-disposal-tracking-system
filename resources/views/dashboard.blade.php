@@ -197,6 +197,12 @@
                                       <ul>
                                           <li class="font-bold text-white">Schedules</li>
                                           <li class="font-extrabold text-white text-xl">{{ $countSchedules }}</li>
+
+                                          <li class="font-bold text-white">Truck Weight</li>
+                                          <li class="font-extrabold text-white text-xl">{{ $truck_weight }}</li>
+
+                                          <li class="font-bold text-white">Trash Bin Weight</li>
+                                          <li class="font-extrabold text-white text-xl">{{ $trash_weight }}</li>
                                       </ul>
                                   </div>
 
