@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('sensor_data', function (Blueprint $table) {
             $table->id();
-            $table->string('weight');
+            $table->string('truck_weight');
+            $table->string('trash_weight');
             $table->timestamps();
         });
     }

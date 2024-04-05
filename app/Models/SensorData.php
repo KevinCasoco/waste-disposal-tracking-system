@@ -10,6 +10,7 @@ class SensorData extends Model
     use HasFactory;
 
     protected $fillable = [
-        'weight',
+        'truck_weight',
+        'trash_weight',
     ];
 }
