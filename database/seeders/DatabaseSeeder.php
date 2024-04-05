@@ -35,5 +35,9 @@ class DatabaseSeeder extends Seeder
             TrashBin::class,
         ]);
 
+        $this->call([
+            Sensor::class,
+        ]);
+
     }
 }

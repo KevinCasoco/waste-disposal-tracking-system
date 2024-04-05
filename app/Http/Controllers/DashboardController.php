@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use App\Models\User;
+use App\Models\SensorData;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -33,6 +34,9 @@ class DashboardController extends Controller
             $countSchedules = Schedule::count();
             $totalUser = User::count();
 
-        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser'));
+            $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+            $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+
+        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser', 'truck_weight', 'trash_weight'));
     }
 }

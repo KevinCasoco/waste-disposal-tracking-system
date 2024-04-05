@@ -117,6 +117,11 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // collection schedule
     Route::get('/schedule', [AdminController::class, 'showSchedule'])->name('schedule');
 
+    // sensor data notification for maximum kg
+    Route::get('/check-weight', [WasteCollectionSchedule::class, 'checkWeightAndNotify']);
+
+    Route::get('/check-weight-trash', [WasteCollectionSchedule::class, 'checkTrashCanAndNotify']);
+
     // collection schedule list
     Route::get('/schedule-list', [ScheduleController::class, 'index_schedule'])->name('schedule-list');
     Route::patch('/schedule-list/update/{id}', [ScheduleController::class, 'update_schedule'])->name('schedule-list.update_schedule');
