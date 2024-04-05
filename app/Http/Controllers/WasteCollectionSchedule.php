@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\SensorData;
 use App\Notifications\SensorNotification;
+use App\Notifications\TrashBinNotification;
 use Illuminate\Support\Facades\Notification;
 use Carbon\Carbon;
 
@@ -310,11 +311,24 @@ class WasteCollectionSchedule extends Controller
     public function checkWeightAndNotify()
     {
         // Retrieve the last recorded weight from the SensorData model
-        $latestWeight = SensorData::orderBy('id', 'desc')->value('weight');
+        $latestWeight = SensorData::orderBy('id', 'desc')->value('truck_weight');
 
         if ($latestWeight !== null && $latestWeight >= 1.0000) {
             $admins = User::where('role', 'admin')->get();
             Notification::send($admins, new SensorNotification());
+            return response()->json(['message' => 'Notification sent to admins.']);
+        }
+
+        return response()->json(['message' => 'Weight is within limit.']);
+    }
+    public function checkTrashCanAndNotify()
+    {
+        // Retrieve the last recorded weight from the SensorData model
+        $latestWeight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+
+        if ($latestWeight !== null && $latestWeight >= 1.0000) {
+            $admins = User::where('role', 'admin')->get();
+            Notification::send($admins, new TrashBinNotification());
             return response()->json(['message' => 'Notification sent to admins.']);
         }
 

@@ -223,7 +223,7 @@
                                 </div>
                             </a>
 
-                            <a href="{{ asset('schedule-list') }}">
+                            <a href="{{ url('check-weight') }}">
 
                                 <div
                                     class="p-2 bg-[#ab32d3] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#8838a3] hover:shadow-xl">
@@ -246,7 +246,7 @@
                                 </div>
                             </a>
 
-                            <a href="{{ asset('schedule-list') }}">
+                            <a href="{{ url('check-weight-trash') }}">
 
                                 <div
                                     class="p-2 bg-[#e0359c] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#c0428d] hover:shadow-xl">
@@ -624,7 +624,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ asset('collector-schedule-list') }}">
+                        <a href="{{ url('check-weight') }}">
 
                             <div
                                 class="p-2 bg-[#ab32d3] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#8838a3] hover:shadow-xl">
@@ -647,7 +647,7 @@
                             </div>
                         </a>
 
-                        <a href="{{ asset('collector-schedule-list') }}">
+                        <a href="{{ url('check-weight-trash') }}">
 
                             <div
                                 class="p-2 bg-[#e0359c] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#c0428d] hover:shadow-xl">
