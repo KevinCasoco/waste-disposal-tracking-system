@@ -13,7 +13,7 @@ class Sensor extends Seeder
      */
     public function run(): void
     {
-         // seeding collector
+         // seeding sensor data
          $sensor = SensorData::create([
             'truck_weight' => '0.0000',
             'trash_weight' => '0.0000',

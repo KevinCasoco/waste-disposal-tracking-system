@@ -231,9 +231,33 @@
                                     <div class="w-3/5 flex justify-start">
                                         <ul>
                                             <li class="font-bold text-white">Truck Weight</li>
-                                            <li class="font-extrabold text-white text-xl">{{ $truck_weight }}</li>
+                                            <li class="font-extrabold text-white text-xl" id="truck-weight">{{ $truck_weight }}</li>
                                         </ul>
                                     </div>
+
+                                    <script>
+                                        // Function to fetch updated truck weight
+                                        function fetchTruckWeight() {
+                                            fetch('/get-truck-weight')
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    // Update the truck weight in the HTML element
+                                                    document.getElementById('truck-weight').textContent = data.truck_weight;
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error fetching truck weight:', error);
+                                                });
+                                        }
+
+                                        // Function to refresh truck weight every 5 seconds
+                                        function autoRefresh() {
+                                            setInterval(fetchTruckWeight, 5000); // Refresh every 5 seconds
+                                        }
+
+                                        // Initial call to start auto-refresh
+                                        autoRefresh();
+                                    </script>
+
 
                                     <div class="w-3/5 flex justify-end ">
                                         <ul>
@@ -254,9 +278,32 @@
                                     <div class="w-3/5 flex justify-start">
                                         <ul>
                                             <li class="font-bold text-white">Trash Bin Weight</li>
-                                            <li class="font-extrabold text-white text-xl">{{ $trash_weight }}</li>
+                                            <li class="font-extrabold text-white text-xl" id="trash-weight">{{ $trash_weight }}</li>
                                         </ul>
                                     </div>
+
+                                    <script>
+                                        // Function to fetch updated truck weight
+                                        function fetchTrashWeight() {
+                                            fetch('/get-trash-weight')
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    // Update the truck weight in the HTML element
+                                                    document.getElementById('trash-weight').textContent = data.trash_weight;
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error fetching truck weight:', error);
+                                                });
+                                        }
+
+                                        // Function to refresh truck weight every 5 seconds
+                                        function autoRefresh1() {
+                                            setInterval(fetchTrashWeight, 5000); // Refresh every 5 seconds
+                                        }
+
+                                        // Initial call to start auto-refresh
+                                        autoRefresh1();
+                                    </script>
 
                                     <div class="w-3/5 flex justify-end ">
                                         <ul>

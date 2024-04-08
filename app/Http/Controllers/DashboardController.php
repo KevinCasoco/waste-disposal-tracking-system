@@ -39,4 +39,17 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser', 'truck_weight', 'trash_weight'));
     }
+
+    public function getTruckWeight()
+    {
+        $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+        return response()->json(['truck_weight' => $truck_weight]);
+    }
+
+    public function getTrashWeight()
+    {
+        $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+        return response()->json(['trash_weight' => $trash_weight]);
+    }
+
 }

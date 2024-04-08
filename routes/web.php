@@ -120,6 +120,13 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // sensor data notification for maximum kg
     Route::get('/check-weight', [WasteCollectionSchedule::class, 'checkWeightAndNotify']);
 
+    // truck-weight auto refresh
+    Route::get('/get-truck-weight', [DashboardController::class, 'getTruckWeight'])->name('dashboard.getTruckWeight');
+
+    // trash-weight auto refresh
+    Route::get('/get-trash-weight', [DashboardController::class, 'getTrashWeight'])->name('dashboard.getTrashWeight');
+
+    // sensor data notification for maximum kg
     Route::get('/check-weight-trash', [WasteCollectionSchedule::class, 'checkTrashCanAndNotify']);
 
     // collection schedule list
