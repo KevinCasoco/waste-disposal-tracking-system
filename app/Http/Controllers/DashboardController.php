@@ -8,10 +8,43 @@ use App\Models\SensorData;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SensorNotification;
 use App\Notifications\TrashBinNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    // public function countUsersByRole()
+    // {
+    //     $chartData = [
+    //         'admin' => [
+    //             'active' => User::where('role', 'admin')->where('status', 'active')->count(),
+    //             'inactive' => User::where('role', 'admin')->where('status', 'inactive')->count(),
+    //         ],
+    //         'collector' => [
+    //             'active' => User::where('role', 'collector')->where('status', 'active')->count(),
+    //             'inactive' => User::where('role', 'collector')->where('status', 'inactive')->count(),
+    //         ],
+    //         'residents' => [
+    //             'active' => User::where('role', 'residents')->where('status', 'active')->count(),
+    //             'inactive' => User::where('role', 'residents')->where('status', 'inactive')->count(),
+    //         ],
+    //     ];
+
+    //         $chart = User::all();
+
+    //         $countAdmins = User::where('role', 'admin')->count();
+    //         $countCollector = User::where('role', 'collector')->count();
+    //         $countResidents = User::where('role', 'residents')->count();
+    //         $countSchedules = Schedule::count();
+    //         $totalUser = User::count();
+
+    //         $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+    //         $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+
+    //     return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser', 'truck_weight', 'trash_weight'));
+    // }
+
+    // graph for truck collection and trash bin included
     public function countUsersByRole()
     {
         $chartData = [
@@ -29,18 +62,42 @@ class DashboardController extends Controller
             ],
         ];
 
-            $chart = User::all();
+        $chartWeightData = [
+            'monthly' => [
+                'monthlyData' => SensorData::whereMonth('updated_at', date('m'))->sum('truck_weight'),
+            ],
+            'weekly' => [
+                'weeklyData' => SensorData::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('truck_weight'),
+            ],
+            'daily' => [
+                'dailyData' => SensorData::whereDate('updated_at', date('Y-m-d'))->sum('truck_weight')
+            ],
+        ];
 
-            $countAdmins = User::where('role', 'admin')->count();
-            $countCollector = User::where('role', 'collector')->count();
-            $countResidents = User::where('role', 'residents')->count();
-            $countSchedules = Schedule::count();
-            $totalUser = User::count();
+        $chartWeightTrashData = [
+            'monthly' => [
+                'monthlyData' => SensorData::whereMonth('updated_at', date('m'))->sum('trash_weight'),
+            ],
+            'weekly' => [
+                'weeklyData' => SensorData::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('trash_weight'),
+            ],
+            'daily' => [
+                'dailyData' => SensorData::whereDate('updated_at', date('Y-m-d'))->sum('trash_weight')
+            ],
+        ];
 
-            $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
-            $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+        $chart = User::all();
 
-        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser', 'truck_weight', 'trash_weight'));
+        $countAdmins = User::where('role', 'admin')->count();
+        $countCollector = User::where('role', 'collector')->count();
+        $countResidents = User::where('role', 'residents')->count();
+        $countSchedules = Schedule::count();
+        $totalUser = User::count();
+
+        $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+        $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+
+        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'countSchedules', 'totalUser', 'truck_weight', 'trash_weight', 'chartWeightData', 'chartWeightTrashData'));
     }
 
     // manually send the email when you click the container of truck and trash in dashboard

@@ -457,6 +457,127 @@
                         </div>
 
                     </section>
+
+                     {{-- Chart --}}
+                     <section class="grid md:grid-cols-3 xl:grid-cols-6 xl:grid-rows-3 xl:grid-flow-col gap-6">
+                        <div class="flex flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
+                            {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                            <div class="p-4 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
+                                <div class="w-[100%] h-[100%] flex justify-center items-center">
+                                    <canvas id="myTruckBarChart"></canvas>
+                                </div>
+
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                <script>
+                                    const barcharttruck = document.getElementById('myTruckBarChart');
+                                    const chartWeightData = @json($chartWeightData); // Convert PHP array to JSON
+
+                                    new Chart(barcharttruck, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Monthly', 'Weekly', 'Daily'],
+                                            datasets: [{
+                                                label: 'Truck Collection',
+                                                data: [
+                                                    chartWeightData.monthly.monthlyData,
+                                                    chartWeightData.weekly.weeklyData,
+                                                    chartWeightData.daily.dailyData
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(192 132 252',
+                                                    'rgb(192 132 252',
+                                                    'rgb(192 132 252',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="flex items-center flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
+                            <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
+                                <div class="w-[100%] h-[100%] flex justify-center items-center">
+                                    <canvas id="myTrashBarChart"></canvas>
+                                </div>
+
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                <script>
+                                    const barcharttrash = document.getElementById('myTrashBarChart');
+                                    const chartWeightTrashData = @json($chartWeightTrashData); // Convert PHP array to JSON
+
+                                    new Chart(barcharttrash, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Monthly', 'Weekly', 'Daily'],
+                                            datasets: [{
+                                                label: 'Trash Collection',
+                                                data: [
+                                                    chartWeightTrashData.monthly.monthlyData,
+                                                    chartWeightTrashData.weekly.weeklyData,
+                                                    chartWeightTrashData.daily.dailyData
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(253 186 116',
+                                                    'rgb(253 186 116',
+                                                    'rgb(253 186 116',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+                    </section>
                 </main>
             </div>
 
