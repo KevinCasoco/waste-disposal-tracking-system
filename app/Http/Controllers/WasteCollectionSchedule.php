@@ -308,30 +308,30 @@ class WasteCollectionSchedule extends Controller
     // }
 
     // without considering to timestamp value
-    public function checkWeightAndNotify()
-    {
-        // Retrieve the last recorded weight from the SensorData model
-        $latestWeight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+    // public function checkWeightAndNotify()
+    // {
+    //     // Retrieve the last recorded weight from the SensorData model
+    //     $latestWeight = SensorData::orderBy('id', 'desc')->value('truck_weight');
 
-        if ($latestWeight !== null && $latestWeight >= 1.0000) {
-            $admins = User::where('role', 'admin')->get();
-            Notification::send($admins, new SensorNotification());
-            return response()->json(['message' => 'Notification sent to admins.']);
-        }
+    //     if ($latestWeight !== null && $latestWeight >= 1.0000) {
+    //         $admins = User::where('role', 'admin')->get();
+    //         Notification::send($admins, new SensorNotification());
+    //         return response()->json(['message' => 'Notification sent to admins.']);
+    //     }
 
-        return response()->json(['message' => 'Weight is within limit.']);
-    }
-    public function checkTrashCanAndNotify()
-    {
-        // Retrieve the last recorded weight from the SensorData model
-        $latestWeight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+    //     return response()->json(['message' => 'Weight is within limit.']);
+    // }
+    // public function checkTrashCanAndNotify()
+    // {
+    //     // Retrieve the last recorded weight from the SensorData model
+    //     $latestWeight = SensorData::orderBy('id', 'desc')->value('trash_weight');
 
-        if ($latestWeight !== null && $latestWeight >= 1.0000) {
-            $admins = User::where('role', 'admin')->get();
-            Notification::send($admins, new TrashBinNotification());
-            return response()->json(['message' => 'Notification sent to admins.']);
-        }
+    //     if ($latestWeight !== null && $latestWeight >= 1.0000) {
+    //         $admins = User::where('role', 'admin')->get();
+    //         Notification::send($admins, new TrashBinNotification());
+    //         return response()->json(['message' => 'Notification sent to admins.']);
+    //     }
 
-        return response()->json(['message' => 'Weight is within limit.']);
-    }
+    //     return response()->json(['message' => 'Weight is within limit.']);
+    // }
 }
