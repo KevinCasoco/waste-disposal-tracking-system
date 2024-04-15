@@ -231,7 +231,8 @@
                                     <div class="w-3/5 flex justify-start">
                                         <ul>
                                             <li class="font-bold text-white">Truck Weight</li>
-                                            <li class="font-extrabold text-white text-xl" id="truck-weight">{{ $truck_weight }}</li>
+                                            <li class="font-extrabold text-white text-xl" id="truck-weight">
+                                                {{ $truck_weight }}</li>
                                         </ul>
                                     </div>
 
@@ -277,7 +278,8 @@
                                     <div class="w-3/5 flex justify-start">
                                         <ul>
                                             <li class="font-bold text-white">Trash Bin Weight</li>
-                                            <li class="font-extrabold text-white text-xl" id="trash-weight">{{ $trash_weight }}</li>
+                                            <li class="font-extrabold text-white text-xl" id="trash-weight">
+                                                {{ $trash_weight }}</li>
                                         </ul>
                                     </div>
 
@@ -317,16 +319,13 @@
 
                     </section>
 
-                    {{-- Chart --}}
-                    <section class="grid md:grid-cols-3 xl:grid-cols-6 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                        <div class="flex flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                            {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-[100%] h-[100%] flex justify-center items-center">
                                     <canvas id="myBarChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
@@ -405,18 +404,17 @@
 
                             </div>
                         </div>
-                        <div class="flex items-center flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100">
-                                <div>
+                            <div class="p-4 flex-grow flex justify-center items-center">
+                                <div class="w-[60%] px-6 py-2 font-semibold border-b border-gray-100">
                                     <canvas class="flex justify-center items-center" id="myChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
                                     const ctx = document.getElementById('myChart');
-
                                     new Chart(ctx, {
                                         type: 'doughnut',
                                         data: {
@@ -441,33 +439,37 @@
                                                 legend: {
                                                     display: true,
                                                     position: 'bottom',
-                                                    align: 'center', // Optional: Align the legend items to the center
+                                                    align: 'center',
                                                     labels: {
-                                                        boxWidth: 15, // Optional: Adjust the box width of legend items
-                                                        padding: 10, // Optional: Add padding between legend items
-                                                        usePointStyle: true, // Optional: Use point style for legend items
+                                                        boxWidth: 15,
+                                                        padding: 10,
+                                                        usePointStyle: true,
+                                                        align: 'start', // Align labels to start (left) of legend
                                                     },
-                                                    maxItems: 3 // Set the maximum number of items to fit in one line
+                                                    maxItems: 3
                                                 }
+                                            },
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            scales: {
+                                                fontSize: window.innerWidth < 768 ? 7 : 10 // Change font size based on screen width
                                             }
                                         }
                                     });
                                 </script>
+
                             </div>
                         </div>
 
                     </section>
 
-                     {{-- Chart --}}
-                     <section class="grid md:grid-cols-3 xl:grid-cols-6 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                        <div class="flex flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                            {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
-                            <div class="p-4 flex-grow">
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
-                                <div class="w-[100%] h-[100%] flex justify-center items-center">
+                                <div class="w-full h-[300px] flex justify-center items-center">
                                     <canvas id="myTruckBarChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
@@ -517,14 +519,16 @@
                                         }
                                     });
                                 </script>
+
                             </div>
                         </div>
-                        <div class="flex items-center flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                            <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
-                                <div class="w-[100%] h-[100%] flex justify-center items-center">
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-2 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
+                                <div class="w-full h-[300px] flex justify-center items-center">
                                     <canvas id="myTrashBarChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
@@ -574,12 +578,12 @@
                                         }
                                     });
                                 </script>
+
                             </div>
                         </div>
-
                     </section>
-                </main>
-            </div>
+            </main>
+        </div>
 
         </div>
         <script>
@@ -799,7 +803,8 @@
                                 <div class="w-3/5 flex justify-start">
                                     <ul>
                                         <li class="font-bold text-white">Truck Weight</li>
-                                        <li class="font-extrabold text-white text-xl" id="truck-weight">{{ $truck_weight }}</li>
+                                        <li class="font-extrabold text-white text-xl" id="truck-weight">
+                                            {{ $truck_weight }}</li>
                                     </ul>
                                 </div>
 
@@ -843,7 +848,8 @@
                                 <div class="w-3/5 flex justify-start">
                                     <ul>
                                         <li class="font-bold text-white">Trash Bin Weight</li>
-                                        <li class="font-extrabold text-white text-xl" id="trash-weight">{{ $trash_weight }}</li>
+                                        <li class="font-extrabold text-white text-xl" id="trash-weight">
+                                            {{ $trash_weight }}</li>
                                     </ul>
                                 </div>
 
@@ -880,16 +886,13 @@
                         </a>
                     </section>
 
-                    {{-- Chart --}}
-                    <section class="grid md:grid-cols-3 xl:grid-cols-6 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                        <div class="flex flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                            {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-[100%] h-[100%] flex justify-center items-center">
                                     <canvas id="myBarChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
@@ -968,18 +971,17 @@
 
                             </div>
                         </div>
-                        <div class="flex items-center flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100">
-                                <div>
+                            <div class="p-4 flex-grow flex justify-center items-center">
+                                <div class="w-[60%] px-6 py-2 font-semibold border-b border-gray-100">
                                     <canvas class="flex justify-center items-center" id="myChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
                                     const ctx = document.getElementById('myChart');
-
                                     new Chart(ctx, {
                                         type: 'doughnut',
                                         data: {
@@ -1004,143 +1006,150 @@
                                                 legend: {
                                                     display: true,
                                                     position: 'bottom',
-                                                    align: 'center', // Optional: Align the legend items to the center
+                                                    align: 'center',
                                                     labels: {
-                                                        boxWidth: 15, // Optional: Adjust the box width of legend items
-                                                        padding: 10, // Optional: Add padding between legend items
-                                                        usePointStyle: true, // Optional: Use point style for legend items
+                                                        boxWidth: 15,
+                                                        padding: 10,
+                                                        usePointStyle: true,
+                                                        align: 'start', // Align labels to start (left) of legend
                                                     },
-                                                    maxItems: 3 // Set the maximum number of items to fit in one line
+                                                    maxItems: 3
                                                 }
+                                            },
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            scales: {
+                                                fontSize: window.innerWidth < 768 ? 7 : 10 // Change font size based on screen width
                                             }
                                         }
                                     });
                                 </script>
+
                             </div>
                         </div>
 
                     </section>
 
-                    {{-- Chart --}}
-                    <section class="grid md:grid-cols-3 xl:grid-cols-6 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                       <div class="flex flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                           {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
-                           <div class="p-4 flex-grow">
-                               <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
-                               <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                   <canvas id="myTruckBarChart"></canvas>
-                               </div>
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-2 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myTruckBarChart"></canvas>
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                               <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                <script>
+                                    const barcharttruck = document.getElementById('myTruckBarChart');
+                                    const chartWeightData = @json($chartWeightData); // Convert PHP array to JSON
 
-                               <script>
-                                   const barcharttruck = document.getElementById('myTruckBarChart');
-                                   const chartWeightData = @json($chartWeightData); // Convert PHP array to JSON
+                                    new Chart(barcharttruck, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Monthly', 'Weekly', 'Daily'],
+                                            datasets: [{
+                                                label: 'Truck Collection',
+                                                data: [
+                                                    chartWeightData.monthly.monthlyData,
+                                                    chartWeightData.weekly.weeklyData,
+                                                    chartWeightData.daily.dailyData
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(192 132 252',
+                                                    'rgb(192 132 252',
+                                                    'rgb(192 132 252',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
 
-                                   new Chart(barcharttruck, {
-                                       type: 'bar',
-                                       data: {
-                                           labels: ['Monthly', 'Weekly', 'Daily'],
-                                           datasets: [{
-                                               label: 'Truck Collection',
-                                               data: [
-                                                   chartWeightData.monthly.monthlyData,
-                                                   chartWeightData.weekly.weeklyData,
-                                                   chartWeightData.daily.dailyData
-                                               ],
-                                               backgroundColor: [
-                                                   'rgb(192 132 252',
-                                                   'rgb(192 132 252',
-                                                   'rgb(192 132 252',
-                                               ],
-                                               borderColor: [
-                                                   'rgb(255, 99, 132)',
-                                                   'rgb(255, 99, 132)',
-                                                   'rgb(255, 99, 132)',
-                                               ],
-                                               borderWidth: 1
-                                           }]
-                                       },
-                                       options: {
-                                           scales: {
-                                               y: {
-                                                   beginAtZero: true
-                                               }
-                                           },
-                                           plugins: {
-                                               legend: {
-                                                   display: true,
-                                                   position: 'top',
-                                                   labels: {
-                                                       boxWidth: 20,
-                                                       usePointStyle: true
-                                                   }
-                                               }
-                                           }
-                                       }
-                                   });
-                               </script>
-                           </div>
-                       </div>
-                       <div class="flex items-center flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                           <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
-                               <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                   <canvas id="myTrashBarChart"></canvas>
-                               </div>
+                            </div>
+                        </div>
 
-                               <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-2 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myTrashBarChart"></canvas>
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                               <script>
-                                   const barcharttrash = document.getElementById('myTrashBarChart');
-                                   const chartWeightTrashData = @json($chartWeightTrashData); // Convert PHP array to JSON
+                                <script>
+                                    const barcharttrash = document.getElementById('myTrashBarChart');
+                                    const chartWeightTrashData = @json($chartWeightTrashData); // Convert PHP array to JSON
 
-                                   new Chart(barcharttrash, {
-                                       type: 'bar',
-                                       data: {
-                                           labels: ['Monthly', 'Weekly', 'Daily'],
-                                           datasets: [{
-                                               label: 'Trash Collection',
-                                               data: [
-                                                   chartWeightTrashData.monthly.monthlyData,
-                                                   chartWeightTrashData.weekly.weeklyData,
-                                                   chartWeightTrashData.daily.dailyData
-                                               ],
-                                               backgroundColor: [
-                                                   'rgb(253 186 116',
-                                                   'rgb(253 186 116',
-                                                   'rgb(253 186 116',
-                                               ],
-                                               borderColor: [
-                                                   'rgb(255, 99, 132)',
-                                                   'rgb(255, 99, 132)',
-                                                   'rgb(255, 99, 132)',
-                                               ],
-                                               borderWidth: 1
-                                           }]
-                                       },
-                                       options: {
-                                           scales: {
-                                               y: {
-                                                   beginAtZero: true
-                                               }
-                                           },
-                                           plugins: {
-                                               legend: {
-                                                   display: true,
-                                                   position: 'top',
-                                                   labels: {
-                                                       boxWidth: 20,
-                                                       usePointStyle: true
-                                                   }
-                                               }
-                                           }
-                                       }
-                                   });
-                               </script>
-                           </div>
-                       </div>
+                                    new Chart(barcharttrash, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Monthly', 'Weekly', 'Daily'],
+                                            datasets: [{
+                                                label: 'Trash Collection',
+                                                data: [
+                                                    chartWeightTrashData.monthly.monthlyData,
+                                                    chartWeightTrashData.weekly.weeklyData,
+                                                    chartWeightTrashData.daily.dailyData
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(253 186 116',
+                                                    'rgb(253 186 116',
+                                                    'rgb(253 186 116',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
 
+                            </div>
+                        </div>
                     </section>
+
                 </main>
             </div>
 
@@ -1369,7 +1378,7 @@
                                 </div>
                             </div>
                         </a>
-                         <a href="{{ asset('user-schedule') }}">
+                        <a href="{{ asset('user-schedule') }}">
 
                             <div
                                 class="p-2 bg-purple-400 rounded-lg flex items-center h-32 shadow-lg hover:bg-purple-500 hover:shadow-xl">
@@ -1416,16 +1425,13 @@
                         </a>
                     </section>
 
-                    {{-- Chart --}}
-                    <section class="grid md:grid-cols-3 xl:grid-cols-6 xl:grid-rows-3 xl:grid-flow-col gap-6">
-                        <div class="flex flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
-                            {{-- <div class="px-6 py-5 font-semibold border-b border-gray-100">Your insights will appear here soon.</div> --}}
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-[100%] h-[100%] flex justify-center items-center">
                                     <canvas id="myBarChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
@@ -1501,20 +1507,20 @@
                                         }
                                     });
                                 </script>
+
                             </div>
                         </div>
-                        <div class="flex items-center flex-col md:col-span-3 md:row-span-2 bg-white shadow rounded-lg">
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="w-[60%] px-6 py-5 font-semibold border-b border-gray-100">
-                                <div>
+                            <div class="p-4 flex-grow flex justify-center items-center">
+                                <div class="w-[60%] px-6 py-2 font-semibold border-b border-gray-100">
                                     <canvas class="flex justify-center items-center" id="myChart"></canvas>
                                 </div>
-
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
                                     const ctx = document.getElementById('myChart');
-
                                     new Chart(ctx, {
                                         type: 'doughnut',
                                         data: {
@@ -1539,22 +1545,30 @@
                                                 legend: {
                                                     display: true,
                                                     position: 'bottom',
-                                                    align: 'center', // Optional: Align the legend items to the center
+                                                    align: 'center',
                                                     labels: {
-                                                        boxWidth: 15, // Optional: Adjust the box width of legend items
-                                                        padding: 10, // Optional: Add padding between legend items
-                                                        usePointStyle: true, // Optional: Use point style for legend items
+                                                        boxWidth: 15,
+                                                        padding: 10,
+                                                        usePointStyle: true,
+                                                        align: 'start', // Align labels to start (left) of legend
                                                     },
-                                                    maxItems: 3 // Set the maximum number of items to fit in one line
+                                                    maxItems: 3
                                                 }
+                                            },
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            scales: {
+                                                fontSize: window.innerWidth < 768 ? 7 : 10 // Change font size based on screen width
                                             }
                                         }
                                     });
                                 </script>
+
                             </div>
                         </div>
 
                     </section>
+
                 </main>
             </div>
 
