@@ -139,7 +139,7 @@
                             {{-- Mobile View --}}
                             <div class="md:hidden flex justify-end">
                                 <button @click="newCollectorSchedules = true"
-                                    class=" text-white -mt-[70px] sm:mt-[300px] text-center w-8 h-8">
+                                class=" text-white -mt-[70px] text-center w-8 h-8" style="margin-top: -70px;">
                                     {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                         class="bg-green-500 rounded-full p-1 shadow-md">
@@ -147,7 +147,7 @@
                                             d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                                     </svg>
                                 </button>
-                                <div class="md:flex-shrink-0 mt-[47px]">
+                                <div class="md:flex-shrink-0">
                                 </div>
                             </div>
 
@@ -532,6 +532,7 @@
             @media only screen and (max-width: 768px) {
                 #example_wrapper .dt-buttons {
                     text-align: center !important;
+                    display: none !important;
                 }
 
                 .dt-button {
