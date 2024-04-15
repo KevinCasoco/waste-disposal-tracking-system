@@ -155,7 +155,7 @@
                             {{-- Mobile View --}}
                             <div class="md:hidden flex justify-end">
                                 <button @click="adminNewCollector = true"
-                                    class=" text-white -mt-[70px] sm:mt-[300px] text-center w-8 h-8">
+                                    class=" text-white -mt-[70px] text-center w-8 h-8" style="margin-top: -70px;">
                                     {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                         class="bg-green-500 rounded-full p-1 shadow-md">
@@ -163,7 +163,7 @@
                                             d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                                     </svg>
                                 </button>
-                                <div class="md:flex-shrink-0 mt-[47px]">
+                                <div class="md:flex-shrink-0">
                                 </div>
                             </div>
 
@@ -233,111 +233,6 @@
                             {{-- data for pagination xx
                     {{ $data->links() }} --}}
 
-                            <!-- Add New Users Modal -->
-                            <div x-show="adminNewCollector"
-                                class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
-                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                                </div>
-
-                                <div x-show="adminNewCollector" @click.away="adminNewCollector = false"
-                                    x-transition:enter="ease-out duration-300"
-                                    x-transition:enter-start="opacity-0 transform scale-95"
-                                    x-transition:enter-end="opacity-100 transform scale-100"
-                                    x-transition:leave="ease-in duration-200"
-                                    x-transition:leave-start="opacity-100 transform scale-100"
-                                    x-transition:leave-end="opacity-0 transform scale-95"
-                                    class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                                    <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[355px]">
-                                        <div class="flex items-center justify-between">
-                                            <h3
-                                                class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-2 ml-5">
-                                                Register New Collector
-                                            </h3>
-                                        </div>
-                                        <hr class="bg-black border-gray-300 w-full">
-                                        <form action="{{ route('collector.create_collector') }}" method="post"
-                                            class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-2 pb-1">
-                                            @csrf
-                                            <div class="sm:mr-4">
-                                                <label for="plate_no"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate
-                                                    No.</label>
-                                                <input type="text" name="plate_no" pattern="[0-9A-Z]{7}"
-                                                    title="Please enter a valid plate number (e.g., 8KH2Z9)"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
-                                                    required>
-
-                                                <label for="first_name"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First
-                                                    Name:</label>
-                                                <input type="text" name="first_name"
-                                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
-                                                    required>
-
-                                                <label for="last_name"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last
-                                                    Name:</label>
-                                                <input type="text" name="last_name"
-                                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]"
-                                                    required>
-
-                                                <label for="email"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
-                                                <input type="email" name="email"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
-                                                    required>
-                                            </div>
-                                            <div>
-                                                <label for="password"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
-                                                <input type="password" name="password"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
-                                                    required>
-
-
-                                                <label for="role"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
-                                                <select name="role"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2"
-                                                    required>
-                                                    {{-- <option value="admin">Admin</option> --}}
-                                                    <option value="collector" selected>Collector</option>
-                                                    {{-- <option value="resident">Resident</option> --}}
-                                                </select>
-
-                                                <label for="status"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
-                                                <select name="status"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                    required>
-                                                    <option value="active" selected>Active</option>
-                                                    <option value="inactive">Inactive</option>
-                                                    {{-- <option value="resident">Resident</option> --}}
-                                                </select>
-
-                                                <div
-                                                    class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-4 mt-4">
-                                                    <button type="submit"
-                                                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                        Create
-                                                    </button>
-
-                                                    <div class="absolute mr-[90px]">
-                                                        <button @click="adminNewCollector = false"
-                                                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                                            Cancel
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
 
                             <!-- Delete Modal -->
                             <div x-show="deleteCollector"
@@ -386,125 +281,473 @@
                                 </div>
                             </div>
 
+                            <!--Web View -->
                             <!-- Edit Modal -->
-                            <div x-show="collectorEdit"
-                                class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
-                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                                </div>
+                            <div class="hidden md:block">
+                                {{-- Alphine --}}
+                                <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+                                <div x-show="collectorEdit"
+                                    class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30"
+                                    x-cloak>
+                                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    </div>
 
-                                <div x-show="collectorEdit" @click.away="collectorEdit = false"
-                                    x-transition:enter="ease-out duration-300"
-                                    x-transition:enter-start="opacity-0 transform scale-95"
-                                    x-transition:enter-end="opacity-100 transform scale-100"
-                                    x-transition:leave="ease-in duration-200"
-                                    x-transition:leave-start="opacity-100 transform scale-100"
-                                    x-transition:leave-end="opacity-0 transform scale-95"
-                                    class="rounded-lg overflow-hidden transform transition-all flex justify-start mx-3">
-                                    <!-- ... (modal content) ... -->
-                                    <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[380px]">
-                                        <div class="flex items-center justify-between">
-                                            <h3
-                                                class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
-                                                Edit Collector Information
-                                            </h3>
-                                            <button @click="collectorEdit = false" aria-label="Close"
-                                                class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
-                                                <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
+                                    <div x-show="collectorEdit" @click.away="collectorEdit = false"
+                                        x-transition:enter="ease-out duration-300"
+                                        x-transition:enter-start="opacity-0 transform scale-95"
+                                        x-transition:enter-end="opacity-100 transform scale-100"
+                                        x-transition:leave="ease-in duration-200"
+                                        x-transition:leave-start="opacity-100 transform scale-100"
+                                        x-transition:leave-end="opacity-0 transform scale-95"
+                                        class="rounded-lg overflow-hidden transform transition-all flex justify-start mx-3">
+                                        <!-- ... (modal content) ... -->
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[380px]">
+                                            <div class="flex items-center justify-between">
+                                                <h3
+                                                    class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
+                                                    Edit Collector Information
+                                                </h3>
+                                                <button @click="collectorEdit = false" aria-label="Close"
+                                                    class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+                                                    <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <hr class="bg-black border-gray-300 w-full">
+                                            @foreach ($data as $item)
+                                                <div x-show="itemToEdit.toString() === '{{ $item->id }}'">
+                                                    <form method="post"
+                                                        :action="`{{ route('collector.update_collector', '') }}/${itemToEdit}`"
+                                                        class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-3 pb-1">
+                                                        @csrf
+                                                        @method('patch')
+                                                        <div class="md:mr-4 mb-3 sm:mb-0">
+                                                            <label for="id"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">ID:</label>
+                                                            <input type="number" name="id"
+                                                                value="{{ $item->id }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]"
+                                                                disabled>
+
+                                                            <label for="plate_no"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Plate
+                                                                No.</label>
+                                                            <input type="text" name="plate_no"
+                                                                pattern="[0-9A-Z]{7}"
+                                                                title="Please enter a valid plate number (e.g., 8KH2Z9)"
+                                                                value="{{ $item->plate_no }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
+
+                                                            <label for="first_name"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First
+                                                                Name:</label>
+                                                            <input type="text" name="first_name"
+                                                                value="{{ $item->first_name }}"
+                                                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-full sm:w-[300px]"
+                                                                required>
+                                                        </div>
+
+                                                        <div class="mt-1">
+                                                            <label for="last_name"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last
+                                                                Name:</label>
+                                                            <input type="text" name="last_name"
+                                                                value="{{ $item->last_name }}"
+                                                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]"
+                                                                required>
+
+                                                            <label for="email"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Email:</label>
+                                                            <input type="email" name="email"
+                                                                value="{{ $item->email }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[300px]"
+                                                                required>
+
+                                                            <label for="role"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Role:</label>
+                                                            <select name="role"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
+                                                                required disabled>
+                                                                {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
+                                                                <option value="collector"
+                                                                    {{ $item->role === 'collector' ? 'selected' : '' }}>
+                                                                    Collector</option>
+                                                                <option value="resident"
+                                                                    {{ $item->role === 'resident' ? 'selected' : '' }}>
+                                                                    Resident</option>
+                                                            </select>
+
+                                                            {{-- <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                                                        <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                                            <option value="active" {{ $item->status === 'active' ? 'selected' : '' }}>Active</option>
+                                                            <option value="inactive" {{ $item->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                                        </select> --}}
+
+                                                            <div
+                                                                class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-5 gap-x-2">
+                                                                <button @click.prevent="collectorEdit = false"
+                                                                    class="cancel-button md:hidden  text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 w-full sm:w-auto mt-4 sm:mt-0 ">
+                                                                    Cancel
+                                                                </button>
+                                                                <button type="submit"
+                                                                    class="update-button text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center justify-center px-5 py-2.5 sm:mb-0 w-full sm:w-auto mt-3 sm:mt-0">
+                                                                    Update
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        <hr class="bg-black border-gray-300 w-full">
-                                        @foreach ($data as $item)
-                                            <div x-show="itemToEdit.toString() === '{{ $item->id }}'">
-                                                <form method="post"
-                                                    :action="`{{ route('collector.update_collector', '') }}/${itemToEdit}`"
-                                                    class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-3 pb-1">
-                                                    @csrf
-                                                    @method('patch')
-                                                    <div class="md:mr-4 mb-3 sm:mb-0">
-                                                        <label for="id"
-                                                            class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">ID:</label>
-                                                        <input type="number" name="id"
-                                                            value="{{ $item->id }}"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]"
-                                                            disabled>
+                                    </div>
+                                </div>
+                            </div>
 
-                                                        <label for="plate_no"
-                                                            class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Plate
-                                                            No.</label>
-                                                        <input type="text" name="plate_no" pattern="[0-9A-Z]{7}"
-                                                            title="Please enter a valid plate number (e.g., 8KH2Z9)"
-                                                            value="{{ $item->plate_no }}"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
+                            <!-- Mobile View -->
+                            <div class="md:hidden">
+                                <div x-show="collectorEdit"
+                                    class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30"
+                                    x-cloak>
+                                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    </div>
 
-                                                        <label for="first_name"
-                                                            class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First
-                                                            Name:</label>
-                                                        <input type="text" name="first_name"
-                                                            value="{{ $item->first_name }}"
-                                                            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-full sm:w-[300px]"
-                                                            required>
-                                                    </div>
+                                    <div x-show="collectorEdit" @click.away="collectorEdit = false"
+                                        x-transition:enter="ease-out duration-300"
+                                        x-transition:enter-start="opacity-0 transform scale-95"
+                                        x-transition:enter-end="opacity-100 transform scale-100"
+                                        x-transition:leave="ease-in duration-200"
+                                        x-transition:leave-start="opacity-100 transform scale-100"
+                                        x-transition:leave-end="opacity-0 transform scale-95"
+                                        class="rounded-lg overflow-hidden transform transition-all flex justify-start mx-3">
+                                        <!-- ... (modal content) ... -->
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[380px]">
+                                            <div class="flex items-center justify-between">
+                                                <h3
+                                                    class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
+                                                    Edit Collector Information
+                                                </h3>
+                                                <button @click="collectorEdit = false" aria-label="Close"
+                                                    class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+                                                    <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <hr class="bg-black border-gray-300 w-full">
+                                            @foreach ($data as $item)
+                                                <div x-show="itemToEdit.toString() === '{{ $item->id }}'">
+                                                    <form method="post"
+                                                        :action="`{{ route('collector.update_collector', '') }}/${itemToEdit}`"
+                                                        class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-3 pb-1">
+                                                        @csrf
+                                                        @method('patch')
+                                                        <div class="md:mr-4 mb-3 sm:mb-0">
+                                                            <label for="id"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">ID:</label>
+                                                            <input type="number" name="id"
+                                                                value="{{ $item->id }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]"
+                                                                disabled>
 
-                                                    <div class="mt-1">
-                                                        <label for="last_name"
-                                                            class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last
-                                                            Name:</label>
-                                                        <input type="text" name="last_name"
-                                                            value="{{ $item->last_name }}"
-                                                            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]"
-                                                            required>
+                                                            <label for="plate_no"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Plate
+                                                                No.</label>
+                                                            <input type="text" name="plate_no"
+                                                                pattern="[0-9A-Z]{7}"
+                                                                title="Please enter a valid plate number (e.g., 8KH2Z9)"
+                                                                value="{{ $item->plate_no }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
 
-                                                        <label for="email"
-                                                            class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Email:</label>
-                                                        <input type="email" name="email"
-                                                            value="{{ $item->email }}"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[300px]"
-                                                            required>
+                                                            <label for="first_name"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First
+                                                                Name:</label>
+                                                            <input type="text" name="first_name"
+                                                                value="{{ $item->first_name }}"
+                                                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-full sm:w-[300px]"
+                                                                required>
+                                                        </div>
 
-                                                        <label for="role"
-                                                            class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Role:</label>
-                                                        <select name="role"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                            required disabled>
-                                                            {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
-                                                            <option value="collector"
-                                                                {{ $item->role === 'collector' ? 'selected' : '' }}>
-                                                                Collector</option>
-                                                            <option value="resident"
-                                                                {{ $item->role === 'resident' ? 'selected' : '' }}>
-                                                                Resident</option>
-                                                        </select>
+                                                        <div class="mt-1">
+                                                            <label for="last_name"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last
+                                                                Name:</label>
+                                                            <input type="text" name="last_name"
+                                                                value="{{ $item->last_name }}"
+                                                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-[300px]"
+                                                                required>
 
-                                                        {{-- <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
-                                    <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
-                                        <option value="active" {{ $item->status === 'active' ? 'selected' : '' }}>Active</option>
-                                        <option value="inactive" {{ $item->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
-                                    </select> --}}
+                                                            <label for="email"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Email:</label>
+                                                            <input type="email" name="email"
+                                                                value="{{ $item->email }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[300px]"
+                                                                required>
+
+                                                            <label for="role"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Role:</label>
+                                                            <select name="role"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
+                                                                required disabled>
+                                                                {{-- <option value="admin" {{ $item->role === 'admin' ? 'selected' : '' }}>Admin</option> --}}
+                                                                <option value="collector"
+                                                                    {{ $item->role === 'collector' ? 'selected' : '' }}>
+                                                                    Collector</option>
+                                                                <option value="resident"
+                                                                    {{ $item->role === 'resident' ? 'selected' : '' }}>
+                                                                    Resident</option>
+                                                            </select>
+
+                                                            {{-- <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                                                            <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
+                                                                <option value="active" {{ $item->status === 'active' ? 'selected' : '' }}>Active</option>
+                                                                <option value="inactive" {{ $item->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                                            </select> --}}
+
+                                                            <div
+                                                                class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-5 gap-x-2">
+                                                                <button @click.prevent="collectorEdit = false"
+                                                                    class="cancel-button md:hidden  text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 w-full sm:w-auto mt-4 sm:mt-0 ">
+                                                                    Cancel
+                                                                </button>
+                                                                <button type="submit"
+                                                                    class="update-button text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center justify-center px-5 py-2.5 sm:mb-0 w-full sm:w-auto mt-3 sm:mt-0">
+                                                                    Update
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Web View -->
+                            <!-- Add New Users Modal -->
+                            <div class="hidden md:block">
+                                <div x-show="adminNewCollector"
+                                    class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30"
+                                    x-cloak>
+                                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    </div>
+
+                                    <div x-show="adminNewCollector" @click.away="adminNewCollector = false"
+                                        x-transition:enter="ease-out duration-300"
+                                        x-transition:enter-start="opacity-0 transform scale-95"
+                                        x-transition:enter-end="opacity-100 transform scale-100"
+                                        x-transition:leave="ease-in duration-200"
+                                        x-transition:leave-start="opacity-100 transform scale-100"
+                                        x-transition:leave-end="opacity-0 transform scale-95"
+                                        class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[355px]">
+                                            <div class="flex items-center justify-between">
+                                                <h3
+                                                    class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-2 ml-5">
+                                                    Register New Collector
+                                                </h3>
+                                            </div>
+                                            <hr class="bg-black border-gray-300 w-full">
+                                            <form action="{{ route('collector.create_collector') }}" method="post"
+                                                class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-2 pb-1">
+                                                @csrf
+                                                <div class="sm:mr-4">
+                                                    <label for="plate_no"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate
+                                                        No.</label>
+                                                    <input type="text" name="plate_no" pattern="[0-9A-Z]{7}"
+                                                        title="Please enter a valid plate number (e.g., 8KH2Z9)"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="first_name"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First
+                                                        Name:</label>
+                                                    <input type="text" name="first_name"
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="last_name"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last
+                                                        Name:</label>
+                                                    <input type="text" name="last_name"
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="email"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
+                                                    <input type="email" name="email"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+                                                </div>
+                                                <div>
+                                                    <label for="password"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
+                                                    <input type="password" name="password"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
 
 
+                                                    <label for="role"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
+                                                    <select name="role"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2"
+                                                        required>
+                                                        {{-- <option value="admin">Admin</option> --}}
+                                                        <option value="collector" selected>Collector</option>
+                                                        {{-- <option value="resident">Resident</option> --}}
+                                                    </select>
 
-                                                        <div
-                                                            class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-5 gap-x-2">
-                                                            <button @click.prevent="collectorEdit = false"
-                                                                class="cancel-button md:hidden  text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 w-full sm:w-auto mt-4 sm:mt-0 ">
+                                                    <label for="status"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                                                    <select name="status"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
+                                                        required>
+                                                        <option value="active" selected>Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                        {{-- <option value="resident">Resident</option> --}}
+                                                    </select>
+
+                                                    <div
+                                                        class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-4 mt-4">
+                                                        <button type="submit"
+                                                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                                            Create
+                                                        </button>
+
+                                                        <div class="absolute mr-[90px]">
+                                                            <button @click="adminNewCollector = false"
+                                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                                                 Cancel
-                                                            </button>
-                                                            <button type="submit"
-                                                                class="update-button text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center justify-center px-5 py-2.5 sm:mb-0 w-full sm:w-auto mt-3 sm:mt-0">
-                                                                Update
                                                             </button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile View -->
+                            <!-- Add New Users Modal -->
+                            <div class="md:hidden">
+                                <div x-show="adminNewCollector"
+                                    class="fixed inset-0 overflow-y-auto flex items-center justify-center z-50"
+                                    x-cloak>
+                                    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                                    </div>
+
+                                    <div x-show="adminNewCollector" @click.away="adminNewCollector = false"
+                                        x-transition:enter="ease-out duration-300"
+                                        x-transition:enter-start="opacity-0 transform scale-95"
+                                        x-transition:enter-end="opacity-100 transform scale-100"
+                                        x-transition:leave="ease-in duration-200"
+                                        x-transition:leave-start="opacity-100 transform scale-100"
+                                        x-transition:leave-end="opacity-0 transform scale-95"
+                                        class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[355px]">
+                                            <div class="flex items-center justify-between">
+                                                <h3
+                                                    class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-2 ml-5">
+                                                    Register New Collector
+                                                </h3>
                                             </div>
-                                        @endforeach
+                                            <hr class="bg-black border-gray-300 w-full">
+                                            <form action="{{ route('collector.create_collector') }}" method="post"
+                                                class="flex flex-col sm:flex-row justify-start pl-5 pr-5 pt-2 pb-1">
+                                                @csrf
+                                                <div class="sm:mr-4">
+                                                    <label for="plate_no"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate
+                                                        No.</label>
+                                                    <input type="text" name="plate_no" pattern="[0-9A-Z]{7}"
+                                                        title="Please enter a valid plate number (e.g., 8KH2Z9)"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="first_name"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First
+                                                        Name:</label>
+                                                    <input type="text" name="first_name"
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="last_name"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last
+                                                        Name:</label>
+                                                    <input type="text" name="last_name"
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="email"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
+                                                    <input type="email" name="email"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+                                                </div>
+                                                <div>
+                                                    <label for="password"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
+                                                    <input type="password" name="password"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+
+                                                    <label for="role"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
+                                                    <select name="role"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2"
+                                                        required>
+                                                        {{-- <option value="admin">Admin</option> --}}
+                                                        <option value="collector" selected>Collector</option>
+                                                        {{-- <option value="resident">Resident</option> --}}
+                                                    </select>
+
+                                                    <label for="status"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                                                    <select name="status"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
+                                                        required>
+                                                        <option value="active" selected>Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                        {{-- <option value="resident">Resident</option> --}}
+                                                    </select>
+
+                                                    <div
+                                                        class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-4 mt-4">
+                                                        <button type="submit"
+                                                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                                            Create
+                                                        </button>
+
+                                                        <div class="absolute mr-[90px]">
+                                                            <button @click="adminNewCollector = false"
+                                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                                Cancel
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -520,7 +763,7 @@
         <!--/container-->
 
         {{-- Alphine --}}
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>-->
 
         <script>
             $(document).ready(function() {
@@ -590,6 +833,7 @@
             @media only screen and (max-width: 768px) {
                 #example_wrapper .dt-buttons {
                     text-align: center !important;
+                    display: none !important;
                 }
 
                 .dt-button {
