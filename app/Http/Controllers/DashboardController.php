@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use App\Models\User;
 use App\Models\SensorData;
+use App\Models\Truck;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SensorNotification;
 use App\Notifications\TrashBinNotification;
@@ -64,13 +65,13 @@ class DashboardController extends Controller
 
         $chartWeightData = [
             'monthly' => [
-                'monthlyData' => SensorData::whereMonth('updated_at', date('m'))->sum('truck_weight'),
+                'monthlyData' => Truck::whereMonth('updated_at', date('m'))->sum('truck_weight'),
             ],
             'weekly' => [
-                'weeklyData' => SensorData::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('truck_weight'),
+                'weeklyData' => Truck::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('truck_weight'),
             ],
             'daily' => [
-                'dailyData' => SensorData::whereDate('updated_at', date('Y-m-d'))->sum('truck_weight')
+                'dailyData' => Truck::whereDate('updated_at', date('Y-m-d'))->sum('truck_weight')
             ],
         ];
 
@@ -94,7 +95,7 @@ class DashboardController extends Controller
         $countSchedules = Schedule::count();
         $totalUser = User::count();
 
-        $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+        $truck_weight = Truck::orderBy('id', 'desc')->value('truck_weight');
         $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
 
         return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'countSchedules', 'totalUser', 'truck_weight', 'trash_weight', 'chartWeightData', 'chartWeightTrashData'));
@@ -103,7 +104,7 @@ class DashboardController extends Controller
     // manually send the email when you click the container of truck and trash in dashboard
     public function getTruckWeight()
     {
-        $truck_weight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+        $truck_weight = Truck::orderBy('id', 'desc')->value('truck_weight');
         return response()->json(['truck_weight' => $truck_weight]);
     }
 
