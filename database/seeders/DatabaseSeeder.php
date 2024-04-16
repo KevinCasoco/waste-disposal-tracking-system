@@ -44,5 +44,9 @@ class DatabaseSeeder extends Seeder
             Truck::class,
         ]);
 
+        $this->call([
+            TrashCan::class,
+        ]);
+
     }
 }

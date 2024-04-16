@@ -6,6 +6,7 @@ use App\Models\Schedule;
 use App\Models\User;
 use App\Models\SensorData;
 use App\Models\Truck;
+use App\Models\TrashCan;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SensorNotification;
 use App\Notifications\TrashBinNotification;
@@ -77,13 +78,13 @@ class DashboardController extends Controller
 
         $chartWeightTrashData = [
             'monthly' => [
-                'monthlyData' => SensorData::whereMonth('updated_at', date('m'))->sum('trash_weight'),
+                'monthlyData' => TrashCan::whereMonth('updated_at', date('m'))->sum('trash_weight'),
             ],
             'weekly' => [
-                'weeklyData' => SensorData::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('trash_weight'),
+                'weeklyData' => TrashCan::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('trash_weight'),
             ],
             'daily' => [
-                'dailyData' => SensorData::whereDate('updated_at', date('Y-m-d'))->sum('trash_weight')
+                'dailyData' => TrashCan::whereDate('updated_at', date('Y-m-d'))->sum('trash_weight')
             ],
         ];
 
@@ -96,7 +97,7 @@ class DashboardController extends Controller
         $totalUser = User::count();
 
         $truck_weight = Truck::orderBy('id', 'desc')->value('truck_weight');
-        $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+        $trash_weight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
 
         return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'countSchedules', 'totalUser', 'truck_weight', 'trash_weight', 'chartWeightData', 'chartWeightTrashData'));
     }
@@ -110,14 +111,14 @@ class DashboardController extends Controller
 
     public function getTrashWeight()
     {
-        $trash_weight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+        $trash_weight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
         return response()->json(['trash_weight' => $trash_weight]);
     }
 
     // automatic send the email when the max kilogram exceed
     // public function getTruckWeight()
     // {
-    //     $latestWeight = SensorData::orderBy('id', 'desc')->value('truck_weight');
+    //     $latestWeight = Truck::orderBy('id', 'desc')->value('truck_weight');
 
     //     if ($latestWeight !== null && $latestWeight >= 1.0000) {
     //         $admins = User::where('role', 'admin')->get();
@@ -137,7 +138,7 @@ class DashboardController extends Controller
     // public function getTrashWeight()
     // {
     //     // Retrieve the last recorded weight from the SensorData model
-    //     $latestWeight = SensorData::orderBy('id', 'desc')->value('trash_weight');
+    //     $latestWeight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
 
     //     if ($latestWeight !== null && $latestWeight >= 1.0000) {
     //         $admins = User::where('role', 'admin')->get();
