@@ -72,7 +72,8 @@ class DashboardController extends Controller
                 'weeklyData' => Truck::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('truck_weight'),
             ],
             'daily' => [
-                'dailyData' => Truck::whereDate('updated_at', date('Y-m-d'))->sum('truck_weight')
+                // 'dailyData' => Truck::whereDate('updated_at', date('Y-m-d'))->sum('truck_weight')
+                'dailyData' => Truck::whereDate('updated_at', date('Y-m-d'))->pluck('truck_weight')->last(),
             ],
         ];
 
@@ -84,7 +85,8 @@ class DashboardController extends Controller
                 'weeklyData' => TrashCan::whereBetween('updated_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('trash_weight'),
             ],
             'daily' => [
-                'dailyData' => TrashCan::whereDate('updated_at', date('Y-m-d'))->sum('trash_weight')
+                // 'dailyData' => TrashCan::whereDate('updated_at', date('Y-m-d'))->sum('trash_weight')
+                'dailyData' => TrashCan::whereDate('updated_at', date('Y-m-d'))->pluck('trash_weight')->last(),
             ],
         ];
 
