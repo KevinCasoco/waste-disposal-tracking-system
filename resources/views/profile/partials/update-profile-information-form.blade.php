@@ -71,9 +71,10 @@
         @if (Auth::user()->role == 'residents')
         <div>
             <x-input-label for="number" :value="__('Phone Number')" />
-            <x-text-input id="number" name="number" type="text" class="mt-1 block w-full" :value="old('number', $user->number)" required autofocus autocomplete="number" />
+            <x-text-input id="number" name="number" type="tel" class="phone-input mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" :value="old('number', $user->number)" required autofocus autocomplete="number" pattern="^\639\d{9}$" title="Please enter a valid phone number that starts with (e.g., +639)" />
             <x-input-error class="mt-2" :messages="$errors->get('number')" />
         </div>
+
 
         <!-- Location -->
         <div class="status" style="display: none;"></div>

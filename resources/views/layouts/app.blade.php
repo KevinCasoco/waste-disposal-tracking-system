@@ -222,21 +222,24 @@
 
     <script>
         $(document).ready(function() {
-        // Initialize the input field
-        var input = document.querySelector("#number");
-        var iti = window.intlTelInput(input, {
+        // Initialize the input fields
+        var inputs = document.querySelectorAll(".phone-input");
+        inputs.forEach(function(input) {
+            var iti = window.intlTelInput(input, {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
             separateDialCode: true,
             initialCountry: "PH",
             dropdownContainer: document.getElementById('country-selector')
-        });
+            });
 
-        // Set an event listener to update the selected country
-        input.addEventListener("countrychange", function() {
+            // Set an event listener to update the selected country for each input
+            input.addEventListener("countrychange", function() {
             var countryData = iti.getSelectedCountryData();
             console.log(countryData);
+            });
         });
         });
+
     </script>
 
     <script>
