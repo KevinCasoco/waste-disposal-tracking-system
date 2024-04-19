@@ -217,25 +217,24 @@
             </style>
 
             <!-- Delete Event Modal -->
-            <div class="modal fade" id="deleteEventModal" tabindex="-1" role="dialog"
-            aria-labelledby="deleteEventModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteEventModalLabel">Delete Event</h5>
-                        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
-                            {{-- <span aria-hidden="true">&times;</span> --}}
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure you want to delete this event?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="cancelDeleteEvent">Cancel</button>
-                        <button type="button" id="confirmDeleteEvent" class="btn btn-danger">Delete</button>
+            <div class="modal fade" id="deleteEventModal" tabindex="-1" role="dialog" aria-labelledby="deleteEventModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteEventModalLabel">Delete Event</h5>
+                            <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+                                {{-- <span aria-hidden="true">&times;</span> --}}
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete this event?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="cancelDeleteEvent">Cancel</button>
+                            <button type="button" id="confirmDeleteEvent" class="btn btn-danger">Delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
