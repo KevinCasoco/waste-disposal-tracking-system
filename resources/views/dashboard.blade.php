@@ -309,8 +309,8 @@
                                     <div class="w-3/5 flex justify-end ">
                                         <ul>
                                             <li class="">
-                                                <i class="ri-truck-line mr-3 text-lg text-white"
-                                                    style="font-size: 22px;"></i>
+                                                <i class="ri-delete-bin-4-fill mr-3 text-lg text-white"
+                                                style="font-size: 22px;"></i>
                                             </li>
                                         </ul>
                                     </div>
@@ -321,10 +321,10 @@
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-4 flex-grow">
+                            <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
-                                <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                    <canvas id="myBarChart"></canvas>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -407,9 +407,9 @@
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="p-4 flex-grow flex justify-center items-center">
-                                <div class="w-[60%] px-6 py-2 font-semibold border-b border-gray-100">
-                                    <canvas class="flex justify-center items-center" id="myChart"></canvas>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
+                                    <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -465,10 +465,10 @@
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-2 flex-grow">
+                            <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTruckBarChart"></canvas>
+                                    <canvas id="myTruckBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -524,10 +524,10 @@
                         </div>
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-2 flex-grow">
+                            <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBarChart"></canvas>
+                                    <canvas id="myTrashBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -877,7 +877,7 @@
                                 <div class="w-3/5 flex justify-end ">
                                     <ul>
                                         <li class="">
-                                            <i class="ri-truck-line mr-3 text-lg text-white"
+                                            <i class="ri-delete-bin-4-fill mr-3 text-lg text-white"
                                                 style="font-size: 22px;"></i>
                                         </li>
                                     </ul>
@@ -888,10 +888,10 @@
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-4 flex-grow">
+                            <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
-                                <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                    <canvas id="myBarChart"></canvas>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -974,9 +974,9 @@
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="p-4 flex-grow flex justify-center items-center">
-                                <div class="w-[60%] px-6 py-2 font-semibold border-b border-gray-100">
-                                    <canvas class="flex justify-center items-center" id="myChart"></canvas>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
+                                    <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1032,10 +1032,10 @@
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-2 flex-grow">
+                            <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTruckBarChart"></canvas>
+                                    <canvas id="myTruckBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1091,10 +1091,10 @@
                         </div>
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-2 flex-grow">
+                            <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBarChart"></canvas>
+                                    <canvas id="myTrashBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1416,7 +1416,7 @@
                                 <div class="w-3/5 flex justify-end ">
                                     <ul>
                                         <li class="">
-                                            <i class="ri-truck-line mr-3 text-lg text-white"
+                                            <i class="ri-delete-bin-4-fill mr-3 text-lg text-white"
                                                 style="font-size: 22px;"></i>
                                         </li>
                                     </ul>
@@ -1427,10 +1427,10 @@
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-4 flex-grow">
+                            <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
-                                <div class="w-[100%] h-[100%] flex justify-center items-center">
-                                    <canvas id="myBarChart"></canvas>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myBarChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1513,9 +1513,9 @@
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="p-4 flex-grow flex justify-center items-center">
-                                <div class="w-[60%] px-6 py-2 font-semibold border-b border-gray-100">
-                                    <canvas class="flex justify-center items-center" id="myChart"></canvas>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
+                                    <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
