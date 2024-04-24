@@ -278,7 +278,7 @@
                                                 of Collection:</label>
                                             <input type='date'
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                id='start' name='start' required
+                                                name='start' id="datepicker" required
                                                 value='{{ now()->toDateString() }}'>
 
                                             <label for="location"
@@ -432,7 +432,7 @@
                                                     of Collection:</label>
                                                 <input type="date"
                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                    id="start" name="start" value="{{ $item->start }}"
+                                                    id="datepicker1" name="start" value="{{ $item->start }}"
                                                     required>
 
                                                 <label for="start"
@@ -614,6 +614,19 @@
 
             // Set the current time as the value for the "Time" input
             document.getElementById('time').value = currentTime;
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get the input elements
+                var datePickerInput = document.getElementById('datepicker');
+                var datePickerInput1 = document.getElementById('datepicker1');
+
+                // Set today's date as the minimum selectable date for both inputs
+                var today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+                datePickerInput.setAttribute('min', today);
+                datePickerInput1.setAttribute('min', today);
+            });
         </script>
 
     @endif
