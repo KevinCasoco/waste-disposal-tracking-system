@@ -122,6 +122,27 @@
                             <h2 class="text-2xl font-bold">SCHEDULE TABLE INFORMATION</h2>
                         </div>
 
+                        <form method="GET" action="/collector-schedule-list">
+                            <label for="start_date"
+                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Start</label>
+                                    <input type='date'
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
+                                            name='start_date' required>
+
+                            <label for="end_date"
+                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">End</label>
+                                    <input type='date'
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
+                                            name='end_date' required>
+
+                                    <button type="submit"
+                                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                            Filter
+                                    </button>
+
+                                <a href="{{ asset('collector-schedule-list') }}" class="btn bg-blue-500 text-white hover:bg-blue-700 py-2 px-4 rounded">Refresh</a>
+                        </form>
+
                         <div x-data="{ scheduleCollectorDelete: false, scheduleCollectorEdit: false, newCollectorSchedules: false, collectorScheduleToDelete: null, collectorScheduleToEdit: null }">
 
                             {{-- Web View --}}
