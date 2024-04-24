@@ -163,7 +163,7 @@
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
                 <div>
                     <label for="start">Date of Collection</label>
-                    <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id='start' name='start' required value='{{ now()->toDateString() }}'>
+                    <input type='date' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="datepicker" name='start' required value='{{ now()->toDateString() }}'>
                 </div>
 
                 <div>
@@ -224,6 +224,17 @@
         // add our event listener for the click
         btn.addEventListener("click", () => {
         sidebar.classList.toggle("-translate-x-full");
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Get the input element
+        var datePickerInput = document.getElementById('datepicker');
+
+        // Set today's date as the minimum selectable date
+        var today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+        datePickerInput.setAttribute('min', today);
         });
     </script>
 

@@ -263,8 +263,8 @@
                                                 class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date
                                                 of Collection:</label>
                                             <input type='date'
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                id='start' name='start' required
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] datepicker"
+                                                id='datepicker' name='start' required
                                                 value='{{ now()->toDateString() }}'>
 
                                             <label for="location"
@@ -417,8 +417,8 @@
                                                     class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date
                                                     of Collection:</label>
                                                 <input type="date"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                    id="start" name="start" value="{{ $item->start }}"
+                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] datepicker"
+                                                    id="datepicker1" name="start" value="{{ $item->start }}"
                                                     required>
 
                                                 <label for="start"
@@ -600,6 +600,19 @@
 
             // Set the current time as the value for the "Time" input
             document.getElementById('time').value = currentTime;
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get all datepicker inputs
+                var datePickerInputs = document.querySelectorAll('.datepicker');
+
+                // Set today's date as the minimum selectable date for all inputs
+                var today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+                datePickerInputs.forEach(function(input) {
+                    input.setAttribute('min', today);
+                });
+            });
         </script>
 
     @endif
