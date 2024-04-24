@@ -64,6 +64,38 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div id="locationModal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-xl">
+                <p class="mb-4">You have denied access to your location. Please enable location access in your browser settings to use this feature.</p>
+                <button id="closeModalBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Close</button>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById('getLocationBtn').addEventListener('click', function() {
+                    if ("geolocation" in navigator) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            // Success - User allowed location access
+                            console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+                        }, function(error) {
+                            // Error - User denied location access
+                            console.error("Error getting location:", error);
+                            document.getElementById('locationModal').classList.remove('hidden');
+                        });
+                    } else {
+                        // Browser doesn't support geolocation
+                        console.error("Geolocation is not supported by this browser.");
+                    }
+                });
+
+                document.getElementById('closeModalBtn').addEventListener('click', function() {
+                    document.getElementById('locationModal').classList.add('hidden');
+                });
+            });
+        </script>
+
         <!-- Password -->
         <div>
             <x-input-label for="password" :value="__('Password')" />
