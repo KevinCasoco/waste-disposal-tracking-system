@@ -138,25 +138,26 @@
                             <h2 class="text-2xl font-bold">RESIDENTS TABLE INFORMATION</h2>
                         </div>
 
-                        <select id="location-filter">
-                            <option value="">Select Address</option>
-                            @foreach ($locations as $id => $location)
-                                <?php
-                                // Split the address by commas
-                                $parts = explode(',', $location);
-                                // Extract the second part and remove leading/trailing spaces
-                                $secondValue = trim($parts[1]);
-                                ?>
-                                <option value="{{ $secondValue }}">{{ $secondValue }}</option>
-                            @endforeach
-                        </select>
-
                         <div x-data="{ residentsDelete: false, residentsEdit: false, residentNewUsers: false, itemToDelete: null, itemToEdit: null }">
 
                             {{-- Web View --}}
                             <div class="hidden md:block">
                                 <div
                                     class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
+                                    <select id="location-filter"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[280px] mr-2 z-20 mt-2">
+                                        <option value="">Select Address</option>
+                                        @foreach ($locations as $id => $location)
+                                            <?php
+                                            // Split the address by commas
+                                            $parts = explode(',', $location);
+                                            // Extract the second part and remove leading/trailing spaces
+                                            $secondValue = trim($parts[1]);
+                                            ?>
+                                            <option value="{{ $secondValue }}">{{ $secondValue }}</option>
+                                        @endforeach
+                                    </select>
+
                                     <button @click="residentNewUsers = true"
                                         class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
                                             class="ri-add-circle-line mr-1"></i>Add New Admin</button>
@@ -178,6 +179,23 @@
                                 </button>
                                 <div class="md:flex-shrink-0">
                                 </div>
+                            </div>
+
+                            {{-- Select Address Mobile View --}}
+                            <div class="md:hidden">
+                                <select id="location-filter"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full">
+                                    <option value="">Select Address</option>
+                                    @foreach ($locations as $id => $location)
+                                        <?php
+                                        // Split the address by commas
+                                        $parts = explode(',', $location);
+                                        // Extract the second part and remove leading/trailing spaces
+                                        $secondValue = trim($parts[1]);
+                                        ?>
+                                        <option value="{{ $secondValue }}">{{ $secondValue }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <table id="example" class="stripe hover"
