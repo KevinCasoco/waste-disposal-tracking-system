@@ -138,6 +138,19 @@
                             <h2 class="text-2xl font-bold">RESIDENTS TABLE INFORMATION</h2>
                         </div>
 
+                        <select id="location-filter">
+                            <option value="">Select Address</option>
+                            @foreach ($locations as $id => $location)
+                                <?php
+                                // Split the address by commas
+                                $parts = explode(',', $location);
+                                // Extract the second part and remove leading/trailing spaces
+                                $secondValue = trim($parts[1]);
+                                ?>
+                                <option value="{{ $secondValue }}">{{ $secondValue }}</option>
+                            @endforeach
+                        </select>
+
                         <div x-data="{ residentsDelete: false, residentsEdit: false, residentNewUsers: false, itemToDelete: null, itemToEdit: null }">
 
                             {{-- Web View --}}
@@ -897,7 +910,14 @@
                                 columns: [0, 1, 2, 3, 4, 7]
                             }
                         }
-                    ]
+                    ],
+                    initComplete: function() {
+                        // Event listener for location filter
+                        $('#location-filter').on('change', function() {
+                            var selectedLocation = $(this).val();
+                            empDataTable.columns(3).search(selectedLocation).draw();
+                        });
+                    }
                 });
             });
         </script>
