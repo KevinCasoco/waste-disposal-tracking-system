@@ -136,58 +136,104 @@
                             <h2 class="text-2xl font-bold">SCHEDULE TABLE INFORMATION</h2>
                         </div>
 
-                        <form method="GET" action="/schedule-list">
-                        <label for="start_date"
-                            class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Start</label>
-                                <input type='date'
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                        name='start_date' required>
+                        {{-- Filter Web View --}}
+                        <div class="hidden md:block">
+                            <form method="GET" action="/schedule-list">
+                                <div class="flex flex-col md:flex-row w-full gap-3">
+                                    <div class="w-full">
+                                        <label for="start_date"
+                                            class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Start</label>
+                                        <input type='date'
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full"
+                                            name='start_date' required>
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="end_date"
+                                            class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">End</label>
+                                        <input type='date'
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full"
+                                            name='end_date' required>
+                                    </div>
+                                    <div class="flex justify-end gap-2 mb-2 mt-6 md:mt-6">
+                                        <a href="{{ asset('schedule-list') }}"
+                                            class="btn text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
+                                            Refresh
+                                        </a>
+                                        <button type="submit"
+                                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                                            Filter
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
-                        <label for="end_date"
-                            class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">End</label>
-                                <input type='date'
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                        name='end_date' required>
-
-                                <button type="submit"
-                                    class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                        Filter
-                                </button>
-
-                            <a href="{{ asset('schedule-list') }}" class="btn bg-blue-500 text-white hover:bg-blue-700 py-2 px-4 rounded">Refresh</a>
-                        </form>
-
-                        <select id="location-filter">
-                            <option value="">Select Address</option>
-                            @foreach ($locations as $id => $location)
-                                <?php
-                                // Split the address by commas
-                                $parts = explode(',', $location);
-                                // Extract the second part and remove leading/trailing spaces
-                                $secondValue = trim($parts[1]);
-                                ?>
-                                <option value="{{ $secondValue }}">{{ $secondValue }}</option>
-                            @endforeach
-                        </select>
+                        {{-- Filter Mobile View --}}
+                        <div class="md:hidden">
+                            <form method="GET" action="/schedule-list">
+                                <div class="flex flex-col md:flex-row w-full">
+                                    <div class="flex justify-center gap-2 mt-2">
+                                        <div class="w-full">
+                                            <label for="start_date"
+                                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Start</label>
+                                            <input type='date'
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full"
+                                                name='start_date' required>
+                                        </div>
+                                        <div class="w-full">
+                                            <label for="end_date"
+                                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">End</label>
+                                            <input type='date'
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full"
+                                                name='end_date' required>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 mb-2 w-full">
+                                        <a href="{{ asset('schedule-list') }}"
+                                            class="btn text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center w-full">
+                                            Refresh
+                                        </a>
+                                        <button type="submit"
+                                            class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center w-full">
+                                            Filter
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
                         <div x-data="{ scheduleDelete: false, scheduleEdit: false, newSchedules: false, scheduleToDelete: null, scheduleToEdit: null }">
 
-                            {{-- Web View --}}
+                            {{-- Select Address and Add Schedule Mobile View  --}}
                             <div class="hidden md:block">
                                 <div
                                     class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
+                                    <select id="location-filter"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[280px] mr-2 z-20 mt-2">
+                                        <option value="">Select Address</option>
+                                        @foreach ($locations as $id => $location)
+                                            <?php
+                                            // Split the address by commas
+                                            $parts = explode(',', $location);
+                                            // Extract the second part and remove leading/trailing spaces
+                                            $secondValue = trim($parts[1]);
+                                            ?>
+                                            <option value="{{ $secondValue }}">{{ $secondValue }}</option>
+                                        @endforeach
+                                    </select>
                                     <button @click="newSchedules = true"
-                                        class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
-                                            class="ri-add-circle-line mr-1"></i>Add New Admin</button>
+                                        class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
+                                            class="ri-add-circle-line mr-1"></i>Add New Schedule</button>
                                     <div class="md:flex-shrink-0 ">
 
                                     </div>
                                 </div>
                             </div>
-                            {{-- Mobile View --}}
+
+                            {{-- Add Schedule Mobile View --}}
                             <div class="md:hidden flex justify-end">
-                                <button @click="newSchedules = true"
-                                    class=" text-white -mt-[70px] text-center w-8 h-8" style="margin-top: -70px;">
+                                <button @click="newSchedules = true" class=" text-white text-center w-8 h-8"
+                                    style="margin-top: -190px;">
                                     {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                         class="bg-green-500 rounded-full p-1 shadow-md">
@@ -195,9 +241,25 @@
                                             d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                                     </svg>
                                 </button>
-                                <div class="md:flex-shrink-0">
-                                </div>
                             </div>
+
+                            {{-- Select Address Mobile View --}}
+                            <div class="md:hidden">
+                                <select id="location-filter"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full">
+                                    <option value="">Select Address</option>
+                                    @foreach ($locations as $id => $location)
+                                        <?php
+                                        // Split the address by commas
+                                        $parts = explode(',', $location);
+                                        // Extract the second part and remove leading/trailing spaces
+                                        $secondValue = trim($parts[1]);
+                                        ?>
+                                        <option value="{{ $secondValue }}">{{ $secondValue }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
 
                             <table id="example" class="stripe hover display dataTable "
                                 style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
