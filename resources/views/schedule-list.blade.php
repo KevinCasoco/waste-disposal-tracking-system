@@ -157,6 +157,19 @@
                             <a href="{{ asset('schedule-list') }}" class="btn bg-blue-500 text-white hover:bg-blue-700 py-2 px-4 rounded">Refresh</a>
                         </form>
 
+                        <select id="location-filter">
+                            <option value="">Select Address</option>
+                            @foreach ($locations as $id => $location)
+                                <?php
+                                // Split the address by commas
+                                $parts = explode(',', $location);
+                                // Extract the second part and remove leading/trailing spaces
+                                $secondValue = trim($parts[1]);
+                                ?>
+                                <option value="{{ $secondValue }}">{{ $secondValue }}</option>
+                            @endforeach
+                        </select>
+
                         <div x-data="{ scheduleDelete: false, scheduleEdit: false, newSchedules: false, scheduleToDelete: null, scheduleToEdit: null }">
 
                             {{-- Web View --}}
@@ -558,7 +571,14 @@
                                 columns: [0, 1, 2, 3, 4, 5]
                             }
                         }
-                    ]
+                    ],
+                    initComplete: function() {
+                        // Event listener for location filter
+                        $('#location-filter').on('change', function() {
+                            var selectedLocation = $(this).val();
+                            empDataTable.columns(2).search(selectedLocation).draw();
+                        });
+                    }
                 });
             });
         </script>

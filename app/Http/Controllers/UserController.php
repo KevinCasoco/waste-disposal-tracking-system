@@ -16,7 +16,9 @@ class UserController extends Controller
         // Fetch users based on role (e.g., 'admin' role)
         $data = User::where('role', 'residents')->get();
 
-        return view('residents', compact('data'));
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+        return view('residents', compact('data','locations'));
     }
 
     public function index_residents()
