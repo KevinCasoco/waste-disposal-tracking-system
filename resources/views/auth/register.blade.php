@@ -322,33 +322,55 @@
                         class="flex justify-end space-x-2 items-center p-6 border-t border-gray-200 rounded-b dark:border-gray-600">
                         <button data-modal-toggle="default-modal" type="button"
                             class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">Decline</button>
-                        <button data-modal-toggle="default-modal" type="button"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
-                            accept</button>
+                            <button data-modal-toggle="default-modal" type="button" id="acceptButton"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            I accept
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
         <script>
-            // Get the modal element
-            const modal = document.getElementById('default-modal');
+            // Get the modal container
+            const modalContainer = document.getElementById('default-modal');
+
+            // Get the modal background
+            const modalBackground = document.querySelector('.fixed.top-4');
+
+            // Get the checkbox
+            const termsCheckbox = document.getElementById('terms-checkbox');
+
+            // Function to handle accept button click
+            const handleAcceptButtonClick = () => {
+                // Check the checkbox
+                termsCheckbox.checked = true;
+                // Clear the modal body content
+                const modalBody = modalContainer.querySelector('.p-4');
+                modalBody.innerHTML = ''; // Clear the inner HTML content
+                // Hide the modal container and background
+                modalContainer.classList.add('hidden');
+                modalBackground.classList.add('hidden');
+            };
+
+            // Add an event listener to the accept button
+            const acceptButton = document.getElementById('acceptButton');
+            acceptButton.addEventListener('click', handleAcceptButtonClick);
 
             // Add an event listener to the "Terms and Condition" link to toggle the modal
             const modalToggleLink = document.querySelector('[data-modal-toggle="default-modal"]');
             modalToggleLink.addEventListener('click', (event) => {
                 event.preventDefault(); // Prevent the default link behavior
-                modal.classList.toggle('hidden');
+                modalContainer.classList.toggle('hidden');
+                modalBackground.classList.toggle('hidden');
             });
 
-            // Hide the modal on page load
+            // Hide the modal container and background on page load
             document.addEventListener('DOMContentLoaded', () => {
-                modal.classList.add('hidden');
+                modalContainer.classList.add('hidden');
+                modalBackground.classList.add('hidden');
             });
         </script>
-
-
-
 
         <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js"></script>
 
