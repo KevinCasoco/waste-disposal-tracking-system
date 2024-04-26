@@ -317,6 +317,22 @@
                                 </div>
                             </a>
 
+                            <div class="w-3/5 flex justify-start">
+                                <ul>
+                                    <li class="font-bold text-black">Trash Weight Status
+                                        {{ $status }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="w-3/5 flex justify-start">
+                                <ul>
+                                    <li class="font-bold text-black">Truck Weight Status
+                                        {{ $status_truck }}
+                                    </li>
+                                </ul>
+                            </div>
+
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -884,6 +900,23 @@
                                 </div>
                             </div>
                         </a>
+
+                        <div class="w-3/5 flex justify-start">
+                            <ul>
+                                <li class="font-bold text-black">Trash Weight Status
+                                    {{ $status }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="w-3/5 flex justify-start">
+                            <ul>
+                                <li class="font-bold text-black">Truck Weight Status
+                                    {{ $status_truck }}
+                                </li>
+                            </ul>
+                        </div>
+
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1423,6 +1456,22 @@
                                 </div>
                             </div>
                         </a>
+
+                        <div class="w-3/5 flex justify-start">
+                            <ul>
+                                <li class="font-bold text-black">Trash Weight Status
+                                    {{ $status }}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="w-3/5 flex justify-start">
+                            <ul>
+                                <li class="font-bold text-black">Truck Weight Status
+                                    {{ $status_truck }}
+                                </li>
+                            </ul>
+                        </div>
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
