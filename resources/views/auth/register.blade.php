@@ -65,10 +65,14 @@
         </div>
 
         <!-- Modal -->
-        <div id="locationModal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
-            <div class="bg-white p-6 rounded-lg shadow-xl">
-                <p class="mb-4">You have denied access to your location. Please enable location access in your browser settings to use this feature.</p>
-                <button id="closeModalBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Close</button>
+        <div id="locationModal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center z-20">
+            <div class="bg-white p-6 rounded-lg shadow-xl w-[280px]">
+                <p class="mb-4">You have denied access to your location. Please enable location access in your browser
+                    settings to use this feature.</p>
+                <div class="flex justify-end">
+                    <button id="closeModalBtn"
+                        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">Close</button>
+                </div>
             </div>
         </div>
 
@@ -78,7 +82,8 @@
                     if ("geolocation" in navigator) {
                         navigator.geolocation.getCurrentPosition(function(position) {
                             // Success - User allowed location access
-                            console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+                            console.log("Latitude: " + position.coords.latitude + " Longitude: " +
+                                position.coords.longitude);
                         }, function(error) {
                             // Error - User denied location access
                             console.error("Error getting location:", error);
