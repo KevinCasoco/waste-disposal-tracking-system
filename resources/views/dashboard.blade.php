@@ -310,28 +310,13 @@
                                         <ul>
                                             <li class="">
                                                 <i class="ri-delete-bin-4-fill mr-3 text-lg text-white"
-                                                style="font-size: 22px;"></i>
+                                                    style="font-size: 22px;"></i>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </a>
 
-                            <div class="w-3/5 flex justify-start">
-                                <ul>
-                                    <li class="font-bold text-black">Trash Weight Status
-                                        {{ $status }}
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="w-3/5 flex justify-start">
-                                <ul>
-                                    <li class="font-bold text-black">Truck Weight Status
-                                        {{ $status_truck }}
-                                    </li>
-                                </ul>
-                            </div>
 
                     </section>
 
@@ -340,7 +325,7 @@
                             <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -422,14 +407,86 @@
                         </div>
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
+                            <h2 class="text-xl font-semibold mt-4 text-center mb-8">Status</h2>
                             <div class="p-4 flex-grow">
-                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
-                                    <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas>
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center gap-16">
+                                    {{-- <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas> --}}
+
+                                    <div class="w-5/5 text-center">
+                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400"
+                                            style="font-size: 140px;"></i>
+                                        <ul>
+                                            <li class="font-bold text-black text-xl mt-3">
+                                                Trash Weight Status
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="trash-weight-status">
+                                                {{ $status }}</li>
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTrashWeightStatus() {
+                                                fetch('/get-trash-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh2() {
+                                                setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh2();
+                                        </script>
+                                    </div>
+
+                                    <div class="w-5/5 text-center ">
+                                        <i class="ri-truck-line text-lg text-green-400" style="font-size: 150px;"></i>
+                                        <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                                Truck Weight Status
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                                {{ $status_truck }}
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTruckWeightStatus() {
+                                                fetch('/get-truck-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh3() {
+                                                setInterval(fetchTruckWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh3();
+                                        </script>
+                                    </div>
+
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                                <script>
+                                {{-- <script>
                                     const ctx = document.getElementById('myChart');
                                     new Chart(ctx, {
                                         type: 'doughnut',
@@ -472,7 +529,8 @@
                                             }
                                         }
                                     });
-                                </script>
+                                </script> --}}
+
 
                             </div>
                         </div>
@@ -484,7 +542,7 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTruckBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myTruckBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -543,7 +601,7 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myTrashBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -598,8 +656,8 @@
                             </div>
                         </div>
                     </section>
-            </main>
-        </div>
+                </main>
+            </div>
 
         </div>
         <script>
@@ -901,22 +959,6 @@
                             </div>
                         </a>
 
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-black">Trash Weight Status
-                                    {{ $status }}
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-black">Truck Weight Status
-                                    {{ $status_truck }}
-                                </li>
-                            </ul>
-                        </div>
-
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -924,7 +966,7 @@
                             <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1006,10 +1048,94 @@
                         </div>
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
+                            <h2 class="text-xl font-semibold mt-4 text-center mb-8">Status</h2>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center gap-16">
+                                    {{-- <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas> --}}
+
+                                    <div class="w-5/5 text-center">
+                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400"
+                                            style="font-size: 140px;"></i>
+                                        <ul>
+                                            <li class="font-bold text-black text-xl mt-3">
+                                                Trash Weight Status
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="trash-weight-status">
+                                                {{ $status }}</li>
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTrashWeightStatus() {
+                                                fetch('/get-trash-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh2() {
+                                                setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh2();
+                                        </script>
+                                    </div>
+
+                                    <div class="w-5/5 text-center ">
+                                        <i class="ri-truck-line text-lg text-green-400" style="font-size: 150px;"></i>
+                                        <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                                Truck Weight Status
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                                {{ $status_truck }}
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTruckWeightStatus() {
+                                                fetch('/get-truck-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh3() {
+                                                setInterval(fetchTruckWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh3();
+                                        </script>
+                                    </div>
+
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                            </div>
+                        </div>
+
+                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
                             <div class="p-4 flex-grow">
                                 <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
-                                    <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas>
+                                    <canvas class="flex justify-center items-center" id="myChart" width="400"
+                                        height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1059,7 +1185,7 @@
                                 </script>
 
                             </div>
-                        </div>
+                        </div> --}}
 
                     </section>
 
@@ -1068,7 +1194,7 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Truck Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTruckBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myTruckBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1127,7 +1253,7 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myTrashBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1457,21 +1583,6 @@
                             </div>
                         </a>
 
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-black">Trash Weight Status
-                                    {{ $status }}
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="w-3/5 flex justify-start">
-                            <ul>
-                                <li class="font-bold text-black">Truck Weight Status
-                                    {{ $status_truck }}
-                                </li>
-                            </ul>
-                        </div>
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1479,7 +1590,7 @@
                             <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myBarChart"  width="400" height="240"></canvas>
+                                    <canvas id="myBarChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1561,10 +1672,94 @@
                         </div>
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
+                            <h2 class="text-xl font-semibold mt-4 text-center mb-8">Status</h2>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center gap-16">
+                                    {{-- <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas> --}}
+
+                                    <div class="w-5/5 text-center">
+                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400"
+                                            style="font-size: 140px;"></i>
+                                        <ul>
+                                            <li class="font-bold text-black text-xl mt-3">
+                                                Trash Weight Status
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="trash-weight-status">
+                                                {{ $status }}</li>
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTrashWeightStatus() {
+                                                fetch('/get-trash-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh2() {
+                                                setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh2();
+                                        </script>
+                                    </div>
+
+                                    <div class="w-5/5 text-center ">
+                                        <i class="ri-truck-line text-lg text-green-400" style="font-size: 150px;"></i>
+                                        <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                                Truck Weight Status
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                                {{ $status_truck }}
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTruckWeightStatus() {
+                                                fetch('/get-truck-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh3() {
+                                                setInterval(fetchTruckWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh3();
+                                        </script>
+                                    </div>
+
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                            </div>
+                        </div>
+
+                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
                             <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
                             <div class="p-4 flex-grow">
                                 <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
-                                    <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas>
+                                    <canvas class="flex justify-center items-center" id="myChart" width="400"
+                                        height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -1614,7 +1809,7 @@
                                 </script>
 
                             </div>
-                        </div>
+                        </div> --}}
 
                     </section>
 
