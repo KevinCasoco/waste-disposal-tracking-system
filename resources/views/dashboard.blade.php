@@ -955,18 +955,70 @@
 
                         <div class="w-5/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-black">Trash Weight Status
-                                    {{ $status }}
+                                <li class="font-bold text-black">
+                                    Trash Weight Status
+                                </li>
+                                <li class="font-extrabold text-black text-xl" id="trash-weight-status">
+                                    {{ $status }}</li>
                                 </li>
                             </ul>
+
+                            <script>
+                                // Function to fetch updated truck weight
+                                function fetchTrashWeightStatus() {
+                                    fetch('/get-trash-weight-status')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Update the truck weight in the HTML element
+                                            document.getElementById('trash-weight-status').textContent = data.status;
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching truck weight:', error);
+                                        });
+                                }
+
+                                // Function to refresh truck weight every 5 seconds
+                                function autoRefresh2() {
+                                    setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
+                                }
+
+                                // Initial call to start auto-refresh
+                                autoRefresh2();
+                            </script>
                         </div>
 
                         <div class="w-5/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-black">Truck Weight Status
+                                <li class="font-bold text-black">
+                                    Truck Weight Status
+                                </li>
+                                <li class="font-extrabold text-black text-xl" id="truck-weight-status">
                                     {{ $status_truck }}
                                 </li>
                             </ul>
+
+                            <script>
+                                // Function to fetch updated truck weight
+                                function fetchTruckWeightStatus() {
+                                    fetch('/get-truck-weight-status')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Update the truck weight in the HTML element
+                                            document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching truck weight:', error);
+                                        });
+                                }
+
+                                // Function to refresh truck weight every 5 seconds
+                                function autoRefresh3() {
+                                    setInterval(fetchTruckWeightStatus, 5000); // Refresh every 5 seconds
+                                }
+
+                                // Initial call to start auto-refresh
+                                autoRefresh3();
+                            </script>
                         </div>
 
                     </section>
@@ -1511,19 +1563,72 @@
 
                         <div class="w-5/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-black">Trash Weight Status
-                                    {{ $status }}
+                                <li class="font-bold text-black">
+                                    Trash Weight Status
+                                </li>
+                                <li class="font-extrabold text-black text-xl" id="trash-weight-status">
+                                    {{ $status }}</li>
                                 </li>
                             </ul>
+
+                            <script>
+                                // Function to fetch updated truck weight
+                                function fetchTrashWeightStatus() {
+                                    fetch('/get-trash-weight-status')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Update the truck weight in the HTML element
+                                            document.getElementById('trash-weight-status').textContent = data.status;
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching truck weight:', error);
+                                        });
+                                }
+
+                                // Function to refresh truck weight every 5 seconds
+                                function autoRefresh2() {
+                                    setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
+                                }
+
+                                // Initial call to start auto-refresh
+                                autoRefresh2();
+                            </script>
                         </div>
 
                         <div class="w-5/5 flex justify-start">
                             <ul>
-                                <li class="font-bold text-black">Truck Weight Status
+                                <li class="font-bold text-black">
+                                    Truck Weight Status
+                                </li>
+                                <li class="font-extrabold text-black text-xl" id="truck-weight-status">
                                     {{ $status_truck }}
                                 </li>
                             </ul>
+
+                            <script>
+                                // Function to fetch updated truck weight
+                                function fetchTruckWeightStatus() {
+                                    fetch('/get-truck-weight-status')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            // Update the truck weight in the HTML element
+                                            document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                        })
+                                        .catch(error => {
+                                            console.error('Error fetching truck weight:', error);
+                                        });
+                                }
+
+                                // Function to refresh truck weight every 5 seconds
+                                function autoRefresh3() {
+                                    setInterval(fetchTruckWeightStatus, 5000); // Refresh every 5 seconds
+                                }
+
+                                // Initial call to start auto-refresh
+                                autoRefresh3();
+                            </script>
                         </div>
+
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
