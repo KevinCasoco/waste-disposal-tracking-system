@@ -317,7 +317,7 @@
                                 </div>
                             </a>
 
-                            <div class="w-3/5 flex justify-start">
+                            <div class="w-5/5 flex justify-start">
                                 <ul>
                                     <li class="font-bold text-black">Trash Weight Status
                                         {{ $status }}
@@ -325,7 +325,7 @@
                                 </ul>
                             </div>
 
-                            <div class="w-3/5 flex justify-start">
+                            <div class="w-5/5 flex justify-start">
                                 <ul>
                                     <li class="font-bold text-black">Truck Weight Status
                                         {{ $status_truck }}
@@ -901,7 +901,7 @@
                             </div>
                         </a>
 
-                        <div class="w-3/5 flex justify-start">
+                        <div class="w-5/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-black">Trash Weight Status
                                     {{ $status }}
@@ -909,7 +909,7 @@
                             </ul>
                         </div>
 
-                        <div class="w-3/5 flex justify-start">
+                        <div class="w-5/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-black">Truck Weight Status
                                     {{ $status_truck }}
@@ -1457,7 +1457,7 @@
                             </div>
                         </a>
 
-                        <div class="w-3/5 flex justify-start">
+                        <div class="w-5/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-black">Trash Weight Status
                                     {{ $status }}
@@ -1465,7 +1465,7 @@
                             </ul>
                         </div>
 
-                        <div class="w-3/5 flex justify-start">
+                        <div class="w-5/5 flex justify-start">
                             <ul>
                                 <li class="font-bold text-black">Truck Weight Status
                                     {{ $status_truck }}
