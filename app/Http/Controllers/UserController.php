@@ -116,4 +116,34 @@ class UserController extends Controller
         return view('residents-trash-bin' , compact('trashBins'));
     }
 
+    public function restore_residents_info($id)
+    {
+        $record = User::withTrashed()->findOrFail($id);
+
+        $record->restore();
+
+        return redirect()->back()->with('success', 'Record restored successfully.');
+    }
+
+    public function residents_restore_data(Request $request)
+    {
+        // Retrieve soft deleted records
+        $data_user = User::where('role', 'residents')->get();
+        $deletedRecords = User::onlyTrashed()->get();
+        $dataQuery = User::query();
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+        if ($request->has('start_date') && $request->has('end_date')) {
+            $start_date = $request->start_date;
+            $end_date = $request->end_date;
+
+            $dataQuery->whereDate('start', '>=', $start_date)
+                      ->whereDate('start', '<=', $end_date);
+        }
+
+        $data = $dataQuery->get();
+
+        return view('residents-restore', compact('data_user', 'locations', 'data', 'deletedRecords'));
+    }
+
 }

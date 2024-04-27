@@ -220,6 +220,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/schedule-list-restore', [ScheduleController::class, 'schedule_restore'])->name('schedule-list-restore.schedule_restore');
     Route::patch('/collector-schedules/{id}/restore', [ScheduleController::class, 'restore'])->name('schedule-list-restore.restore');
 
+    Route::get('/residents-restore', [UserController::class, 'residents_restore_data'])->name('residents-restore.residents_restore_data');
+    Route::patch('/residents/{id}/restore', [UserController::class, 'restore_residents_info'])->name('restore_residents.restore_residents_info');
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar

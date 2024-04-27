@@ -132,8 +132,13 @@
                 <main class="p-3 sm:p-4 space-y-5">
                     <!-- Start Table -->
                     <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
-                        <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
+                        <div class="mb-4 flex sm:justify-center md:justify-between lg:justify-between">
                             <h2 class="text-2xl font-bold">SCHEDULE TABLE INFORMATION</h2>
+
+                            <a href="{{ asset('schedule-list-restore') }}"
+                                class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0">
+                                <i class="ri-add-circle-line mr-1"></i>View Archive
+                            </a>
                         </div>
 
                         {{-- Filter Web View --}}
