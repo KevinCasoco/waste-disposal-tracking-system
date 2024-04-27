@@ -228,6 +228,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     Route::get('/collector-restore', [CollectorController::class, 'restore_collector_data'])->name('collector-restore.restore_collector_data');
     Route::patch('/collector/{id}/restore', [CollectorController::class, 'restore_collector_info'])->name('collector-restore.restore_collector_info');
 
+    // soft delete admin list
+    Route::get('/admin-restore', [AdminController::class, 'admin_collector_data'])->name('admin-restore.admin_collector_data');
+    Route::patch('/admin/{id}/restore', [AdminController::class, 'admin_collector_info'])->name('admin-restore.admin_collector_info');
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar

@@ -144,10 +144,10 @@
                             <div class="hidden md:block">
                                 <div
                                     class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
-                                    {{-- <button @click="adminNewCollector = true"
+                                    <button @click="adminNewCollector = true"
                                         class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
                                             class="ri-add-circle-line mr-1"></i>Add New Admin</button>
-                                    <div class="md:flex-shrink-0 "> --}}
+                                    <div class="md:flex-shrink-0 ">
 
                                     </div>
                                 </div>

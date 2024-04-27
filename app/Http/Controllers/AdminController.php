@@ -304,4 +304,22 @@ class AdminController extends Controller
         return view('schedule');
     }
 
+    public function admin_collector_info($id)
+    {
+        $record = User::withTrashed()->findOrFail($id);
+
+        $record->restore();
+
+        return redirect()->back()->with('success', 'Record restored successfully.');
+    }
+
+    public function admin_collector_data(Request $request)
+    {
+        // Retrieve soft deleted records
+        $data = User::where('role', 'admin')->get();
+        $deletedRecords = User::onlyTrashed()->get();
+
+        return view('admin-restore', compact('data', 'deletedRecords'));
+    }
+
 }

@@ -222,7 +222,7 @@
                                             <td>{{ $item->role }}</td>
                                             <td>
                                             <!-- Restore button -->
-                                            <form action="{{ route('restore_residents.restore_residents_info', $item->id) }}" method="POST">
+                                            <form action="{{ route('residents-restore.restore_residents_info', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('PATCH')
                                                 <button type="submit" class="py-1 px-4 rounded bg-green-500 hover:bg-green-700 text-white">Restore</button>
