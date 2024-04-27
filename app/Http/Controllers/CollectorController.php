@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\TrashBin;
 use Illuminate\Http\Request;
 
 class CollectorController extends Controller
@@ -130,7 +131,8 @@ class CollectorController extends Controller
     {
          // retrieve unique addresses for residents and populate to dropdown
          $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+         $trashBins = TrashBin::all();
 
-         return view('location', compact('locations'));
+         return view('location', compact('locations', 'trashBins'));
     }
 }
