@@ -135,4 +135,22 @@ class CollectorController extends Controller
 
          return view('location', compact('locations', 'trashBins'));
     }
+
+    public function restore_collector_info($id)
+    {
+        $record = User::withTrashed()->findOrFail($id);
+
+        $record->restore();
+
+        return redirect()->back()->with('success', 'Record restored successfully.');
+    }
+
+    public function restore_collector_data(Request $request)
+    {
+        // Retrieve soft deleted records
+        $data = User::where('role', 'collector')->get();
+        $deletedRecords = User::onlyTrashed()->get();
+
+        return view('collector-restore', compact('data', 'deletedRecords'));
+    }
 }
