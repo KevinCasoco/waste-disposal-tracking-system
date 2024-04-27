@@ -216,6 +216,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // Route::put('/trash-bins/{trashBin}', [TrashBinController::class, 'update'])->name('trash-bins.update');
     // Route::delete('/trash-bins/{trashBin}', [TrashBinController::class, 'destroy'])->name('trash-bins.destroy');
 
+    // soft delete
+    Route::get('/schedule-list-restore', [ScheduleController::class, 'schedule_restore'])->name('schedule-list-restore.schedule_restore');
+    Route::patch('/collector-schedules/{id}/restore', [ScheduleController::class, 'restore'])->name('schedule-list-restore.restore');
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
@@ -263,6 +267,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // send sms
     Route::post('/sms-controller', [SmsController::class, 'sms_controller'])->name('collector-schedule.sms_controller');
+
+    // soft delete
+    Route::get('/collector-schedule-list-restore', [ScheduleController::class, 'collector_schedule_restore'])->name('collector-schedule-list-restore.collector_schedule_restore');
+    Route::patch('/collector-schedules-list/{id}/restore', [ScheduleController::class, 'collector_restore'])->name('collector-schedule-list-restore.collector_restore');
 
 }); // end of middleware group
 
