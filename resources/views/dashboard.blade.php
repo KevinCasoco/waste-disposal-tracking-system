@@ -1457,7 +1457,7 @@
             <div class="flex-grow text-gray-800">
                 <main class="p-6 sm:p-10 space-y-6">
 
-                    <section class="grid md:grid-cols-6 xl:grid-cols-6 gap-6">
+                    {{-- <section class="grid md:grid-cols-6 xl:grid-cols-6 gap-6">
                         <div
                             class="p-2 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
                             <div class="w-3/5 flex justify-start">
@@ -1583,10 +1583,10 @@
                             </div>
                         </a>
 
-                    </section>
+                    </section> --}}
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex flex-col bg-white shadow rounded-lg">
+                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="p-2 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
@@ -1669,55 +1669,17 @@
                                 </script>
 
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <h2 class="text-xl font-semibold mt-4 text-center mb-8">Status</h2>
-                            <div class="p-4 flex-grow">
+                            <h2 class="text-xl font-semibold mt-6 text-center mb-8">Truck Weight Status</h2>
+                            <div class="p-4 flex-grow mt-2">
                                 <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center gap-16">
-                                    {{-- <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas> --}}
-
-                                    <div class="w-5/5 text-center">
-                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400"
-                                            style="font-size: 140px;"></i>
-                                        <ul>
-                                            <li class="font-bold text-black text-xl mt-3">
-                                                Trash Weight Status
-                                            </li>
-                                            <li class="font-extrabold text-black text-xl" id="trash-weight-status">
-                                                {{ $status }}</li>
-                                            </li>
-                                        </ul>
-
-                                        <script>
-                                            // Function to fetch updated truck weight
-                                            function fetchTrashWeightStatus() {
-                                                fetch('/get-trash-weight-status')
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        // Update the truck weight in the HTML element
-                                                        document.getElementById('trash-weight-status').textContent = data.status;
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error fetching truck weight:', error);
-                                                    });
-                                            }
-
-                                            // Function to refresh truck weight every 5 seconds
-                                            function autoRefresh2() {
-                                                setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
-                                            }
-
-                                            // Initial call to start auto-refresh
-                                            autoRefresh2();
-                                        </script>
-                                    </div>
-
                                     <div class="w-5/5 text-center ">
                                         <i class="ri-truck-line text-lg text-green-400" style="font-size: 150px;"></i>
                                         <ul>
                                             <li class="font-bold text-black mt-2 text-xl">
-                                                Truck Weight Status
+                                                {{-- Truck Weight Status --}}
                                             </li>
                                             <li class="font-extrabold text-black text-xl" id="truck-weight-status">
                                                 {{ $status_truck }}
@@ -1745,6 +1707,53 @@
 
                                             // Initial call to start auto-refresh
                                             autoRefresh3();
+                                        </script>
+                                    </div>
+
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <h2 class="text-xl font-semibold mt-6 text-center mb-8">Trash Weight Status</h2>
+                            <div class="p-4 flex-grow mt-4">
+                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center gap-16">
+                                    <div class="w-5/5 text-center">
+                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400"
+                                            style="font-size: 140px; "></i>
+                                        <ul>
+                                            {{-- <li class="font-bold text-black text-xl mt-3">
+                                                Trash Weight Status
+                                            </li> --}}
+                                            <li class="font-extrabold text-black text-xl mt-5"
+                                                id="trash-weight-status">
+                                                {{ $status }}</li>
+                                            </li>
+                                        </ul>
+
+                                        <script>
+                                            // Function to fetch updated truck weight
+                                            function fetchTrashWeightStatus() {
+                                                fetch('/get-trash-weight-status')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Update the truck weight in the HTML element
+                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching truck weight:', error);
+                                                    });
+                                            }
+
+                                            // Function to refresh truck weight every 5 seconds
+                                            function autoRefresh2() {
+                                                setInterval(fetchTrashWeightStatus, 5000); // Refresh every 5 seconds
+                                            }
+
+                                            // Initial call to start auto-refresh
+                                            autoRefresh2();
                                         </script>
                                     </div>
 
@@ -1812,6 +1821,198 @@
                         </div> --}}
 
                     </section>
+
+                    <div class="hidden md:block">
+                        <section class="grid grid-cols-4 md:grid-cols-1 gap-6">
+                            <div class="flex flex-col  justify-center items-center shadow rounded-lg bg-white">
+                                <h2 class="text-3xl font-bold mt-4 text-center mb-8">Types of Waste Disposal</h2>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="md:hidden">
+                        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col  justify-center items-center shadow rounded-lg bg-white">
+                                <h2 class="text-3xl font-bold mt-4 text-center mb-8">Types of Waste Disposal</h2>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="hidden md:block">
+                        <section class="grid grid-cols-4 md:grid-cols-1 gap-6">
+                            <div class="flex flex-col justify-center items-center shadow rounded-lg bg-white">
+                                <h2 class="text-2xl font-bold mt-4 text-center mb-4">What exactly is waste?</h2>
+                                <ul class="list-disc text-lg text-gray-700 text-left mb-4">
+                                    <li>Unwanted and unusable materials are regarded as non-useful substances.</li>
+                                    <li>Garbage is refers to waste that we see in our surroundings.</li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="md:hidden">
+                        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col justify-center items-center shadow rounded-lg bg-white">
+                                <h2 class="text-2xl font-bold mt-4 text-center mb-4">What exactly is waste?</h2>
+                                <div class="w-full h-[200px] sm:h-[200px] flex justify-center">
+                                    <ul class="list-disc text-lg text-gray-700 text-left mb-4 px-10">
+                                        <li>Unwanted and unusable materials are regarded as non-useful substances.</li>
+                                        <li>Garbage is refers to waste that we see in our surroundings.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="hidden md:block">
+                        <section class="grid grid-cols-4 md:grid-cols-1 gap-6">
+                            <div class="flex flex-col justify-center items-center shadow rounded-lg bg-white">
+                                <h2 class="text-2xl font-bold mt-4 text-center mb-4">Types of Waste</h2>
+                                <h2 class="text-xl font-gray-100 text-center mb-4 italic">Based on source of waste</h2>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="md:hidden">
+                        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col  justify-center items-center shadow rounded-lg bg-white">
+                                <h2 class="text-2xl font-bold mt-4 text-center mb-4">Types of Waste</h2>
+                                <h2 class="text-xl font-gray-200 text-center mb-4 italic">Based on source of waste</h2>
+                            </div>
+                        </section>
+                    </div>
+
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="flex flex-row justify-center pt-2">
+                                <img src="{{ asset('/images/industrial-waste.png') }}" class="w-14 h-auto mr-1 mt-1">
+                                <h2 class="text-xl font-semibold mt-4 text-center">Industrial Waste</h2>
+                            </div>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[200px] sm:h-[140px] flex justify-center">
+                                    <div class="w-5/5 text-center px-4 md:px-6"> <!-- Added text-center class -->
+                                        {{-- <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                            </li>
+                                        </ul> --}}
+                                        <ul class="list-disc text-lg text-gray-700 text-left mb-4">
+                                            <li>Manufacturing and industrial waste.</li>
+                                            <li>For example, plastic and glass.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="flex flex-row justify-center pt-2">
+                                <img src="{{ asset('/images/commercial-waste.png') }}" class="w-12 h-auto mr-2 mt-1">
+                            <h2 class="text-xl font-semibold mt-4 text-center">Commercial Waste</h2>
+                            </div>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[200px] sm:h-[140px] flex justify-center">
+                                    <div class="w-5/5 text-center px-4 md:px-6">
+                                        {{-- <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                            </li>
+                                        </ul> --}}
+                                        <ul class="list-disc text-lg text-gray-700 text-left mb-4">
+                                            <li>Produced colleges, retail stores, and offices.</li>
+                                            <li>Example: plastic, papaer, tin or aluminum can, etc.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="flex flex-row justify-center pt-2">
+                                <img src="{{ asset('/images/domestic-waste.png') }}" class="w-12 h-auto mr-2 mt-1">
+                            <h2 class="text-xl font-semibold mt-4 text-center">Domestic Waste</h2>
+                            </div>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[200px] sm:h-[140px] flex justify-center">
+                                    <div class="w-5/5 text-center px-4 md:px-6">
+                                        {{-- <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                            </li>
+                                        </ul> --}}
+                                        <ul class="list-disc text-lg text-gray-700 text-left mb-4">
+                                            <li>The various household wastes that are generated during </br>
+                                                household activities such as cooking and cleaning.</li>
+                                            <li>Garbage is refers to waste that we see in our surroundings.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="flex flex-row justify-center pt-2">
+                                <img src="{{ asset('/images/agricultural-waste.png') }}" class="w-12 h-auto mr-2 mt-1">
+                            <h2 class="text-xl font-semibold mt-4 text-center">Agricultural Waste</h2>
+                            </div>
+                            <div class="p-4 flex-grow">
+                                <div class="w-full h-[200px] sm:h-[140px] flex justify-center">
+                                    <div class="w-5/5 text-center px-4 md:px-6">
+                                        {{-- <ul>
+                                            <li class="font-bold text-black mt-2 text-xl">
+                                            </li>
+                                            <li class="font-extrabold text-black text-xl" id="truck-weight-status">
+                                            </li>
+                                        </ul> --}}
+                                        <ul class="list-disc text-lg text-gray-700 text-left mb-4">
+                                            <li>Waste Generated in the agricultural industry.</li>
+                                            <li>Example: cattle waste weed, husk, etc.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    {{-- <section class="grid grid-cols-4 md:grid-cols-1 gap-6">
+                        <div class="flex flex-col  justify-center items-center shadow rounded-lg bg-blue-300">
+                            <h2 class="text-xl font-semibold mt-4 text-center mb-8">Types of Waste Disposal</h2>
+                            <div class="flex gap-10">
+                                <!-- First column -->
+                                <div class="mb-4 bg-red-300">
+                                    Sample
+                                </div>
+                                <div class="mb-4 bg-red-300">
+                                    Sample
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <!-- Second column -->
+                                <div class="mb-4 bg-red-300">
+                                    Sample
+                                </div>
+                                <div class="mb-4 bg-red-300">
+                                    Sample
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <!-- Third column -->
+                                <div class="mb-4 bg-red-300">
+                                    Sample
+                                </div>
+                                <div class="mb-4 bg-red-300">
+                                    Sample
+                                </div>
+                            </div>
+                        </div>
+
+                    </section> --}}
 
                 </main>
             </div>
