@@ -253,6 +253,19 @@
                         map: map,
                     });
 
+                    @foreach($trashBins as $trashBin)
+                    var iconSize = new google.maps.Size(32, 32); // Adjust the size as needed
+                    var marker = new google.maps.Marker({
+                        position: { lat: {{ $trashBin->latitude }}, lng: {{ $trashBin->longitude }} },
+                        map: map,
+                        title: "Trash Bin Location",
+                        icon: {
+                            url: '{{ asset("/images/Waste-Logo.png") }}',
+                            scaledSize: iconSize
+                        }
+                    });
+                    @endforeach
+
                     // Trigger button click event after page is loaded
                     window.addEventListener('load', function() {
                         document.getElementById('track_order_button').click();
