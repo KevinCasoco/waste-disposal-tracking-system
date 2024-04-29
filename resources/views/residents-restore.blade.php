@@ -42,8 +42,8 @@
                         <li class="mb-1 group">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group active">
@@ -167,10 +167,9 @@
                                 </div>
                             </div>
                             {{-- Mobile View --}}
-                            <div class="md:hidden flex justify-end">
+                            {{-- <div class="md:hidden flex justify-end">
                                 <button @click="residentNewUsers = true"
                                     class=" text-white -mt-[70px] text-center w-8 h-8" style="margin-top: -70px;">
-                                    {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                         class="bg-green-500 rounded-full p-1 shadow-md">
                                         <path fill="#ffffff"
@@ -179,7 +178,7 @@
                                 </button>
                                 <div class="md:flex-shrink-0">
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- Select Address Mobile View --}}
                             <div class="md:hidden">

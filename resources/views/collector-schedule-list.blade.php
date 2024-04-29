@@ -30,13 +30,13 @@
                                 <span class="text-sm">Dashboard</span>
                             </a>
                         </li>
-                        <li class="mb-1 group">
+                        {{-- <li class="mb-1 group">
                             <a href="{{ asset('collector-residents') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                                 <i class="ri-user-fill mr-3 text-lg"></i>
                                 <span class="text-sm">Collector</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="mb-1 group">
                             <a href="{{ asset('collector-schedule') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
@@ -273,7 +273,7 @@
                                             <td>{{ $item->location }}</td>
                                             <td>{{ $item->start }}</td>
                                             <td>{{ $item->time }}</td>
-                                            <td class="text-center ">
+                                            <td class="">
                                                 <button
                                                     @click="scheduleCollectorEdit = true; collectorScheduleToEdit = $event.target.getAttribute('data-item-id')"
                                                     data-item-id="{{ $item->id }}"
@@ -281,12 +281,12 @@
                                                     <i class="ri-edit-box-fill mr-1"></i>Edit
                                                 </button>
                                             </td>
-                                            <td class="text-center ">
+                                            <td class="">
                                                 <button
                                                     @click="scheduleCollectorDelete = true; collectorScheduleToDelete = $event.target.getAttribute('data-item-id')"
                                                     data-item-id="{{ $item->id }}"
                                                     class="py-1 px-4 rounded bg-red-500 hover:bg-red-700 text-white">
-                                                    <i class="ri-delete-bin-5-fill mr-1"></i>Delete
+                                                    <i class="ri-delete-bin-5-fill mr-1"></i>Archive
                                                 </button>
                                             </td>
                                         </tr>
@@ -420,7 +420,7 @@
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                Delete
+                                                Archive
                                             </button>
                                         </form>
                                         <div class="absolute mr-[90px]">

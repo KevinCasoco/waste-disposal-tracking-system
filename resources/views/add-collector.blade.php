@@ -26,7 +26,7 @@
                    <span class="text-sm">Dashboard</span>
                </a>
            </li>
-           <li class="mb-1 group">
+           {{-- <li class="mb-1 group">
                <a href="{{ asset('admin')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                    <i class="ri-admin-fill mr-3 text-lg"></i>
                    <span class="text-sm">Admin</span>
@@ -34,8 +34,8 @@
            </li>
            <li class="mb-1 group">
                <a href="{{ asset('collector')}}"  class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                   <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                   <span class="text-sm">Collector</span>
+                    <i class="ri-truck-line mr-3 text-lg"></i>
+                    <span class="text-sm">Truck</span>
                </a>
            </li>
            <li class="mb-1 group">
@@ -43,7 +43,7 @@
                    <i class="ri-user-fill mr-3 text-lg"></i>
                    <span class="text-sm">Residents</span>
                </a>
-           </li>
+           </li> --}}
            <li class="mb-1 group active">
             <a href="{{ asset('collector-schedule')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                 <i class="ri-calendar-2-fill mr-3 text-lg"></i>
@@ -55,6 +55,12 @@
                     class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
                     <i class="ri-calendar-2-fill mr-3 text-lg"></i>
                     <span class="text-sm">Schedule List</span>
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <a href="{{ asset('location')}}" class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
+                    <i class="ri-map-fill mr-3 text-lg"></i>
+                    <span class="text-sm">Location</span>
                 </a>
             </li>
            <li class="mb-1 group">

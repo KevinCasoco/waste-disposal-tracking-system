@@ -40,8 +40,8 @@
                         <li class="mb-1 group">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group">

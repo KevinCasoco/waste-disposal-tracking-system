@@ -43,8 +43,8 @@
         <div class="mt-3">
             <div id="country-selector"></div>
             <x-input-label for="number" :value="__('Phone Number')" />
-            <x-text-input id="number" type="tel" name="number" :value="old('number')" required autocomplete="number"
-                placeholder="Enter Your Phone Number" />
+            <x-text-input class="w-[113%] md:w-[122%]" id="number" type="tel" name="number" :value="old('number')" required autocomplete="number"
+                placeholder="Enter Your Phone Number"/>
 
             <x-input-error :messages="$errors->get('number')" class="mt-2" />
         </div>

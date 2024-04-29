@@ -181,7 +181,7 @@
                                                     <i class="ri-edit-box-fill mr-1"></i>Edit
                                                 </button>
                                             </td>
-                                            <td class="text-center">
+                                            <td class="">
                                                 <button
                                                     @click="collectorResidentsDelete = true; itemToDelete = $event.target.getAttribute('data-item-id')"
                                                     data-item-id="{{ $item->id }}"
@@ -189,7 +189,7 @@
                                                     <i class="ri-delete-bin-5-fill mr-1"></i>Delete
                                                 </button>
                                             </td>
-                                            <td class="text-center">
+                                            <td class="">
                                                 <form
                                                     action="{{ route('collector-residents.toggleResidentsStatus', $item->id) }}"
                                                     method="POST">
