@@ -85,25 +85,38 @@ class SmsController extends Controller
     {
         $client = new GuzzleHttpClient();
 
-        $response = $client->request('POST', 'https://app.philsms.com/api/v3/sms/send', [
-            'headers' => [
-                'Authorization' => 'Bearer 701|UYjgfkGORrHpAhXhOXMgJdkKlOLSdA3QL92gjagd',
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'recipient' => implode(',', $number),
-                'sender_id' => 'PhilSMS',
-                'type' => 'plain',
-                'message' => $message,
-            ],
-        ]);
+        try {
+            $response = $client->request('POST', 'https://app.philsms.com/api/v3/sms/send', [
+                'headers' => [
+                    'Authorization' => 'Bearer 702|lBou1bzQFwZSuYXhVkfNp38nudQuBFFASgttA80L',
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'recipient' => implode(',', $number),
+                    'sender_id' => 'PhilSMS',
+                    'type' => 'plain',
+                    'message' => $message,
+                ],
+            ]);
 
-        // Check if the request was successful
-        if ($response->getStatusCode() === 200) {
-            // Log::info('SMS sent to ' . $phoneNumber . ' successfully!'); // Removed log statement
-        } else {
-            // Log::error('Failed to send SMS to ' . $phoneNumber); // Removed log statement
+            // Check if the request was successful
+            if ($response->getStatusCode() === 200) {
+                // Log::info('SMS sent to ' . $phoneNumber . ' successfully!'); // Removed log statement
+                return true;
+            } else {
+                // Log::error('Failed to send SMS to ' . $phoneNumber); // Removed log statement
+                return false;
+            }
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            // Handle unauthorized access
+            if ($e->getResponse()->getStatusCode() === 401) {
+                // Log the error or handle it as needed
+                // Log::error('Unauthorized access when sending SMS.'); // Example log statement
+                return false;
+            }
         }
+
+        return false; // Default to false if an exception occurs
     }
 
     // // admin button

@@ -160,17 +160,19 @@ class DashboardController extends Controller
     }
 
     // manually send the email when you click the container of truck and trash in dashboard
-    public function getTruckWeight()
-    {
-        $truck_weight = Truck::orderBy('id', 'desc')->value('truck_weight');
-        return response()->json(['truck_weight' => $truck_weight]);
-    }
+    // public function getTruckWeight()
+    // {
+    //     $formatted_weight = Truck::orderBy('id', 'desc')->value('truck_weight');
+    //     $truck_weight = number_format($formatted_weight, 2);
+    //     return response()->json(['truck_weight' => $truck_weight]);
+    // }
 
-    public function getTrashWeight()
-    {
-        $trash_weight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
-        return response()->json(['trash_weight' => $trash_weight]);
-    }
+    // public function getTrashWeight()
+    // {
+    //     $formatted_weight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
+    //     $trash_weight = number_format($formatted_weight, 2);
+    //     return response()->json(['trash_weight' => $trash_weight]);
+    // }
 
     public function getTruckWeightStatus()
     {
@@ -241,43 +243,49 @@ class DashboardController extends Controller
     }
 
     // automatic send the email when the max kilogram exceed
-    // public function getTruckWeight()
-    // {
-    //     $latestWeight = Truck::orderBy('id', 'desc')->value('truck_weight');
+    public function getTruckWeight()
+    {
+        $formattedWeight = Truck::orderBy('id', 'desc')->value('truck_weight');
 
-    //     if ($latestWeight !== null && $latestWeight >= 1.0000) {
-    //         $admins = User::where('role', 'admin')->get();
-    //         Notification::send($admins, new SensorNotification());
-    //         $message = 'Notification sent to admins.';
-    //     } else {
-    //         $message = 'Weight is within limit.';
-    //     }
+        // Formatting the weight to have two decimal places
+        $latestWeight = number_format($formattedWeight, 2);
 
-    //     return response()->json([
-    //         'truck_weight' => $latestWeight,
-    //         'message' => $message
-    //     ]);
-    // }
+        if ($latestWeight !== null && $latestWeight >= 1.00) {
+            $admins = User::where('role', 'admin')->get();
+            Notification::send($admins, new SensorNotification());
+            $message = 'Notification sent to admins.';
+        } else {
+            $message = 'Weight is within limit.';
+        }
+
+        return response()->json([
+            'truck_weight' => $latestWeight,
+            'message' => $message
+        ]);
+    }
 
     // automatic send the email when the max kilogram exceed
-    // public function getTrashWeight()
-    // {
-    //     // Retrieve the last recorded weight from the SensorData model
-    //     $latestWeight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
+    public function getTrashWeight()
+    {
+        // Retrieve the last recorded weight from the SensorData model
+        $formattedWeight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
 
-    //     if ($latestWeight !== null && $latestWeight >= 1.0000) {
-    //         $admins = User::where('role', 'admin')->get();
-    //         Notification::send($admins, new TrashBinNotification());
-    //         return response()->json([
-    //             'message' => 'Notification sent to admins.',
-    //             'trash_weight' => $latestWeight // Include the trash weight in the response
-    //         ]);
-    //     }
+        // Formatting the weight to have two decimal places
+        $latestWeight = number_format($formattedWeight, 2);
 
-    //     return response()->json([
-    //         'message' => 'Weight is within limit.',
-    //         'trash_weight' => $latestWeight // Include the trash weight in the response
-    //     ]);
-    // }
+        if ($latestWeight !== null && $latestWeight >= 1.0000) {
+            $admins = User::where('role', 'admin')->get();
+            Notification::send($admins, new TrashBinNotification());
+            return response()->json([
+                'message' => 'Notification sent to admins.',
+                'trash_weight' => $latestWeight // Include the trash weight in the response
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Weight is within limit.',
+            'trash_weight' => $latestWeight // Include the trash weight in the response
+        ]);
+    }
 
 }

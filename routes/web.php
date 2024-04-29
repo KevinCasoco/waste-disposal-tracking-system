@@ -216,6 +216,22 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // Route::put('/trash-bins/{trashBin}', [TrashBinController::class, 'update'])->name('trash-bins.update');
     // Route::delete('/trash-bins/{trashBin}', [TrashBinController::class, 'destroy'])->name('trash-bins.destroy');
 
+    // soft delete schedule list
+    Route::get('/schedule-list-restore', [ScheduleController::class, 'schedule_restore'])->name('schedule-list-restore.schedule_restore');
+    Route::patch('/collector-schedules/{id}/restore', [ScheduleController::class, 'restore'])->name('schedule-list-restore.restore');
+
+    // soft delete residents list
+    Route::get('/residents-restore', [UserController::class, 'residents_restore_data'])->name('residents-restore.residents_restore_data');
+    Route::patch('/residents/{id}/restore', [UserController::class, 'restore_residents_info'])->name('residents-restore.restore_residents_info');
+
+    // soft delete collector list
+    Route::get('/collector-restore', [CollectorController::class, 'restore_collector_data'])->name('collector-restore.restore_collector_data');
+    Route::patch('/collector/{id}/restore', [CollectorController::class, 'restore_collector_info'])->name('collector-restore.restore_collector_info');
+
+    // soft delete admin list
+    Route::get('/admin-restore', [AdminController::class, 'admin_collector_data'])->name('admin-restore.admin_collector_data');
+    Route::patch('/admin/{id}/restore', [AdminController::class, 'admin_collector_info'])->name('admin-restore.admin_collector_info');
+
 }); // end of middleware group
 
 // Collector Dashboard Sidebar
@@ -263,6 +279,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
     // send sms
     Route::post('/sms-controller', [SmsController::class, 'sms_controller'])->name('collector-schedule.sms_controller');
+
+    // soft delete
+    Route::get('/collector-schedule-list-restore', [ScheduleController::class, 'collector_schedule_restore'])->name('collector-schedule-list-restore.collector_schedule_restore');
+    Route::patch('/collector-schedules-list/{id}/restore', [ScheduleController::class, 'collector_restore'])->name('collector-schedule-list-restore.collector_restore');
 
 }); // end of middleware group
 

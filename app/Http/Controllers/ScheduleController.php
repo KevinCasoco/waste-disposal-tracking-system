@@ -252,4 +252,62 @@ class ScheduleController extends Controller
         return response()->json($matchingEvents);
     }
 
+    public function restore($id)
+    {
+        $records = Schedule::withTrashed()->findOrFail($id);
+
+        $records->restore();
+
+        return redirect()->back()->with('success', 'Record restored successfully.');
+    }
+
+    public function collector_restore($id)
+    {
+        $records = Schedule::withTrashed()->findOrFail($id);
+
+        $records->restore();
+
+        return redirect()->back()->with('success', 'Record restored successfully.');
+    }
+
+    public function schedule_restore(Request $request)
+    {
+        // Retrieve soft deleted records
+        $deletedRecords = Schedule::onlyTrashed()->get();
+        $dataQuery = Schedule::query();
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+        if ($request->has('start_date') && $request->has('end_date')) {
+            $start_date = $request->start_date;
+            $end_date = $request->end_date;
+
+            $dataQuery->whereDate('start', '>=', $start_date)
+                      ->whereDate('start', '<=', $end_date);
+        }
+
+        $data = $dataQuery->get();
+
+        return view('schedule-list-restore', compact('deletedRecords', 'locations', 'data'));
+    }
+
+    public function collector_schedule_restore(Request $request)
+    {
+        // Retrieve soft deleted records
+        $deletedRecords = Schedule::onlyTrashed()->get();
+        $dataQuery = Schedule::query();
+        $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
+
+        if ($request->has('start_date') && $request->has('end_date')) {
+            $start_date = $request->start_date;
+            $end_date = $request->end_date;
+
+            $dataQuery->whereDate('start', '>=', $start_date)
+                      ->whereDate('start', '<=', $end_date);
+        }
+
+        $data = $dataQuery->get();
+
+        return view('collector-schedule-list-restore', compact('deletedRecords', 'locations', 'data'));
+    }
+
 }

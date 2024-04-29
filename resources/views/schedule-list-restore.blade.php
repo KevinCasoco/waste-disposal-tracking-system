@@ -132,18 +132,13 @@
                 <main class="p-3 sm:p-4 space-y-5">
                     <!-- Start Table -->
                     <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
-                        <div class="mb-4 flex sm:justify-center md:justify-between lg:justify-between">
-                            <h2 class="text-2xl font-bold">SCHEDULE TABLE INFORMATION</h2>
-
-                            <a href="{{ asset('schedule-list-restore') }}"
-                                class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0">
-                                <i class="ri-add-circle-line mr-1"></i>View Archive
-                            </a>
+                        <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
+                            <h2 class="text-2xl font-bold">RESTORE SCHEDULE TABLE INFORMATION</h2>
                         </div>
 
                         {{-- Filter Web View --}}
                         <div class="hidden md:block">
-                            <form method="GET" action="/schedule-list">
+                            <form method="GET" action="/schedule-list-restore">
                                 <div class="flex flex-col md:flex-row w-full gap-3">
                                     <div class="w-full">
                                         <label for="start_date"
@@ -160,7 +155,7 @@
                                             name='end_date' required>
                                     </div>
                                     <div class="flex justify-end gap-2 mb-2 mt-6 md:mt-6">
-                                        <a href="{{ asset('schedule-list') }}"
+                                        <a href="{{ asset('schedule-list-restore') }}"
                                             class="btn text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center">
                                             Refresh
                                         </a>
@@ -175,7 +170,7 @@
 
                         {{-- Filter Mobile View --}}
                         <div class="md:hidden">
-                            <form method="GET" action="/schedule-list">
+                            <form method="GET" action="/schedule-list-restore">
                                 <div class="flex flex-col md:flex-row w-full">
                                     <div class="flex justify-center gap-2 mt-2">
                                         <div class="w-full">
@@ -194,7 +189,7 @@
                                         </div>
                                     </div>
                                     <div class="flex gap-2 mb-2 w-full">
-                                        <a href="{{ asset('schedule-list') }}"
+                                        <a href="{{ asset('schedule-list-restore') }}"
                                             class="btn text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center w-full">
                                             Refresh
                                         </a>
@@ -207,7 +202,7 @@
                             </form>
                         </div>
 
-                        <div x-data="{ scheduleDelete: false, scheduleEdit: false, newSchedules: false, scheduleToDelete: null, scheduleToEdit: null }">
+                        <div x-data="{ scheduleDelete: false, scheduleToDelete: null, scheduleToEdit: null }">
 
                             {{-- Select Address and Add Schedule Mobile View  --}}
                             <div class="hidden md:block">
@@ -226,26 +221,13 @@
                                             <option value="{{ $secondValue }}">{{ $secondValue }}</option>
                                         @endforeach
                                     </select>
-                                    <button @click="newSchedules = true"
+                                    {{-- <button @click="newSchedules = true"
                                         class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
                                             class="ri-add-circle-line mr-1"></i>Add New Schedule</button>
-                                    <div class="md:flex-shrink-0 ">
+                                    <div class="md:flex-shrink-0 "> --}}
 
                                     </div>
                                 </div>
-                            </div>
-
-                            {{-- Add Schedule Mobile View --}}
-                            <div class="md:hidden flex justify-end">
-                                <button @click="newSchedules = true" class=" text-white text-center w-8 h-8"
-                                    style="margin-top: -190px;">
-                                    {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-                                        class="bg-green-500 rounded-full p-1 shadow-md">
-                                        <path fill="#ffffff"
-                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                                    </svg>
-                                </button>
                             </div>
 
                             {{-- Select Address Mobile View --}}
@@ -277,14 +259,13 @@
                                         <th data-priority="4">Address</th>
                                         <th data-priority="5">Date</th>
                                         <th data-priority="6">Time</th>
-                                        <th data-priority="7">Edit</th>
-                                        <th data-priority="8">Archive</th>
+                                        <th data-priority="8">Restore</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
-                                    @foreach ($data as $item)
+                                    @foreach ($deletedRecords as $item)
                                         <tr x-on:click="scheduleToEdit = {{ $item->id }};">
                                             <td>{{ $item->id }}</td>
                                             {{-- <td >{{ $item->users_id }}</td> --}}
@@ -292,21 +273,13 @@
                                             <td>{{ $item->location }}</td>
                                             <td>{{ $item->start }}</td>
                                             <td>{{ $item->time }}</td>
-                                            <td class="text-center ">
-                                                <button
-                                                    @click="scheduleEdit = true; scheduleToEdit = $event.target.getAttribute('data-item-id')"
-                                                    data-item-id="{{ $item->id }}"
-                                                    class="py-1 px-4 rounded bg-sky-500 hover:bg-sky-700 text-white">
-                                                    <i class="ri-edit-box-fill mr-1"></i>Edit
-                                                </button>
-                                            </td>
-                                            <td class="text-center ">
-                                                <button
-                                                    @click="scheduleDelete = true; scheduleToDelete = $event.target.getAttribute('data-item-id')"
-                                                    data-item-id="{{ $item->id }}"
-                                                    class="py-1 px-4 rounded bg-red-500 hover:bg-red-700 text-white">
-                                                    <i class="ri-delete-bin-5-fill mr-1"></i>Archive
-                                                </button>
+                                            <td>
+                                            <!-- Restore button -->
+                                            <form action="{{ route('schedule-list-restore.restore', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="py-1 px-4 rounded bg-green-500 hover:bg-green-700 text-white">Restore</button>
+                                            </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -314,257 +287,9 @@
                             </table>
 
                             {{-- data for pagination xx
-                {{ $data->links() }} --}}
+                            {{ $data->links() }} --}}
 
                             <!-- Add New Users Modal -->
-                            <div x-show="newSchedules"
-                                class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
-                                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                                </div>
-
-                                <div x-show="newSchedules" @click.away="newSchedules = false"
-                                    x-transition:enter="ease-out duration-300"
-                                    x-transition:enter-start="opacity-0 transform scale-95"
-                                    x-transition:enter-end="opacity-100 transform scale-100"
-                                    x-transition:leave="ease-in duration-200"
-                                    x-transition:leave-start="opacity-100 transform scale-100"
-                                    x-transition:leave-end="opacity-0 transform scale-95"
-                                    class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                                    <!-- ... (modal content) ... -->
-                                    <div class="bg-white py-3 w-full sm:w-[340px] h-full sm:h-[430px]">
-                                        <div class="flex items-center justify-between">
-                                            <h3
-                                                class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-3 ml-5">
-                                                Add New Schedule
-                                            </h3>
-                                        </div>
-                                        <hr class="bg-black border-gray-300 w-full">
-                                        <form action="{{ route('schedule.create') }}" method="post"
-                                            class="pl-5 pr-5 pt-3 pb-3">
-                                            @csrf
-
-                                            <label for="plate_no"
-                                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate
-                                                No:</label>
-                                            <select name="plate_no"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]"
-                                                required>
-                                                <option value="">Select Plate Number</option>
-                                                @foreach ($users as $user)
-                                                    <option>{{ $user->plate_no }}</option>
-                                                @endforeach
-                                            </select>
-
-                                            <label for="location"
-                                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
-                                            <select id="addressDropdown" name="location"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]"
-                                                required>
-                                                <option value="">Select Address</option>
-                                                @foreach ($locations as $id => $location)
-                                                    <?php
-                                                    // Split the address by commas
-                                                    $parts = explode(',', $location);
-                                                    // Extract the second part and remove leading/trailing spaces
-                                                    $secondValue = trim($parts[1]);
-                                                    ?>
-                                                    <option value="{{ $location }}">{{ $secondValue }}</option>
-                                                @endforeach
-                                            </select>
-
-                                            {{-- <label for="label">Please take note that 1 day before the schedule can only notify the users!</label> --}}
-                                            <label for="location"
-                                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date
-                                                of Collection:</label>
-                                            <input type='date'
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] datepicker"
-                                                name='start' id="datepicker" required
-                                                value='{{ now()->toDateString() }}'>
-
-                                            <label for="location"
-                                                class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time
-                                                of Collection:</label>
-                                            <input type="time"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                id="time" name="time" required>
-
-                                            <div class="flex justify-end mt-3">
-                                                <button type="submit"
-                                                    class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                    Create
-                                                </button>
-                                        </form>
-                                        <div class="absolute mr-[90px]">
-                                            <button @click="newSchedules = false"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Delete Modal -->
-                        <div x-show="scheduleDelete"
-                            class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
-                            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                            </div>
-
-                            <div x-show="scheduleDelete" @click.away="scheduleDelete = false"
-                                x-transition:enter="ease-out duration-300"
-                                x-transition:enter-start="opacity-0 transform scale-95"
-                                x-transition:enter-end="opacity-100 transform scale-100"
-                                x-transition:leave="ease-in duration-200"
-                                x-transition:leave-start="opacity-100 transform scale-100"
-                                x-transition:leave-end="opacity-0 transform scale-95"
-                                class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                                <!-- ... (modal content) ... -->
-                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-col">
-                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
-                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                    </svg>
-                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure
-                                        you want to remove this schedule?</h3>
-                                    <div class="flex justify-end items-end pb-2">
-                                        <form method="post"
-                                            :action="`{{ route('schedule-list.schedule_destroy', '') }}/${scheduleToDelete}`">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                Delete
-                                            </button>
-                                        </form>
-                                        <div class="absolute mr-[90px]">
-                                            <button @click="scheduleDelete = false"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Edit Modal -->
-                        <div x-show="scheduleEdit"
-                            class="fixed inset-0 overflow-y-auto flex items-center justify-center z-30" x-cloak>
-                            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-                                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-                            </div>
-
-                            <div x-show="scheduleEdit" @click.away="scheduleEdit = false"
-                                x-transition:enter="ease-out duration-300"
-                                x-transition:enter-start="opacity-0 transform scale-95"
-                                x-transition:enter-end="opacity-100 transform scale-100"
-                                x-transition:leave="ease-in duration-200"
-                                x-transition:leave-start="opacity-100 transform scale-100"
-                                x-transition:leave-end="opacity-0 transform scale-95"
-                                class="rounded-lg overflow-hidden transform transition-all flex justify-start">
-                                <!-- ... (modal content) ... -->
-                                <div class="bg-white py-3 w-full sm:w-[345px] h-full sm:h-[430px]">
-                                    <div class="flex items-center justify-between">
-                                        <h3
-                                            class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
-                                            Edit Schedule Information
-                                        </h3>
-                                        <button @click="scheduleEdit = false" aria-label="Close"
-                                            class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
-                                            <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <hr class="bg-black border-gray-300 w-full">
-                                    @foreach ($data as $item)
-                                        <div x-show="scheduleToEdit.toString() === '{{ $item->id }}'">
-                                            <form method="post"
-                                                :action="`{{ route('schedule-list.update_schedule', '') }}/${scheduleToEdit}`"
-                                                class="pl-5 pr-5 pt-2 pb-1">
-                                                @csrf
-                                                @method('patch')
-
-                                                <label for="plate_no"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Plate
-                                                    No:</label>
-                                                <select name="plate_no"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]"
-                                                    required>
-                                                    <option value="">Select Plate Number</option>
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->plate_no }}"
-                                                            @if ($user->plate_no == $item->plate_no) selected @endif>
-                                                            {{ $user->plate_no }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                                <label for="location"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Location:</label>
-                                                <input type="hidden" name="schedule_id"
-                                                    value="{{ $item->id }}">
-                                                <select id="addressDropdown" name="location"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white sm:w-full w-[300px]"
-                                                    required>
-                                                    <option value="">Select Address</option>
-                                                    @foreach ($locations as $id => $location)
-                                                        <?php
-                                                        // Split the address by commas
-                                                        $parts = explode(',', $location);
-                                                        // Extract the second part and remove leading/trailing spaces
-                                                        $secondValue = trim($parts[1]);
-                                                        ?>
-                                                        <option value="{{ $location }}"
-                                                            @if ($item->location == $location) selected @endif>
-                                                            {{ $secondValue }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                                <label for="start"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date
-                                                    of Collection:</label>
-                                                <input type="date"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] datepicker"
-                                                    id="datepicker1" name="start" value="{{ $item->start }}"
-                                                    required>
-
-                                                <label for="start"
-                                                    class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Time
-                                                    of Collection:</label>
-                                                <?php
-                                                // converting time value into time object
-                                                $time = \Carbon\Carbon::createFromFormat('h:i A', $item->time)->format('H:i');
-                                                ?>
-                                                <input type="time"
-                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
-                                                    id="time" name="time" value="{{ $time }}"
-                                                    required>
-
-                                                <div class="flex justify-end items-end pt-1">
-                                                    <button type="submit"
-                                                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                        Update
-                                                    </button>
-                                                    <div class="md:hidden absolute mr-[93px]">
-                                                        <button @click.prevent="scheduleEdit = false"
-                                                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                                            Cancel
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
                         </div>
 
                     </div>
@@ -740,3 +465,4 @@
     @endif
 
 </x-app-layout>
+
