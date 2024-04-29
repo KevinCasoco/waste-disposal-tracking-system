@@ -133,7 +133,7 @@
                     <!-- Start Table -->
                     <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
                         <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
-                            <h2 class="text-2xl font-bold">RESTORE SCHEDULE TABLE INFORMATION</h2>
+                            <h2 class="text-2xl font-bold">SCHEDULE RESTORE TABLE</h2>
                         </div>
 
                         {{-- Filter Web View --}}

@@ -138,8 +138,8 @@
                             <h2 class="text-2xl font-bold">COLLECTOR TABLE INFORMATION</h2>
 
                             <a href="{{ asset('collector-restore') }}"
-                                class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0">
-                                <i class="ri-add-circle-line mr-1"></i>View Archive
+                                class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 mb-2 md:mb-0">
+                                <i class="ri-delete-bin-5-fill mr-1"></i>View Archive
                             </a>
                         </div>
 
@@ -151,7 +151,7 @@
                                     class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
                                     <button @click="adminNewCollector = true"
                                         class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
-                                            class="ri-add-circle-line mr-1"></i>Add New Admin</button>
+                                            class="ri-add-circle-line mr-1"></i>Add New Collector</button>
                                     <div class="md:flex-shrink-0 ">
 
                                     </div>
@@ -218,7 +218,7 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit"
-                                                        class='py-2 px-4 rounded
+                                                        class='py-1 px-4 rounded
                                         @if ($item->status == 'active') bg-green-500 hover:bg-green-700 text-white
                                         @else
                                             bg-red-500 hover:bg-red-700 text-white @endif'>
@@ -264,7 +264,7 @@
                                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
                                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you
-                                            sure you want to delete this collector?</h3>
+                                            sure you want to remove this collector?</h3>
                                         <div class="flex justify-end items-end pb-2">
                                             <form method="post"
                                                 :action="`{{ route('collector.admin_destroy_collector', '') }}/${itemToDelete}`">
@@ -272,12 +272,12 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                                    Delete
+                                                    Archive
                                                 </button>
                                             </form>
                                             <div class="absolute mr-[90px]">
                                                 <button @click="deleteCollector = false"
-                                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600m mr-2">
                                                     Cancel
                                                 </button>
                                             </div>

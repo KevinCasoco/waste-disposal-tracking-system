@@ -196,7 +196,7 @@
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit"
-                                                        class='py-2 px-4 rounded
+                                                        class='py-1 px-4 rounded
                                         @if ($item->status == 'active') bg-green-500 hover:bg-green-700 text-white
                                         @else
                                             bg-red-500 hover:bg-red-700 text-white @endif'>
