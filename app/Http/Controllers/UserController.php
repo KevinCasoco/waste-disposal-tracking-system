@@ -129,7 +129,7 @@ class UserController extends Controller
     {
         // Retrieve soft deleted records
         $data_user = User::where('role', 'residents')->get();
-        $deletedRecords = User::onlyTrashed()->get();
+        $deletedRecords = User::onlyTrashed()->where('role', 'residents')->get();
         $dataQuery = User::query();
         $locations = User::where('role', 'residents')->pluck('location', 'id')->unique();
 

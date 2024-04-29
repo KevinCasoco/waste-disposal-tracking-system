@@ -149,7 +149,7 @@ class CollectorController extends Controller
     {
         // Retrieve soft deleted records
         $data = User::where('role', 'collector')->get();
-        $deletedRecords = User::onlyTrashed()->get();
+        $deletedRecords = User::onlyTrashed()->where('role', 'collector')->get();
 
         return view('collector-restore', compact('data', 'deletedRecords'));
     }

@@ -317,7 +317,7 @@ class AdminController extends Controller
     {
         // Retrieve soft deleted records
         $data = User::where('role', 'admin')->get();
-        $deletedRecords = User::onlyTrashed()->get();
+        $deletedRecords = User::onlyTrashed()->where('role', 'admin')->get();
 
         return view('admin-restore', compact('data', 'deletedRecords'));
     }
