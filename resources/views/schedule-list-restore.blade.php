@@ -40,8 +40,8 @@
                         <li class="mb-1 group">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group">
@@ -133,7 +133,7 @@
                     <!-- Start Table -->
                     <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
                         <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
-                            <h2 class="text-2xl font-bold">RESTORE SCHEDULE TABLE INFORMATION</h2>
+                            <h2 class="text-2xl font-bold">SCHEDULE RESTORE TABLE</h2>
                         </div>
 
                         {{-- Filter Web View --}}

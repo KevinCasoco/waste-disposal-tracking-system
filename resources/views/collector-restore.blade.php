@@ -42,8 +42,8 @@
                         <li class="mb-1 group active">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group">
@@ -135,7 +135,7 @@
                     <!-- Start Table -->
                     <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
                         <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
-                            <h2 class="text-2xl font-bold">COLLECTOR TABLE INFORMATION</h2>
+                            <h2 class="text-2xl font-bold">COLLECTOR RESTORE TABLE</h2>
                         </div>
 
                         <div x-data="{ deleteCollector: false, adminNewCollector: false, collectorEdit: false, itemToDelete: null, itemToEdit: null }">
@@ -144,19 +144,18 @@
                             <div class="hidden md:block">
                                 <div
                                     class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
-                                    <button @click="adminNewCollector = true"
+                                    {{-- <button @click="adminNewCollector = true"
                                         class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
-                                            class="ri-add-circle-line mr-1"></i>Add New Admin</button>
-                                    <div class="md:flex-shrink-0 ">
+                                            class="ri-add-circle-line mr-1"></i>Add New Admin</button> --}}
+                                    <div class="md:flex-shrink-0 mt-10">
 
                                     </div>
                                 </div>
                             </div>
                             {{-- Mobile View --}}
-                            <div class="md:hidden flex justify-end">
+                            {{-- <div class="md:hidden flex justify-end">
                                 <button @click="adminNewCollector = true"
                                     class=" text-white -mt-[70px] text-center w-8 h-8" style="margin-top: -70px;">
-                                    {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                         class="bg-green-500 rounded-full p-1 shadow-md">
                                         <path fill="#ffffff"
@@ -165,15 +164,15 @@
                                 </button>
                                 <div class="md:flex-shrink-0">
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <table id="example" class="stripe hover"
                                 style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                                 <thead>
                                     <tr>
                                         <th data-priority="1">Plate No.</th>
-                                        <th data-priority="2">First Name</th>
-                                        <th data-priority="3">Last Name</th>
+                                        <th data-priority="2">Driver's First Name</th>
+                                        <th data-priority="3">Driver's Last Name</th>
                                         <th data-priority="4">Email Address</th>
                                         <th data-priority="5">Role</th>
                                         <th data-priority="6">Archive</th>
@@ -314,7 +313,7 @@
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
 
                                                             <label for="first_name"
-                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's First
                                                                 Name:</label>
                                                             <input type="text" name="first_name"
                                                                 value="{{ $item->first_name }}"
@@ -325,7 +324,7 @@
 
                                                         <div class="mt-1">
                                                             <label for="last_name"
-                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's Last
                                                                 Name:</label>
                                                             <input type="text" name="last_name"
                                                                 value="{{ $item->last_name }}"
@@ -439,7 +438,7 @@
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
 
                                                             <label for="first_name"
-                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">First
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's First
                                                                 Name:</label>
                                                             <input type="text" name="first_name"
                                                                 value="{{ $item->first_name }}"
@@ -450,7 +449,7 @@
 
                                                         <div class="mt-1">
                                                             <label for="last_name"
-                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Last
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's Last
                                                                 Name:</label>
                                                             <input type="text" name="last_name"
                                                                 value="{{ $item->last_name }}"
@@ -544,7 +543,7 @@
                                                         required>
 
                                                     <label for="first_name"
-                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Driver's First
                                                         Name:</label>
                                                     <input type="text" name="first_name"
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
@@ -552,7 +551,7 @@
                                                         required>
 
                                                     <label for="last_name"
-                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Driver's Last
                                                         Name:</label>
                                                     <input type="text" name="last_name"
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
@@ -653,7 +652,7 @@
                                                         required>
 
                                                     <label for="first_name"
-                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">First
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Driver's First
                                                         Name:</label>
                                                     <input type="text" name="first_name"
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
@@ -661,7 +660,7 @@
                                                         required>
 
                                                     <label for="last_name"
-                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Last
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Driver's Last
                                                         Name:</label>
                                                     <input type="text" name="last_name"
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"

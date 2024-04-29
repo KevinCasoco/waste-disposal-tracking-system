@@ -39,8 +39,8 @@
                         <li class="mb-1 group">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group">
@@ -231,8 +231,12 @@
                                     <div class="w-3/5 flex justify-start">
                                         <ul>
                                             <li class="font-bold text-white">Truck Weight</li>
-                                            <li class="font-extrabold text-white text-xl" id="truck-weight">
-                                                {{ $truck_weight }}</li>
+                                            <div class="flex">
+                                                <li class="font-extrabold text-white text-xl" id="truck-weight">
+                                                    {{ $truck_weight }}</li>
+                                                <span class="font-extrabold text-white text-xl ml-1">Kg</span>
+                                            </div>
+
                                         </ul>
                                     </div>
 
@@ -278,8 +282,11 @@
                                     <div class="w-3/5 flex justify-start">
                                         <ul>
                                             <li class="font-bold text-white">Trash Bin Weight</li>
-                                            <li class="font-extrabold text-white text-xl" id="trash-weight">
-                                                {{ $trash_weight }}</li>
+                                            <div class="flex">
+                                                <li class="font-extrabold text-white text-xl" id="trash-weight">
+                                                    {{ $trash_weight }} </li>
+                                                <span class="font-extrabold text-white text-xl ml-1">Kg</span>
+                                            </div>
                                         </ul>
                                     </div>
 
@@ -705,13 +712,13 @@
                                 <span class="text-sm">Dashboard</span>
                             </a>
                         </li>
-                        <li class="mb-1 group">
+                        {{-- <li class="mb-1 group">
                             <a href="{{ asset('collector-residents') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
                                 <i class="ri-user-fill mr-3 text-lg"></i>
                                 <span class="text-sm">Collector</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="mb-1 group">
                             <a href="{{ asset('collector-schedule') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
@@ -877,8 +884,11 @@
                                 <div class="w-3/5 flex justify-start">
                                     <ul>
                                         <li class="font-bold text-white">Truck Weight</li>
-                                        <li class="font-extrabold text-white text-xl" id="truck-weight">
-                                            {{ $truck_weight }}</li>
+                                        <div class="flex">
+                                            <li class="font-extrabold text-white text-xl" id="truck-weight">
+                                                {{ $truck_weight }}</li>
+                                            <span class="font-extrabold text-white text-xl ml-1">Kg</span>
+                                        </div>
                                     </ul>
                                 </div>
 
@@ -922,8 +932,11 @@
                                 <div class="w-3/5 flex justify-start">
                                     <ul>
                                         <li class="font-bold text-white">Trash Bin Weight</li>
-                                        <li class="font-extrabold text-white text-xl" id="trash-weight">
-                                            {{ $trash_weight }}</li>
+                                        <div class="flex">
+                                            <li class="font-extrabold text-white text-xl" id="trash-weight">
+                                                {{ $trash_weight }}</li>
+                                            <span class="font-extrabold text-white text-xl ml-1">Kg</span>
+                                        </div>
                                     </ul>
                                 </div>
 
@@ -1909,7 +1922,7 @@
                         <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="flex flex-row justify-center pt-2">
                                 <img src="{{ asset('/images/commercial-waste.png') }}" class="w-12 h-auto mr-2 mt-1">
-                            <h2 class="text-xl font-semibold mt-4 text-center">Commercial Waste</h2>
+                                <h2 class="text-xl font-semibold mt-4 text-center">Commercial Waste</h2>
                             </div>
                             <div class="p-4 flex-grow">
                                 <div class="w-full h-[200px] sm:h-[140px] flex justify-center">
@@ -1934,7 +1947,7 @@
                         <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="flex flex-row justify-center pt-2">
                                 <img src="{{ asset('/images/domestic-waste.png') }}" class="w-12 h-auto mr-2 mt-1">
-                            <h2 class="text-xl font-semibold mt-4 text-center">Domestic Waste</h2>
+                                <h2 class="text-xl font-semibold mt-4 text-center">Domestic Waste</h2>
                             </div>
                             <div class="p-4 flex-grow">
                                 <div class="w-full h-[200px] sm:h-[140px] flex justify-center">
@@ -1957,8 +1970,9 @@
 
                         <div class="flex flex-col bg-white shadow rounded-lg">
                             <div class="flex flex-row justify-center pt-2">
-                                <img src="{{ asset('/images/agricultural-waste.png') }}" class="w-12 h-auto mr-2 mt-1">
-                            <h2 class="text-xl font-semibold mt-4 text-center">Agricultural Waste</h2>
+                                <img src="{{ asset('/images/agricultural-waste.png') }}"
+                                    class="w-12 h-auto mr-2 mt-1">
+                                <h2 class="text-xl font-semibold mt-4 text-center">Agricultural Waste</h2>
                             </div>
                             <div class="p-4 flex-grow">
                                 <div class="w-full h-[200px] sm:h-[140px] flex justify-center">

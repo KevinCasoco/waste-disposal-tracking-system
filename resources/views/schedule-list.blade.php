@@ -40,8 +40,8 @@
                         <li class="mb-1 group">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group">
@@ -135,10 +135,13 @@
                         <div class="mb-4 flex sm:justify-center md:justify-between lg:justify-between">
                             <h2 class="text-2xl font-bold">SCHEDULE TABLE INFORMATION</h2>
 
-                            <a href="{{ asset('schedule-list-restore') }}"
-                                class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0">
-                                <i class="ri-add-circle-line mr-1"></i>View Archive
-                            </a>
+                            <div class="hidden md:block">
+                                <a href="{{ asset('schedule-list-restore') }}"
+                                    class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 mb-2 md:mb-0">
+                                    <i class="ri-delete-bin-5-fill mr-1"></i>View Archive
+                                </a>
+                            </div>
+
                         </div>
 
                         {{-- Filter Web View --}}
@@ -248,6 +251,13 @@
                                 </button>
                             </div>
 
+                            <div class="md:hidden flex justify-end">
+                                <a href="{{ asset('schedule-list-restore') }}"
+                                class=" text-white text-center w-8 h-8" style="margin-top: -140px;">
+                                    <i class="ri-delete-bin-5-fill bg-red-500 rounded-full p-2 shadow-md"></i>
+                                </a>
+                            </div>
+
                             {{-- Select Address Mobile View --}}
                             <div class="md:hidden">
                                 <select id="location-filter"
@@ -292,7 +302,7 @@
                                             <td>{{ $item->location }}</td>
                                             <td>{{ $item->start }}</td>
                                             <td>{{ $item->time }}</td>
-                                            <td class="text-center ">
+                                            <td class="">
                                                 <button
                                                     @click="scheduleEdit = true; scheduleToEdit = $event.target.getAttribute('data-item-id')"
                                                     data-item-id="{{ $item->id }}"
@@ -300,7 +310,7 @@
                                                     <i class="ri-edit-box-fill mr-1"></i>Edit
                                                 </button>
                                             </td>
-                                            <td class="text-center ">
+                                            <td class="">
                                                 <button
                                                     @click="scheduleDelete = true; scheduleToDelete = $event.target.getAttribute('data-item-id')"
                                                     data-item-id="{{ $item->id }}"
@@ -439,12 +449,12 @@
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                Delete
+                                                Archive
                                             </button>
                                         </form>
                                         <div class="absolute mr-[90px]">
                                             <button @click="scheduleDelete = false"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 mr-2    ">
                                                 Cancel
                                             </button>
                                         </div>

@@ -42,8 +42,8 @@
                         <li class="mb-1 group">
                             <a href="{{ asset('collector') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
-                                <i class="ri-map-pin-user-fill mr-3 text-lg"></i>
-                                <span class="text-sm">Collector</span>
+                                <i class="ri-truck-line mr-3 text-lg"></i>
+                                <span class="text-sm">Truck</span>
                             </a>
                         </li>
                         <li class="mb-1 group active">
@@ -134,8 +134,8 @@
                 <main class="p-3 sm:p- 4 space-y-5">
                     <!-- Start Table -->
                     <div id='recipients' class="p-4 m-1 lg:mt-0 rounded shadow-lg bg-white overflow-x-auto">
-                        <div class="mb-4 flex sm:justify-center md:justify-start lg:justify-start">
-                            <h2 class="text-2xl font-bold">RESIDENTS TABLE INFORMATION</h2>
+                        <div class="mb-2 flex sm:justify-center md:justify-start lg:justify-start">
+                            <h2 class="text-2xl font-bold">RESIDENTS RESTORE TABLE</h2>
                         </div>
 
                         <div x-data="{ residentsDelete: false, residentsEdit: false, residentNewUsers: false, itemToDelete: null, itemToEdit: null }">
@@ -145,7 +145,7 @@
                                 <div
                                     class="flex flex-col mb-2 sm:justify-end md:flex-row md:justify-end items-center lg:justify-end">
                                     <select id="location-filter"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[280px] mr-2 z-20 mt-2">
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full md:w-[280px] z-20 mt-2">
                                         <option value="">Select Address</option>
                                         @foreach ($locations as $id => $location)
                                             <?php
@@ -158,19 +158,18 @@
                                         @endforeach
                                     </select>
 
-                                    <button @click="residentNewUsers = true"
+                                    {{-- <button @click="residentNewUsers = true"
                                         class="text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm  px-14 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2 md:mb-0"><i
-                                            class="ri-add-circle-line mr-1"></i>Add New Admin</button>
+                                            class="ri-add-circle-line mr-1"></i>Add New Admin</button> --}}
                                     <div class="md:flex-shrink-0 ">
 
                                     </div>
                                 </div>
                             </div>
                             {{-- Mobile View --}}
-                            <div class="md:hidden flex justify-end">
+                            {{-- <div class="md:hidden flex justify-end">
                                 <button @click="residentNewUsers = true"
                                     class=" text-white -mt-[70px] text-center w-8 h-8" style="margin-top: -70px;">
-                                    {{-- <i class="ri-add-circle-line text-3xl bg-green-500 rounded-full"></i> --}}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                         class="bg-green-500 rounded-full p-1 shadow-md">
                                         <path fill="#ffffff"
@@ -179,7 +178,7 @@
                                 </button>
                                 <div class="md:flex-shrink-0">
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- Select Address Mobile View --}}
                             <div class="md:hidden">

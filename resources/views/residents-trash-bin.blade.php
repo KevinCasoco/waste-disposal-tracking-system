@@ -2,7 +2,7 @@
     @if (Auth::user()->role == 'residents')
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <a href="{{ route('dashboard') }}"><i class="ri-arrow-left-s-line mr-3"></i></a> <i class="ri-dashboard-fill mr-3 text-lg"></i>{{ __('Dashboard') }}
+            <a href="{{ route('dashboard') }}"><i class="ri-arrow-left-s-line mr-3"></i></a> <i class="ri-delete-bin-4-fill mr-3 text-lg"></i>{{ __('Trash Bin Location') }}
         </h2>
     </x-slot>
        <!-- Content -->
