@@ -343,12 +343,12 @@
                                                         @csrf
                                                         @method('patch')
                                                         <div class="md:mr-4 mb-3 sm:mb-0">
-                                                            <label for="id"
+                                                            {{-- <label for="id"
                                                                 class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">ID:</label>
                                                             <input type="number" name="id"
                                                                 value="{{ $item->id }}"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  w-full sm:w-[300px]"
-                                                                disabled>
+                                                                disabled> --}}
 
                                                             <label for="plate_no"
                                                                 class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Plate
@@ -366,7 +366,8 @@
                                                                 title="Please enter a valid license number (e.g., X23-20-0166-63)"
                                                                 pattern="[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}"
                                                                 value="{{ $item->license_no }}"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]"
+                                                                disabled>
 
                                                             <label for="first_name"
                                                                 class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's First
@@ -631,14 +632,15 @@
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]"
                                                         required>
+                                                    </div>
+                                                    <div>
 
                                                     <label for="email"
                                                         class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Email:</label>
                                                     <input type="email" name="email"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
                                                         required>
-                                                </div>
-                                                <div>
+
                                                     <label for="password"
                                                         class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Password:</label>
                                                     <input type="password" name="password"

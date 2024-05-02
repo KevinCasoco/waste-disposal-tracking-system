@@ -657,9 +657,12 @@
                                                         class="text-gray-800 block font-bold text-sm tracking-wide">Phone
                                                         Number</label>
                                                     <div id="country-selector"></div>
-                                                    <input type="tel" id="number" name="number"
+
+                                                        <input type="tel"
+                                                        class="phone-input bg-gray-50 border border-gray-300 border-solid text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-full sm:w-[300px]"
+                                                        name="number"
+                                                        pattern="^\639\d{9}$"
                                                         title="Please enter a valid phone number that starts with (e.g., +639)"
-                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-1 mt-2 w-full md:w-[300px] "
                                                         required>
 
                                                     <!-- Location -->

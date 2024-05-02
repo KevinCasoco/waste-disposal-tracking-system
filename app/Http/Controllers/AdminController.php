@@ -167,8 +167,8 @@ class AdminController extends Controller
 
         // Validate the request
         $request->validate([
-            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/', 'unique:users,plate_no'],
-            'license_no' => ['required', 'string', 'regex:/^[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}$/', 'unique:users,license_no'],
+            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/'],
+            'license_no' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
