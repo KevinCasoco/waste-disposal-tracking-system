@@ -420,25 +420,46 @@
                                     {{-- <canvas class="flex justify-center items-center" id="myChart"  width="400" height="240"></canvas> --}}
 
                                     <div class="w-5/5 text-center">
-                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400"
-                                            style="font-size: 140px;"></i>
+                                        <i class="ri-delete-bin-4-fill mr-3 text-lg text-green-400" style="font-size: 140px;"></i>
                                         <ul>
                                             <li class="font-bold text-black text-xl mt-3">
                                                 Trash Weight Status
                                             </li>
-                                            <li class="font-extrabold text-black text-xl" id="trash-weight-status">
-                                                {{ $status }}</li>
+                                            <li class="font-extrabold text-xl" id="trash-weight-status">
+                                                {{ $status }}
                                             </li>
                                         </ul>
 
                                         <script>
+                                            function getStatusColor(status) {
+                                                // Extract the percentage from the status
+                                                var percentage = parseInt(status.replace('%', ''));
+
+                                                // Dynamically determine the color based on the percentage
+                                                if (percentage == 0) {
+                                                    return 'green'; // Green color for 0%
+                                                } else if (percentage >= 90) {
+                                                    return 'red'; // Red color for 90% and above
+                                                } else if (percentage >= 80) {
+                                                    return 'orange'; // Orange color for 80-89%
+                                                } else if (percentage >= 60) {
+                                                    return 'yellow'; // Yellow color for 60-79%
+                                                } else if (percentage >= 40) {
+                                                    return '#FFD700'; // Gold color for 40-59%
+                                                } else {
+                                                    return '#32CD32'; // LimeGreen color for less than 40%
+                                                }
+                                            }
+
                                             // Function to fetch updated truck weight
                                             function fetchTrashWeightStatus() {
                                                 fetch('/get-trash-weight-status')
                                                     .then(response => response.json())
                                                     .then(data => {
                                                         // Update the truck weight in the HTML element
-                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                        var trashWeightStatusElement = document.getElementById('trash-weight-status');
+                                                        trashWeightStatusElement.textContent = data.status;
+                                                        trashWeightStatusElement.style.color = getStatusColor(data.status);
                                                     })
                                                     .catch(error => {
                                                         console.error('Error fetching truck weight:', error);
@@ -467,13 +488,35 @@
                                         </ul>
 
                                         <script>
+                                            function getStatusColorTruck(status_truck) {
+                                                // Extract the percentage from the status
+                                                var percentage = parseInt(status_truck.replace('%', ''));
+
+                                                // Dynamically determine the color based on the percentage
+                                                if (percentage == 0) {
+                                                    return 'green'; // Green color for 0%
+                                                } else if (percentage >= 90) {
+                                                    return 'red'; // Red color for 90% and above
+                                                } else if (percentage >= 80) {
+                                                    return 'orange'; // Orange color for 80-89%
+                                                } else if (percentage >= 60) {
+                                                    return 'yellow'; // Yellow color for 60-79%
+                                                } else if (percentage >= 40) {
+                                                    return '#FFD700'; // Gold color for 40-59%
+                                                } else {
+                                                    return '#32CD32'; // LimeGreen color for less than 40%
+                                                }
+                                            }
+
                                             // Function to fetch updated truck weight
                                             function fetchTruckWeightStatus() {
                                                 fetch('/get-truck-weight-status')
                                                     .then(response => response.json())
                                                     .then(data => {
                                                         // Update the truck weight in the HTML element
-                                                        document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                                        var trashWeightStatusElement = document.getElementById('truck-weight-status');
+                                                        trashWeightStatusElement.textContent = data.status_truck;
+                                                        trashWeightStatusElement.style.color = getStatusColorTruck(data.status_truck);
                                                     })
                                                     .catch(error => {
                                                         console.error('Error fetching truck weight:', error);
@@ -1079,13 +1122,35 @@
                                         </ul>
 
                                         <script>
+                                            function getStatusColor(status) {
+                                                // Extract the percentage from the status
+                                                var percentage = parseInt(status.replace('%', ''));
+
+                                                // Dynamically determine the color based on the percentage
+                                                if (percentage == 0) {
+                                                    return 'green'; // Green color for 0%
+                                                } else if (percentage >= 90) {
+                                                    return 'red'; // Red color for 90% and above
+                                                } else if (percentage >= 80) {
+                                                    return 'orange'; // Orange color for 80-89%
+                                                } else if (percentage >= 60) {
+                                                    return 'yellow'; // Yellow color for 60-79%
+                                                } else if (percentage >= 40) {
+                                                    return '#FFD700'; // Gold color for 40-59%
+                                                } else {
+                                                    return '#32CD32'; // LimeGreen color for less than 40%
+                                                }
+                                            }
+
                                             // Function to fetch updated truck weight
                                             function fetchTrashWeightStatus() {
                                                 fetch('/get-trash-weight-status')
                                                     .then(response => response.json())
                                                     .then(data => {
                                                         // Update the truck weight in the HTML element
-                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                        var trashWeightStatusElement = document.getElementById('trash-weight-status');
+                                                        trashWeightStatusElement.textContent = data.status;
+                                                        trashWeightStatusElement.style.color = getStatusColor(data.status);
                                                     })
                                                     .catch(error => {
                                                         console.error('Error fetching truck weight:', error);
@@ -1114,13 +1179,35 @@
                                         </ul>
 
                                         <script>
+                                            function getStatusColorTruck(status_truck) {
+                                                // Extract the percentage from the status
+                                                var percentage = parseInt(status_truck.replace('%', ''));
+
+                                                // Dynamically determine the color based on the percentage
+                                                if (percentage == 0) {
+                                                    return 'green'; // Green color for 0%
+                                                } else if (percentage >= 90) {
+                                                    return 'red'; // Red color for 90% and above
+                                                } else if (percentage >= 80) {
+                                                    return 'orange'; // Orange color for 80-89%
+                                                } else if (percentage >= 60) {
+                                                    return 'yellow'; // Yellow color for 60-79%
+                                                } else if (percentage >= 40) {
+                                                    return '#FFD700'; // Gold color for 40-59%
+                                                } else {
+                                                    return '#32CD32'; // LimeGreen color for less than 40%
+                                                }
+                                            }
+
                                             // Function to fetch updated truck weight
                                             function fetchTruckWeightStatus() {
                                                 fetch('/get-truck-weight-status')
                                                     .then(response => response.json())
                                                     .then(data => {
                                                         // Update the truck weight in the HTML element
-                                                        document.getElementById('truck-weight-status').textContent = data.status_truck;
+                                                        var trashWeightStatusElement = document.getElementById('truck-weight-status');
+                                                        trashWeightStatusElement.textContent = data.status_truck;
+                                                        trashWeightStatusElement.style.color = getStatusColorTruck(data.status_truck);
                                                     })
                                                     .catch(error => {
                                                         console.error('Error fetching truck weight:', error);
