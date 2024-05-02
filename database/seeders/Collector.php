@@ -17,6 +17,7 @@ class Collector extends Seeder
         // seeding collector
         $collector = User::create([
             'plate_no' => 'WDTS101',
+            'license_no' => 'N23-20-0166-63',
             'first_name' => 'Jay-Ar',
             'last_name' => 'Grifaldea',
             'email' => 'jayargrifaldea@gmail.com',
@@ -29,6 +30,7 @@ class Collector extends Seeder
          // seeding collector
          $collector = User::create([
             'plate_no' => 'WDTS102',
+            'license_no' => 'M23-20-0166-63',
             'first_name' => 'Oliver',
             'last_name' => 'Sykes',
             'email' => 'oliversykes@gmail.com',

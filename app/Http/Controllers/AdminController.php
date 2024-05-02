@@ -71,7 +71,8 @@ class AdminController extends Controller
     {
         // Validate the request
         $request->validate([
-            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/'],
+            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/', 'unique:users,plate_no'],
+            'license_no' => ['required', 'string', 'regex:/^[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}$/', 'unique:users,license_no'],
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -83,6 +84,7 @@ class AdminController extends Controller
         // Create the user
         User::create([
             'plate_no' => $request->input('plate_no'),
+            'license_no' => $request->input('license_no'),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
@@ -165,7 +167,8 @@ class AdminController extends Controller
 
         // Validate the request
         $request->validate([
-            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/'],
+            'plate_no' => ['required', 'string', 'regex:/^[0-9A-Z]{7}$/', 'unique:users,plate_no'],
+            'license_no' => ['required', 'string', 'regex:/^[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}$/', 'unique:users,license_no'],
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
@@ -175,6 +178,7 @@ class AdminController extends Controller
         // Update collector information
         $data->update([
             'plate_no' => $request->input('plate_no'),
+            'license_no' => $request->input('license_no'),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),

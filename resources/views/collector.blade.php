@@ -187,13 +187,14 @@
                                 <thead>
                                     <tr>
                                         <th data-priority="1">Plate No.</th>
-                                        <th data-priority="2">Driver's First Name</th>
-                                        <th data-priority="3">Driver's Last Name</th>
-                                        <th data-priority="4">Email Address</th>
-                                        <th data-priority="5">Role</th>
-                                        <th data-priority="6">Edit</th>
-                                        <th data-priority="7">Archive</th>
-                                        <th data-priority="8">Status</th>
+                                        <th data-priority="2">License No.</th>
+                                        <th data-priority="3">Driver's First Name</th>
+                                        <th data-priority="4">Driver's Last Name</th>
+                                        <th data-priority="5">Email Address</th>
+                                        <th data-priority="6">Role</th>
+                                        <th data-priority="7">Edit</th>
+                                        <th data-priority="8">Archive</th>
+                                        <th data-priority="9">Status</th>
                                     </tr>
                                 </thead>
 
@@ -201,6 +202,7 @@
                                     @foreach ($data as $item)
                                         <tr x-on:click="itemToEdit = {{ $item->id }};">
                                             <td>{{ $item->plate_no }}</td>
+                                            <td>{{ $item->license_no }}</td>
                                             <td>{{ $item->first_name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->email }}</td>
@@ -357,6 +359,15 @@
                                                                 value="{{ $item->plate_no }}"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
 
+                                                                <label for="plate_no"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">License
+                                                                No.</label>
+                                                            <input type="text" name="license_no"
+                                                                title="Please enter a valid license number (e.g., X23-20-0166-63)"
+                                                                pattern="[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}"
+                                                                value="{{ $item->license_no }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
+
                                                             <label for="first_name"
                                                                 class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's First
                                                                 Name:</label>
@@ -482,6 +493,15 @@
                                                                 value="{{ $item->plate_no }}"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
 
+                                                                <label for="plate_no"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">License
+                                                                No.</label>
+                                                            <input type="text" name="license_no"
+                                                                title="Please enter a valid license number (e.g., X23-20-0166-63)"
+                                                                pattern="[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}"
+                                                                value="{{ $item->license_no }}"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block mb-3 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-full sm:w-[300px]">
+
                                                             <label for="first_name"
                                                                 class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Driver's First
                                                                 Name:</label>
@@ -567,7 +587,7 @@
                                         x-transition:leave-start="opacity-100 transform scale-100"
                                         x-transition:leave-end="opacity-0 transform scale-95"
                                         class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[355px]">
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[450px]">
                                             <div class="flex items-center justify-between">
                                                 <h3
                                                     class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-2 ml-5">
@@ -584,6 +604,15 @@
                                                         No.</label>
                                                     <input type="text" name="plate_no" pattern="[0-9A-Z]{7}"
                                                         title="Please enter a valid plate number (e.g., 8KH2Z9)"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+                                                    <label for="license_no"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">License
+                                                        No.</label>
+                                                    <input type="text" name="license_no"
+                                                        title="Please enter a valid license number (e.g., X23-20-0166-63)"
+                                                        pattern="[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
                                                         required>
 
@@ -693,6 +722,15 @@
                                                         No.</label>
                                                     <input type="text" name="plate_no" pattern="[0-9A-Z]{7}"
                                                         title="Please enter a valid plate number (e.g., 8KH2Z9)"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
+                                                        <label for="license_no"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">License
+                                                        No.</label>
+                                                    <input type="text" name="license_no" pattern="[0-9A-Z]{7}"
+                                                        title="Please enter a valid license number (e.g., X23-20-0166-63)"
+                                                        pattern="[A-Za-z]\d{2}-\d{2}-\d{4}-\d{2}"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
                                                         required>
 
