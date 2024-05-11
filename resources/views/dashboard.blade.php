@@ -712,7 +712,7 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBinChart" width="400" height="240"></canvas>
+                                    <canvas id="myTrashBinChart" width="1000" height="240"></canvas>
                                 </div>
 
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -725,7 +725,8 @@
                                         type: 'bar',
                                         data: {
                                             labels: ['Barangay 176', 'Barangay 177', 'Barangay 178', 'Barangay 179', 'Barangay 180',
-                                                    'Barangay 181', 'Barangay 182', 'Barangay 183', 'Barangay 184', 'Barangay 185'],
+                                                'Barangay 181', 'Barangay 182', 'Barangay 183', 'Barangay 184', 'Barangay 185'
+                                            ],
                                             datasets: [{
                                                 label: 'List of Barangays',
                                                 data: [
@@ -742,28 +743,29 @@
                                                 ],
                                                 backgroundColor: [
                                                     'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
-                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 206, 116)',
+                                                    'rgb(253, 226, 116)',
+                                                    'rgb(253, 246, 116)',
+                                                    'rgb(233, 253, 116)',
+                                                    'rgb(213, 253, 116)',
+                                                    'rgb(193, 253, 116)',
+                                                    'rgb(173, 253, 116)',
+                                                    'rgb(153, 253, 116)',
+                                                    'rgb(133, 253, 116)',
                                                 ],
                                                 borderColor: [
                                                     'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 206, 86)',
+                                                    'rgb(75, 192, 192)',
+                                                    'rgb(153, 102, 255)',
+                                                    'rgb(255, 159, 64)',
+                                                    'rgb(75, 192, 192)',
                                                     'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 206, 86)',
                                                 ],
+
                                                 borderWidth: 1
                                             }]
                                         },
@@ -1438,6 +1440,64 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myTrashBarChart" width="400" height="240"></canvas>
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                <script>
+                                    const barcharttrash = document.getElementById('myTrashBarChart');
+                                    const chartWeightTrashData = @json($chartWeightTrashData); // Convert PHP array to JSON
+
+                                    new Chart(barcharttrash, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Monthly', 'Weekly', 'Daily'],
+                                            datasets: [{
+                                                label: 'Trash Collection',
+                                                data: [
+                                                    chartWeightTrashData.monthly.monthlyData,
+                                                    chartWeightTrashData.weekly.weeklyData,
+                                                    chartWeightTrashData.daily.dailyData
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(253 186 116',
+                                                    'rgb(253 186 116',
+                                                    'rgb(253 186 116',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-4 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
+                                <div class="w-full h-[300px] flex justify-center items-center">
                                     <canvas id="myTrashBinChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1491,7 +1551,94 @@
                                 </script>
 
                             </div>
+                        </div> --}}
+                    </section>
+
+                    <section class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-4 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Trash Bin Summary</h2>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myTrashBinChart" width="1000" height="240"></canvas>
+                                </div>
+
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                <script>
+                                    const barChartTrash = document.getElementById('myTrashBinChart');
+                                    const chartWeightTrashBinData = @json($chartWeightTrashBinData); // Convert PHP array to JSON
+
+                                    new Chart(barChartTrash, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Barangay 176', 'Barangay 177', 'Barangay 178', 'Barangay 179', 'Barangay 180',
+                                                'Barangay 181', 'Barangay 182', 'Barangay 183', 'Barangay 184', 'Barangay 185'
+                                            ],
+                                            datasets: [{
+                                                label: 'List of Barangays',
+                                                data: [
+                                                    chartWeightTrashBinData.barangay.barangay_176,
+                                                    chartWeightTrashBinData.barangay.barangay_177,
+                                                    chartWeightTrashBinData.barangay.barangay_178,
+                                                    chartWeightTrashBinData.barangay.barangay_179,
+                                                    chartWeightTrashBinData.barangay.barangay_180,
+                                                    chartWeightTrashBinData.barangay.barangay_181,
+                                                    chartWeightTrashBinData.barangay.barangay_182,
+                                                    chartWeightTrashBinData.barangay.barangay_183,
+                                                    chartWeightTrashBinData.barangay.barangay_184,
+                                                    chartWeightTrashBinData.barangay.barangay_185,
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 206, 116)',
+                                                    'rgb(253, 226, 116)',
+                                                    'rgb(253, 246, 116)',
+                                                    'rgb(233, 253, 116)',
+                                                    'rgb(213, 253, 116)',
+                                                    'rgb(193, 253, 116)',
+                                                    'rgb(173, 253, 116)',
+                                                    'rgb(153, 253, 116)',
+                                                    'rgb(133, 253, 116)',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 206, 86)',
+                                                    'rgb(75, 192, 192)',
+                                                    'rgb(153, 102, 255)',
+                                                    'rgb(255, 159, 64)',
+                                                    'rgb(75, 192, 192)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 206, 86)',
+                                                ],
+
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
+
+                            </div>
                         </div>
+
                     </section>
 
                 </main>
