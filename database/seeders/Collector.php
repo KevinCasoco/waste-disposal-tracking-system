@@ -25,6 +25,8 @@ class Collector extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'collector',
             'status' => 'active',
+            'collector_first_name' => 'Noel',
+            'collector_last_name' => 'Devilla',
         ]);
 
          // seeding collector
@@ -37,6 +39,8 @@ class Collector extends Seeder
             'password' => Hash::make('12345'),
             'role' => 'collector',
             'status' => 'inactive',
+            'collector_first_name' => 'Jay',
+            'collector_last_name' => 'Delacruz',
         ]);
     }
 }

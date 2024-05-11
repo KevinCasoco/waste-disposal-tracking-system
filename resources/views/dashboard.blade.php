@@ -706,6 +706,19 @@
                             </div>
                         </div>
                     </section>
+
+                    <section class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="flex flex-col bg-white shadow rounded-lg">
+                            <div class="p-4 flex-grow">
+                                <h2 class="text-xl font-semibold text-center">Trash Bin Summary</h2>
+                                <div class="w-full h-[300px] flex justify-center items-center">
+                                    <canvas id="myTruckBarChart" width="400" height="240"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </section>
                 </main>
             </div>
 
@@ -1353,29 +1366,29 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBarChart" width="400" height="240"></canvas>
+                                    <canvas id="myTrashBinChart" width="400" height="240"></canvas>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                 <script>
-                                    const barcharttrash = document.getElementById('myTrashBarChart');
-                                    const chartWeightTrashData = @json($chartWeightTrashData); // Convert PHP array to JSON
+                                    const barcharttrash = document.getElementById('myTrashBinChart');
+                                    const chartWeightData = @json($chartWeightData); // Convert PHP array to JSON
 
                                     new Chart(barcharttrash, {
                                         type: 'bar',
                                         data: {
                                             labels: ['Monthly', 'Weekly', 'Daily'],
                                             datasets: [{
-                                                label: 'Trash Collection',
+                                                label: 'Truck Collection',
                                                 data: [
-                                                    chartWeightTrashData.monthly.monthlyData,
-                                                    chartWeightTrashData.weekly.weeklyData,
-                                                    chartWeightTrashData.daily.dailyData
+                                                    chartWeightData.monthly.monthlyData,
+                                                    chartWeightData.weekly.weeklyData,
+                                                    chartWeightData.daily.dailyData
                                                 ],
                                                 backgroundColor: [
-                                                    'rgb(253 186 116',
-                                                    'rgb(253 186 116',
-                                                    'rgb(253 186 116',
+                                                    'rgb(192 132 252',
+                                                    'rgb(192 132 252',
+                                                    'rgb(192 132 252',
                                                 ],
                                                 borderColor: [
                                                     'rgb(255, 99, 132)',

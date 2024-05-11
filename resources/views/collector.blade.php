@@ -191,7 +191,9 @@
                                         <th data-priority="3">Driver's First Name</th>
                                         <th data-priority="4">Driver's Last Name</th>
                                         <th data-priority="5">Email Address</th>
-                                        <th data-priority="6">Role</th>
+                                        <th data-priority="3">Collector First Name</th>
+                                        <th data-priority="4">Collector Last Name</th>
+                                        {{-- <th data-priority="6">Role</th> --}}
                                         <th data-priority="7">Edit</th>
                                         <th data-priority="8">Archive</th>
                                         <th data-priority="9">Status</th>
@@ -206,7 +208,9 @@
                                             <td>{{ $item->first_name }}</td>
                                             <td>{{ $item->last_name }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>{{ $item->role }}</td>
+                                            <td>{{ $item->collector_first_name }}</td>
+                                            <td>{{ $item->collector_last_name }}</td>
+                                            {{-- <td>{{ $item->role }}</td> --}}
                                             <td class="">
                                                 <button
                                                     @click="collectorEdit = true; itemToEdit = $event.target.getAttribute('data-item-id')"
@@ -319,7 +323,7 @@
                                         x-transition:leave-end="opacity-0 transform scale-95"
                                         class="rounded-lg overflow-hidden transform transition-all flex justify-start mx-3">
                                         <!-- ... (modal content) ... -->
-                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[380px]">
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[450px]">
                                             <div class="flex items-center justify-between">
                                                 <h3
                                                     class="text-xl font-semibold text-gray-900 dark:text-white w-full pt-2 pb-3 ml-5">
@@ -377,6 +381,15 @@
                                                                 oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-full sm:w-[300px]"
                                                                 required>
+
+                                                                <label for="collector_first_name"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Collector First
+                                                                Name:</label>
+                                                            <input type="text" name="collector_first_name"
+                                                                value="{{ $item->collector_first_name }}"
+                                                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-full sm:w-[300px]"
+                                                                required>
                                                         </div>
 
                                                         <div class="mt-1">
@@ -409,6 +422,15 @@
                                                                     {{ $item->role === 'resident' ? 'selected' : '' }}>
                                                                     Resident</option>
                                                             </select>
+
+                                                                <label for="collector_last_name"
+                                                                class="text-gray-800 block mb-2 font-bold text-sm tracking-wide">Collector Last
+                                                                Name:</label>
+                                                            <input type="text" name="collector_last_name"
+                                                                value="{{ $item->collector_last_name }}"
+                                                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-3 w-full sm:w-[300px]"
+                                                                required>
 
                                                             {{-- <label for="status" class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
                                                         <select name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]" required>
@@ -588,7 +610,7 @@
                                         x-transition:leave-start="opacity-100 transform scale-100"
                                         x-transition:leave-end="opacity-0 transform scale-95"
                                         class="bg-white rounded-lg overflow-hidden transform transition-all flex justify-start">
-                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[450px]">
+                                        <div class="bg-white py-3 w-full sm:w-[655px] h-full sm:h-[470px]">
                                             <div class="flex items-center justify-between">
                                                 <h3
                                                     class="text-xl font-semibold text-gray-900 dark:text-white w-full pb-2 ml-5">
@@ -632,7 +654,17 @@
                                                         oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]"
                                                         required>
+
+                                                    <label for="collector_first_name"
+                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Collector First
+                                                        Name:</label>
+                                                    <input type="text" name="collector_first_name"
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2 w-full sm:w-[300px]"
+                                                        required>
+
                                                     </div>
+
                                                     <div>
 
                                                     <label for="email"
@@ -649,7 +681,7 @@
 
 
                                                     <label for="role"
-                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Role:</label>
+                                                        class="text-gray-800 block font-bold text-sm tracking-wide">Role:</label>
                                                     <select name="role"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px] mb-2"
                                                         required>
@@ -659,7 +691,7 @@
                                                     </select>
 
                                                     <label for="status"
-                                                        class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Status:</label>
+                                                        class="text-gray-800 block font-bold text-sm tracking-wide">Status:</label>
                                                     <select name="status"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-[300px]"
                                                         required>
@@ -667,6 +699,13 @@
                                                         <option value="inactive">Inactive</option>
                                                         {{-- <option value="resident">Resident</option> --}}
                                                     </select>
+                                                    <label for="collector_last_name"
+                                                        class="text-gray-800 block mb-1 mt-2 font-bold text-sm tracking-wide">Collector Last
+                                                        Name:</label>
+                                                    <input type="text" name="collector_last_name"
+                                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white mb-2  w-full sm:w-[300px]"
+                                                        required>
 
                                                     <div
                                                         class="flex flex-col sm:flex-row items-end sm:items-center justify-end sm:mt-4 md:mt-4 mt-4">

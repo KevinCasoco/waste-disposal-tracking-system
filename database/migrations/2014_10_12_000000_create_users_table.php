@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('license_no')->nullable();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('collector_first_name')->nullable();
+            $table->string('collector_last_name')->nullable();
             $table->string('email')->unique();
             $table->string('location')->nullable();
             $table->timestamp('email_verified_at')->nullable();

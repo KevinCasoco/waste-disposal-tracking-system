@@ -79,6 +79,8 @@ class AdminController extends Controller
             'password' => 'required|string|min:8',
             'role' => 'required|string',
             'status' => 'required|string',
+            'collector_first_name' => 'required|string',
+            'collector_last_name' => 'required|string',
         ]);
 
         // Create the user
@@ -91,6 +93,8 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->input('role'),
             'status' => $request->input('status'),
+            'collector_first_name' => $request->input('collector_first_name'),
+            'collector_last_name' => $request->input('collector_last_name'),
         ]);
 
         return redirect()->route('collector')->with('message', 'Collector created successfully');
@@ -173,6 +177,8 @@ class AdminController extends Controller
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $data->id,
             'password' => 'nullable|string|min:8',
+            'collector_first_name' => 'required|string', // Add validation for collector_first_name
+            'collector_last_name' => 'required|string',  // Add validation for collector_last_name
         ]);
 
         // Update collector information
@@ -183,6 +189,8 @@ class AdminController extends Controller
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'password' => $request->has('password') ? bcrypt($request->input('password')) : $data->password,
+            'collector_first_name' => $request->input('collector_first_name'), // Include collector_first_name
+            'collector_last_name' => $request->input('collector_last_name'),   // Include collector_last_name
         ]);
 
         return redirect()->route('collector')->with('message', 'Collector updated successfully');
