@@ -712,8 +712,80 @@
                             <div class="p-4 flex-grow">
                                 <h2 class="text-xl font-semibold text-center">Trash Bin Summary</h2>
                                 <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTruckBarChart" width="400" height="240"></canvas>
+                                    <canvas id="myTrashBinChart" width="400" height="240"></canvas>
                                 </div>
+
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                <script>
+                                    const barChartTrash = document.getElementById('myTrashBinChart');
+                                    const chartWeightTrashBinData = @json($chartWeightTrashBinData); // Convert PHP array to JSON
+
+                                    new Chart(barChartTrash, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Barangay 176', 'Barangay 177', 'Barangay 178', 'Barangay 179', 'Barangay 180',
+                                                    'Barangay 181', 'Barangay 182', 'Barangay 183', 'Barangay 184', 'Barangay 185'],
+                                            datasets: [{
+                                                label: 'List of Barangays',
+                                                data: [
+                                                    chartWeightTrashBinData.barangay.barangay_176,
+                                                    chartWeightTrashBinData.barangay.barangay_177,
+                                                    chartWeightTrashBinData.barangay.barangay_178,
+                                                    chartWeightTrashBinData.barangay.barangay_179,
+                                                    chartWeightTrashBinData.barangay.barangay_180,
+                                                    chartWeightTrashBinData.barangay.barangay_181,
+                                                    chartWeightTrashBinData.barangay.barangay_182,
+                                                    chartWeightTrashBinData.barangay.barangay_183,
+                                                    chartWeightTrashBinData.barangay.barangay_184,
+                                                    chartWeightTrashBinData.barangay.barangay_185,
+                                                ],
+                                                backgroundColor: [
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                    'rgb(253, 186, 116)',
+                                                ],
+                                                borderColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(255, 99, 132)',
+                                                ],
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: true,
+                                                    position: 'top',
+                                                    labels: {
+                                                        boxWidth: 20,
+                                                        usePointStyle: true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
 
                             </div>
                         </div>
