@@ -163,28 +163,16 @@
                                     AGREEMENT TO OUR LEGAL TERMS
                                 </h2>
                                 <p class="mb-2">
-                                    We are from University of Caloocan City taking up Bachelor of Science in Information
-                                    System
-                                    under the Computer Studies Department.
+                                    These Legal Terms legally binding agreement made between you, whether personally or on behalf of an entity expertise/client, and Developers concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE WEBSITE AND/OR APPLICATION AND YOU MUST DISCONTINUE USE IMMEDIATELY.
                                 </p>
                                 <p class="mb-2">
-                                    We operate the website <a href="https://wastedisposaltrackingsystem-2024.com/" target="_blank" style="text-decoration: underline; color: blue;">https://wastedisposaltrackingsystem-2024.com/</a>, the mobile application Waste Disposal Tracking System (the "App"), that refer or link to these legal terms collectively, the Services.
+                                    Extra terms and conditions or documents that may be posted on the Website from time to time are hereby expressly incorporated herein by reference. We reserve the right, to make changes to these Legal Terms at any time and for any reason. It is your responsibility to periodically review these Legal Terms to stay informed of updates. You will be subject to, and will be deemed to have been made aware of and to have accepted, the Legal Terms
                                 </p>
 
                                 <p class="mb-2">
-                                    This system is a web and mobile application that can monitor and manage the
-                                    collection,
-                                    transportation, and to notify the people around District 3 that the garbage
-                                    collector truck
-                                    is going to take the waste within the time given This software keeps tabs on garbage
-                                    pickup
-                                    schedules, ensuring residents are informed. Waste Disposal Tracking System is a
-                                    Weight-Based
-                                    Sensor designed that uses a hardware device. It serves as the tracking for the
-                                    availability
-                                    of pick-up for the waste.
+                                    All users who are minors in which they reside (generally under the age of 18) must have the permission of, and be directly supervised by, their parent or guardian to use the Website and/or Application. If you are a minor, you must have your parent or guardian read and agree to these Legal Terms prior to you using the Website.
                                 </p>
-                                <p class="mb-2">
+                                {{-- <p class="mb-2">
                                     You can contact us by email at wastedisposaltrackingsystem@gmail.com
                                 </p>
                                 <p class="mb-2">
@@ -199,8 +187,8 @@
                                     TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE WEBSITE AND/OR APPLICATION
                                     AND YOU
                                     MUST DISCONTINUE USE IMMEDIATELY.
-                                </p>
-                                <p class="mb-2">
+                                </p> --}}
+                                {{-- <p class="mb-2">
                                     Extra terms and conditions or documents that may be posted on the Website from time
                                     to time
                                     are hereby expressly incorporated herein by reference. We reserve the right, to make
@@ -218,7 +206,7 @@
                                     and/or Application. If you are a minor, you must have your parent or guardian read
                                     and agree
                                     to these Legal Terms prior to you using the Website.
-                                </p>
+                                </p> --}}
                                 <h3 class="text-gray-900 text-lg font-semibold dark:text-white mb-1">
                                     1. INTELLECTUAL PROPERTY RIGHTS
                                 </h3>
