@@ -58,7 +58,7 @@
             </div>
 
             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white flex justify-center text-center">WASTE
-                DISPOSAL TRACKING SYSTEM TEST 2023-2024</h2>
+                DISPOSAL TRACKING SYSTEM 2023-2024</h2>
 
             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white flex justify-center">Members</h2>
 
