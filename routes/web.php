@@ -102,7 +102,6 @@ Route::middleware('auth', 'status')->group(function () {
 
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
-    // test
 
 // Admin Dashboard Sidebar
 Route::middleware('auth', 'checkActiveStatus')->group(function () {
