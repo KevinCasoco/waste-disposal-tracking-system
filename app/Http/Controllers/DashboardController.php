@@ -78,21 +78,29 @@ class DashboardController extends Controller
             ],
         ];
 
+        // $chartWeightTrashBinData = [
+        //     'barangay' => [
+        //         'barangay_176' => TrashBin::where('trash_bin_location', 'barangay 176')->count(),
+        //         'barangay_177' => TrashBin::where('trash_bin_location', 'barangay 177')->count(),
+        //         'barangay_178' => TrashBin::where('trash_bin_location', 'barangay 178')->count(),
+        //         'barangay_179' => TrashBin::where('trash_bin_location', 'barangay 179')->count(),
+        //         'barangay_180' => TrashBin::where('trash_bin_location', 'barangay 180')->count(),
+        //         'barangay_181' => TrashBin::where('trash_bin_location', 'barangay 181')->count(),
+        //         'barangay_182' => TrashBin::where('trash_bin_location', 'barangay 182')->count(),
+        //         'barangay_183' => TrashBin::where('trash_bin_location', 'barangay 183')->count(),
+        //         'barangay_184' => TrashBin::where('trash_bin_location', 'barangay 184')->count(),
+        //         'barangay_185' => TrashBin::where('trash_bin_location', 'barangay 185')->count(),
+        //     ]
+        // ];
+
+        $barangays = range(176, 185);
         $chartWeightTrashBinData = [
-            'barangay' => [
-                'barangay_176' => TrashBin::where('trash_bin_location', 'barangay 176')->count(),
-                'barangay_177' => TrashBin::where('trash_bin_location', 'barangay 177')->count(),
-                'barangay_178' => TrashBin::where('trash_bin_location', 'barangay 178')->count(),
-                'barangay_179' => TrashBin::where('trash_bin_location', 'barangay 179')->count(),
-                'barangay_180' => TrashBin::where('trash_bin_location', 'barangay 180')->count(),
-                'barangay_181' => TrashBin::where('trash_bin_location', 'barangay 181')->count(),
-                'barangay_182' => TrashBin::where('trash_bin_location', 'barangay 182')->count(),
-                'barangay_183' => TrashBin::where('trash_bin_location', 'barangay 183')->count(),
-                'barangay_184' => TrashBin::where('trash_bin_location', 'barangay 184')->count(),
-                'barangay_185' => TrashBin::where('trash_bin_location', 'barangay 185')->count(),
-            ]
+            'barangay' => []
         ];
 
+        foreach ($barangays as $barangay) {
+            $chartWeightTrashBinData['barangay']["barangay_$barangay"] = TrashBin::where('trash_bin_location', "barangay $barangay")->count();
+        }
 
         $chartWeightTrashData = [
             'monthly' => [
