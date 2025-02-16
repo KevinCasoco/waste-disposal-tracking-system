@@ -426,7 +426,7 @@
                                                 Trash Weight Status
                                             </li>
                                             <li class="font-extrabold text-xl" id="trash-weight-status">
-                                                {{ $status }}
+                                                {{ $status_trash_bin }}
                                             </li>
                                         </ul>
 
@@ -1204,7 +1204,7 @@
                                                 Trash Weight Status
                                             </li>
                                             <li class="font-extrabold text-black text-xl" id="trash-weight-status">
-                                                {{ $status }}</li>
+                                                {{ $status_truck }}</li>
                                             </li>
                                         </ul>
 
@@ -2061,7 +2061,7 @@
                                             </li> --}}
                                             <li class="font-extrabold text-black text-xl mt-5"
                                                 id="trash-weight-status">
-                                                {{ $status }}</li>
+                                                {{ $status_trash_bin }}</li>
                                             </li>
                                         </ul>
 
@@ -2072,7 +2072,7 @@
                                                     .then(response => response.json())
                                                     .then(data => {
                                                         // Update the truck weight in the HTML element
-                                                        document.getElementById('trash-weight-status').textContent = data.status;
+                                                        document.getElementById('trash-weight-status').textContent = data.status_trash_bin;
                                                     })
                                                     .catch(error => {
                                                         console.error('Error fetching truck weight:', error);

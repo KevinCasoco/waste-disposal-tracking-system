@@ -78,21 +78,6 @@ class DashboardController extends Controller
             ],
         ];
 
-        // $chartWeightTrashBinData = [
-        //     'barangay' => [
-        //         'barangay_176' => TrashBin::where('trash_bin_location', 'barangay 176')->count(),
-        //         'barangay_177' => TrashBin::where('trash_bin_location', 'barangay 177')->count(),
-        //         'barangay_178' => TrashBin::where('trash_bin_location', 'barangay 178')->count(),
-        //         'barangay_179' => TrashBin::where('trash_bin_location', 'barangay 179')->count(),
-        //         'barangay_180' => TrashBin::where('trash_bin_location', 'barangay 180')->count(),
-        //         'barangay_181' => TrashBin::where('trash_bin_location', 'barangay 181')->count(),
-        //         'barangay_182' => TrashBin::where('trash_bin_location', 'barangay 182')->count(),
-        //         'barangay_183' => TrashBin::where('trash_bin_location', 'barangay 183')->count(),
-        //         'barangay_184' => TrashBin::where('trash_bin_location', 'barangay 184')->count(),
-        //         'barangay_185' => TrashBin::where('trash_bin_location', 'barangay 185')->count(),
-        //     ]
-        // ];
-
         $barangays = range(176, 185);
         $chartWeightTrashBinData = [
             'barangay' => []
@@ -123,35 +108,6 @@ class DashboardController extends Controller
         $countSchedules = Schedule::count();
         $totalUser = User::count();
 
-        // $truck_weight = (float)Truck::orderBy('id', 'desc')->value('truck_weight');
-        // $status_truck = '';
-
-        // if ($truck_weight == 0.0000) {
-        //     $status_truck = '0%';
-        // } elseif ($truck_weight >= 1.0000) {
-        //     $status_truck = '100% Full';
-        // } elseif ($truck_weight >= 0.9000) {
-        //     $status_truck = '90% ';
-        // } elseif ($truck_weight >= 0.8000) {
-        //     $status_truck = '80% ';
-        // } elseif ($truck_weight >= 0.7000) {
-        //     $status_truck = '70% ';
-        // } elseif ($truck_weight >= 0.6000) {
-        //     $status_truck = '60% ';
-        // } elseif ($truck_weight >= 0.5000) {
-        //     $status_truck = '50% ';
-        // } elseif ($truck_weight >= 0.4000) {
-        //     $status_truck = '40% ';
-        // } elseif ($truck_weight >= 0.3000) {
-        //     $status_truck = '30% ';
-        // } elseif ($truck_weight >= 0.2000) {
-        //     $status_truck = '20% ';
-        // } elseif ($truck_weight >= 0.1000) {
-        //     $status_truck = '10% ';
-        // } else {
-        //     $status_truck = '0% ';
-        // }
-
         $truck_weight = (float)Truck::orderBy('id', 'desc')->value('truck_weight');
         $status_truck = '';
 
@@ -160,52 +116,23 @@ class DashboardController extends Controller
         } elseif ($truck_weight >= 1.0000) {
             $status_truck = '100% Full';
         } else {
-            $percentage = (int)($truck_weight * 100); 
+            $percentage = (int)($truck_weight * 100);
             $status_truck = $percentage . '%';
         }
 
-        // $trash_weight = (float)TrashCan::orderBy('id', 'desc')->value('trash_weight');
-        // $status = '';
-
-        // if ($trash_weight == 0.0000) {
-        //     $status = '0%';
-        // } elseif ($trash_weight >= 1.0000) {
-        //     $status = '100% Full';
-        // } elseif ($trash_weight >= 0.9000) {
-        //     $status = '90% ';
-        // } elseif ($trash_weight >= 0.8000) {
-        //     $status = '80% ';
-        // } elseif ($trash_weight >= 0.7000) {
-        //     $status = '70% ';
-        // } elseif ($trash_weight >= 0.6000) {
-        //     $status = '60% ';
-        // } elseif ($trash_weight >= 0.5000) {
-        //     $status = '50% ';
-        // } elseif ($trash_weight >= 0.4000) {
-        //     $status = '40% ';
-        // } elseif ($trash_weight >= 0.3000) {
-        //     $status = '30% ';
-        // } elseif ($trash_weight >= 0.2000) {
-        //     $status = '20% ';
-        // } elseif ($trash_weight >= 0.1000) {
-        //     $status = '10% ';
-        // } else {
-        //     $status = '0% ';
-        // }
-
-        $trash_weight = (float)Truck::orderBy('id', 'desc')->value('trash_weight');
-        $status_truck = '';
+        $trash_weight = (float)TrashCan::orderBy('id', 'desc')->value('trash_weight');
+        $status_trash_bin = '';
 
         if ($trash_weight == 0.0000) {
-            $status_truck = '0%';
+            $status_trash_bin = '0%';
         } elseif ($trash_weight >= 1.0000) {
-            $status_truck = '100% Full';
+            $status_trash_bin = '100% Full';
         } else {
-            $percentage = (int)($trash_weight * 100); 
-            $status_truck = $percentage . '%';
+            $percentage = (int)($trash_weight * 100);
+            $status_trash_bin = $percentage . '%';
         }
 
-        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'countSchedules', 'totalUser', 'truck_weight', 'trash_weight', 'chartWeightData', 'chartWeightTrashData', 'status', 'status_truck', 'chartWeightTrashBinData'));
+        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'countSchedules', 'totalUser', 'truck_weight', 'trash_weight', 'chartWeightData', 'chartWeightTrashData', 'status_trash_bin', 'status_truck', 'chartWeightTrashBinData'));
     }
 
     // manually send the email when you click the container of truck and trash in dashboard
@@ -225,34 +152,6 @@ class DashboardController extends Controller
 
     public function getTruckWeightStatus()
     {
-        // $truck_weight = (float)Truck::orderBy('id', 'desc')->value('truck_weight');
-        // $status_truck = '';
-
-        // if ($truck_weight == 0.0000) {
-        //     $status_truck = '0%';
-        // } elseif ($truck_weight >= 1.0000) {
-        //     $status_truck = '100% Full';
-        // } elseif ($truck_weight >= 0.9000) {
-        //     $status_truck = '90% ';
-        // } elseif ($truck_weight >= 0.8000) {
-        //     $status_truck = '80% ';
-        // } elseif ($truck_weight >= 0.7000) {
-        //     $status_truck = '70% ';
-        // } elseif ($truck_weight >= 0.6000) {
-        //     $status_truck = '60% ';
-        // } elseif ($truck_weight >= 0.5000) {
-        //     $status_truck = '50% ';
-        // } elseif ($truck_weight >= 0.4000) {
-        //     $status_truck = '40% ';
-        // } elseif ($truck_weight >= 0.3000) {
-        //     $status_truck = '30% ';
-        // } elseif ($truck_weight >= 0.2000) {
-        //     $status_truck = '20% ';
-        // } elseif ($truck_weight >= 0.1000) {
-        //     $status_truck = '10% ';
-        // } else {
-        //     $status_truck = '0% ';
-        // }
 
         $truck_weight = (float)Truck::orderBy('id', 'desc')->value('truck_weight');
         $status_truck = '';
@@ -262,7 +161,7 @@ class DashboardController extends Controller
         } elseif ($truck_weight >= 1.0000) {
             $status_truck = '100% Full';
         } else {
-            $percentage = (int)($truck_weight * 100); 
+            $percentage = (int)($truck_weight * 100);
             $status_truck = $percentage . '%';
         }
 
@@ -271,19 +170,19 @@ class DashboardController extends Controller
 
     public function getTrashWeightStatus()
     {
-        $trash_weight = (float)Truck::orderBy('id', 'desc')->value('trash_weight');
-        $status_truck = '';
+        $trash_weight = (float)TrashCan::orderBy('id', 'desc')->value('trash_weight');
+        $status_trash_bin = '';
 
         if ($trash_weight == 0.0000) {
-            $status_truck = '0%';
+            $status_trash_bin = '0%';
         } elseif ($trash_weight >= 1.0000) {
-            $status_truck = '100% Full';
+            $status_trash_bin = '100% Full';
         } else {
-            $percentage = (int)($trash_weight * 100); 
-            $status_truck = $percentage . '%';
+            $percentage = (int)($trash_weight * 100);
+            $status_trash_bin = $percentage . '%';
         }
 
-        return response()->json(['trash_weight' => $trash_weight, 'status' => $status]);
+        return response()->json(['trash_weight' => $trash_weight, 'status' => $status_trash_bin]);
     }
 
     // automatic send the email when the max kilogram exceed
