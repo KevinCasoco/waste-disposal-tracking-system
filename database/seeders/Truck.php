@@ -17,35 +17,32 @@ class Truck extends Seeder
     {
         $faker = Faker::create();
 
-        // Seed initial sensor data
         $initialSensorData = [
-            ['truck_weight' => '1.25000'], // Initial data point
+            ['truck_weight' => '1.25000'],
         ];
 
-        // Seed additional sensor data for different timestamps
-        for ($i = 1; $i <= 365; $i++) { // 1 year worth of data
+        for ($i = 1; $i <= 365; $i++) {
             $initialSensorData[] = [
-                'truck_weight' => $faker->randomFloat(2, 0, 10), // Limit max value to 10
+                'truck_weight' => $faker->randomFloat(2, 0, 10),
                 'updated_at' => Carbon::now()->subDays($i)->toDateTimeString(),
             ];
         }
 
-        // Seed data for monthly, weekly, and daily periods
-        $monthlySensorData = array_slice($initialSensorData, 0, 30); // 30 days for monthly
-        $weeklySensorData = array_slice($initialSensorData, 0, 7); // 7 days for weekly
-        $dailySensorData = [$initialSensorData[0]]; // Only the initial data point for daily
+        $monthlySensorData = array_slice($initialSensorData, 0, 30);
+        $weeklySensorData = array_slice($initialSensorData, 0, 7);
+        $dailySensorData = [$initialSensorData[0]];
 
-        // Seed data for monthly periods
+        // Seed data for monthly
         foreach ($monthlySensorData as $data) {
             ModelsTruck::create($data);
         }
 
-        // Seed data for weekly periods
+        // Seed data for weekly
         foreach ($weeklySensorData as $data) {
             ModelsTruck::create($data);
         }
 
-        // Seed data for daily period
+        // Seed data for daily
         foreach ($dailySensorData as $data) {
             ModelsTruck::create($data);
         }

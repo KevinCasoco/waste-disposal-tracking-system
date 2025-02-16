@@ -22,12 +22,11 @@ class Sensor extends Seeder
             'trash_weight' => '0.0000',
         ]);
 
-         // Seed additional sensor data for different timestamps
          for ($i = 0; $i < 50; $i++) {
             SensorData::create([
-                'truck_weight' => $faker->randomFloat(4, 0, 100), // Adjust range as needed
-                'trash_weight' => $faker->randomFloat(4, 0, 100), // Adjust range as needed
-                'updated_at' => $faker->dateTimeBetween('-1 year', 'now'), // Adjust date range as needed
+                'truck_weight' => $faker->randomFloat(4, 0, 100),
+                'trash_weight' => $faker->randomFloat(4, 0, 100),
+                'updated_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ]);
         }
     }

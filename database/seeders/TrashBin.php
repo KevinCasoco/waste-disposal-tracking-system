@@ -13,11 +13,12 @@ class TrashBin extends Seeder
      */
     public function run(): void
     {
-        // seeding trash bins
-        $trash_bin = ModelsTrashBin::create([
-            'trash_bin_location' => 'barangay 176',
-            'latitude' => '14.77714210',
-            'longitude' => '121.04305430',
-        ]);
+        for ($barangay = 176; $barangay <= 186; $barangay++) {
+            ModelsTrashBin::create([
+                'trash_bin_location' => "barangay $barangay",
+                'latitude' => '14.77714' . ($barangay - 176),
+                'longitude' => '121.04305' . ($barangay - 176),
+            ]);
+        }
     }
 }

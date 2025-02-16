@@ -18,9 +18,9 @@ class Collector extends Seeder
         $collector = User::create([
             'plate_no' => 'WDTS101',
             'license_no' => 'N23-20-0166-63',
-            'first_name' => 'Jay-Ar',
-            'last_name' => 'Grifaldea',
-            'email' => 'jayargrifaldea@gmail.com',
+            'first_name' => 'Joseph',
+            'last_name' => 'Gregorio',
+            'email' => 'none@gmail.com',
             'email_verified_at' => '2024-02-02 12:42:50',
             'password' => Hash::make('12345'),
             'role' => 'collector',
