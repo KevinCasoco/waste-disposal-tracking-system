@@ -132,7 +132,22 @@ class DashboardController extends Controller
             $status_trash_bin = $percentage . '%';
         }
 
-        return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents', 'countSchedules', 'totalUser', 'truck_weight', 'trash_weight', 'chartWeightData', 'chartWeightTrashData', 'status_trash_bin', 'status_truck', 'chartWeightTrashBinData'));
+        return view('dashboard', compact(
+            'chartData',
+            'chart',
+            'countAdmins',
+            'countCollector',
+            'countResidents',
+            'countSchedules',
+            'totalUser',
+            'truck_weight',
+            'trash_weight',
+            'chartWeightData',
+            'chartWeightTrashData',
+            'status_trash_bin',
+            'status_truck',
+            'chartWeightTrashBinData'
+        ));
     }
 
     // manually send the email when you click the container of truck and trash in dashboard
@@ -165,7 +180,10 @@ class DashboardController extends Controller
             $status_truck = $percentage . '%';
         }
 
-        return response()->json(['truck_weight' => $truck_weight, 'status_truck' => $status_truck]);
+        return response()->json([
+            'truck_weight' => $truck_weight,
+            'status_truck' => $status_truck
+        ]);
     }
 
     public function getTrashWeightStatus()
@@ -182,15 +200,16 @@ class DashboardController extends Controller
             $status_trash_bin = $percentage . '%';
         }
 
-        return response()->json(['trash_weight' => $trash_weight, 'status' => $status_trash_bin]);
+        return response()->json([
+            'trash_weight' => $trash_weight,
+            'status' => $status_trash_bin
+        ]);
     }
 
     // automatic send the email when the max kilogram exceed
     public function getTruckWeight()
     {
         $formattedWeight = Truck::orderBy('id', 'desc')->value('truck_weight');
-
-        // Formatting the weight to have two decimal places
         $latestWeight = number_format($formattedWeight, 2);
 
         if ($latestWeight !== null && $latestWeight >= 1.00) {
@@ -210,10 +229,7 @@ class DashboardController extends Controller
     // automatic send the email when the max kilogram exceed
     public function getTrashWeight()
     {
-        // Retrieve the last recorded weight from the SensorData model
         $formattedWeight = TrashCan::orderBy('id', 'desc')->value('trash_weight');
-
-        // Formatting the weight to have two decimal places
         $latestWeight = number_format($formattedWeight, 2);
 
         if ($latestWeight !== null && $latestWeight >= 1.0000) {
@@ -221,13 +237,13 @@ class DashboardController extends Controller
             Notification::send($admins, new TrashBinNotification());
             return response()->json([
                 'message' => 'Notification sent to admins.',
-                'trash_weight' => $latestWeight // Include the trash weight in the response
+                'trash_weight' => $latestWeight
             ]);
         }
 
         return response()->json([
             'message' => 'Weight is within limit.',
-            'trash_weight' => $latestWeight // Include the trash weight in the response
+            'trash_weight' => $latestWeight
         ]);
     }
 

@@ -89,7 +89,6 @@
 
                 </nav>
             </div>
-            <!--Logout Modals -->
             <!-- Logout Modal -->
             <div id="logoutModal" class="hidden fixed inset-0 overflow-y-auto flex items-center justify-center z-30">
                 <div class="fixed inset-0 transition-opacity" aria-hidden="true">
@@ -535,53 +534,6 @@
 
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                                {{-- <script>
-                                    const ctx = document.getElementById('myChart');
-                                    new Chart(ctx, {
-                                        type: 'doughnut',
-                                        data: {
-                                            labels: ['Admin', 'Collector', 'Residents'],
-                                            datasets: [{
-                                                label: 'Number of Users',
-                                                data: [
-                                                    {{ $countAdmins }},
-                                                    {{ $countCollector }},
-                                                    {{ $countResidents }}
-                                                ],
-                                                backgroundColor: [
-                                                    '#059BFF',
-                                                    '#FF4069',
-                                                    '#FF9020',
-                                                ],
-                                                borderWidth: 1
-                                            }]
-                                        },
-                                        options: {
-                                            plugins: {
-                                                legend: {
-                                                    display: true,
-                                                    position: 'bottom',
-                                                    align: 'center',
-                                                    labels: {
-                                                        boxWidth: 15,
-                                                        padding: 10,
-                                                        usePointStyle: true,
-                                                        align: 'start', // Align labels to start (left) of legend
-                                                    },
-                                                    maxItems: 3
-                                                }
-                                            },
-                                            responsive: true,
-                                            maintainAspectRatio: false,
-                                            scales: {
-                                                fontSize: window.innerWidth < 768 ? 7 : 10 // Change font size based on screen width
-                                            }
-                                        }
-                                    });
-                                </script> --}}
-
-
                             </div>
                         </div>
 
@@ -1286,12 +1238,10 @@
                                                 }
                                             }
 
-                                            // Function to fetch updated truck weight
                                             function fetchTruckWeightStatus() {
                                                 fetch('/get-truck-weight-status')
                                                     .then(response => response.json())
                                                     .then(data => {
-                                                        // Update the truck weight in the HTML element
                                                         var trashWeightStatusElement = document.getElementById('truck-weight-status');
                                                         trashWeightStatusElement.textContent = data.status_truck;
                                                         trashWeightStatusElement.style.color = getStatusColorTruck(data.status_truck);
@@ -1301,12 +1251,10 @@
                                                     });
                                             }
 
-                                            // Function to refresh truck weight every 5 seconds
                                             function autoRefresh3() {
-                                                setInterval(fetchTruckWeightStatus, 5000); // Refresh every 5 seconds
+                                                setInterval(fetchTruckWeightStatus, 5000);
                                             }
 
-                                            // Initial call to start auto-refresh
                                             autoRefresh3();
                                         </script>
                                     </div>
@@ -1316,64 +1264,6 @@
 
                             </div>
                         </div>
-
-                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
-                            <h2 class="text-xl font-semibold mt-4 text-center">Roles</h2>
-                            <div class="p-4 flex-grow">
-                                <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center">
-                                    <canvas class="flex justify-center items-center" id="myChart" width="400"
-                                        height="240"></canvas>
-                                </div>
-                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                                <script>
-                                    const ctx = document.getElementById('myChart');
-                                    new Chart(ctx, {
-                                        type: 'doughnut',
-                                        data: {
-                                            labels: ['Admin', 'Collector', 'Residents'],
-                                            datasets: [{
-                                                label: 'Number of Users',
-                                                data: [
-                                                    {{ $countAdmins }},
-                                                    {{ $countCollector }},
-                                                    {{ $countResidents }}
-                                                ],
-                                                backgroundColor: [
-                                                    '#059BFF',
-                                                    '#FF4069',
-                                                    '#FF9020',
-                                                ],
-                                                borderWidth: 1
-                                            }]
-                                        },
-                                        options: {
-                                            plugins: {
-                                                legend: {
-                                                    display: true,
-                                                    position: 'bottom',
-                                                    align: 'center',
-                                                    labels: {
-                                                        boxWidth: 15,
-                                                        padding: 10,
-                                                        usePointStyle: true,
-                                                        align: 'start', // Align labels to start (left) of legend
-                                                    },
-                                                    maxItems: 3
-                                                }
-                                            },
-                                            responsive: true,
-                                            maintainAspectRatio: false,
-                                            scales: {
-                                                fontSize: window.innerWidth < 768 ? 7 : 10 // Change font size based on screen width
-                                            }
-                                        }
-                                    });
-                                </script>
-
-                            </div>
-                        </div> --}}
-
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1494,64 +1384,6 @@
 
                             </div>
                         </div>
-                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-4 flex-grow">
-                                <h2 class="text-xl font-semibold text-center">Collection of Trash Bin Summary</h2>
-                                <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myTrashBinChart" width="400" height="240"></canvas>
-                                </div>
-                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                                <script>
-                                    const barcharttrash = document.getElementById('myTrashBinChart');
-                                    const chartWeightData = @json($chartWeightData); // Convert PHP array to JSON
-
-                                    new Chart(barcharttrash, {
-                                        type: 'bar',
-                                        data: {
-                                            labels: ['Monthly', 'Weekly', 'Daily'],
-                                            datasets: [{
-                                                label: 'Truck Collection',
-                                                data: [
-                                                    chartWeightData.monthly.monthlyData,
-                                                    chartWeightData.weekly.weeklyData,
-                                                    chartWeightData.daily.dailyData
-                                                ],
-                                                backgroundColor: [
-                                                    'rgb(192 132 252',
-                                                    'rgb(192 132 252',
-                                                    'rgb(192 132 252',
-                                                ],
-                                                borderColor: [
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                    'rgb(255, 99, 132)',
-                                                ],
-                                                borderWidth: 1
-                                            }]
-                                        },
-                                        options: {
-                                            scales: {
-                                                y: {
-                                                    beginAtZero: true
-                                                }
-                                            },
-                                            plugins: {
-                                                legend: {
-                                                    display: true,
-                                                    position: 'top',
-                                                    labels: {
-                                                        boxWidth: 20,
-                                                        usePointStyle: true
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    });
-                                </script>
-
-                            </div>
-                        </div> --}}
                     </section>
 
                     <section class="grid grid-cols-1 md:grid-cols-1 gap-6">
@@ -1709,27 +1541,6 @@
                                 <span class="text-sm">Trash Bin</span>
                             </a>
                         </li>
-                        {{-- <li class="mb-1 group">
-                    <a href="{{ asset('kitchen-waste') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-ink-bottle-line mr-3 text-lg"></i>
-                        <span class="text-sm">Kitchen Waste</span>
-                    </a>
-                </li>
-                <li class="mb-1 group">
-                    <a href="{{ asset('recyclable-waste') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-recycle-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Recyclable Waste</span>
-                    </a>
-                </li>
-                <li class="mb-1 group">
-                    <a href="{{ asset('hazardous-waste') }}"
-                        class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white">
-                        <i class="ri-paint-fill mr-3 text-lg"></i>
-                        <span class="text-sm">Hazardous Waste</span>
-                    </a>
-                </li> --}}
                         <li class="mb-1 group">
                             <a href="{{ asset('profile') }}"
                                 class="flex items-center py-2 px-4 text-black hover:bg-[#4ECE5D] hover:text-gray-100 rounded-md group-[.active]:bg-[#4ECE5D] group-[.active]:text-white group-[.selected]:bg-[#4ECE5D] group-[.selected]:text-white transition duration-200">
@@ -1788,223 +1599,9 @@
             <!-- content -->
             <div class="flex-grow text-gray-800">
                 <main class="p-6 sm:p-10 space-y-6">
-
-                    {{-- <section class="grid md:grid-cols-6 xl:grid-cols-6 gap-6">
-                        <div
-                            class="p-2 bg-blue-500 rounded-lg flex items-center h-32 shadow-lg hover:bg-blue-600 hover:shadow-xl">
-                            <div class="w-3/5 flex justify-start">
-                                <ul>
-                                    <li class="font-bold text-white">
-                                        Admin</li>
-                                    <li class="font-extrabold text-white text-xl">{{ $countAdmins }}</li>
-                                </ul>
-                            </div>
-
-                            <div class="w-3/5 flex justify-end ">
-                                <ul>
-                                    <li class="">
-                                        <i class="ri-admin-fill mr-3 text-lg text-white" style="font-size: 22px;"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div
-                            class="p-2 bg-[#FF4069] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#e5395e] hover:shadow-xl">
-                            <div class="w-3/5 flex justify-start">
-                                <ul>
-                                    <li class="font-bold text-white">Collector</li>
-                                    <li class="font-extrabold text-white text-xl">{{ $countCollector }}</li>
-                                </ul>
-                            </div>
-
-                            <div class="w-3/5 flex justify-end ">
-                                <ul>
-                                    <li class="m">
-                                        <i class="ri-map-pin-user-fill mr-3 text-lg text-white"
-                                            style="font-size: 22px;"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <a href="{{ asset('user-residents') }}">
-                            <div
-                                class="p-4 bg-orange-400 rounded-lg flex items-center h-32 shadow-lg hover:bg-orange-500 hover:shadow-xl">
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">Residents</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $countResidents }}</li>
-                                    </ul>
-                                </div>
-
-                                <div class="w-3/5 flex justify-end ">
-                                    <ul>
-                                        <li class="">
-                                            <i class="ri-user-fill mr-3 text-lg text-white"
-                                                style="font-size: 22px;"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ asset('user-schedule') }}">
-                            <div
-                                class="p-2 bg-[#4ECE5D] rounded-lg flex items-center h-32 shadow-lg hover:bg-[#46b953] hover:shadow-xl">
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">Total Users</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $countSchedules }}</li>
-                                    </ul>
-                                </div>
-
-                                <div class="w-3/5 flex justify-end ">
-                                    <ul>
-                                        <li class="">
-                                            <i class="ri-calendar-fill mr-3 text-lg text-white"
-                                                style="font-size: 22px;"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ asset('user-schedule') }}">
-
-                            <div
-                                class="p-2 bg-purple-400 rounded-lg flex items-center h-32 shadow-lg hover:bg-purple-500 hover:shadow-xl">
-
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">Truck Weight</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $truck_weight }}</li>
-                                    </ul>
-                                </div>
-
-                                <div class="w-3/5 flex justify-end ">
-                                    <ul>
-                                        <li class="">
-                                            <i class="ri-truck-line mr-3 text-lg text-white"
-                                                style="font-size: 22px;"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ asset('user-schedule') }}">
-
-                            <div
-                                class="p-2 bg-orange-300 rounded-lg flex items-center h-32 shadow-lg hover:bg-orange-400 hover:shadow-xl">
-
-                                <div class="w-3/5 flex justify-start">
-                                    <ul>
-                                        <li class="font-bold text-white">Trash Bin Weight</li>
-                                        <li class="font-extrabold text-white text-xl">{{ $trash_weight }}</li>
-                                    </ul>
-                                </div>
-
-                                <div class="w-3/5 flex justify-end ">
-                                    <ul>
-                                        <li class="">
-                                            <i class="ri-delete-bin-4-fill mr-3 text-lg text-white"
-                                                style="font-size: 22px;"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-
-                    </section> --}}
-
                     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {{-- <div class="flex flex-col bg-white shadow rounded-lg">
-                            <div class="p-2 flex-grow">
-                                <h2 class="text-xl font-semibold text-center">Active and Inactive Users</h2>
-                                <div class="w-full h-[300px] flex justify-center items-center">
-                                    <canvas id="myBarChart" width="400" height="240"></canvas>
-                                </div>
-                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                                <script>
-                                    const barchart = document.getElementById('myBarChart');
-                                    const chartData = @json($chartData); // Convert PHP array to JSON
-
-                                    new Chart(barchart, {
-                                        type: 'bar',
-                                        data: {
-                                            labels: ['Admin', 'Collector', 'Residents'],
-                                            datasets: [{
-                                                    label: 'Active Users',
-                                                    data: [
-                                                        chartData.admin.active,
-                                                        chartData.collector.active,
-                                                        chartData.residents.active
-                                                    ],
-                                                    backgroundColor: [
-                                                        '#46b953',
-                                                        '#46b953',
-                                                        '#46b953'
-                                                    ],
-                                                    borderColor: [
-                                                        'rgb(255, 99, 132)',
-                                                        'rgb(173, 216, 230)',
-                                                        'rgb(255, 159, 64)',
-                                                        'rgb(255, 182, 193)',
-                                                        'rgb(255, 205, 86)',
-                                                        'rgb(255, 222, 173)'
-                                                    ],
-                                                    borderWidth: 1
-                                                },
-                                                {
-                                                    label: 'Inactive Users',
-                                                    data: [
-                                                        chartData.admin.inactive,
-                                                        chartData.collector.inactive,
-                                                        chartData.residents.inactive
-                                                    ],
-                                                    backgroundColor: [
-                                                        '#FF4069',
-                                                        '#FF4069',
-                                                        '#FF4069'
-                                                    ],
-                                                    borderColor: [
-                                                        'rgb(255, 99, 132)',
-                                                        'rgb(173, 216, 230)',
-                                                        'rgb(255, 159, 64)',
-                                                        'rgb(255, 182, 193)',
-                                                        'rgb(255, 205, 86)',
-                                                        'rgb(255, 222, 173)'
-                                                    ],
-                                                    borderWidth: 1
-                                                }
-                                            ]
-                                        },
-                                        options: {
-                                            scales: {
-                                                y: {
-                                                    beginAtZero: true
-                                                }
-                                            },
-                                            plugins: {
-                                                legend: {
-                                                    display: true,
-                                                    position: 'top',
-                                                    labels: {
-                                                        boxWidth: 20,
-                                                        usePointStyle: true
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    });
-                                </script>
-
-                            </div>
-                        </div> --}}
-
                         <div class="flex flex-col bg-white shadow rounded-lg">
-                            <h2 class="text-xl font-semibold mt-6 text-center mb-8">Truck Weight Status</h2>
+                            <h2 class="text-xl font-semibold mt-6 text-center mb-8">Truck Weight Status test</h2>
                             <div class="p-4 flex-grow mt-2">
                                 <div class="w-full h-[300px] sm:h-[240px] flex justify-center items-center gap-16">
                                     <div class="w-5/5 text-center ">
