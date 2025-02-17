@@ -288,28 +288,9 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 
 // User-Residents Dashboard Sidebar
 Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
-
-    // calendar for collection
     Route::get('/user-schedule', [UserController::class, 'showUserSchedule'])->name('user-schedule');
-
-    // dynamic augmented reality 3 marker for 3 sample images
     Route::get('/augmented-reality', [UserController::class, 'showAugmentedReality'])->name('augmented-reality');
-
     Route::get('/residents-trash-bin', [UserController::class, 'showTrashBin'])->name('showTrashBin.residents-trash-bin');
-
-    // // augmented reality with marker
-    // Route::get('/kitchen-waste', [UserController::class, 'showKitchenWaste'])->name('kitchen-waste');
-
-    // Route::get('/recyclable-waste', [UserController::class, 'showRecyclableWaste'])->name('recyclable-waste');
-
-    // Route::get('/hazardous-waste', [UserController::class, 'showHazardousWaste'])->name('hazardous-waste');
-
-    // // edit residents/users
-    // Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
-
-    // // delete
-    // Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
-    // Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
 
 }); // end of middleware group
 
