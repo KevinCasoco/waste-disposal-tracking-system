@@ -39,7 +39,7 @@ Route::get('/', function () {
 
 // Route::redirect('/', destination: 'login');
 
-Route::get('/dashboard', [DashboardController::class, 'countUsersByRole'])
+Route::get('/dashboard', [DashboardController::class, 'dashboardData'])
     ->middleware('auth', 'verified', 'checkActiveStatus')
     ->name('dashboard');
 
@@ -102,7 +102,7 @@ Route::middleware('auth', 'status')->group(function () {
 
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout')->middleware('auth');
-   
+
 // Admin Dashboard Sidebar
 Route::middleware('auth', 'checkActiveStatus')->prefix('supervisor')->group(function () {
 

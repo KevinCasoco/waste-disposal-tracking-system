@@ -47,8 +47,8 @@ class DashboardController extends Controller
     //     return view('dashboard', compact('chartData', 'chart', 'countAdmins', 'countCollector', 'countResidents',  'countSchedules', 'totalUser', 'truck_weight', 'trash_weight'));
     // }
 
-    // graph for truck collection and trash bin included
-    public function countUsersByRole()
+    // data fetch from dashboard
+    public function dashboardData()
     {
         $chartData = [
             'admin' => [
