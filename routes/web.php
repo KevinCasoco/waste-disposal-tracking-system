@@ -287,11 +287,10 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
 }); // end of middleware group
 
 // User-Residents Dashboard Sidebar
-Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
+Route::middleware('auth', 'checkActiveStatus', 'verified')->prefix('residents')->group(function () {
     Route::get('/user-schedule', [UserController::class, 'showUserSchedule'])->name('user-schedule');
     Route::get('/augmented-reality', [UserController::class, 'showAugmentedReality'])->name('augmented-reality');
     Route::get('/residents-trash-bin', [UserController::class, 'showTrashBin'])->name('showTrashBin.residents-trash-bin');
-
 }); // end of middleware group
 
 require __DIR__.'/auth.php';
